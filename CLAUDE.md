@@ -351,4 +351,63 @@ Ce projet est privé et à usage personnel.
 
 ---
 
-**💡 Note pour Claude :** Ce fichier fournit un aperçu complet du projet. Pour les détails d'implémentation spécifiques, consultez toujours les fichiers `CLAUDE.md` dans chaque dossier de composants et le `PDM_DesignSystem.md` pour le plan détaillé.
+## ⚙️ Instructions pour Claude Code
+
+### Workflow de développement obligatoire
+
+**IMPORTANT:** À chaque fois que Claude Code effectue des modifications sur ce projet, suivre IMPÉRATIVEMENT ce processus:
+
+1. **Effectuer les modifications demandées** (création de fichiers, édition de code, etc.)
+
+2. **Vérifier systématiquement le PDM** après chaque session de travail:
+   - Ouvrir [PDM_DesignSystem.md](./PDM_DesignSystem.md)
+   - Identifier quelle(s) phase(s) a/ont été impactée(s) par les modifications
+   - Vérifier si des tâches de la checklist ont été complétées
+
+3. **Mettre à jour le PDM si nécessaire**:
+   - Cocher les checkboxes `[ ]` → `[x]` pour les tâches terminées
+   - Mettre à jour le statut de la phase si elle est complétée (🔴 → 🟡 → 🟢)
+   - Mettre à jour la progression (0% → 50% → 100%)
+   - Ajouter la date de réalisation et le hash du commit si phase complète
+   - Documenter les détails importants (temps de build, fichiers créés, etc.)
+
+4. **Commiter les changements du PDM**:
+   ```bash
+   git add PDM_DesignSystem.md
+   git commit -m "docs(pdm): mise à jour Phase X [statut]"
+   git push origin master
+   ```
+
+5. **Valider le fonctionnement**:
+   - Lancer `npm run dev` pour vérifier que tout fonctionne
+   - Tester les nouvelles fonctionnalités ajoutées
+   - S'assurer qu'aucune régression n'a été introduite
+
+### Règles strictes
+
+- ❌ **NE JAMAIS** terminer une session sans vérifier le PDM
+- ❌ **NE JAMAIS** laisser des tâches complétées non cochées dans le PDM
+- ❌ **NE JAMAIS** oublier de commiter les mises à jour du PDM
+- ✅ **TOUJOURS** maintenir le PDM à jour en temps réel
+- ✅ **TOUJOURS** documenter les résultats de chaque phase
+- ✅ **TOUJOURS** tester avec `npm run dev` avant de valider
+
+### Exemple de workflow complet
+
+```
+1. User demande: "Crée le composant Button.vue"
+2. Claude Code crée Button.vue avec BEM + CSS natif
+3. Claude Code teste le composant
+4. Claude Code ouvre PDM_DesignSystem.md
+5. Claude Code identifie: Phase 4, tâche "Créer Button.vue"
+6. Claude Code coche: [x] Créer Button.vue
+7. Claude Code commit: "docs(pdm): Button.vue complété"
+8. Claude Code valide avec npm run dev
+9. Session terminée ✅
+```
+
+---
+
+**💡 Note pour Claude Code:** Ce fichier fournit un aperçu complet du projet. Pour les détails d'implémentation spécifiques, consultez toujours les fichiers `CLAUDE.md` dans chaque dossier de composants et le `PDM_DesignSystem.md` pour le plan détaillé.
+
+**🔴 RAPPEL CRITIQUE:** Ne JAMAIS oublier de mettre à jour le PDM après chaque modification du projet!
