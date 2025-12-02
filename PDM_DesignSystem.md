@@ -14,7 +14,7 @@
 | **Phase 0** | 🟢 Complétée | 100% | Initialisation Git + CLAUDE.md |
 | **Phase 1** | 🟢 Complétée | 100% | Configuration CSS + Polices |
 | **Phase 2** | 🟢 Complétée | 100% | Configuration Tailwind |
-| **Phase 3** | 🔴 Non démarrée | 0% | Installation @vueuse/core |
+| **Phase 3** | 🟢 Complétée | 100% | Installation @vueuse/core |
 | **Phase 4** | 🔴 Non démarrée | 0% | Composants UI (6 composants) |
 | **Phase 5** | 🔴 Non démarrée | 0% | Layout + Sections |
 | **Phase 6** | 🔴 Non démarrée | 0% | Layouts Nuxt |
@@ -994,6 +994,39 @@ export default {
 - Build Vite server: 133ms
 - Build Nuxt Nitro: 1934ms
 - Aucune erreur de configuration
+
+***
+
+## 🚀 Phase 3 : Installation @vueuse/core
+
+**Statut:** 🟢 Complétée | **Date de réalisation:** 2025-12-02 | **Commit:** `e33f9ab`
+
+**But** : Installer la librairie @vueuse/core pour les composants interactifs (Modal, Dropdown)
+
+### Checklist Phase 3
+
+- [x] Installer @vueuse/core avec `npm install @vueuse/core`
+- [x] Vérifier l'installation dans package.json (✅ v14.1.0)
+- [x] Vérifier l'absence de vulnérabilités
+- [x] Tester avec `npm run dev` pour valider l'intégration
+- [x] Valider que Vite re-optimise les dépendances correctement
+
+**Résultat attendu:**
+- ✅ @vueuse/core v14.1.0 installé
+- ✅ 4 packages ajoutés (vueuse + dépendances)
+- ✅ Aucune vulnérabilité de sécurité
+- ✅ Package.json et package-lock.json mis à jour
+- ✅ Dev server fonctionnel avec la nouvelle dépendance
+
+**Utilité:**
+- **Modal.vue**: composables `onClickOutside`, `useFocusTrap`, `onKeyStroke` (Escape)
+- **Dropdown.vue**: composables `onClickOutside`, `useToggle`, keyboard navigation
+
+**Validation:**
+- Build Vite client: 75ms
+- Build Vite server: 135ms
+- Build Nuxt Nitro: 2305ms
+- Vite re-optimization: ✅ effectuée
 
 ***
 
