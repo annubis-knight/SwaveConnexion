@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "npm run kill-port && nuxt dev",
+    "dev:direct": "nuxt dev",
+    "kill-port": "npx kill-port 3000 3001 3002 3003 3004 3005 || echo 'Ports cleared'",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
