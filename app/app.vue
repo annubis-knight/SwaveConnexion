@@ -7,12 +7,12 @@
 
       <section style="margin-top: 3rem;">
         <h2>Typographie - Clash Display (Titres)</h2>
-        <h1>H1 - Titre principal (64px)</h1>
-        <h2>H2 - Titre secondaire (48px)</h2>
-        <h3>H3 - Titre tertiaire (36px)</h3>
-        <h4>H4 - Titre quaternaire (27px)</h4>
-        <h5>H5 - Titre quinaire (20.25px)</h5>
-        <h6>H6 - Titre sixième niveau (18px)</h6>
+        <h1>H1 - Titre principal (84px)</h1>
+        <h2>H2 - Titre secondaire (64px)</h2>
+        <h3>H3 - Titre tertiaire (48px)</h3>
+        <h4>H4 - Titre quaternaire (36px)</h4>
+        <h5>H5 - Titre quinaire (28px)</h5>
+        <h6>H6 - Titre sixième niveau (20px)</h6>
       </section>
 
       <section style="margin-top: 3rem;">

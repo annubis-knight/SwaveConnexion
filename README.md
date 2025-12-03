@@ -271,12 +271,12 @@ const btnClass = computed(() => [
 | SM | `--text-sm` | 14px (0.875rem) | Secondary text |
 | Base | `--text-base` | 16px (1rem) | **Corps de texte** |
 | LG | `--text-lg` | 18px (1.125rem) | Large body |
-| XL | `--text-xl` | 20.25px (1.266rem) | h6 |
-| 2XL | `--text-2xl` | 27px (1.688rem) | h5 |
+| XL | `--text-xl` | 20px (1.25rem) | h6 |
+| 2XL | `--text-2xl` | 28px (1.75rem) | h5 |
 | 3XL | `--text-3xl` | 36px (2.25rem) | h4 |
 | 4XL | `--text-4xl` | 48px (3rem) | h3 |
 | 5XL | `--text-5xl` | 64px (4rem) | h2 |
-| 6XL | `--text-6xl` | 85px (5.333rem) | h1 |
+| 6XL | `--text-6xl` | 84px (5.25rem) | h1 |
 
 ### 4. Polices personnalisées (forte personnalité)
 

@@ -372,12 +372,12 @@ Ouvre `app/assets/css/_typography.css` :
   --text-sm: 0.875rem;         /* 14px - Secondary text */
   --text-base: 1rem;           /* 16px - Body text (BASE) */
   --text-lg: 1.125rem;         /* 18px - Large body */
-  --text-xl: 1.266rem;         /* 20.25px - h6 */
-  --text-2xl: 1.688rem;        /* 27px - h5 */
+  --text-xl: 1.25rem;         /* 20px - h6 */
+  --text-2xl: 1.75rem;        /* 28px - h5 */
   --text-3xl: 2.25rem;         /* 36px - h4 */
   --text-4xl: 3rem;            /* 48px - h3 */
   --text-5xl: 4rem;            /* 64px - h2 */
-  --text-6xl: 5.333rem;        /* 85px - h1 */
+  --text-6xl: 5.25rem;        /* 84px - h1 */
 
   /* ============================================
      HAUTEURS DE LIGNE (line-height)
@@ -407,7 +407,7 @@ Ouvre `app/assets/css/_typography.css` :
 
 h1 {
   font-family: var(--font-display);
-  font-size: var(--text-6xl);        /* 85px */
+  font-size: var(--text-6xl);        /* 84px */
   font-weight: var(--font-bold);
   line-height: var(--leading-tight);
   color: var(--neutral-black);
@@ -447,7 +447,7 @@ h4 {
 
 h5 {
   font-family: var(--font-sans);
-  font-size: var(--text-2xl);        /* 27px */
+  font-size: var(--text-2xl);        /* 28px */
   font-weight: var(--font-medium);
   line-height: var(--leading-tight);
   color: var(--neutral-dark);
@@ -457,7 +457,7 @@ h5 {
 
 h6 {
   font-family: var(--font-sans);
-  font-size: var(--text-xl);         /* 20.25px */
+  font-size: var(--text-xl);         /* 20px */
   font-weight: var(--font-medium);
   line-height: var(--leading-tight);
   color: var(--neutral-dark);
@@ -1061,7 +1061,7 @@ Tu devrais avoir :
 ```vue
 <template>
   <div class="container">
-    <h1>Titre H1 (85px)</h1>
+    <h1>Titre H1 (84px)</h1>
     <h2>Titre H2 (64px)</h2>
     <h3>Titre H3 (48px)</h3>
     <p>Paragraphe de base (16px) avec line-height confortable.</p>
@@ -2817,7 +2817,7 @@ Ouvre `app/pages/index.vue` :
       <h2>Typographie</h2>
       <h3>Heading 3 (48px)</h3>
       <h4>Heading 4 (36px)</h4>
-      <h5>Heading 5 (27px)</h5>
+      <h5>Heading 5 (28px)</h5>
       <h6>Heading 6 (20px)</h6>
       <p>
         Paragraphe de base (16px). Lorem ipsum dolor sit amet, consectetur adipiscing elit.

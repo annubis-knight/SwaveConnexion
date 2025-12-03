@@ -230,12 +230,12 @@ Tous les composants UI utilisent CSS natif scoped avec variables et nommage BEM 
 --text-sm: 0.875rem;   /* 14px */
 --text-base: 1rem;     /* 16px */
 --text-lg: 1.125rem;   /* 18px */
---text-xl: 1.266rem;   /* 20.25px */
---text-2xl: 1.688rem;  /* 27px */
+--text-xl: 1.25rem;    /* 20px */
+--text-2xl: 1.75rem;   /* 28px */
 --text-3xl: 2.25rem;   /* 36px */
 --text-4xl: 3rem;      /* 48px */
 --text-5xl: 4rem;      /* 64px */
---text-6xl: 5.333rem;  /* 85px */
+--text-6xl: 5.25rem;   /* 84px */
 ```
 
 ---
