@@ -5,7 +5,7 @@
     Description : Bouton avec variantes de couleur et tailles
 
     Input (Props) :
-      - variant : 'primary' | 'secondary' | 'accent' | 'outline' (défaut: 'primary')
+      - variant : 'primary' | 'secondary' | 'accent' | 'outline' | 'outline-light' (défaut: 'primary')
       - size : 'sm' | 'md' | 'lg' (défaut: 'md')
       - disabled : boolean (défaut: false)
 
@@ -34,7 +34,7 @@
 
 // Props
 interface Props {
-  variant?: 'primary' | 'secondary' | 'accent' | 'outline';
+  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'outline-light';
   size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
 }
@@ -126,6 +126,17 @@ const btnClass = computed(() => {
 .btn--outline:hover:not(.btn--disabled) {
   background-color: var(--primary-light);
   color: var(--neutral-white);
+}
+
+.btn--outline-light {
+  background-color: transparent;
+  color: var(--neutral-white);
+  border-color: var(--neutral-white);
+}
+
+.btn--outline-light:hover:not(.btn--disabled) {
+  background-color: var(--neutral-white);
+  color: var(--primary);
 }
 
 /* Modifier : Tailles */

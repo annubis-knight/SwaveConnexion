@@ -357,6 +357,49 @@
       </section>
 
     </div>
+
+    <!-- ========== PHASE 10: SECTIONS AVANCÉES ========== -->
+
+    <!-- FeaturesGrid Section -->
+    <SectionsFeaturesGrid
+      title="Fonctionnalités Principales"
+      subtitle="Découvrez les avantages de notre design system minimaliste"
+      :features="features"
+      :cols="3"
+    />
+
+    <!-- CTA Section (Primary) -->
+    <SectionsCTA
+      title="Prêt à commencer ?"
+      description="Rejoignez des milliers de développeurs qui utilisent notre design system pour créer des applications modernes et performantes."
+      primaryText="Commencer maintenant"
+      secondaryText="Voir la documentation"
+      variant="primary"
+      :centered="true"
+      @primary-click="handleCTAPrimary"
+      @secondary-click="handleCTASecondary"
+    />
+
+    <!-- FeaturesGrid Section (4 columns) -->
+    <SectionsFeaturesGrid
+      title="Composants Disponibles"
+      subtitle="Un ensemble complet de composants UI et Layout prêts à l'emploi"
+      :features="componentsFeatures"
+      :cols="4"
+    />
+
+    <!-- CTA Section (Gradient) -->
+    <SectionsCTA
+      title="Contribuez au projet !"
+      description="Le projet est open source. Vos contributions sont les bienvenues pour enrichir le design system."
+      primaryText="Voir sur GitHub"
+      secondaryText="Lire le guide"
+      variant="gradient"
+      :centered="true"
+      @primary-click="handleGitHub"
+      @secondary-click="handleGuide"
+    />
+
   </div>
 </template>
 
@@ -435,4 +478,100 @@ const tabItems = [
   { label: 'Onglet 3', value: 'tab3' },
   { label: 'Désactivé', value: 'tab4', disabled: true },
 ];
+
+// ========== PHASE 10: DATA ========== //
+
+// FeaturesGrid data
+const features = [
+  {
+    icon: '⚡',
+    title: 'Performance',
+    description: 'Build optimisé avec Vite et Nuxt 4 pour des temps de chargement ultra-rapides.',
+  },
+  {
+    icon: '🎨',
+    title: 'Design Minimaliste',
+    description: 'Interface épurée et moderne avec CSS natif et variables pour une personnalisation facile.',
+  },
+  {
+    icon: '📱',
+    title: 'Responsive',
+    description: 'Tous les composants sont responsive et s\'adaptent automatiquement à tous les écrans.',
+  },
+  {
+    icon: '♿',
+    title: 'Accessible',
+    description: 'ARIA complet, navigation clavier, et respect des standards d\'accessibilité WCAG.',
+  },
+  {
+    icon: '🔧',
+    title: 'Modulaire',
+    description: 'Composants indépendants et réutilisables avec props TypeScript strictes.',
+  },
+  {
+    icon: '🚀',
+    title: 'Production Ready',
+    description: 'Testé en production avec documentation complète et exemples de code.',
+  },
+];
+
+const componentsFeatures = [
+  {
+    icon: '🔘',
+    title: 'Buttons',
+    description: '5 variantes avec tailles configurables',
+  },
+  {
+    icon: '📝',
+    title: 'Forms',
+    description: 'Input, Checkbox, Switch, Dropdown',
+  },
+  {
+    icon: '🃏',
+    title: 'Cards',
+    description: 'Layouts flexibles avec slots',
+  },
+  {
+    icon: '🔔',
+    title: 'Feedback',
+    description: 'Toast, Tooltip, Modal, ProgressBar',
+  },
+  {
+    icon: '📊',
+    title: 'Navigation',
+    description: 'Tabs, Dropdown, Header, Footer',
+  },
+  {
+    icon: '🎯',
+    title: 'Layout',
+    description: 'Container, Grid, Stack, SplitPane',
+  },
+  {
+    icon: '🏷️',
+    title: 'Display',
+    description: 'Badge avec variantes sémantiques',
+  },
+  {
+    icon: '🎬',
+    title: 'Sections',
+    description: 'Hero, FeaturesGrid, CTA',
+  },
+];
+
+// CTA handlers
+const handleCTAPrimary = () => {
+  console.log('CTA Primary clicked');
+};
+
+const handleCTASecondary = () => {
+  console.log('CTA Secondary clicked');
+};
+
+const handleGitHub = () => {
+  console.log('GitHub clicked');
+};
+
+const handleGuide = () => {
+  console.log('Guide clicked');
+};
 </script>
