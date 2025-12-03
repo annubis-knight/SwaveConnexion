@@ -201,6 +201,161 @@
         </div>
       </section>
 
+      <!-- ========== PHASE 8: NOUVEAUX COMPOSANTS ========== -->
+
+      <!-- Section Checkbox -->
+      <section>
+        <h2 class="text-4xl font-bold mb-6">Checkbox (Phase 8)</h2>
+        <div class="space-y-4">
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Cases à cocher simples</h4>
+            <div class="space-y-3">
+              <Checkbox v-model="checkboxes.option1" label="Option 1 (cochée par défaut)" />
+              <Checkbox v-model="checkboxes.option2" label="Option 2" />
+              <Checkbox v-model="checkboxes.option3" label="Option 3 désactivée" disabled />
+              <Checkbox v-model="checkboxes.indeterminate" :indeterminate="true" label="État indéterminé" />
+            </div>
+          </div>
+          <div class="mt-4 p-4 bg-gray-100 rounded">
+            <strong>État :</strong> {{ JSON.stringify(checkboxes) }}
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Switch -->
+      <section>
+        <h2 class="text-4xl font-bold mb-6">Switch (Phase 8)</h2>
+        <div class="space-y-6">
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Taille Medium</h4>
+            <div class="space-y-3">
+              <Switch v-model="switches.notifications" label="Notifications" />
+              <Switch v-model="switches.darkMode" label="Mode sombre" />
+              <Switch v-model="switches.disabled" label="Désactivé" disabled />
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Taille Small</h4>
+            <div class="space-y-3">
+              <Switch v-model="switches.compact" label="Compact" size="sm" />
+              <Switch v-model="switches.animations" label="Animations" size="sm" />
+            </div>
+          </div>
+          <div class="mt-4 p-4 bg-gray-100 rounded">
+            <strong>État :</strong> {{ JSON.stringify(switches) }}
+          </div>
+        </div>
+      </section>
+
+      <!-- Section ProgressBar -->
+      <section>
+        <h2 class="text-4xl font-bold mb-6">ProgressBar (Phase 8)</h2>
+        <div class="space-y-6 max-w-2xl">
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Variantes</h4>
+            <div class="space-y-4">
+              <div>
+                <p class="mb-2">Primary (25%)</p>
+                <ProgressBar :value="25" variant="primary" show-label />
+              </div>
+              <div>
+                <p class="mb-2">Success (60%)</p>
+                <ProgressBar :value="60" variant="success" show-label />
+              </div>
+              <div>
+                <p class="mb-2">Warning (75%)</p>
+                <ProgressBar :value="75" variant="warning" show-label />
+              </div>
+              <div>
+                <p class="mb-2">Error (40%)</p>
+                <ProgressBar :value="40" variant="error" show-label />
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Animation stripes</h4>
+            <ProgressBar :value="progressValue" variant="primary" :animated="true" show-label />
+            <div class="flex gap-3 mt-4">
+              <Button variant="primary" size="sm" @click="progressValue = Math.min(progressValue + 10, 100)">+10%</Button>
+              <Button variant="outline" size="sm" @click="progressValue = Math.max(progressValue - 10, 0)">-10%</Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Toast -->
+      <section>
+        <h2 class="text-4xl font-bold mb-6">Toast (Phase 8)</h2>
+        <div class="space-y-4">
+          <h4 class="text-xl font-semibold mb-4">Notifications (auto-dismiss 3s)</h4>
+          <div class="flex flex-wrap gap-3">
+            <Button variant="primary" @click="showToast('success')">Success</Button>
+            <Button variant="secondary" @click="showToast('warning')">Warning</Button>
+            <Button variant="accent" @click="showToast('error')">Error</Button>
+            <Button variant="outline" @click="showToast('info')">Info</Button>
+          </div>
+        </div>
+
+        <Toast :is-open="toasts.success" variant="success" title="Succès !" @close="toasts.success = false">
+          Action effectuée avec succès.
+        </Toast>
+        <Toast :is-open="toasts.warning" variant="warning" title="Attention" @close="toasts.warning = false">
+          Action nécessite votre attention.
+        </Toast>
+        <Toast :is-open="toasts.error" variant="error" title="Erreur" @close="toasts.error = false">
+          Une erreur s'est produite.
+        </Toast>
+        <Toast :is-open="toasts.info" variant="info" title="Information" @close="toasts.info = false">
+          Information importante.
+        </Toast>
+      </section>
+
+      <!-- Section Tooltip -->
+      <section>
+        <h2 class="text-4xl font-bold mb-6">Tooltip (Phase 8)</h2>
+        <div class="space-y-6">
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Positions (hover)</h4>
+            <div class="flex flex-wrap gap-6 items-center justify-center p-12">
+              <Tooltip text="Tooltip en haut" position="top">
+                <Button variant="primary" size="sm">Top</Button>
+              </Tooltip>
+              <Tooltip text="Tooltip à droite" position="right">
+                <Button variant="primary" size="sm">Right</Button>
+              </Tooltip>
+              <Tooltip text="Tooltip en bas" position="bottom">
+                <Button variant="primary" size="sm">Bottom</Button>
+              </Tooltip>
+              <Tooltip text="Tooltip à gauche" position="left">
+                <Button variant="primary" size="sm">Left</Button>
+              </Tooltip>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Tabs -->
+      <section>
+        <h2 class="text-4xl font-bold mb-6">Tabs (Phase 8)</h2>
+        <div class="max-w-3xl">
+          <h4 class="text-xl font-semibold mb-4">Navigation (Arrow keys, Home, End)</h4>
+          <Tabs v-model="activeTab" :items="tabItems">
+            <div v-if="activeTab === 'tab1'" class="p-6 border rounded">
+              <h3 class="text-2xl font-semibold mb-3">Onglet 1</h3>
+              <p>Contenu du premier onglet.</p>
+            </div>
+            <div v-else-if="activeTab === 'tab2'" class="p-6 border rounded">
+              <h3 class="text-2xl font-semibold mb-3">Onglet 2</h3>
+              <p>Contenu du deuxième onglet.</p>
+            </div>
+            <div v-else-if="activeTab === 'tab3'" class="p-6 border rounded">
+              <h3 class="text-2xl font-semibold mb-3">Onglet 3</h3>
+              <p>Contenu du troisième onglet.</p>
+            </div>
+          </Tabs>
+        </div>
+      </section>
+
     </div>
   </div>
 </template>
@@ -237,4 +392,47 @@ const selectedValue = ref('');
 const handleSelect = (value: string) => {
   selectedValue.value = value;
 };
+
+// ========== PHASE 8: STATE ========== //
+
+// Checkbox state
+const checkboxes = reactive({
+  option1: true,
+  option2: false,
+  option3: false,
+  indeterminate: false,
+});
+
+// Switch state
+const switches = reactive({
+  notifications: true,
+  darkMode: false,
+  disabled: false,
+  compact: true,
+  animations: false,
+});
+
+// ProgressBar state
+const progressValue = ref(50);
+
+// Toast state
+const toasts = reactive({
+  success: false,
+  warning: false,
+  error: false,
+  info: false,
+});
+
+const showToast = (type: 'success' | 'warning' | 'error' | 'info') => {
+  toasts[type] = true;
+};
+
+// Tabs state
+const activeTab = ref('tab1');
+const tabItems = [
+  { label: 'Onglet 1', value: 'tab1' },
+  { label: 'Onglet 2', value: 'tab2' },
+  { label: 'Onglet 3', value: 'tab3' },
+  { label: 'Désactivé', value: 'tab4', disabled: true },
+];
 </script>
