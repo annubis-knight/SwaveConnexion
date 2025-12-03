@@ -115,3 +115,59 @@
   --z-popover: 1060;
   --z-tooltip: 1070;
 }
+
+/* ============================================
+   DARK MODE (PHASE 11)
+   ============================================ */
+
+.dark {
+  /* Couleurs inversées pour dark mode */
+  --neutral-white: #171717;
+  --neutral-light: #262626;
+  --neutral-medium: #404040;
+  --neutral-dark: #d4d4d4;
+  --neutral-black: #ffffff;
+
+  /* Ombres adaptées pour dark mode */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   THÈMES CONFIGURABLES (PHASE 12)
+   ============================================ */
+
+/* Thème Default (déjà défini dans :root) */
+
+/* Thème Ocean - Bleu océan profond */
+[data-theme='ocean'] {
+  --primary: #0ea5e9;
+  --primary-light: #38bdf8;
+  --primary-dark: #0284c7;
+
+  --secondary: #0f766e;
+  --secondary-light: #14b8a6;
+  --secondary-dark: #115e59;
+
+  --accent: #06b6d4;
+  --accent-light: #22d3ee;
+  --accent-dark: #0891b2;
+}
+
+/* Thème Sunset - Orange/Rose sunset */
+[data-theme='sunset'] {
+  --primary: #f97316;
+  --primary-light: #fb923c;
+  --primary-dark: #ea580c;
+
+  --secondary: #be123c;
+  --secondary-light: #fb7185;
+  --secondary-dark: #9f1239;
+
+  --accent: #f59e0b;
+  --accent-light: #fbbf24;
+  --accent-dark: #d97706;
+}
