@@ -15,7 +15,7 @@
 | **Phase 1** | 🟢 Complétée | 100% | Configuration CSS + Polices |
 | **Phase 2** | 🟢 Complétée | 100% | Configuration Tailwind |
 | **Phase 3** | 🟢 Complétée | 100% | Installation @vueuse/core |
-| **Phase 4** | 🔴 Non démarrée | 0% | Composants UI (6 composants) |
+| **Phase 4** | 🟢 Complétée | 100% | Composants UI (6 composants) |
 | **Phase 5** | 🔴 Non démarrée | 0% | Layout + Sections |
 | **Phase 6** | 🔴 Non démarrée | 0% | Layouts Nuxt |
 | **Phase 7** | 🔴 Non démarrée | 0% | Page de test |
@@ -1027,6 +1027,51 @@ export default {
 - Build Vite server: 135ms
 - Build Nuxt Nitro: 2305ms
 - Vite re-optimization: ✅ effectuée
+
+***
+
+## 🚀 Phase 4 : Composants UI (CSS Natif + BEM)
+
+**Statut:** 🟢 Complétée | **Date de réalisation:** 2025-12-03 | **Commit:** `ecd744d`
+
+**But** : Créer les 6 composants atomiques UI avec CSS natif scoped et nommage BEM strict
+
+### Checklist Phase 4
+
+#### Documentation
+- [x] Créer le dossier `app/components/ui/`
+- [x] Créer `CLAUDE.md` (règles strictes, architecture, variables)
+- [x] Créer `README.txt` (guide développeur)
+
+#### Composants créés
+- [x] **Button.vue** (152 lignes) - Variantes: primary, secondary, accent, outline | Tailles: sm, md, lg
+- [x] **Card.vue** (96 lignes) - Variantes: default, bordered, elevated | Slots: header, default, footer
+- [x] **Input.vue** (127 lignes) - v-model, label, erreurs, validation
+- [x] **Badge.vue** (104 lignes) - Variantes: primary, secondary, accent, success, warning, error | Tailles: sm, md
+- [x] **Modal.vue** (175 lignes) - Teleport, onKeyStroke (ESC), blocage scroll
+- [x] **Dropdown.vue** (163 lignes) - onClickOutside, transitions
+
+**Résultat attendu:**
+- ✅ 8 fichiers créés (2 docs + 6 composants)
+- ✅ 889 lignes de code total
+- ✅ CSS natif scoped avec variables `var(--*)`
+- ✅ Nommage BEM strict (`.block__element--modifier`)
+- ✅ Props TypeScript pour toutes variantes
+- ✅ AUCUNE classe Tailwind dans templates
+- ✅ @vueuse/core utilisé pour Modal et Dropdown
+
+**Règles respectées:**
+- CSS natif uniquement avec variables depuis `_variables.css`
+- Nommage BEM strict
+- Props typées en TypeScript
+- Classes calculées via `computed` properties
+- Simple et minimal (pas de sur-ingénierie)
+
+**Validation:**
+- Build Vite client: 57ms
+- Build Vite server: 121ms
+- Build Nuxt Nitro: 1610ms
+- Composants auto-importés par Nuxt
 
 ***
 
