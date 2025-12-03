@@ -301,32 +301,44 @@ const btnClass = computed(() => [
 
 | Composant | Description | Props principales | Status |
 |-----------|-------------|-------------------|--------|
-| **Button** | Bouton avec variantes | `variant`, `size`, `disabled` | 🔴 À créer |
-| **Card** | Carte avec header/body/footer | `variant` | 🔴 À créer |
-| **Input** | Champ de formulaire | `label`, `type`, `error`, `modelValue` | 🔴 À créer |
-| **Badge** | Badge/tag coloré | `variant`, `size` | 🔴 À créer |
-| **Modal** | Modale accessible | `isOpen`, `title` | 🔴 À créer |
-| **Dropdown** | Menu déroulant | `items`, `placeholder` | 🔴 À créer |
+| **Button** | Bouton avec variantes | `variant`, `size`, `disabled` | ✅ Créé |
+| **Card** | Carte avec header/body/footer | `variant` | ✅ Créé |
+| **Input** | Champ de formulaire | `label`, `type`, `error`, `modelValue` | ✅ Créé |
+| **Badge** | Badge/tag coloré | `variant`, `size` | ✅ Créé |
+| **Modal** | Modale accessible | `isOpen`, `title` | ✅ Créé |
+| **Dropdown** | Menu déroulant | `items`, `placeholder` | ✅ Créé |
+| **Checkbox** | Cases à cocher | `modelValue`, `label`, `disabled` | 🔴 Phase 8 |
+| **Switch** | Toggle on/off | `modelValue`, `label`, `size` | 🔴 Phase 8 |
+| **ProgressBar** | Barre de progression | `value`, `variant`, `animated` | 🔴 Phase 8 |
+| **Toast** | Notifications temporaires | `isOpen`, `variant`, `duration` | 🔴 Phase 8 |
+| **Tooltip** | Info-bulles | `text`, `position`, `trigger` | 🔴 Phase 8 |
+| **Tabs** | Navigation par onglets | `modelValue`, `items` | 🔴 Phase 8 |
 
-**Documentation détaillée :** Voir `app/components/ui/CLAUDE.md` (après création)
+**Documentation détaillée :** Voir [app/components/ui/CLAUDE.md](app/components/ui/CLAUDE.md)
 
 ### Composants Layout (Tailwind utilities)
 
 | Composant | Description | Status |
 |-----------|-------------|--------|
-| **Header** | En-tête sticky avec navigation responsive | 🔴 À créer |
-| **Footer** | Pied de page avec grid 3 colonnes | 🔴 À créer |
-| **Sidebar** | Barre latérale collapsible | 🔴 À créer |
+| **Header** | En-tête sticky avec navigation responsive | ✅ Créé |
+| **Footer** | Pied de page avec grid 3 colonnes | ✅ Créé |
+| **Sidebar** | Barre latérale collapsible | ✅ Créé |
+| **Container** | Wrapper responsive avec max-width | 🔴 Phase 9 |
+| **Grid** | Système de grille configurable | 🔴 Phase 9 |
+| **Stack** | Empilage vertical/horizontal | 🔴 Phase 9 |
+| **SplitPane** | Division 2 colonnes ajustable | 🔴 Phase 9 |
 
-**Documentation détaillée :** Voir `app/components/layout/CLAUDE.md` (après création)
+**Documentation détaillée :** Voir [app/components/layout/CLAUDE.md](app/components/layout/CLAUDE.md)
 
 ### Sections (Tailwind + slots)
 
 | Composant | Description | Props | Status |
 |-----------|-------------|-------|--------|
-| **Hero** | Section d'en-tête avec fond configurable | `variant`, `centered` | 🔴 À créer |
+| **Hero** | Section d'en-tête avec fond configurable | `variant`, `centered` | ✅ Créé |
+| **FeaturesGrid** | Grille de fonctionnalités avec icônes | `cols`, `gap`, `centered` | 🔴 Phase 10 |
+| **CTA** | Call-to-action avec fond coloré | `variant`, `size`, `centered` | 🔴 Phase 10 |
 
-**Documentation détaillée :** Voir `app/components/sections/CLAUDE.md` (après création)
+**Documentation détaillée :** Voir [app/components/sections/CLAUDE.md](app/components/sections/CLAUDE.md)
 
 ---
 
@@ -703,45 +715,182 @@ npm run build
 
 ## 🗺️ Roadmap
 
+### ✅ Phases 0-7 : Design System de base (Complétées)
+
 ### Phase 0 : Initialisation ✅
 - [x] Git + Remote GitHub
 - [x] CLAUDE.md
 - [x] README.md
 - [x] Système de suivi d'avancement
 
-### Phase 1 : Configuration CSS + Polices 🔴
-- [ ] Télécharger polices (Space Grotesk, Clash Display, JetBrains Mono)
-- [ ] Créer _variables.css
-- [ ] Créer _typography.css (avec @font-face)
-- [ ] Créer _reset.css
-- [ ] Mettre à jour main.css
+### Phase 1 : Configuration CSS + Polices ✅
+- [x] Télécharger polices (Space Grotesk, Clash Display, JetBrains Mono)
+- [x] Créer _variables.css
+- [x] Créer _typography.css (avec @font-face)
+- [x] Créer _reset.css
+- [x] Mettre à jour main.css
 
-### Phase 2 : Configuration Tailwind 🔴
-- [ ] Configurer tailwind.config.js (content paths)
+### Phase 2 : Configuration Tailwind ✅
+- [x] Configurer tailwind.config.js (content paths)
 
-### Phase 3 : Dépendances 🔴
-- [ ] Installer @vueuse/core
+### Phase 3 : Dépendances ✅
+- [x] Installer @vueuse/core
 
-### Phase 4 : Composants UI 🔴
-- [ ] Button.vue
-- [ ] Card.vue
-- [ ] Input.vue
-- [ ] Badge.vue
-- [ ] Modal.vue
-- [ ] Dropdown.vue
+### Phase 4 : Composants UI (6 composants) ✅
+- [x] Button.vue
+- [x] Card.vue
+- [x] Input.vue
+- [x] Badge.vue
+- [x] Modal.vue
+- [x] Dropdown.vue
 
-### Phase 5 : Layout + Sections 🔴
-- [ ] Header.vue
-- [ ] Footer.vue
-- [ ] Sidebar.vue
-- [ ] Hero.vue
+### Phase 5 : Layout + Sections ✅
+- [x] Header.vue
+- [x] Footer.vue
+- [x] Sidebar.vue
+- [x] Hero.vue
 
-### Phase 6 : Layouts Nuxt 🔴
-- [ ] default.vue
-- [ ] blank.vue
+### Phase 6 : Layouts Nuxt ✅
+- [x] default.vue
+- [x] blank.vue
 
-### Phase 7 : Page de test 🔴
-- [ ] index.vue (démonstration complète)
+### Phase 7 : Page showcase ✅
+- [x] index.vue (démonstration complète de tous les composants)
+
+---
+
+### 🚀 Phases 8-12 : Extensions du Design System (À venir)
+
+### Phase 8 : Composants UI additionnels 🔴
+Compléter avec 6 composants essentiels (CSS natif + BEM)
+
+- [ ] **Checkbox.vue** - Cases à cocher avec v-model
+- [ ] **Switch.vue** - Toggle on/off minimaliste
+- [ ] **ProgressBar.vue** - Barre de progression linéaire
+- [ ] **Toast.vue** - Notifications temporaires avec auto-dismiss
+- [ ] **Tooltip.vue** - Info-bulles contextuelles
+- [ ] **Tabs.vue** - Navigation par onglets avec keyboard support
+
+**Temps estimé :** 4-6h | **~800 lignes**
+
+### Phase 9 : Layouts avancés 🔴
+Structures de page réutilisables (Tailwind utilities UNIQUEMENT)
+
+- [ ] **Container.vue** - Wrapper responsive avec max-width (sm/md/lg/xl/2xl/full)
+  ```
+  ┌────────────────────────────────────┐
+  │ ←─ padding-x                    ─→ │
+  │  ┌──────────────────────────┐     │
+  │  │   max-w-{size} mx-auto   │     │
+  │  └──────────────────────────┘     │
+  └────────────────────────────────────┘
+  ```
+
+- [ ] **Grid.vue** - Système de grille configurable (1-12 colonnes)
+  ```
+  ┌──────────┬──────────┬──────────┐
+  │  Col 1   │  Col 2   │  Col 3   │
+  ├──────────┼──────────┼──────────┤
+  │  Col 4   │  Col 5   │  Col 6   │
+  └──────────┴──────────┴──────────┘
+  ```
+
+- [ ] **Stack.vue** - Empilage vertical/horizontal avec gap
+  ```
+  Vertical:                  Horizontal:
+  ┌───────────┐             ┌───┐ ┌───┐ ┌───┐
+  │  Item 1   │             │ 1 │ │ 2 │ │ 3 │
+  ├───────────┤ ← gap       └───┘ └───┘ └───┘
+  │  Item 2   │                ↑gap  ↑gap
+  └───────────┘
+  ```
+
+- [ ] **SplitPane.vue** - Division 2 colonnes ajustable
+  ```
+  ┌─────────────┬───────────────────────────────┐
+  │   Sidebar   │   Main Content Area           │
+  │   (left)    │   (right)                     │
+  └─────────────┴───────────────────────────────┘
+       ← 25% →          ← 75% →
+  ```
+
+**Temps estimé :** 3-4h | **~400 lignes**
+
+### Phase 10 : Sections additionnelles 🔴
+⚠️ **Prérequis :** Phase 9 (nécessite Container et Grid)
+
+- [ ] **FeaturesGrid.vue** - Grille de fonctionnalités avec icônes
+  ```
+  ┌─────────────────────────────────────────────┐
+  │         Features Section Title              │
+  ├───────────┬───────────┬───────────┬─────────┤
+  │  [Icon]   │  [Icon]   │  [Icon]   │ [Icon]  │
+  │  Title 1  │  Title 2  │  Title 3  │ Title 4 │
+  │  Desc...  │  Desc...  │  Desc...  │ Desc... │
+  └───────────┴───────────┴───────────┴─────────┘
+  ```
+
+- [ ] **CTA.vue** - Call-to-action avec fond coloré/gradient
+  ```
+  ┌─────────────────────────────────────────────┐
+  │    [Gradient/Solid Background]              │
+  │         Big Bold CTA Title                  │
+  │    Compelling description text here         │
+  │    [Button Primary]  [Button Outline]       │
+  └─────────────────────────────────────────────┘
+  ```
+
+**Temps estimé :** 2-3h | **~300 lignes**
+
+### Phase 11 : Dark Mode minimaliste 🔴
+⚠️ **Attention :** Tester exhaustivement pour éviter les régressions
+
+- [ ] Modifier `_variables.css` avec `[data-theme="dark"]`
+- [ ] Créer `ThemeToggle.vue` (icône lune/soleil uniquement)
+- [ ] Intégrer dans `Header.vue`
+- [ ] Persistance localStorage avec `useColorMode()` (@vueuse/core)
+- [ ] Tests sur TOUS les composants (UI + Layout + Sections)
+
+**Approche minimaliste :**
+- Pas de transitions (switch instantané)
+- Override uniquement couleurs (background, text, borders)
+- Garder espacements/typographie identiques
+
+**Temps estimé :** 2-3h | **~200 lignes**
+
+### Phase 12 : Thème configurable (3 palettes) 🔴
+⚠️ **Attention :** Tester compatibilité avec Dark Mode
+
+- [ ] Créer `composables/useTheme.ts` (palettes: blue, green, purple)
+- [ ] Créer `PaletteSelector.vue` (dropdown 3 options)
+- [ ] Intégrer dans `Header.vue`
+- [ ] Override dynamique CSS variables (primary/accent uniquement)
+- [ ] Tests compatibilité 3 palettes × 2 thèmes (light/dark) = 6 combinaisons
+
+**Approche minimaliste :**
+- 3 palettes max (pas de générateur custom)
+- Override uniquement primary/accent (pas secondary/neutral)
+- Persistance localStorage
+
+**Temps estimé :** 2-3h | **~250 lignes**
+
+---
+
+### 📊 Résumé Phases 8-12
+
+| Phase | Composants | Lignes de code | Temps | Priorité |
+|-------|------------|----------------|-------|----------|
+| **Phase 8** | 6 UI components | ~800 | 4-6h | Haute |
+| **Phase 9** | 4 layouts avancés | ~400 | 3-4h | Haute |
+| **Phase 10** | 2 sections | ~300 | 2-3h | Moyenne |
+| **Phase 11** | Dark Mode | ~200 | 2-3h | Moyenne |
+| **Phase 12** | Thèmes (3) | ~250 | 2-3h | Basse |
+| **TOTAL** | 12 composants + 2 features | ~1950 | 13-19h | - |
+
+**Ordre d'implémentation recommandé :**
+```
+Phase 8 → Phase 9 → Phase 10 → Phase 11 → Phase 12
+```
 
 ---
 
@@ -811,12 +960,4 @@ Pour toute question ou problème :
 
 ---
 
-<div align="center">
 
-**Fait avec ❤️ par Arnaud Gutierrez**
-
-🤖 *Projet développé avec l'assistance de Claude Code*
-
-[⬆ Retour en haut](#-swaveconnexion-design-system)
-
-</div>

@@ -19,6 +19,11 @@
 | **Phase 5** | 🟢 Complétée | 100% | Layout + Sections |
 | **Phase 6** | 🟢 Complétée | 100% | Layouts Nuxt |
 | **Phase 7** | 🟢 Complétée | 100% | Page de test (Showcase) |
+| **Phase 8** | 🔴 Non démarrée | 0% | Composants UI additionnels (6 composants) |
+| **Phase 9** | 🔴 Non démarrée | 0% | Layouts avancés (4 composants) |
+| **Phase 10** | 🔴 Non démarrée | 0% | Sections additionnelles (2 composants) |
+| **Phase 11** | 🔴 Non démarrée | 0% | Dark Mode minimaliste |
+| **Phase 12** | 🔴 Non démarrée | 0% | Thème configurable (3 palettes) |
 
 **Légende:** 🔴 Non démarrée | 🟡 En cours | 🟢 Complétée
 
@@ -3221,5 +3226,531 @@ Ouvre `http://localhost:3000` et tu devrais voir :
 - ✅ Header/Footer structurés avec Tailwind
 - ✅ Layouts responsives
 - ✅ Design system minimal et cohérent
+
+***
+
+## 🚀 Phase 8 : Composants UI additionnels
+
+**Statut:** 🔴 Non démarrée | **Progression:** 0%
+
+### Objectif
+
+Compléter le Design System avec 6 composants UI essentiels manquants, en respectant l'architecture existante (CSS natif + BEM).
+
+### Checklist
+
+#### 8.1 Composants de formulaire
+- [ ] **Checkbox.vue** - Cases à cocher (single + group avec v-model array)
+  - Props: `modelValue`, `label`, `disabled`, `indeterminate`
+  - BEM: `.checkbox`, `.checkbox__input`, `.checkbox__label`, `.checkbox--disabled`
+  - Features: Support v-model, état indéterminé, groupe de cases
+
+- [ ] **Switch.vue** - Toggle on/off minimaliste
+  - Props: `modelValue`, `label`, `disabled`, `size` (sm/md)
+  - BEM: `.switch`, `.switch__track`, `.switch__thumb`, `.switch--checked`
+  - Features: Animation smooth du thumb, support v-model
+
+#### 8.2 Composants de feedback
+- [ ] **ProgressBar.vue** - Barre de progression linéaire
+  - Props: `value` (0-100), `variant` (primary/success/warning/error), `showLabel`, `animated`
+  - BEM: `.progress`, `.progress__bar`, `.progress__label`, `.progress--animated`
+  - Features: Transition CSS smooth, label optionnel avec pourcentage
+
+- [ ] **Toast.vue** - Notifications temporaires
+  - Props: `isOpen`, `variant` (success/warning/error/info), `duration` (auto-dismiss), `title`, `closable`
+  - BEM: `.toast`, `.toast__icon`, `.toast__content`, `.toast__close`, `.toast--success`
+  - Features: Position fixed top-right, auto-dismiss avec timer, animation slide-in
+
+- [ ] **Tooltip.vue** - Info-bulles contextuelles
+  - Props: `text`, `position` (top/bottom/left/right), `trigger` (hover/click)
+  - BEM: `.tooltip`, `.tooltip__trigger`, `.tooltip__content`, `.tooltip--top`
+  - Features: Positioning automatique, flèche directionnelle, z-index élevé
+
+#### 8.3 Composants de navigation
+- [ ] **Tabs.vue** - Navigation par onglets
+  - Props: `modelValue`, `items` (array avec label/value/disabled)
+  - BEM: `.tabs`, `.tabs__list`, `.tabs__item`, `.tabs__item--active`, `.tabs__panel`
+  - Features: Support v-model, keyboard navigation (Arrow keys), ARIA complet
+
+### Architecture
+
+```
+app/components/ui/
+├── Checkbox.vue           # Cases à cocher (NEW)
+├── Switch.vue             # Toggle on/off (NEW)
+├── ProgressBar.vue        # Barre progression (NEW)
+├── Toast.vue              # Notifications (NEW)
+├── Tooltip.vue            # Info-bulles (NEW)
+├── Tabs.vue               # Onglets (NEW)
+├── Button.vue             # ✅ Existant
+├── Card.vue               # ✅ Existant
+├── Input.vue              # ✅ Existant
+├── Badge.vue              # ✅ Existant
+├── Modal.vue              # ✅ Existant
+├── Dropdown.vue           # ✅ Existant
+├── CLAUDE.md              # À mettre à jour
+└── README.txt             # À mettre à jour
+```
+
+### Règles d'implémentation
+
+1. **CSS natif uniquement** - Pas de Tailwind dans les composants UI
+2. **BEM strict** - Nommage `.block__element--modifier`
+3. **Variables CSS** - Utiliser `var(--primary)`, `var(--space-md)`, etc.
+4. **TypeScript** - Props typées avec interfaces
+5. **Accessibilité** - ARIA labels, keyboard navigation, focus visible
+6. **Documentation** - Commentaires HTML + JSDoc dans script
+
+### Validation
+
+Après implémentation, tester :
+
+```bash
+npm run dev
+```
+
+**Critères de validation :**
+- ✅ Tous les composants fonctionnels sur la page showcase
+- ✅ v-model fonctionne pour Checkbox, Switch, Tabs
+- ✅ Toast auto-dismiss après durée spécifiée
+- ✅ Tooltip positionné correctement selon la prop position
+- ✅ ProgressBar animée si prop animated=true
+- ✅ Tabs accessible au clavier (Arrow keys)
+- ✅ Aucun warning TypeScript
+- ✅ Styles BEM corrects (pas de fuites de style)
+
+---
+
+## 🚀 Phase 9 : Layouts avancés
+
+**Statut:** 🔴 Non démarrée | **Progression:** 0%
+
+### Objectif
+
+Créer des composants de structure de page réutilisables avec **Tailwind utilities UNIQUEMENT** (pas de CSS natif).
+
+### Checklist
+
+- [ ] **Container.vue** - Wrapper responsive avec max-width
+  - Props: `size` (sm/md/lg/xl/2xl/full), `padding` (boolean)
+  - Structure:
+    ```
+    ┌────────────────────────────────────┐
+    │ ←─ padding-x                    ─→ │
+    │  ┌──────────────────────────┐     │
+    │  │   max-w-{size}           │     │
+    │  │   mx-auto                │     │
+    │  │   Content here           │     │
+    │  └──────────────────────────┘     │
+    └────────────────────────────────────┘
+    ```
+  - Tailwind: `max-w-{size} mx-auto px-{spacing}`
+  - Responsive: Adapte padding et max-width selon breakpoint
+
+- [ ] **Grid.vue** - Système de grille configurable
+  - Props: `cols` (1-12), `gap` (sm/md/lg/xl), `responsive` (object avec sm/md/lg/xl)
+  - Structure:
+    ```
+    ┌──────────┬──────────┬──────────┐
+    │  Col 1   │  Col 2   │  Col 3   │
+    │          │          │          │
+    ├──────────┼──────────┼──────────┤
+    │  Col 4   │  Col 5   │  Col 6   │
+    └──────────┴──────────┴──────────┘
+    ```
+  - Tailwind: `grid grid-cols-{n} gap-{spacing}`
+  - Responsive: `grid-cols-1 md:grid-cols-2 lg:grid-cols-{n}`
+
+- [ ] **Stack.vue** - Empilage vertical/horizontal avec gap
+  - Props: `direction` (vertical/horizontal), `gap` (sm/md/lg/xl), `align` (start/center/end/stretch)
+  - Structure verticale:
+    ```
+    ┌─────────────────────┐
+    │   Item 1            │
+    │                     │
+    ├─────────────────────┤ ← gap
+    │   Item 2            │
+    │                     │
+    ├─────────────────────┤ ← gap
+    │   Item 3            │
+    └─────────────────────┘
+    ```
+  - Structure horizontale:
+    ```
+    ┌────────┐ ← gap → ┌────────┐ ← gap → ┌────────┐
+    │ Item 1 │         │ Item 2 │         │ Item 3 │
+    └────────┘         └────────┘         └────────┘
+    ```
+  - Tailwind: `flex flex-col gap-{spacing}` ou `flex flex-row gap-{spacing}`
+
+- [ ] **SplitPane.vue** - Division 2 colonnes ajustable
+  - Props: `leftWidth` (1-11, default 3), `gap` (sm/md/lg/xl), `collapsible` (boolean)
+  - Structure:
+    ```
+    ┌─────────────┬───────────────────────────────┐
+    │             │                               │
+    │   Sidebar   │   Main Content Area           │
+    │   (left)    │   (right)                     │
+    │             │                               │
+    │             │                               │
+    └─────────────┴───────────────────────────────┘
+         ← 25% →          ← 75% →
+    ```
+  - Tailwind: `grid grid-cols-12 gap-{spacing}`
+  - Left: `col-span-{leftWidth}`
+  - Right: `col-span-{12-leftWidth}`
+  - Collapsible: Toggle visibility avec transition
+
+### Architecture
+
+```
+app/components/layout/
+├── Container.vue          # Wrapper responsive (NEW)
+├── Grid.vue               # Système grille (NEW)
+├── Stack.vue              # Empilage flex (NEW)
+├── SplitPane.vue          # 2 colonnes (NEW)
+├── Header.vue             # ✅ Existant
+├── Footer.vue             # ✅ Existant
+├── Sidebar.vue            # ✅ Existant
+├── CLAUDE.md              # À mettre à jour
+└── README.txt             # À mettre à jour
+```
+
+### Règles d'implémentation
+
+1. **Tailwind utilities UNIQUEMENT** - Pas de CSS scoped
+2. **Props dynamiques** - Computed classes avec props
+3. **Responsive** - Breakpoints Tailwind (sm:, md:, lg:, xl:)
+4. **Slots** - Toujours utiliser `<slot />` pour le contenu
+5. **Documentation** - Schémas ASCII dans les commentaires HTML
+
+### Validation
+
+**Critères de validation :**
+- ✅ Container responsive avec max-width correct selon size
+- ✅ Grid adapte le nombre de colonnes selon breakpoint
+- ✅ Stack change direction avec prop direction
+- ✅ SplitPane respecte ratio leftWidth
+- ✅ Aucune classe CSS custom (Tailwind only)
+- ✅ Composables dans la page showcase
+
+---
+
+## 🚀 Phase 10 : Sections additionnelles
+
+**Statut:** 🔴 Non démarrée | **Progression:** 0%
+
+### Prérequis
+
+⚠️ **IMPORTANT :** Cette phase nécessite les composants de la **Phase 9** (Container, Grid).
+
+### Objectif
+
+Créer 2 sections complètes prêtes à l'emploi utilisant les layouts avancés.
+
+### Checklist
+
+- [ ] **FeaturesGrid.vue** - Grille de fonctionnalités avec icônes
+  - Props: `cols` (2/3/4), `gap` (md/lg/xl), `centered` (boolean)
+  - Slots: `feature-{n}` avec `icon`, `title`, `description`
+  - Structure:
+    ```
+    ┌─────────────────────────────────────────────┐
+    │         Features Section Title              │
+    ├───────────┬───────────┬───────────┬─────────┤
+    │  [Icon]   │  [Icon]   │  [Icon]   │ [Icon]  │
+    │  Title 1  │  Title 2  │  Title 3  │ Title 4 │
+    │  Desc...  │  Desc...  │  Desc...  │ Desc... │
+    └───────────┴───────────┴───────────┴─────────┘
+    ```
+  - Utilise: `<Grid :cols="cols">` + `<Container>`
+  - Tailwind: `text-center` si centered=true
+  - Responsive: `cols="1" md:cols="2" lg:cols="{cols}"`
+
+- [ ] **CTA.vue** - Call-to-action avec fond coloré
+  - Props: `variant` (primary/accent/gradient), `centered` (boolean), `size` (md/lg/xl)
+  - Slots: `title`, `description`, `actions` (boutons)
+  - Structure:
+    ```
+    ┌─────────────────────────────────────────────┐
+    │    [Gradient/Solid Background]              │
+    │                                             │
+    │         Big Bold CTA Title                  │
+    │    Compelling description text here         │
+    │                                             │
+    │    [Button Primary]  [Button Outline]       │
+    │                                             │
+    └─────────────────────────────────────────────┘
+    ```
+  - Utilise: `<Container>` + `<Stack direction="vertical">`
+  - Tailwind: `bg-gradient-to-r from-primary to-accent` si variant=gradient
+  - Padding: `py-16 lg:py-24`
+
+### Architecture
+
+```
+app/components/sections/
+├── FeaturesGrid.vue       # Grille features (NEW)
+├── CTA.vue                # Call-to-action (NEW)
+├── Hero.vue               # ✅ Existant
+├── CLAUDE.md              # À mettre à jour
+└── README.txt             # À mettre à jour
+```
+
+### Règles d'implémentation
+
+1. **Composer avec layouts Phase 9** - Réutiliser Container, Grid, Stack
+2. **Tailwind utilities** - Pas de CSS scoped
+3. **Slots flexibles** - Permettre customisation du contenu
+4. **Responsive** - Mobile-first avec breakpoints
+5. **Schémas ASCII** - Dans les commentaires HTML
+
+### Validation
+
+**Critères de validation :**
+- ✅ FeaturesGrid responsive (1 col → 2 cols → n cols)
+- ✅ CTA variant gradient affiche dégradé correct
+- ✅ Slots fonctionnels pour customiser contenu
+- ✅ Composants visibles sur page showcase
+- ✅ Aucun CSS custom (Tailwind only)
+
+---
+
+## 🚀 Phase 11 : Dark Mode minimaliste
+
+**Statut:** 🔴 Non démarrée | **Progression:** 0%
+
+### ⚠️ Point d'attention critique
+
+**IMPORTANT :** Cette phase modifie le système de couleurs existant. **Tester exhaustivement tous les composants** après implémentation pour éviter les régressions.
+
+### Objectif
+
+Ajouter un mode sombre avec approche minimaliste (pas de transitions, switch instantané).
+
+### Checklist
+
+#### 11.1 Variables CSS Dark Mode
+- [ ] Modifier `app/assets/css/_variables.css`
+  - Ajouter sélecteur `[data-theme="dark"]`
+  - Override uniquement les couleurs (background, text, borders)
+  - Garder espacements/typographie identiques
+
+**Exemple :**
+```css
+:root {
+  /* Light mode (default) */
+  --bg-primary: #ffffff;
+  --text-primary: #171717;
+  --border-color: #d4d4d4;
+}
+
+[data-theme="dark"] {
+  /* Dark mode overrides */
+  --bg-primary: #171717;
+  --text-primary: #f5f5f5;
+  --border-color: #404040;
+}
+```
+
+#### 11.2 Composant ThemeToggle
+- [ ] Créer `app/components/ui/ThemeToggle.vue`
+  - Icône lune (dark) / soleil (light) uniquement
+  - Toggle avec `useColorMode()` de @vueuse/core
+  - BEM: `.theme-toggle`, `.theme-toggle__icon`
+  - Props: `size` (sm/md)
+
+#### 11.3 Intégration Header
+- [ ] Modifier `app/components/layout/Header.vue`
+  - Ajouter `<ThemeToggle />` dans navigation
+  - Position: À droite, avant le menu burger mobile
+
+#### 11.4 Persistance
+- [ ] Utiliser `useColorMode()` pour localStorage
+  - Clé: `vueuse-color-scheme`
+  - Valeurs: `light` | `dark` | `auto` (suit système)
+  - Default: `auto`
+
+#### 11.5 Tests exhaustifs
+- [ ] Tester TOUS les composants UI en mode dark
+  - Button (toutes variantes)
+  - Card (toutes variantes)
+  - Input (normal + error)
+  - Badge (toutes variantes)
+  - Modal (backdrop + container)
+  - Dropdown (menu + items)
+  - Checkbox, Switch, ProgressBar
+  - Toast, Tooltip, Tabs
+- [ ] Tester tous les layouts
+  - Header, Footer, Sidebar
+  - Container, Grid, Stack, SplitPane
+- [ ] Tester toutes les sections
+  - Hero, FeaturesGrid, CTA
+
+### Architecture
+
+```
+app/assets/css/
+└── _variables.css         # MODIFIED (add [data-theme="dark"])
+
+app/components/ui/
+└── ThemeToggle.vue        # NEW (icône lune/soleil)
+
+app/components/layout/
+└── Header.vue             # MODIFIED (add <ThemeToggle />)
+```
+
+### Règles d'implémentation
+
+1. **Minimaliste** - Pas de transition, switch instantané
+2. **Variables CSS uniquement** - Pas de classes `.dark` dans composants
+3. **Override minimal** - Seulement couleurs, pas espacements
+4. **Persistance auto** - useColorMode gère localStorage
+5. **Pas de mode auto compliqué** - Juste light/dark/auto
+
+### Validation
+
+**Critères de validation :**
+- ✅ Toggle fonctionne (clic change thème instantanément)
+- ✅ Persistance localStorage (refresh garde le thème)
+- ✅ Tous composants UI lisibles en dark mode
+- ✅ Contrastes suffisants (WCAG AA minimum)
+- ✅ Aucune régression en light mode
+- ✅ Icône change selon thème actif
+
+---
+
+## 🚀 Phase 12 : Thème configurable (3 palettes)
+
+**Statut:** 🔴 Non démarrée | **Progression:** 0%
+
+### ⚠️ Point d'attention critique
+
+**IMPORTANT :** Cette phase modifie les couleurs primary/accent. **Tester exhaustivement** après implémentation.
+
+### Objectif
+
+Permettre choix entre 3 palettes de couleurs (Bleu, Vert, Violet) avec approche minimaliste.
+
+### Checklist
+
+#### 12.1 Palettes prédéfinies
+- [ ] Créer `app/composables/useTheme.ts`
+  - 3 palettes: `blue` (default), `green`, `purple`
+  - Override uniquement `--primary`, `--primary-light`, `--primary-dark`, `--accent`, `--accent-light`, `--accent-dark`
+  - Garder `--secondary` et `--neutral-*` identiques
+
+**Exemple :**
+```typescript
+const palettes = {
+  blue: {
+    primary: '#2563eb',
+    primaryLight: '#60a5fa',
+    primaryDark: '#1e40af',
+    accent: '#f59e0b',
+    accentLight: '#fbbf24',
+    accentDark: '#d97706',
+  },
+  green: {
+    primary: '#10b981',
+    primaryLight: '#34d399',
+    primaryDark: '#059669',
+    accent: '#f59e0b',
+    accentLight: '#fbbf24',
+    accentDark: '#d97706',
+  },
+  purple: {
+    primary: '#8b5cf6',
+    primaryLight: '#a78bfa',
+    primaryDark: '#7c3aed',
+    accent: '#ec4899',
+    accentLight: '#f472b6',
+    accentDark: '#db2777',
+  },
+};
+```
+
+#### 12.2 Composant PaletteSelector
+- [ ] Créer `app/components/ui/PaletteSelector.vue`
+  - Dropdown avec 3 options: Bleu, Vert, Violet
+  - Aperçu visuel de chaque palette (cercles colorés)
+  - BEM: `.palette-selector`, `.palette-selector__option`
+
+#### 12.3 Intégration Header
+- [ ] Modifier `app/components/layout/Header.vue`
+  - Ajouter `<PaletteSelector />` à côté du ThemeToggle
+  - Position: À droite, avant ThemeToggle
+
+#### 12.4 Persistance
+- [ ] Utiliser composable `useTheme()`
+  - localStorage clé: `swaveconnexion-palette`
+  - Default: `blue`
+  - Applique CSS variables dynamiquement avec `document.documentElement.style.setProperty()`
+
+#### 12.5 Tests exhaustifs
+- [ ] Tester les 3 palettes sur tous composants
+  - Boutons primary/accent avec chaque palette
+  - Badges primary/accent
+  - Hero gradient
+  - FeaturesGrid si utilise couleurs
+  - CTA avec variants
+
+### Architecture
+
+```
+app/composables/
+└── useTheme.ts            # NEW (palettes + switch logic)
+
+app/components/ui/
+└── PaletteSelector.vue    # NEW (dropdown 3 palettes)
+
+app/components/layout/
+└── Header.vue             # MODIFIED (add <PaletteSelector />)
+```
+
+### Règles d'implémentation
+
+1. **3 palettes max** - Bleu, Vert, Violet (pas de customisation libre)
+2. **Override minimal** - Seulement primary/accent (pas secondary/neutral)
+3. **Persistance localStorage** - Composable useTheme()
+4. **Pas de générateur** - Trop complexe, pas minimaliste
+5. **Compatibilité Dark Mode** - Les palettes doivent fonctionner en light ET dark
+
+### Validation
+
+**Critères de validation :**
+- ✅ Dropdown affiche 3 palettes avec aperçu visuel
+- ✅ Changement de palette applique nouvelles couleurs instantanément
+- ✅ Persistance localStorage (refresh garde la palette)
+- ✅ Compatibilité avec Dark Mode (palette + dark fonctionne)
+- ✅ Aucune régression avec palette par défaut (bleu)
+- ✅ Tous composants UI cohérents avec nouvelle palette
+
+---
+
+## 📊 Résumé des phases d'évolution
+
+| Phase | Composants créés | Lignes de code estimées | Temps estimé |
+|-------|------------------|-------------------------|--------------|
+| **Phase 8** | 6 composants UI | ~800 lignes | 4-6h |
+| **Phase 9** | 4 layouts avancés | ~400 lignes | 3-4h |
+| **Phase 10** | 2 sections | ~300 lignes | 2-3h |
+| **Phase 11** | Dark Mode | ~200 lignes | 2-3h |
+| **Phase 12** | Thème configurable | ~250 lignes | 2-3h |
+| **TOTAL** | 12 composants + 2 features | ~1950 lignes | 13-19h |
+
+### Ordre d'implémentation recommandé
+
+```
+Phase 8 (UI additionnels)
+  ↓
+Phase 9 (Layouts avancés)
+  ↓
+Phase 10 (Sections - NÉCESSITE Phase 9)
+  ↓
+Phase 11 (Dark Mode - TESTER SUR TOUS COMPOSANTS)
+  ↓
+Phase 12 (Thème configurable - TESTER AVEC DARK MODE)
+```
 
 ***
