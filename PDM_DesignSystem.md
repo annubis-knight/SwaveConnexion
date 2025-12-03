@@ -16,7 +16,7 @@
 | **Phase 2** | 🟢 Complétée | 100% | Configuration Tailwind |
 | **Phase 3** | 🟢 Complétée | 100% | Installation @vueuse/core |
 | **Phase 4** | 🟢 Complétée | 100% | Composants UI (6 composants) |
-| **Phase 5** | 🔴 Non démarrée | 0% | Layout + Sections |
+| **Phase 5** | 🟢 Complétée | 100% | Layout + Sections |
 | **Phase 6** | 🔴 Non démarrée | 0% | Layouts Nuxt |
 | **Phase 7** | 🔴 Non démarrée | 0% | Page de test |
 
@@ -1071,6 +1071,61 @@ export default {
 - Build Vite client: 57ms
 - Build Vite server: 121ms
 - Build Nuxt Nitro: 1610ms
+- Composants auto-importés par Nuxt
+
+***
+
+## 🚀 Phase 5 : Layout + Sections Components (Tailwind Utilities)
+
+**Statut:** 🟢 Complétée | **Date de réalisation:** 2025-12-03 | **Commit:** `1f3c5e9`
+
+**But** : Créer les composants de layout et sections avec Tailwind utilities exclusivement (NO CSS natif scoped)
+
+### Checklist Phase 5
+
+#### Layout Components (app/components/layout/)
+- [x] Créer le dossier `app/components/layout/`
+- [x] Créer `CLAUDE.md` (règles Tailwind uniquement, architecture)
+- [x] Créer `README.txt` (guide développeur)
+- [x] **Header.vue** (83 lignes) - Navigation sticky, menu burger responsive, transitions
+- [x] **Footer.vue** (85 lignes) - Grid 3 colonnes responsive, dark theme, copyright dynamique
+- [x] **Sidebar.vue** (109 lignes) - Collapsible, position left/right, backdrop overlay
+
+#### Sections Components (app/components/sections/)
+- [x] Créer le dossier `app/components/sections/`
+- [x] Créer `CLAUDE.md` (règles sections, slots, variants)
+- [x] Créer `README.txt` (guide développeur)
+- [x] **Hero.vue** (76 lignes) - 4 variants (default, primary, gradient, dark), centered option
+
+**Résultat attendu:**
+- ✅ 8 fichiers créés (4 docs + 4 composants)
+- ✅ 433 lignes de code total
+- ✅ AUCUN CSS natif scoped dans layout/sections
+- ✅ Tailwind utilities UNIQUEMENT (flex, grid, px-*, py-*, bg-*, etc.)
+- ✅ Responsive breakpoints (md:, lg:)
+- ✅ Transitions Tailwind (duration-300, translate-x-*)
+- ✅ Slots pour flexibilité (Hero, Footer, Sidebar)
+
+**Architecture critique respectée:**
+- Layout components: Tailwind utilities ONLY (NO CSS natif, NO BEM, NO variables)
+- Responsive design: Mobile-first approach (base → md: → lg:)
+- Transitions: Tailwind classes (Transition component + utility classes)
+- Slots: Named slots pour personnalisation (company, links, social dans Footer)
+- Computed properties: Pour variants dynamiques (Hero background variants)
+
+**Tailwind utilities utilisés (109+ classes):**
+- Layout: `container, mx-auto, px-6, py-4, py-20, lg:py-32`
+- Flexbox: `flex, flex-col, items-center, justify-between, gap-4, gap-8`
+- Grid: `grid, grid-cols-1, md:grid-cols-3`
+- Position: `fixed, sticky, top-0, z-40, z-50, inset-0`
+- Responsive: `hidden, md:hidden, md:flex, md:grid`
+- Colors: `bg-gray-*, bg-blue-*, text-*, border-*`
+- Effects: `transition-colors, duration-300, hover:bg-*, hover:text-*`
+
+**Validation:**
+- Build Vite client: 59ms
+- Build Vite server: 133ms
+- Build Nuxt Nitro: 1969ms
 - Composants auto-importés par Nuxt
 
 ***
