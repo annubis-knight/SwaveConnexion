@@ -33,6 +33,8 @@
 </template>
 
 <script setup lang="ts">
+import { onClickOutside } from '@vueuse/core';
+
 /**
  * DROPDOWN COMPONENT
  *

@@ -42,6 +42,8 @@
 </template>
 
 <script setup lang="ts">
+import { onKeyStroke } from '@vueuse/core';
+
 /**
  * MODAL COMPONENT
  *
