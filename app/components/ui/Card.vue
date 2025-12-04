@@ -53,11 +53,12 @@ const cardClass = computed(() => {
 <style scoped>
 /**
  * CARD STYLES - BEM strict
+ * PRD v2.0 - Phase 3: Migré vers variables sémantiques
  */
 
 /* Block : .card */
 .card {
-  background-color: var(--neutral-white);
+  background-color: var(--bg-base);
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
@@ -65,7 +66,7 @@ const cardClass = computed(() => {
 /* Element : .card__header */
 .card__header {
   padding: var(--space-md);
-  border-bottom: var(--border-width) solid var(--neutral-medium);
+  border-bottom: var(--border-width) solid var(--border-base);
 }
 
 /* Element : .card__body */
@@ -76,17 +77,17 @@ const cardClass = computed(() => {
 /* Element : .card__footer */
 .card__footer {
   padding: var(--space-md);
-  border-top: var(--border-width) solid var(--neutral-medium);
-  background-color: var(--neutral-light);
+  border-top: var(--border-width) solid var(--border-base);
+  background-color: var(--bg-subtle);
 }
 
 /* Modifier : Variantes */
 .card--default {
-  border: var(--border-width) solid var(--neutral-medium);
+  border: var(--border-width) solid var(--border-base);
 }
 
 .card--bordered {
-  border: var(--border-width-thick) solid var(--neutral-dark);
+  border: var(--border-width-thick) solid var(--border-strong);
 }
 
 .card--elevated {

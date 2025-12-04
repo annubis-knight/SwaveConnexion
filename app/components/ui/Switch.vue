@@ -114,7 +114,7 @@ const handleChange = (event: Event) => {
 .switch__track {
   display: inline-block;
   position: relative;
-  background-color: var(--neutral-medium);
+  background-color: var(--bg-active);
   border-radius: var(--radius-full);
   transition: background-color 0.3s ease;
   flex-shrink: 0;
@@ -137,7 +137,7 @@ const handleChange = (event: Event) => {
   position: absolute;
   top: 2px;
   left: 2px;
-  background-color: var(--neutral-white);
+  background-color: var(--bg-base);
   border-radius: var(--radius-full);
   transition: transform 0.3s ease;
   box-shadow: var(--shadow-sm);
@@ -185,11 +185,11 @@ const handleChange = (event: Event) => {
 .switch__label {
   font-family: var(--font-sans);
   font-size: var(--text-base);
-  color: var(--neutral-black);
+  color: var(--text-strong);
   user-select: none;
 }
 
 .switch--disabled .switch__label {
-  color: var(--neutral-dark);
+  color: var(--text-subtle);
 }
 </style>

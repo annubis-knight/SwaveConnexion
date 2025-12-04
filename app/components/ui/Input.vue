@@ -91,16 +91,16 @@ const inputClass = computed(() => {
 .input-group__label {
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
-  color: var(--neutral-dark);
+  color: var(--text-base);
 }
 
 /* Element : .input-group__input */
 .input-group__input {
   padding: var(--space-sm);
   font-size: var(--text-base);
-  color: var(--neutral-black);
-  background-color: var(--neutral-white);
-  border: var(--border-width) solid var(--neutral-medium);
+  color: var(--text-strong);
+  background-color: var(--bg-input);
+  border: var(--border-width) solid var(--border-base);
   border-radius: var(--radius-md);
   transition: border-color 0.2s ease;
 }
@@ -111,7 +111,7 @@ const inputClass = computed(() => {
 }
 
 .input-group__input::placeholder {
-  color: var(--secondary-light);
+  color: var(--text-subtle);
 }
 
 /* Modifier : Erreur */

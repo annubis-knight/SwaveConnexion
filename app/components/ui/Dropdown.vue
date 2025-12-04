@@ -102,9 +102,9 @@ onClickOutside(dropdownRef, () => {
   gap: var(--space-sm);
   padding: var(--space-sm) var(--space-md);
   font-size: var(--text-base);
-  color: var(--neutral-dark);
-  background-color: var(--neutral-white);
-  border: var(--border-width) solid var(--neutral-medium);
+  color: var(--text-base);
+  background-color: var(--bg-base);
+  border: var(--border-width) solid var(--border-base);
   border-radius: var(--radius-md);
   cursor: pointer;
   min-width: 200px;
@@ -117,7 +117,7 @@ onClickOutside(dropdownRef, () => {
 /* Element : .dropdown__arrow */
 .dropdown__arrow {
   font-size: var(--text-xs);
-  color: var(--neutral-dark);
+  color: var(--text-base);
 }
 
 /* Element : .dropdown__menu */
@@ -126,8 +126,8 @@ onClickOutside(dropdownRef, () => {
   top: calc(100% + 0.25rem);
   left: 0;
   right: 0;
-  background-color: var(--neutral-white);
-  border: var(--border-width) solid var(--neutral-medium);
+  background-color: var(--bg-elevated);
+  border: var(--border-width) solid var(--border-base);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   list-style: none;
@@ -142,12 +142,12 @@ onClickOutside(dropdownRef, () => {
 .dropdown__item {
   padding: var(--space-sm) var(--space-md);
   font-size: var(--text-base);
-  color: var(--neutral-dark);
+  color: var(--text-base);
   cursor: pointer;
 }
 
 .dropdown__item:hover {
-  background-color: var(--neutral-light);
+  background-color: var(--bg-hover);
   color: var(--primary);
 }
 

@@ -110,7 +110,7 @@ watch(() => props.isOpen, (open) => {
 /* Element : .modal__container */
 .modal__container {
   position: relative;
-  background-color: var(--neutral-white);
+  background-color: var(--bg-base);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xl);
   max-width: 500px;
@@ -125,7 +125,7 @@ watch(() => props.isOpen, (open) => {
   align-items: center;
   justify-content: space-between;
   padding: var(--space-md);
-  border-bottom: var(--border-width) solid var(--neutral-medium);
+  border-bottom: var(--border-width) solid var(--border-base);
 }
 
 /* Element : .modal__title */
@@ -139,7 +139,7 @@ watch(() => props.isOpen, (open) => {
 .modal__close {
   padding: var(--space-xs);
   font-size: var(--text-xl);
-  color: var(--neutral-dark);
+  color: var(--text-base);
   background: none;
   border: none;
   cursor: pointer;
@@ -147,7 +147,7 @@ watch(() => props.isOpen, (open) => {
 }
 
 .modal__close:hover {
-  background-color: var(--neutral-light);
+  background-color: var(--bg-hover);
 }
 
 /* Element : .modal__body */
@@ -161,7 +161,7 @@ watch(() => props.isOpen, (open) => {
   gap: var(--space-sm);
   justify-content: flex-end;
   padding: var(--space-md);
-  border-top: var(--border-width) solid var(--neutral-medium);
+  border-top: var(--border-width) solid var(--border-base);
 }
 
 /* Transitions */

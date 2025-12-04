@@ -92,7 +92,7 @@ const btnClass = computed(() => {
 /* Modifier : Variantes */
 .btn--primary {
   background-color: var(--primary);
-  color: var(--neutral-white);
+  color: white; /* Hardcodé OK (bouton sur fond coloré) */
 }
 
 .btn--primary:hover:not(.btn--disabled) {
@@ -101,7 +101,7 @@ const btnClass = computed(() => {
 
 .btn--secondary {
   background-color: var(--secondary);
-  color: var(--neutral-white);
+  color: white; /* Hardcodé OK (bouton sur fond coloré) */
 }
 
 .btn--secondary:hover:not(.btn--disabled) {
@@ -110,7 +110,7 @@ const btnClass = computed(() => {
 
 .btn--accent {
   background-color: var(--accent);
-  color: var(--neutral-white);
+  color: white; /* Hardcodé OK (bouton sur fond coloré) */
 }
 
 .btn--accent:hover:not(.btn--disabled) {
@@ -125,17 +125,17 @@ const btnClass = computed(() => {
 
 .btn--outline:hover:not(.btn--disabled) {
   background-color: var(--primary-light);
-  color: var(--neutral-white);
+  color: white; /* Hardcodé OK (bouton sur fond coloré au hover) */
 }
 
 .btn--outline-light {
   background-color: transparent;
-  color: var(--neutral-white);
-  border-color: var(--neutral-white);
+  color: white; /* Hardcodé OK (utilisé sur fonds foncés type Hero) */
+  border-color: white;
 }
 
 .btn--outline-light:hover:not(.btn--disabled) {
-  background-color: var(--neutral-white);
+  background-color: white;
   color: var(--primary);
 }
 
