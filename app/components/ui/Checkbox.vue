@@ -113,9 +113,9 @@ const handleChange = (event: Event) => {
   display: inline-block;
   width: 20px;
   height: 20px;
-  border: var(--border-width-thick) solid var(--neutral-medium);
+  border: var(--border-width-thick) solid var(--border-base);
   border-radius: var(--radius-sm);
-  background-color: var(--neutral-white);
+  background-color: var(--bg-base);
   position: relative;
   transition: all 0.2s ease;
   flex-shrink: 0;
@@ -130,7 +130,7 @@ const handleChange = (event: Event) => {
   top: 1px;
   width: 6px;
   height: 11px;
-  border: solid var(--neutral-white);
+  border: solid white; /* Hardcodé OK (coche sur fond primary) */
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
@@ -158,7 +158,7 @@ const handleChange = (event: Event) => {
   width: 10px;
   height: 0;
   border: none;
-  border-bottom: 2px solid var(--neutral-white);
+  border-bottom: 2px solid white; /* Hardcodé OK (ligne sur fond primary) */
   transform: none;
 }
 
@@ -177,11 +177,11 @@ const handleChange = (event: Event) => {
 .checkbox__label {
   font-family: var(--font-sans);
   font-size: var(--text-base);
-  color: var(--neutral-black);
+  color: var(--text-strong);
   user-select: none;
 }
 
 .checkbox--disabled .checkbox__label {
-  color: var(--neutral-dark);
+  color: var(--text-subtle);
 }
 </style>

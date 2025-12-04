@@ -144,7 +144,7 @@ const handleClose = () => {
   min-width: 300px;
   max-width: 400px;
   padding: var(--space-md);
-  background-color: var(--neutral-white);
+  background-color: var(--bg-base);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   border-left: 4px solid;
@@ -178,7 +178,7 @@ const handleClose = () => {
   font-size: var(--text-base);
   font-weight: var(--font-bold);
   flex-shrink: 0;
-  color: var(--neutral-white);
+  color: white; /* Hardcodé OK (icône sur fond coloré) */
 }
 
 .toast--success .toast__icon {
@@ -208,7 +208,7 @@ const handleClose = () => {
   font-family: var(--font-sans);
   font-size: var(--text-base);
   font-weight: var(--font-semibold);
-  color: var(--neutral-black);
+  color: var(--text-strong);
   margin-bottom: var(--space-xs);
 }
 
@@ -216,7 +216,7 @@ const handleClose = () => {
 .toast__message {
   font-family: var(--font-sans);
   font-size: var(--text-sm);
-  color: var(--neutral-dark);
+  color: var(--text-base);
   line-height: 1.5;
 }
 
@@ -232,14 +232,14 @@ const handleClose = () => {
   border: none;
   font-size: 24px;
   line-height: 1;
-  color: var(--neutral-dark);
+  color: var(--text-base);
   cursor: pointer;
   flex-shrink: 0;
   transition: color 0.2s ease;
 }
 
 .toast__close:hover {
-  color: var(--neutral-black);
+  color: var(--text-strong);
 }
 
 /* Transition : slide from right */

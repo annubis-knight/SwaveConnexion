@@ -176,7 +176,7 @@ const handleKeyDown = (event: KeyboardEvent) => {
 .tabs__list {
   display: flex;
   gap: var(--space-xs);
-  border-bottom: var(--border-width-thick) solid var(--neutral-medium);
+  border-bottom: var(--border-width-thick) solid var(--border-base);
 }
 
 /* Element : .tabs__item */
@@ -185,7 +185,7 @@ const handleKeyDown = (event: KeyboardEvent) => {
   font-family: var(--font-sans);
   font-size: var(--text-base);
   font-weight: var(--font-medium);
-  color: var(--neutral-dark);
+  color: var(--text-base);
   background: none;
   border: none;
   border-bottom: 2px solid transparent;

@@ -126,8 +126,8 @@ onClickOutside(tooltipRef, () => {
   position: absolute;
   z-index: 10000;
   padding: var(--space-xs) var(--space-sm);
-  background-color: var(--neutral-black);
-  color: var(--neutral-white);
+  background-color: #171717; /* Hardcodé OK (tooltip toujours fond sombre) */
+  color: white;
   font-family: var(--font-sans);
   font-size: var(--text-sm);
   line-height: 1.4;
@@ -150,7 +150,7 @@ onClickOutside(tooltipRef, () => {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border-top-color: var(--neutral-black);
+  border-top-color: #171717;
   border-bottom: none;
 }
 
@@ -165,7 +165,7 @@ onClickOutside(tooltipRef, () => {
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border-bottom-color: var(--neutral-black);
+  border-bottom-color: #171717;
   border-top: none;
 }
 
@@ -180,7 +180,7 @@ onClickOutside(tooltipRef, () => {
   left: 100%;
   top: 50%;
   transform: translateY(-50%);
-  border-left-color: var(--neutral-black);
+  border-left-color: #171717;
   border-right: none;
 }
 
@@ -195,7 +195,7 @@ onClickOutside(tooltipRef, () => {
   right: 100%;
   top: 50%;
   transform: translateY(-50%);
-  border-right-color: var(--neutral-black);
+  border-right-color: #171717;
   border-left: none;
 }
 

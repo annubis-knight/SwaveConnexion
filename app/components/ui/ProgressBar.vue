@@ -92,7 +92,7 @@ const progressStyle = computed(() => {
 .progress__track {
   flex: 1;
   height: 8px;
-  background-color: var(--neutral-light);
+  background-color: var(--bg-subtle);
   border-radius: var(--radius-full);
   overflow: hidden;
   position: relative;
@@ -154,7 +154,7 @@ const progressStyle = computed(() => {
 .progress__label {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
-  color: var(--neutral-dark);
+  color: var(--text-base);
   min-width: 40px;
   text-align: right;
   font-weight: var(--font-medium);
