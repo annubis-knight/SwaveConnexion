@@ -28,9 +28,9 @@
         <!-- Navigation Desktop -->
         <nav class="hidden md:flex items-center gap-6">
           <slot>
-            <a href="#" class="text-gray-700 dark:text-neutral-dark hover:text-blue-600 transition-colors font-medium">Accueil</a>
-            <a href="#" class="text-gray-700 dark:text-neutral-dark hover:text-blue-600 transition-colors font-medium">Composants</a>
-            <a href="/layouts-test" class="text-gray-700 dark:text-neutral-dark hover:text-blue-600 transition-colors font-medium">Layouts</a>
+            <a href="/" class="text-gray-700 dark:text-neutral-dark hover:text-blue-600 transition-colors font-medium">Accueil</a>
+            <a href="/design-system" class="text-gray-700 dark:text-neutral-dark hover:text-blue-600 transition-colors font-medium">Design System</a>
+            <a href="/design-system/layouts" class="text-gray-700 dark:text-neutral-dark hover:text-blue-600 transition-colors font-medium">Layouts</a>
           </slot>
 
           <!-- Theme Selector -->
@@ -89,9 +89,9 @@
       >
         <nav v-if="isMenuOpen" class="md:hidden mt-4 pb-4 border-t border-gray-200 dark:border-neutral-medium pt-4">
           <div class="flex flex-col gap-3">
-            <a href="#" class="text-gray-700 dark:text-neutral-dark hover:text-blue-600 transition-colors font-medium py-2">Accueil</a>
-            <a href="#" class="text-gray-700 dark:text-neutral-dark hover:text-blue-600 transition-colors font-medium py-2">Composants</a>
-            <a href="/layouts-test" class="text-gray-700 dark:text-neutral-dark hover:text-blue-600 transition-colors font-medium py-2">Layouts</a>
+            <a href="/" class="text-gray-700 dark:text-neutral-dark hover:text-blue-600 transition-colors font-medium py-2">Accueil</a>
+            <a href="/design-system" class="text-gray-700 dark:text-neutral-dark hover:text-blue-600 transition-colors font-medium py-2">Design System</a>
+            <a href="/design-system/layouts" class="text-gray-700 dark:text-neutral-dark hover:text-blue-600 transition-colors font-medium py-2">Layouts</a>
 
             <!-- Theme Selector Mobile -->
             <div class="py-2">
@@ -147,15 +147,15 @@ const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
 
-// Theme management (Phase 11 & 12)
+// Theme management (Phase 11 & 12 - refactorisé Phase 13)
 const { isDark, toggleDarkMode, currentTheme, setTheme, availableThemes, initTheme } = useTheme();
 
 // Local state for select binding
 const selectedTheme = ref(currentTheme.value);
 
-// Initialize theme on mount
+// Initialize custom theme on mount (dark/light géré automatiquement par @nuxtjs/color-mode)
 onMounted(() => {
-  initTheme();
+  initTheme(); // Charge uniquement le thème custom (default/ocean/sunset)
   selectedTheme.value = currentTheme.value;
 });
 

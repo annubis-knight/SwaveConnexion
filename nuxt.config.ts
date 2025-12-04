@@ -5,7 +5,16 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@pinia/nuxt',
+    '@nuxtjs/color-mode',
   ],
+
+  // Configuration color-mode
+  colorMode: {
+    preference: 'system', // Préférence par défaut (system, light, dark)
+    fallback: 'light', // Si system échoue
+    classSuffix: '', // Classe CSS ajoutée (dark au lieu de dark-mode)
+    storageKey: 'swave-color-mode', // Clé localStorage
+  },
   css: ['~/assets/css/main.css'],
 
   // Configuration auto-import des composants
@@ -21,6 +30,10 @@ export default defineNuxtConfig({
     {
       path: '~/components/sections',
       prefix: 'Sections', // Préfixe "Sections" (SectionsHero)
+    },
+    {
+      path: '~/components/showcase',
+      prefix: 'Showcase', // Préfixe "Showcase" (ShowcaseLayoutDemo, ShowcaseLayout, etc.)
     },
   ],
 

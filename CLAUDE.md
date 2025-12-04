@@ -11,6 +11,7 @@
 - **Styling:** Tailwind CSS 4.1.17 + CSS natif avec variables
 - **Language:** TypeScript
 - **State Management:** Pinia 3.0.4
+- **Dark Mode:** @nuxtjs/color-mode (SSR-friendly, sans FOUC)
 - **Tooling:** Vite, ESLint, Prettier
 
 ---
@@ -57,7 +58,7 @@ Le projet utilise 3 polices avec forte personnalité pour se démarquer :
 
 ---
 
-## 📁 Structure du projet
+## 📁 Structure du projet (Phase 13)
 
 ```
 SwaveConnexion/
@@ -71,31 +72,40 @@ SwaveConnexion/
 │   │   └── fonts/                  # Polices custom (WOFF2)
 │   ├── components/
 │   │   ├── ui/                     # Composants atomiques (CSS natif + BEM)
-│   │   │   ├── CLAUDE.md
-│   │   │   ├── Button.vue
-│   │   │   ├── Card.vue
-│   │   │   ├── Input.vue
-│   │   │   ├── Badge.vue
-│   │   │   ├── Modal.vue
-│   │   │   └── Dropdown.vue
-│   │   ├── layout/                 # Structure (Tailwind utilities)
-│   │   │   ├── CLAUDE.md
-│   │   │   ├── Header.vue
-│   │   │   ├── Footer.vue
-│   │   │   └── Sidebar.vue
-│   │   └── sections/               # Sections complètes
-│   │       ├── CLAUDE.md
-│   │       └── Hero.vue
+│   │   │   ├── Button.vue, Card.vue, Input.vue, Badge.vue
+│   │   │   ├── Modal.vue, Dropdown.vue, Checkbox.vue, Switch.vue
+│   │   │   ├── Toast.vue, Tooltip.vue, ProgressBar.vue
+│   │   │   └── Tabs.vue
+│   │   ├── layout/                 # Composants structure (Tailwind utilities)
+│   │   │   ├── Header.vue, Footer.vue
+│   │   │   ├── Container.vue, Grid.vue, Stack.vue, SplitPane.vue
+│   │   │   └── CLAUDE.md
+│   │   ├── sections/               # Sections complètes
+│   │   │   ├── Hero.vue, CTA.vue, FeaturesGrid.vue
+│   │   │   └── CLAUDE.md
+│   │   └── showcase/               # Composants showcase UNIQUEMENT
+│   │       ├── ShowcaseLayout.vue       # Layout showcase pages
+│   │       ├── ShowcaseSection.vue      # Section wrapper
+│   │       ├── ShowcaseCodeBlock.vue    # Code snippets
+│   │       └── LayoutDemo.vue           # Wrapper visualisation layouts
+│   ├── composables/
+│   │   └── useTheme.ts             # Dark mode + Thèmes (@nuxtjs/color-mode)
 │   ├── layouts/
 │   │   ├── default.vue             # Layout standard (Header + Footer)
 │   │   └── blank.vue               # Layout vide
 │   ├── pages/
-│   │   └── index.vue               # Page de test du design system
+│   │   ├── index.vue               # Landing page marketing
+│   │   └── design-system/          # Pages showcase (Phase 13)
+│   │       ├── index.vue            # Landing design system
+│   │       ├── components.vue       # UI Components showcase
+│   │       ├── feedback.vue         # Feedback components
+│   │       ├── layouts.vue          # Layouts showcase
+│   │       └── sections.vue         # Sections showcase
 │   └── app.vue                     # Point d'entrée Nuxt
 ├── public/
 ├── CLAUDE.md                       # Ce fichier
 ├── PDM_DesignSystem.md             # Plan détaillé avec suivi d'avancement
-├── nuxt.config.ts
+├── nuxt.config.ts                  # Config Nuxt + @nuxtjs/color-mode
 ├── tailwind.config.js
 ├── package.json
 └── tsconfig.json
@@ -139,40 +149,77 @@ npm run lint:fix     # Fix automatique ESLint
 
 ---
 
-## 📦 Composants UI disponibles
+## 📦 Composants disponibles (Phase 13)
 
-### Composants atomiques (CSS natif + BEM)
+### 1. Composants UI (CSS natif + BEM)
 
-Tous les composants UI utilisent CSS natif scoped avec variables et nommage BEM strict :
+**Localisation:** `/design-system/components` | Fichiers: `app/components/ui/`
 
 | Composant | Description | Props principales |
 |-----------|-------------|-------------------|
-| **Button** | Bouton avec variantes | `variant`, `size`, `disabled` |
-| **Card** | Carte avec header/body/footer | `variant` |
-| **Input** | Champ de formulaire | `label`, `type`, `error`, `modelValue` |
-| **Badge** | Badge/tag coloré | `variant`, `size` |
-| **Modal** | Modale accessible | `isOpen`, `title` |
+| **Button** | 5 variantes + 3 tailles | `variant`, `size`, `disabled` |
+| **Card** | 3 variantes avec slots | `variant` |
+| **Input** | Champ de formulaire avec validation | `label`, `type`, `error`, `modelValue` |
+| **Badge** | 6 variantes sémantiques (WCAG AA) | `variant`, `size` |
+| **Checkbox** | Checkbox accessible | `label`, `modelValue` |
+| **Switch** | Toggle switch animé | `modelValue` |
 | **Dropdown** | Menu déroulant | `items`, `placeholder` |
 
-**Documentation détaillée:** Voir `app/components/ui/CLAUDE.md`
+**Documentation:** `app/components/ui/CLAUDE.md`
 
-### Composants de layout (Tailwind utilities)
+### 2. Composants Feedback (CSS natif + BEM)
 
-| Composant | Description |
-|-----------|-------------|
-| **Header** | En-tête sticky avec navigation responsive |
-| **Footer** | Pied de page avec grid 3 colonnes |
-| **Sidebar** | Barre latérale collapsible |
+**Localisation:** `/design-system/feedback` | Fichiers: `app/components/ui/`
 
-**Documentation détaillée:** Voir `app/components/layout/CLAUDE.md`
+| Composant | Description | Props principales |
+|-----------|-------------|-------------------|
+| **Toast** | Notifications temporaires | `message`, `type`, `duration` |
+| **Modal** | Dialogue modal accessible | `isOpen`, `title` |
+| **Tooltip** | Infobulle contextuelle | `content`, `position` |
+| **ProgressBar** | Barre de progression | `value`, `max`, `variant` |
+| **Tabs** | Navigation par onglets (keyboard) | `tabs`, `activeTab` |
 
-### Sections (Tailwind + slots)
+**Documentation:** `app/components/ui/CLAUDE.md`
 
-| Composant | Description | Props |
+### 3. Composants Layout (Tailwind utilities)
+
+**Localisation:** `/design-system/layouts` | Fichiers: `app/components/layout/`
+
+| Composant | Description | Props principales |
+|-----------|-------------|-------------------|
+| **Header** | En-tête sticky avec dark mode | - |
+| **Footer** | Pied de page responsive | - |
+| **Container** | Wrapper centré 5 tailles | `size`, `padding` |
+| **Grid** | Grid responsive | `cols`, `gap`, `responsive` |
+| **Stack** | Flex wrapper H/V | `direction`, `gap`, `align` |
+| **SplitPane** | Layout 2 colonnes | `leftWidth`, `gap` |
+
+**Documentation:** `app/components/layout/CLAUDE.md`
+
+### 4. Sections (Tailwind + slots)
+
+**Localisation:** `/design-system/sections` | Fichiers: `app/components/sections/`
+
+| Composant | Description | Props principales |
+|-----------|-------------|-------------------|
+| **Hero** | En-tête 2 variantes (WCAG AA) | `variant`, `centered` |
+| **CTA** | Call-to-action 2 variantes | `title`, `description`, `variant` |
+| **FeaturesGrid** | Grille de features | `title`, `features`, `cols` |
+
+**Documentation:** `app/components/sections/CLAUDE.md`
+
+### 5. Composants Showcase (UNIQUEMENT pour /design-system)
+
+**⚠️ NE PAS utiliser en production**
+
+| Composant | Description | Usage |
 |-----------|-------------|-------|
-| **Hero** | Section d'en-tête avec fond configurable | `variant`, `centered` |
+| **ShowcaseLayout** | Layout showcase pages | Wrapper pour pages design-system |
+| **ShowcaseSection** | Section wrapper | Encadrer les démos |
+| **ShowcaseCodeBlock** | Afficher code snippets | Exemples de code |
+| **LayoutDemo** | Bordures néon visualisation | Wrapper UNIQUEMENT sur /design-system/layouts |
 
-**Documentation détaillée:** Voir `app/components/sections/CLAUDE.md`
+**Fichiers:** `app/components/showcase/`
 
 ---
 
@@ -283,6 +330,100 @@ Tous les composants UI utilisent CSS natif scoped avec variables et nommage BEM 
 - **Composants UI:** Voir `app/components/ui/CLAUDE.md`
 - **Composants Layout:** Voir `app/components/layout/CLAUDE.md`
 - **Sections:** Voir `app/components/sections/CLAUDE.md`
+
+---
+
+## 🌓 Dark Mode & Thèmes (Phase 11-13)
+
+### Dark Mode avec @nuxtjs/color-mode
+
+**Module officiel Nuxt** pour gestion du dark mode (Phase 13 - refactorisation):
+
+✅ **Avantages:**
+- **Sans FOUC** (Flash of Unstyled Content): Script inline dans `<head>`
+- **SSR-friendly**: Génération serveur sans hydration mismatch
+- **Auto media query listener**: Détecte changements système en temps réel
+- **Persistence localStorage**: Préférence utilisateur sauvegardée
+- **Initialisation unique**: Via plugin Nuxt (pas de multiples appels)
+
+**Configuration:** `nuxt.config.ts`
+
+```typescript
+export default defineNuxtConfig({
+  modules: ['@nuxtjs/color-mode'],
+  colorMode: {
+    preference: 'system',      // Préférence par défaut
+    fallback: 'light',          // Si system échoue
+    classSuffix: '',            // Classe 'dark' au lieu de 'dark-mode'
+    storageKey: 'swave-color-mode',
+  },
+});
+```
+
+**Utilisation:**
+
+```typescript
+// Dans composables/useTheme.ts
+const colorMode = useColorMode(); // Fourni par @nuxtjs/color-mode
+
+// Toggle
+colorMode.preference = colorMode.preference === 'light' ? 'dark' : 'light';
+
+// Check
+const isDark = computed(() => colorMode.value === 'dark');
+```
+
+### Thèmes Custom (default, ocean, sunset)
+
+**3 thèmes** configurables avec CSS custom properties:
+
+- **default**: Bleu primary (#2563eb)
+- **ocean**: Palette bleu océan
+- **sunset**: Palette orange sunset
+
+**Implémentation:** `data-theme` attribute sur `<html>`:
+
+```css
+/* _variables.css */
+[data-theme="ocean"] {
+  --primary: #0ea5e9;
+  --accent: #06b6d4;
+}
+
+[data-theme="sunset"] {
+  --primary: #f97316;
+  --accent: #f59e0b;
+}
+```
+
+**Gestion:** `composables/useTheme.ts` (thèmes custom) + `@nuxtjs/color-mode` (dark/light)
+
+---
+
+## 🗂️ Organisation Multi-Pages (Phase 13)
+
+**Structure consolidée** avec 5 pages pour éviter la surcharge:
+
+```
+/                            → Landing page marketing
+/design-system/              → Landing design system (4 catégories)
+/design-system/components    → UI atomiques (Buttons, Forms, Badge, Card)
+/design-system/feedback      → Interactions (Toast, Modal, Tooltip, Tabs)
+/design-system/layouts       → Structure (Container, Grid, Stack, SplitPane)
+/design-system/sections      → Prêt-à-l'emploi (Hero, CTA, FeaturesGrid)
+```
+
+**Avantages:**
+- ✅ **Lazy loading** par page (performance)
+- ✅ **Navigation claire** (4 catégories logiques)
+- ✅ **Maintainable** (moins de fichiers que 10 pages séparées)
+- ✅ **Isolation fonctionnelle** (chaque catégorie indépendante)
+
+**Composants Showcase** pour affichage cohérent:
+- `ShowcaseLayout`: Layout uniforme avec breadcrumbs
+- `ShowcaseSection`: Wrapper sections avec bordure
+- `ShowcaseCodeBlock`: Afficher code exemples
+- `LayoutDemo`: Bordures néon pour visualiser layouts (UNIQUEMENT sur /layouts)
 
 ---
 

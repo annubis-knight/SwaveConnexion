@@ -1,7 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(npx kill-port:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(npm run build:*)",
+      "Bash(git restore:*)",
+      "Bash(cat:*)",
+      "Bash(git rm:*)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []
