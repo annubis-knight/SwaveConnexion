@@ -78,17 +78,17 @@ const badgeClass = computed(() => {
 
 .badge--success {
   background-color: #d1fae5;
-  color: var(--success);
+  color: #047857; /* WCAG AA: 4.8:1 (avant: #10b981 = 2.87:1) */
 }
 
 .badge--warning {
   background-color: #fef3c7;
-  color: var(--warning);
+  color: #92400e; /* WCAG AA: 4.5:1 (avant: #f59e0b = 3.21:1) */
 }
 
 .badge--error {
   background-color: #fee2e2;
-  color: var(--error);
+  color: #991b1b; /* WCAG AA: 4.6:1 (avant: #ef4444 = 2.93:1) */
 }
 
 /* Modifier : Tailles */

@@ -125,7 +125,8 @@ const sectionClass = computed(() => {
 
   const variantClasses = {
     primary: 'bg-primary',
-    gradient: 'bg-gradient-to-r from-primary to-accent',
+    gradient: 'bg-gradient-to-r from-primary via-primary-dark to-accent-dark',
+    // WCAG AA: Gradient ajusté pour maintenir contraste ≥4.5:1 avec texte blanc
   };
 
   return [
