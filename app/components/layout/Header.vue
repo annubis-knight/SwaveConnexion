@@ -147,17 +147,14 @@ const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
 
-// Theme management (Phase 11 & 12 - refactorisé Phase 13)
-const { isDark, toggleDarkMode, currentTheme, setTheme, availableThemes, initTheme } = useTheme();
+// Theme management (PRD v2.0 - Phase 1)
+const { isDark, setColorMode, currentTheme, setTheme, availableThemes } = useThemeManager();
 
 // Local state for select binding
 const selectedTheme = ref(currentTheme.value);
 
-// Initialize custom theme on mount (dark/light géré automatiquement par @nuxtjs/color-mode)
-onMounted(() => {
-  initTheme(); // Charge uniquement le thème custom (default/ocean/sunset)
-  selectedTheme.value = currentTheme.value;
-});
+// Note: initTheme() appelé automatiquement via plugin theme.client.ts
+// Pas besoin de onMounted() ici
 
 // Watch currentTheme changes
 watch(currentTheme, (newTheme) => {
@@ -166,11 +163,12 @@ watch(currentTheme, (newTheme) => {
 
 // Toggle dark mode
 const toggleDark = () => {
-  toggleDarkMode();
+  const newMode = isDark.value ? 'light' : 'dark';
+  setColorMode(newMode);
 };
 
 // Handle theme change from select
 const handleThemeChange = () => {
-  setTheme(selectedTheme.value as any);
+  setTheme(selectedTheme.value);
 };
 </script>

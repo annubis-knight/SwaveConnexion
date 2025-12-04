@@ -1,0 +1,173 @@
+/**
+ * VARIABLES CSS - SwaveConnexion Design System
+ *
+ * @description Variables CSS globales pour le design system
+ * @usage Utiliser via var(--nom-variable)
+ * @convention Nommage kebab-case
+ *
+ * @dev Ces variables sont utilisées uniquement dans les composants UI
+ * @dev Tailwind utilities sont utilisées pour les layouts
+ */
+
+:root {
+  /* ============================================
+     COULEURS PRINCIPALES
+     ============================================ */
+
+  /* Primary - Bleu moderne */
+  --primary: #2563eb;
+  --primary-light: #60a5fa;
+  --primary-dark: #1e40af;
+
+  /* Secondary - Gris neutre */
+  --secondary: #525252;
+  --secondary-light: #a3a3a3;
+  --secondary-dark: #262626;
+
+  /* Accent - Orange/Ambre */
+  --accent: #f59e0b;
+  --accent-light: #fbbf24;
+  --accent-dark: #d97706;
+
+  /* ============================================
+     COULEURS NEUTRES
+     ============================================ */
+
+  --neutral-white: #ffffff;
+  --neutral-light: #f5f5f5;
+  --neutral-medium: #d4d4d4;
+  --neutral-dark: #404040;
+  --neutral-black: #171717;
+
+  /* ============================================
+     COULEURS SÉMANTIQUES
+     ============================================ */
+
+  --success: #10b981;
+  --success-light: #34d399;
+  --success-dark: #059669;
+
+  --warning: #f59e0b;
+  --warning-light: #fbbf24;
+  --warning-dark: #d97706;
+
+  --error: #ef4444;
+  --error-light: #f87171;
+  --error-dark: #dc2626;
+
+  --info: #3b82f6;
+  --info-light: #60a5fa;
+  --info-dark: #2563eb;
+
+  /* ============================================
+     ESPACEMENTS
+     ============================================ */
+
+  --space-xs: 0.5rem; /* 8px */
+  --space-sm: 1rem; /* 16px */
+  --space-md: 1.5rem; /* 24px */
+  --space-lg: 2rem; /* 32px */
+  --space-xl: 3rem; /* 48px */
+  --space-2xl: 4rem; /* 64px */
+  --space-3xl: 6rem; /* 96px */
+
+  /* ============================================
+     BORDURES
+     ============================================ */
+
+  --border-radius-sm: 0.25rem; /* 4px */
+  --border-radius-md: 0.5rem; /* 8px */
+  --border-radius-lg: 0.75rem; /* 12px */
+  --border-radius-xl: 1rem; /* 16px */
+  --border-radius-full: 9999px;
+
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 4px;
+
+  /* ============================================
+     OMBRES
+     ============================================ */
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  /* ============================================
+     TRANSITIONS
+     ============================================ */
+
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+
+  /* ============================================
+     Z-INDEX
+     ============================================ */
+
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* ============================================
+   DARK MODE (PHASE 11)
+   ============================================ */
+
+.dark {
+  /* Couleurs inversées pour dark mode */
+  --neutral-white: #171717;
+  --neutral-light: #262626;
+  --neutral-medium: #404040;
+  --neutral-dark: #d4d4d4;
+  --neutral-black: #ffffff;
+
+  /* Ombres adaptées pour dark mode */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   THÈMES CONFIGURABLES (PHASE 12)
+   ============================================ */
+
+/* Thème Default (déjà défini dans :root) */
+
+/* Thème Ocean - Bleu océan profond */
+[data-theme='ocean'] {
+  --primary: #0ea5e9;
+  --primary-light: #38bdf8;
+  --primary-dark: #0284c7;
+
+  --secondary: #0f766e;
+  --secondary-light: #14b8a6;
+  --secondary-dark: #115e59;
+
+  --accent: #06b6d4;
+  --accent-light: #22d3ee;
+  --accent-dark: #0891b2;
+}
+
+/* Thème Sunset - Orange/Rose sunset */
+[data-theme='sunset'] {
+  --primary: #f97316;
+  --primary-light: #fb923c;
+  --primary-dark: #ea580c;
+
+  --secondary: #be123c;
+  --secondary-light: #fb7185;
+  --secondary-dark: #9f1239;
+
+  --accent: #f59e0b;
+  --accent-light: #fbbf24;
+  --accent-dark: #d97706;
+}

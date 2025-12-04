@@ -1,17 +1,65 @@
 /**
- * VARIABLES CSS - SwaveConnexion Design System
+ * VARIABLES CSS - SwaveConnexion Design System v2.0
  *
- * @description Variables CSS globales pour le design system
- * @usage Utiliser via var(--nom-variable)
- * @convention Nommage kebab-case
+ * @architecture SSOT (Single Source of Truth)
+ * @principe Token Minimal (3 nuances par couleur)
+ * @convention Nommage sémantique (rôle, pas couleur)
  *
- * @dev Ces variables sont utilisées uniquement dans les composants UI
- * @dev Tailwind utilities sont utilisées pour les layouts
+ * STRUCTURE :
+ * 1. Variables invariantes (espacements, bordures, transitions, z-index)
+ * 2. Tokens thématiques (primary, secondary, accent) - Invariants
+ * 3. Tokens neutres (backgrounds, textes, bordures) - Mode light par défaut
+ * 4. Mode dark (.dark) - Redéfinition tokens neutres
+ * 5. Thèmes ([data-theme]) - Changent couleurs thématiques
+ *
+ * PHILOSOPHIE :
+ * - 1 seul niveau de variables (tokens utilisés directement)
+ * - 3 nuances max par couleur (light, base, dark)
+ * - Nommage par rôle, pas par couleur
  */
 
 :root {
   /* ============================================
-     COULEURS PRINCIPALES
+     1. VARIABLES INVARIANTES (ne changent jamais)
+     ============================================ */
+
+  /* Espacements (grille 8px) */
+  --space-xs: 0.5rem;      /* 8px */
+  --space-sm: 1rem;        /* 16px */
+  --space-md: 1.5rem;      /* 24px */
+  --space-lg: 2rem;        /* 32px */
+  --space-xl: 3rem;        /* 48px */
+  --space-2xl: 4rem;       /* 64px */
+  --space-3xl: 6rem;       /* 96px */
+
+  /* Bordures - Radius */
+  --radius-sm: 0.25rem;    /* 4px */
+  --radius-md: 0.5rem;     /* 8px */
+  --radius-lg: 0.75rem;    /* 12px */
+  --radius-xl: 1rem;       /* 16px */
+  --radius-full: 9999px;   /* Cercle parfait */
+
+  /* Bordures - Largeurs */
+  --border-width: 1px;
+  --border-width-thick: 2px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+
+  /* Z-index (empilement) */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  /* ============================================
+     2. TOKENS THÉMATIQUES (invariants)
+     Ne changent PAS en dark mode, changent par thème
      ============================================ */
 
   /* Primary - Bleu moderne */
@@ -29,118 +77,111 @@
   --accent-light: #fbbf24;
   --accent-dark: #d97706;
 
-  /* ============================================
-     COULEURS NEUTRES
-     ============================================ */
-
-  --neutral-white: #ffffff;
-  --neutral-light: #f5f5f5;
-  --neutral-medium: #d4d4d4;
-  --neutral-dark: #404040;
-  --neutral-black: #171717;
-
-  /* ============================================
-     COULEURS SÉMANTIQUES
-     ============================================ */
-
+  /* Couleurs sémantiques (légèrement ajustées en dark) */
   --success: #10b981;
   --success-light: #34d399;
   --success-dark: #059669;
 
-  --warning: #f59e0b;
-  --warning-light: #fbbf24;
-  --warning-dark: #d97706;
-
   --error: #ef4444;
   --error-light: #f87171;
   --error-dark: #dc2626;
+
+  --warning: #f59e0b;
+  --warning-light: #fbbf24;
+  --warning-dark: #d97706;
 
   --info: #3b82f6;
   --info-light: #60a5fa;
   --info-dark: #2563eb;
 
   /* ============================================
-     ESPACEMENTS
+     3. TOKENS NEUTRES (Light Mode par défaut)
+     Changent en dark mode - Nommage sémantique
      ============================================ */
 
-  --space-xs: 0.5rem; /* 8px */
-  --space-sm: 1rem; /* 16px */
-  --space-md: 1.5rem; /* 24px */
-  --space-lg: 2rem; /* 32px */
-  --space-xl: 3rem; /* 48px */
-  --space-2xl: 4rem; /* 64px */
-  --space-3xl: 6rem; /* 96px */
+  /* Backgrounds */
+  --bg-base: #ffffff;          /* Fonds de base (cards, pages, modals) */
+  --bg-subtle: #f5f5f5;        /* Fonds subtils (footer, sections alternées) */
+  --bg-elevated: #ffffff;      /* Fonds surélevés (dropdowns, popovers au-dessus) */
+  --bg-input: #ffffff;         /* Fonds des champs de formulaire */
+  --bg-hover: #f5f5f5;         /* État hover sur éléments cliquables */
+  --bg-active: #e5e5e5;        /* État actif/sélectionné */
+  --bg-code: #1e1e1e;          /* Fond des blocs de code (toujours foncé) */
 
-  /* ============================================
-     BORDURES
-     ============================================ */
+  /* Textes */
+  --text-strong: #171717;      /* Textes principaux (titres, headings) */
+  --text-base: #404040;        /* Textes secondaires (paragraphes, labels) */
+  --text-subtle: #737373;      /* Textes atténués (placeholders, hints) */
+  --text-inverse: #ffffff;     /* Texte sur fond foncé (boutons primary) */
+  --text-code: #d4d4d4;        /* Texte dans blocs de code */
 
-  --border-radius-sm: 0.25rem; /* 4px */
-  --border-radius-md: 0.5rem; /* 8px */
-  --border-radius-lg: 0.75rem; /* 12px */
-  --border-radius-xl: 1rem; /* 16px */
-  --border-radius-full: 9999px;
+  /* Bordures */
+  --border-base: #e5e5e5;      /* Bordures standards */
+  --border-strong: #d4d4d4;    /* Bordures accentuées */
 
-  --border-width-thin: 1px;
-  --border-width-medium: 2px;
-  --border-width-thick: 4px;
-
-  /* ============================================
-     OMBRES
-     ============================================ */
-
+  /* Ombres */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-
-  /* ============================================
-     TRANSITIONS
-     ============================================ */
-
-  --transition-fast: 150ms ease-in-out;
-  --transition-base: 250ms ease-in-out;
-  --transition-slow: 350ms ease-in-out;
-
-  /* ============================================
-     Z-INDEX
-     ============================================ */
-
-  --z-dropdown: 1000;
-  --z-sticky: 1020;
-  --z-fixed: 1030;
-  --z-modal-backdrop: 1040;
-  --z-modal: 1050;
-  --z-popover: 1060;
-  --z-tooltip: 1070;
 }
 
 /* ============================================
-   DARK MODE (PHASE 11)
+   4. MODE DARK (Redéfinition tokens neutres)
+   Classe appliquée sur <html> par @nuxtjs/color-mode
    ============================================ */
 
 .dark {
-  /* Couleurs inversées pour dark mode */
-  --neutral-white: #171717;
-  --neutral-light: #262626;
-  --neutral-medium: #404040;
-  --neutral-dark: #d4d4d4;
-  --neutral-black: #ffffff;
+  /* Backgrounds inversés */
+  --bg-base: #171717;          /* Gris très foncé (ex blanc) */
+  --bg-subtle: #262626;        /* Gris foncé (ex gris clair) */
+  --bg-elevated: #262626;      /* Gris foncé surélevé */
+  --bg-input: #1f1f1f;         /* Gris très foncé pour inputs */
+  --bg-hover: #262626;         /* Gris foncé hover */
+  --bg-active: #404040;        /* Gris moyen actif */
+  --bg-code: #0a0a0a;          /* Presque noir pour code */
 
-  /* Ombres adaptées pour dark mode */
+  /* Textes inversés */
+  --text-strong: #fafafa;      /* Blanc cassé (ex noir) */
+  --text-base: #d4d4d4;        /* Gris clair (ex gris foncé) */
+  --text-subtle: #a3a3a3;      /* Gris moyen (ex gris clair) */
+  --text-inverse: #171717;     /* Noir (pour texte sur fond clair) */
+  --text-code: #e5e5e5;        /* Blanc cassé pour code */
+
+  /* Bordures adaptées */
+  --border-base: #404040;      /* Gris moyen */
+  --border-strong: #525252;    /* Gris plus clair */
+
+  /* Ombres plus prononcées */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
+  /* Couleurs sémantiques légèrement ajustées (plus claires) */
+  --success: #34d399;
+  --success-light: #6ee7b7;
+  --success-dark: #10b981;
+
+  --error: #f87171;
+  --error-light: #fca5a5;
+  --error-dark: #ef4444;
+
+  --warning: #fbbf24;
+  --warning-light: #fcd34d;
+  --warning-dark: #f59e0b;
+
+  --info: #60a5fa;
+  --info-light: #93c5fd;
+  --info-dark: #3b82f6;
 }
 
 /* ============================================
-   THÈMES CONFIGURABLES (PHASE 12)
+   5. THÈMES (Changent couleurs thématiques)
+   Attribut appliqué sur <html> data-theme="ocean"
    ============================================ */
-
-/* Thème Default (déjà défini dans :root) */
 
 /* Thème Ocean - Bleu océan profond */
 [data-theme='ocean'] {
