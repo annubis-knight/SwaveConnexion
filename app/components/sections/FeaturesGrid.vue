@@ -40,12 +40,12 @@
     @dev Tailwind utilities pour styling
     @dev Responsive: mobile 1 col → tablet 2 → desktop cols
   -->
-  <section class="py-16 bg-neutral-50">
+  <section class="py-16 bg-[var(--bg-subtle)]">
     <LayoutContainer size="xl" :padding="true">
       <!-- Header -->
       <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold text-neutral-900 mb-4">{{ title }}</h2>
-        <p v-if="subtitle" class="text-xl text-neutral-600 max-w-2xl mx-auto">
+        <h2 class="mb-4">{{ title }}</h2>
+        <p v-if="subtitle">
           {{ subtitle }}
         </p>
       </div>
@@ -59,20 +59,20 @@
         <div
           v-for="(feature, index) in features"
           :key="index"
-          class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+          class="p-6 rounded-lg shadow-sm bg-[var(--bg-base)]"
         >
           <!-- Icon -->
-          <div class="flex items-center justify-center w-12 h-12 bg-primary text-white rounded-lg text-2xl mb-4">
+          <div class="flex items-center justify-center w-12 h-12 rounded-lg text-2xl mb-4">
             {{ feature.icon }}
           </div>
 
           <!-- Title -->
-          <h3 class="text-xl font-semibold text-neutral-900 mb-2">
+          <h3>
             {{ feature.title }}
           </h3>
 
           <!-- Description -->
-          <p class="text-neutral-600 leading-relaxed">
+          <p>
             {{ feature.description }}
           </p>
         </div>

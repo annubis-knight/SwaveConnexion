@@ -29,6 +29,8 @@ export default {
    * Theme
    * @dev MINIMAL : on ne redéfinit PAS les couleurs/typo ici
    * @dev Elles sont dans _variables.css et _typography.css
+   * @dev Note: safelist n'existe plus en Tailwind v4 (migration vers @theme)
+   * @dev Les classes grid dynamiques utilisent un mapping statique dans Grid.vue
    */
   theme: {
     extend: {

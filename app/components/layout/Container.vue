@@ -47,7 +47,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  size: 'lg',
+  size: 'full',
   padding: true,
 });
 
@@ -64,9 +64,23 @@ const containerClass = computed(() => {
 
   return [
     'w-full',
-    'mx-auto',
+    'container-center',  // Custom class pour margin: 0 auto (au lieu de mx-auto qui utilise margin-inline)
     sizeClasses[props.size],
     props.padding && 'px-6 md:px-8',
   ].filter(Boolean).join(' ');
 });
 </script>
+
+<style scoped>
+/**
+ * CONTAINER STYLES
+ *
+ * @dev Custom class pour centrage horizontal traditionnel
+ * @dev Tailwind v4 mx-auto utilise margin-inline au lieu de margin-left/right
+ */
+
+.container-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>

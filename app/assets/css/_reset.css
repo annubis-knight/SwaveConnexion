@@ -204,10 +204,10 @@ table {
 
 ::selection {
   background-color: var(--primary-light, #60a5fa);
-  color: var(--neutral-white, #ffffff);
+  color: var(--text-inverse);
 }
 
 ::-moz-selection {
   background-color: var(--primary-light, #60a5fa);
-  color: var(--neutral-white, #ffffff);
+  color: var(--text-inverse);
 }

@@ -178,7 +178,7 @@ const handleClose = () => {
   font-size: var(--text-base);
   font-weight: var(--font-bold);
   flex-shrink: 0;
-  color: white; /* Hardcodé OK (icône sur fond coloré) */
+  color: var(--text-inverse);
 }
 
 .toast--success .toast__icon {

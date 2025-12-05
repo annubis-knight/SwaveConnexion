@@ -648,7 +648,7 @@ border-bottom: ... var(--neutral-medium) →  border-bottom: ... var(--border-ba
 
 .btn--primary {
   background-color: var(--primary);
-  color: white;  /* ✅ Hardcodé OK (bouton sur fond coloré) */
+  color: var(--text-inverse);
 }
 
 .btn--outline {
@@ -659,12 +659,12 @@ border-bottom: ... var(--neutral-medium) →  border-bottom: ... var(--border-ba
 
 .btn--outline:hover:not(.btn--disabled) {
   background-color: var(--primary-light);
-  color: white;  /* ✅ Hardcodé OK */
+  color: var(--text-inverse);
 }
 </style>
 ```
 
-**Note** : Pour les boutons, utiliser `color: white` hardcodé est **acceptable** car ils sont toujours sur fond coloré (`--primary`).
+**Note** : La variable `--text-inverse` s'adapte automatiquement au mode (light: `#ffffff`, dark: `#171717`) pour assurer un bon contraste sur les fonds colorés.
 
 ***
 
@@ -818,17 +818,27 @@ border-bottom: ... var(--neutral-medium) →  border-bottom: ... var(--border-ba
 ```vue
 <style scoped>
 /* Pas de changement nécessaire - Utilise déjà --primary, --secondary, etc. */
-/* Mais vérifier les couleurs sémantiques */
+/* Pour les couleurs sémantiques, utiliser les variantes -light et -dark */
 
 .badge--success {
   background-color: #d1fae5;  /* ❌ Hardcodé */
   color: var(--success);
 }
 
-/* ✅ Amélioration (optionnel) */
+/* ✅ APRÈS */
 .badge--success {
-  background-color: color-mix(in srgb, var(--success) 20%, transparent);
+  background-color: var(--success-light);
   color: var(--success-dark);
+}
+
+.badge--warning {
+  background-color: var(--warning-light);
+  color: var(--warning-dark);
+}
+
+.badge--error {
+  background-color: var(--error-light);
+  color: var(--error-dark);
 }
 ```
 

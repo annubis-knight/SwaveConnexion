@@ -130,7 +130,7 @@ const handleChange = (event: Event) => {
   top: 1px;
   width: 6px;
   height: 11px;
-  border: solid white; /* Hardcodé OK (coche sur fond primary) */
+  border: solid var(--text-inverse);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
@@ -158,7 +158,7 @@ const handleChange = (event: Event) => {
   width: 10px;
   height: 0;
   border: none;
-  border-bottom: 2px solid white; /* Hardcodé OK (ligne sur fond primary) */
+  border-bottom: 2px solid var(--text-inverse);
   transform: none;
 }
 

@@ -20,15 +20,16 @@
     Slots :
       - default : Contenu de la section (démos, code, etc.)
 
-    @dev Tailwind utilities uniquement (NO CSS natif scoped)
+    @dev CSS scoped pour couleurs (variables sémantiques)
+    @dev Tailwind utilities pour layout
     @dev White card avec border et padding
     @dev Dark mode support
   -->
   <section class="mb-12">
-    <h2 class="text-2xl md:text-3xl font-bold text-neutral-black dark:text-neutral-white mb-6">
+    <h2 class="showcase-title text-2xl md:text-3xl font-bold mb-6">
       {{ title }}
     </h2>
-    <div class="bg-white dark:bg-neutral-medium rounded-lg p-8 border border-gray-200 dark:border-neutral-dark shadow-sm">
+    <div class="showcase-card rounded-lg p-8 shadow-sm">
       <slot />
     </div>
   </section>
@@ -39,7 +40,8 @@
  * SHOWCASESECTION COMPONENT (PHASE 13)
  *
  * @dev Section wrapper pour showcase pages
- * @dev Tailwind utilities uniquement
+ * @dev CSS scoped pour couleurs (variables sémantiques)
+ * @dev Tailwind utilities pour layout
  * @dev Title + white card container
  * @dev Utilisé dans ShowcaseLayout pour organiser le contenu
  */
@@ -51,3 +53,20 @@ interface Props {
 
 defineProps<Props>();
 </script>
+
+<style scoped>
+/**
+ * SHOWCASESECTION STYLES
+ *
+ * @dev Variables CSS sémantiques (adapté dark mode)
+ */
+
+.showcase-title {
+  color: var(--text-strong);
+}
+
+.showcase-card {
+  background-color: var(--bg-base);
+  border: 1px solid var(--border-base);
+}
+</style>

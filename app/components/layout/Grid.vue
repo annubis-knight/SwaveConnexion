@@ -65,25 +65,64 @@ const gridClass = computed(() => {
     xl: 'gap-12',  // 48px
   };
 
-  const colsClass = `grid-cols-${props.cols}`;
+  // Mapping statique pour Tailwind v4 (safelist n'existe plus en v4)
+  const colsClassMap: Record<number, string> = {
+    1: 'grid-cols-1',
+    2: 'grid-cols-2',
+    3: 'grid-cols-3',
+    4: 'grid-cols-4',
+    5: 'grid-cols-5',
+    6: 'grid-cols-6',
+    7: 'grid-cols-7',
+    8: 'grid-cols-8',
+    9: 'grid-cols-9',
+    10: 'grid-cols-10',
+    11: 'grid-cols-11',
+    12: 'grid-cols-12',
+  };
 
-  // Responsive columns
+  const colsClass = colsClassMap[props.cols];
+
+  // Responsive columns avec mapping statique
+  const smColsMap: Record<number, string> = {
+    1: 'sm:grid-cols-1',
+    2: 'sm:grid-cols-2',
+    3: 'sm:grid-cols-3',
+    4: 'sm:grid-cols-4',
+  };
+
+  const mdColsMap: Record<number, string> = {
+    1: 'md:grid-cols-1',
+    2: 'md:grid-cols-2',
+    3: 'md:grid-cols-3',
+    4: 'md:grid-cols-4',
+  };
+
+  const lgColsMap: Record<number, string> = {
+    1: 'lg:grid-cols-1',
+    2: 'lg:grid-cols-2',
+    3: 'lg:grid-cols-3',
+    4: 'lg:grid-cols-4',
+    5: 'lg:grid-cols-5',
+    6: 'lg:grid-cols-6',
+    12: 'lg:grid-cols-12',
+  };
+
   const responsiveClasses = [];
-  if (props.responsive?.sm) {
-    responsiveClasses.push(`sm:grid-cols-${props.responsive.sm}`);
+  if (props.responsive?.sm && smColsMap[props.responsive.sm]) {
+    responsiveClasses.push(smColsMap[props.responsive.sm]);
   }
-  if (props.responsive?.md) {
-    responsiveClasses.push(`md:grid-cols-${props.responsive.md}`);
+  if (props.responsive?.md && mdColsMap[props.responsive.md]) {
+    responsiveClasses.push(mdColsMap[props.responsive.md]);
   }
-  if (props.responsive?.lg) {
-    responsiveClasses.push(`lg:grid-cols-${props.responsive.lg}`);
+  if (props.responsive?.lg && lgColsMap[props.responsive.lg]) {
+    responsiveClasses.push(lgColsMap[props.responsive.lg]);
   }
 
   return [
     'grid',
-    'grid-cols-1', // Mobile par défaut
-    ...responsiveClasses,
     colsClass,
+    ...responsiveClasses,
     gapClasses[props.gap],
   ].filter(Boolean).join(' ');
 });

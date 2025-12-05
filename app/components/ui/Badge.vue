@@ -77,18 +77,18 @@ const badgeClass = computed(() => {
 }
 
 .badge--success {
-  background-color: #d1fae5;
-  color: #047857; /* WCAG AA: 4.8:1 (avant: #10b981 = 2.87:1) */
+  background-color: var(--success-light);
+  color: var(--success-dark);
 }
 
 .badge--warning {
-  background-color: #fef3c7;
-  color: #92400e; /* WCAG AA: 4.5:1 (avant: #f59e0b = 3.21:1) */
+  background-color: var(--warning-light);
+  color: var(--warning-dark);
 }
 
 .badge--error {
-  background-color: #fee2e2;
-  color: #991b1b; /* WCAG AA: 4.6:1 (avant: #ef4444 = 2.93:1) */
+  background-color: var(--error-light);
+  color: var(--error-dark);
 }
 
 /* Modifier : Tailles */

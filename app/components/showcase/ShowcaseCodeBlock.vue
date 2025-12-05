@@ -1,6 +1,6 @@
 <template>
   <!--
-    Composant CodeBlock - Code snippet display
+    Composant ShowcaseCodeBlock - Code snippet display
 
     Description : Affiche du code source avec styling
 
@@ -11,21 +11,12 @@
     Slots :
       - default : Code à afficher (via slot, priorité sur prop)
 
-    Usage:
-      <!-- Via prop -->
-      <CodeBlock code="const foo = 'bar';" language="typescript" />
-
-      <!-- Via slot -->
-      <CodeBlock language="vue">
-        <Button variant="primary">Click me</Button>
-      </CodeBlock>
-
     @dev Tailwind utilities uniquement (NO CSS natif scoped)
     @dev Monospace font (JetBrains Mono)
     @dev Dark background avec scroll horizontal
   -->
   <div class="my-4">
-    <pre class="bg-neutral-black dark:bg-neutral-dark text-neutral-white p-6 rounded-lg overflow-x-auto font-mono text-sm leading-relaxed"><code>{{ displayCode }}</code></pre>
+    <pre class="showcase-code p-6 rounded-lg overflow-x-auto font-mono text-sm leading-relaxed">{{ displayCode }}</pre>
   </div>
 </template>
 
@@ -34,7 +25,8 @@
  * CODEBLOCK COMPONENT (PHASE 13)
  *
  * @dev Code snippet display
- * @dev Tailwind utilities uniquement
+ * @dev CSS scoped pour couleurs (variables sémantiques)
+ * @dev Tailwind utilities pour layout
  * @dev Monospace font avec dark background
  * @dev Support prop ou slot content
  */
@@ -62,3 +54,16 @@ const displayCode = computed(() => {
   return props.code || '';
 });
 </script>
+
+<style scoped>
+/**
+ * SHOWCASECODEBLOCK STYLES
+ *
+ * @dev Variables CSS sémantiques (adapté dark mode)
+ */
+
+.showcase-code {
+  background-color: var(--bg-code);
+  color: var(--text-code);
+}
+</style>

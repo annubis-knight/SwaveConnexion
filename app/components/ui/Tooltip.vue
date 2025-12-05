@@ -126,17 +126,18 @@ onClickOutside(tooltipRef, () => {
   position: absolute;
   z-index: 10000;
   padding: var(--space-xs) var(--space-sm);
-  background-color: #171717; /* Hardcodé OK (tooltip toujours fond sombre) */
-  color: white;
+  background-color: var(--bg-elevated);
+  color: var(--text-strong);
   font-family: var(--font-sans);
   font-size: var(--text-sm);
   line-height: 1.4;
   border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
   white-space: nowrap;
   max-width: 250px;
   word-wrap: break-word;
   white-space: normal;
+  border: var(--border-width) solid var(--border-base);
 }
 
 /* Position : top */
@@ -150,7 +151,7 @@ onClickOutside(tooltipRef, () => {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border-top-color: #171717;
+  border-top-color: var(--bg-elevated);
   border-bottom: none;
 }
 
@@ -165,7 +166,7 @@ onClickOutside(tooltipRef, () => {
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border-bottom-color: #171717;
+  border-bottom-color: var(--bg-elevated);
   border-top: none;
 }
 
@@ -180,7 +181,7 @@ onClickOutside(tooltipRef, () => {
   left: 100%;
   top: 50%;
   transform: translateY(-50%);
-  border-left-color: #171717;
+  border-left-color: var(--bg-elevated);
   border-right: none;
 }
 
@@ -195,7 +196,7 @@ onClickOutside(tooltipRef, () => {
   right: 100%;
   top: 50%;
   transform: translateY(-50%);
-  border-right-color: #171717;
+  border-right-color: var(--bg-elevated);
   border-left: none;
 }
 

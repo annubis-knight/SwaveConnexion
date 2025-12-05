@@ -63,8 +63,8 @@ interface Emits {
 
 const emit = defineEmits<Emits>();
 
-// ID unique pour label/input
-const inputId = computed(() => `input-${Math.random().toString(36).slice(2, 9)}`);
+// ID unique pour label/input (SSR-safe)
+const inputId = useId();
 
 // Computed class BEM
 const inputClass = computed(() => {

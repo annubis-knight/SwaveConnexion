@@ -8,14 +8,14 @@
     <ShowcaseSection title="Container - Wrapper Responsive">
       <div class="space-y-8">
         <div>
-          <h3 class="text-xl font-semibold mb-4 text-neutral-black dark:text-neutral-white">Tailles disponibles</h3>
-          <p class="text-sm text-neutral-dark dark:text-neutral-medium mb-4">
+          <h3 class="text-xl font-semibold mb-4 text-[var(--text-strong)]">Tailles disponibles</h3>
+          <p class="text-sm text-[var(--text-base)] mb-4">
             💡 Les bordures néon bleues visualisent les limites des containers
           </p>
           <div class="space-y-6">
             <!-- Container SM -->
             <div>
-              <p class="text-sm font-medium mb-2 text-neutral-dark dark:text-neutral-medium">size="sm" (max-w-sm: 640px)</p>
+              <p class="text-sm font-medium mb-2 text-[var(--text-base)]">size="sm" (max-w-sm: 640px)</p>
               <ShowcaseLayoutDemo color="primary" variant="neon">
                 <LayoutContainer size="sm" :padding="true">
                   <div class="bg-primary text-white p-4 rounded-lg text-center">
@@ -27,7 +27,7 @@
 
             <!-- Container MD -->
             <div>
-              <p class="text-sm font-medium mb-2 text-neutral-dark dark:text-neutral-medium">size="md" (max-w-md: 768px)</p>
+              <p class="text-sm font-medium mb-2 text-[var(--text-base)]">size="md" (max-w-md: 768px)</p>
               <ShowcaseLayoutDemo color="primary" variant="neon">
                 <LayoutContainer size="md" :padding="true">
                   <div class="bg-secondary text-white p-4 rounded-lg text-center">
@@ -39,7 +39,7 @@
 
             <!-- Container LG -->
             <div>
-              <p class="text-sm font-medium mb-2 text-neutral-dark dark:text-neutral-medium">size="lg" (max-w-lg: 1024px) - Défaut</p>
+              <p class="text-sm font-medium mb-2 text-[var(--text-base)]">size="lg" (max-w-lg: 1024px) - Défaut</p>
               <ShowcaseLayoutDemo color="primary" variant="neon">
                 <LayoutContainer size="lg" :padding="true">
                   <div class="bg-accent text-white p-4 rounded-lg text-center">
@@ -51,7 +51,7 @@
 
             <!-- Container XL -->
             <div>
-              <p class="text-sm font-medium mb-2 text-neutral-dark dark:text-neutral-medium">size="xl" (max-w-xl: 1280px)</p>
+              <p class="text-sm font-medium mb-2 text-[var(--text-base)]">size="xl" (max-w-xl: 1280px)</p>
               <ShowcaseLayoutDemo color="primary" variant="neon">
                 <LayoutContainer size="xl" :padding="true">
                   <div class="bg-success text-white p-4 rounded-lg text-center">
@@ -63,7 +63,7 @@
 
             <!-- Container 2XL -->
             <div>
-              <p class="text-sm font-medium mb-2 text-neutral-dark dark:text-neutral-medium">size="2xl" (max-w-2xl: 1536px)</p>
+              <p class="text-sm font-medium mb-2 text-[var(--text-base)]">size="2xl" (max-w-2xl: 1536px)</p>
               <ShowcaseLayoutDemo color="primary" variant="neon">
                 <LayoutContainer size="2xl" :padding="true">
                   <div class="bg-info text-white p-4 rounded-lg text-center">
@@ -75,7 +75,7 @@
 
             <!-- Container Full -->
             <div>
-              <p class="text-sm font-medium mb-2 text-neutral-dark dark:text-neutral-medium">size="full" (max-w-full: 100%)</p>
+              <p class="text-sm font-medium mb-2 text-[var(--text-base)]">size="full" (max-w-full: 100%)</p>
               <ShowcaseLayoutDemo color="primary" variant="neon">
                 <LayoutContainer size="full" :padding="true">
                   <div class="bg-error text-white p-4 rounded-lg text-center">
@@ -88,7 +88,7 @@
         </div>
 
         <div>
-          <h3 class="text-xl font-semibold mb-4 text-neutral-black dark:text-neutral-white">Props</h3>
+          <h3 class="text-xl font-semibold mb-4 text-[var(--text-strong)]">Props</h3>
           <ShowcaseCodeBlock>
 interface Props {
   size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
@@ -103,14 +103,14 @@ interface Props {
     <ShowcaseSection title="Grid - Système de Grille">
       <div class="space-y-8">
         <div>
-          <h3 class="text-xl font-semibold mb-4 text-neutral-black dark:text-neutral-white">Colonnes fixes</h3>
-          <p class="text-sm text-neutral-dark dark:text-neutral-medium mb-4">
+          <h3 class="text-xl font-semibold mb-4 text-[var(--text-strong)]">Colonnes fixes</h3>
+          <p class="text-sm text-[var(--text-base)] mb-4">
             💡 Les bordures néon oranges visualisent les grilles
           </p>
 
           <!-- Grid 3 colonnes -->
           <div class="mb-6">
-            <p class="text-sm font-medium mb-3 text-neutral-dark dark:text-neutral-medium">cols=3 gap="md" (défaut)</p>
+            <p class="text-sm font-medium mb-3 text-[var(--text-base)]">cols=3 gap="md" (défaut)</p>
             <ShowcaseLayoutDemo color="accent" variant="neon">
               <LayoutGrid :cols="3" gap="md">
                 <div class="bg-primary text-white p-4 rounded-lg text-center">Col 1</div>
@@ -125,7 +125,7 @@ interface Props {
 
           <!-- Grid 4 colonnes -->
           <div class="mb-6">
-            <p class="text-sm font-medium mb-3 text-neutral-dark dark:text-neutral-medium">cols=4 gap="lg"</p>
+            <p class="text-sm font-medium mb-3 text-[var(--text-base)]">cols=4 gap="lg"</p>
             <ShowcaseLayoutDemo color="accent" variant="neon">
               <LayoutGrid :cols="4" gap="lg">
                 <div class="bg-secondary text-white p-4 rounded-lg text-center">Col 1</div>
@@ -138,7 +138,7 @@ interface Props {
 
           <!-- Grid 2 colonnes -->
           <div>
-            <p class="text-sm font-medium mb-3 text-neutral-dark dark:text-neutral-medium">cols=2 gap="sm"</p>
+            <p class="text-sm font-medium mb-3 text-[var(--text-base)]">cols=2 gap="sm"</p>
             <ShowcaseLayoutDemo color="accent" variant="neon">
               <LayoutGrid :cols="2" gap="sm">
                 <div class="bg-accent text-white p-4 rounded-lg text-center">Col 1</div>
@@ -149,8 +149,8 @@ interface Props {
         </div>
 
         <div>
-          <h3 class="text-xl font-semibold mb-4 text-neutral-black dark:text-neutral-white">Grid Responsive</h3>
-          <p class="text-sm text-neutral-dark dark:text-neutral-medium mb-4">Redimensionne la fenêtre : mobile (1 col) → tablet (2 cols) → desktop (4 cols)</p>
+          <h3 class="text-xl font-semibold mb-4 text-[var(--text-strong)]">Grid Responsive</h3>
+          <p class="text-sm text-[var(--text-base)] mb-4">Redimensionne la fenêtre : mobile (1 col) → tablet (2 cols) → desktop (4 cols)</p>
           <ShowcaseLayoutDemo color="success" variant="gradient">
             <LayoutGrid :cols="4" gap="md" :responsive="{ sm: 1, md: 2, lg: 4 }">
               <div class="bg-success text-white p-4 rounded-lg text-center">Item 1</div>
@@ -162,7 +162,7 @@ interface Props {
         </div>
 
         <div>
-          <h3 class="text-xl font-semibold mb-4 text-neutral-black dark:text-neutral-white">Props</h3>
+          <h3 class="text-xl font-semibold mb-4 text-[var(--text-strong)]">Props</h3>
           <ShowcaseCodeBlock>
 interface Props {
   cols?: 1 | 2 | 3 | 4 | 6 | 12; // Nombre de colonnes
@@ -182,14 +182,14 @@ interface Props {
     <ShowcaseSection title="Stack - Empilement Flex">
       <div class="space-y-8">
         <div>
-          <h3 class="text-xl font-semibold mb-4 text-neutral-black dark:text-neutral-white">Direction</h3>
-          <p class="text-sm text-neutral-dark dark:text-neutral-medium mb-4">
+          <h3 class="text-xl font-semibold mb-4 text-[var(--text-strong)]">Direction</h3>
+          <p class="text-sm text-[var(--text-base)] mb-4">
             💡 Les bordures néon vertes visualisent les stacks
           </p>
 
           <!-- Stack vertical -->
           <div class="mb-6">
-            <p class="text-sm font-medium mb-3 text-neutral-dark dark:text-neutral-medium">direction="vertical" gap="md" (défaut)</p>
+            <p class="text-sm font-medium mb-3 text-[var(--text-base)]">direction="vertical" gap="md" (défaut)</p>
             <ShowcaseLayoutDemo color="success" variant="neon">
               <LayoutStack direction="vertical" gap="md">
                 <div class="bg-primary text-white p-4 rounded-lg">Item 1 - Vertical</div>
@@ -201,7 +201,7 @@ interface Props {
 
           <!-- Stack horizontal -->
           <div>
-            <p class="text-sm font-medium mb-3 text-neutral-dark dark:text-neutral-medium">direction="horizontal" gap="sm"</p>
+            <p class="text-sm font-medium mb-3 text-[var(--text-base)]">direction="horizontal" gap="sm"</p>
             <ShowcaseLayoutDemo color="success" variant="neon">
               <LayoutStack direction="horizontal" gap="sm">
                 <div class="bg-secondary text-white p-4 rounded-lg flex-1">Item 1</div>
@@ -213,12 +213,12 @@ interface Props {
         </div>
 
         <div>
-          <h3 class="text-xl font-semibold mb-4 text-neutral-black dark:text-neutral-white">Alignment</h3>
+          <h3 class="text-xl font-semibold mb-4 text-[var(--text-strong)]">Alignment</h3>
 
           <!-- Stack align center -->
           <div class="mb-6">
-            <p class="text-sm font-medium mb-3 text-neutral-dark dark:text-neutral-medium">align="center" justify="center"</p>
-            <div class="bg-neutral-50 dark:bg-neutral-dark rounded-lg p-6">
+            <p class="text-sm font-medium mb-3 text-[var(--text-base)]">align="center" justify="center"</p>
+            <div class="bg-[var(--bg-subtle)] rounded-lg p-6">
               <ShowcaseLayoutDemo color="info" variant="dashed">
                 <LayoutStack direction="vertical" gap="md" align="center" justify="center">
                   <div class="bg-accent text-white p-4 rounded-lg">Centré horizontalement</div>
@@ -230,7 +230,7 @@ interface Props {
 
           <!-- Stack justify between -->
           <div>
-            <p class="text-sm font-medium mb-3 text-neutral-dark dark:text-neutral-medium">horizontal justify="between"</p>
+            <p class="text-sm font-medium mb-3 text-[var(--text-base)]">horizontal justify="between"</p>
             <ShowcaseLayoutDemo color="success" variant="dashed">
               <LayoutStack direction="horizontal" gap="none" justify="between">
                 <div class="bg-success text-white p-4 rounded-lg">Gauche</div>
@@ -242,7 +242,7 @@ interface Props {
         </div>
 
         <div>
-          <h3 class="text-xl font-semibold mb-4 text-neutral-black dark:text-neutral-white">Props</h3>
+          <h3 class="text-xl font-semibold mb-4 text-[var(--text-strong)]">Props</h3>
           <ShowcaseCodeBlock>
 interface Props {
   direction?: 'vertical' | 'horizontal';
@@ -259,14 +259,14 @@ interface Props {
     <ShowcaseSection title="SplitPane - Layout Sidebar">
       <div class="space-y-8">
         <div>
-          <h3 class="text-xl font-semibold mb-4 text-neutral-black dark:text-neutral-white">Ratios de colonnes</h3>
-          <p class="text-sm text-neutral-dark dark:text-neutral-medium mb-4">
+          <h3 class="text-xl font-semibold mb-4 text-[var(--text-strong)]">Ratios de colonnes</h3>
+          <p class="text-sm text-[var(--text-base)] mb-4">
             💡 Les bordures néon rouges visualisent les SplitPanes
           </p>
 
           <!-- SplitPane 3/9 -->
           <div class="mb-6">
-            <p class="text-sm font-medium mb-3 text-neutral-dark dark:text-neutral-medium">leftWidth=3 gap="md" (3/9 split)</p>
+            <p class="text-sm font-medium mb-3 text-[var(--text-base)]">leftWidth=3 gap="md" (3/9 split)</p>
             <ShowcaseLayoutDemo color="error" variant="neon">
               <LayoutSplitPane :leftWidth="3" gap="md">
                 <template #left>
@@ -276,9 +276,9 @@ interface Props {
                   </div>
                 </template>
                 <template #right>
-                  <div class="bg-neutral-50 dark:bg-neutral-dark p-6 rounded-lg min-h-[200px]">
-                    <p class="font-semibold text-neutral-black dark:text-neutral-white mb-2">Contenu principal (9 cols)</p>
-                    <p class="text-neutral-dark dark:text-neutral-medium">Zone principale</p>
+                  <div class="bg-[var(--bg-subtle)] p-6 rounded-lg min-h-[200px]">
+                    <p class="font-semibold text-[var(--text-strong)] mb-2">Contenu principal (9 cols)</p>
+                    <p class="text-[var(--text-base)]">Zone principale</p>
                   </div>
                 </template>
               </LayoutSplitPane>
@@ -287,7 +287,7 @@ interface Props {
 
           <!-- SplitPane 4/8 -->
           <div class="mb-6">
-            <p class="text-sm font-medium mb-3 text-neutral-dark dark:text-neutral-medium">leftWidth=4 gap="lg" (4/8 split)</p>
+            <p class="text-sm font-medium mb-3 text-[var(--text-base)]">leftWidth=4 gap="lg" (4/8 split)</p>
             <ShowcaseLayoutDemo color="error" variant="neon">
               <LayoutSplitPane :leftWidth="4" gap="lg">
                 <template #left>
@@ -297,9 +297,9 @@ interface Props {
                   </div>
                 </template>
                 <template #right>
-                  <div class="bg-neutral-50 dark:bg-neutral-dark p-6 rounded-lg min-h-[200px]">
-                    <p class="font-semibold text-neutral-black dark:text-neutral-white mb-2">Contenu principal (8 cols)</p>
-                    <p class="text-neutral-dark dark:text-neutral-medium">Zone restante</p>
+                  <div class="bg-[var(--bg-subtle)] p-6 rounded-lg min-h-[200px]">
+                    <p class="font-semibold text-[var(--text-strong)] mb-2">Contenu principal (8 cols)</p>
+                    <p class="text-[var(--text-base)]">Zone restante</p>
                   </div>
                 </template>
               </LayoutSplitPane>
@@ -308,7 +308,7 @@ interface Props {
 
           <!-- SplitPane 2/10 -->
           <div>
-            <p class="text-sm font-medium mb-3 text-neutral-dark dark:text-neutral-medium">leftWidth=2 gap="sm" (2/10 split)</p>
+            <p class="text-sm font-medium mb-3 text-[var(--text-base)]">leftWidth=2 gap="sm" (2/10 split)</p>
             <ShowcaseLayoutDemo color="error" variant="neon">
               <LayoutSplitPane :leftWidth="2" gap="sm">
                 <template #left>
@@ -318,8 +318,8 @@ interface Props {
                   </div>
                 </template>
                 <template #right>
-                  <div class="bg-neutral-50 dark:bg-neutral-dark p-6 rounded-lg min-h-[200px]">
-                    <p class="font-semibold text-neutral-black dark:text-neutral-white mb-2">Contenu principal (10 cols)</p>
+                  <div class="bg-[var(--bg-subtle)] p-6 rounded-lg min-h-[200px]">
+                    <p class="font-semibold text-[var(--text-strong)] mb-2">Contenu principal (10 cols)</p>
                     <p class="text-neutral-dark dark:text-neutral-medium">Maximum d'espace</p>
                   </div>
                 </template>
@@ -329,8 +329,8 @@ interface Props {
         </div>
 
         <div>
-          <h3 class="text-xl font-semibold mb-4 text-neutral-black dark:text-neutral-white">Sidebar Collapsible</h3>
-          <p class="text-sm text-neutral-dark dark:text-neutral-medium mb-4">Redimensionne la fenêtre : la sidebar disparaît sur mobile</p>
+          <h3 class="text-xl font-semibold mb-4 text-[var(--text-strong)]">Sidebar Collapsible</h3>
+          <p class="text-sm text-[var(--text-base)] mb-4">Redimensionne la fenêtre : la sidebar disparaît sur mobile</p>
           <ShowcaseLayoutDemo color="warning" variant="gradient">
             <LayoutSplitPane :leftWidth="3" gap="md" :collapsible="true">
               <template #left>
@@ -350,7 +350,7 @@ interface Props {
         </div>
 
         <div>
-          <h3 class="text-xl font-semibold mb-4 text-neutral-black dark:text-neutral-white">Props</h3>
+          <h3 class="text-xl font-semibold mb-4 text-[var(--text-strong)]">Props</h3>
           <ShowcaseCodeBlock>
 interface Props {
   leftWidth?: 2 | 3 | 4; // Colonnes sidebar (sur 12)
@@ -369,7 +369,7 @@ interface Props {
 
     <!-- EXEMPLE COMBINÉ -->
     <ShowcaseSection title="Exemple Combiné - Dashboard Layout">
-      <p class="text-sm text-neutral-dark dark:text-neutral-medium mb-4">
+      <p class="text-sm text-[var(--text-base)] mb-4">
         💡 Exemple réel combinant SplitPane + Stack + Grid avec bordure gradient multicolore
       </p>
       <ShowcaseLayoutDemo color="primary" variant="gradient">
@@ -387,8 +387,8 @@ interface Props {
           </template>
           <template #right>
             <LayoutStack direction="vertical" gap="md">
-              <div class="bg-white dark:bg-neutral-medium p-6 rounded-lg shadow">
-                <h3 class="font-semibold text-neutral-black dark:text-neutral-white mb-4">Stats Grid</h3>
+              <div class="bg-[var(--bg-base)] p-6 rounded-lg shadow">
+                <h3 class="font-semibold text-[var(--text-strong)] mb-4">Stats Grid</h3>
                 <LayoutGrid :cols="3" gap="md">
                   <div class="bg-success text-white p-4 rounded text-center">
                     <p class="text-2xl font-bold">2.4k</p>
@@ -405,12 +405,12 @@ interface Props {
                 </LayoutGrid>
               </div>
 
-              <div class="bg-white dark:bg-neutral-medium p-6 rounded-lg shadow">
-                <h3 class="font-semibold text-neutral-black dark:text-neutral-white mb-4">Recent Activity</h3>
+              <div class="bg-[var(--bg-base)] p-6 rounded-lg shadow">
+                <h3 class="font-semibold text-[var(--text-strong)] mb-4">Recent Activity</h3>
                 <LayoutStack direction="vertical" gap="sm">
-                  <div class="bg-neutral-50 dark:bg-neutral-dark p-3 rounded">User John signed up</div>
-                  <div class="bg-neutral-50 dark:bg-neutral-dark p-3 rounded">New order #1234</div>
-                  <div class="bg-neutral-50 dark:bg-neutral-dark p-3 rounded">Payment received</div>
+                  <div class="bg-[var(--bg-subtle)] p-3 rounded">User John signed up</div>
+                  <div class="bg-[var(--bg-subtle)] p-3 rounded">New order #1234</div>
+                  <div class="bg-[var(--bg-subtle)] p-3 rounded">Payment received</div>
                 </LayoutStack>
               </div>
             </LayoutStack>
