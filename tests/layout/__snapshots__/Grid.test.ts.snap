@@ -1,0 +1,66 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Grid > snapshots > matches snapshot - 3 cols default 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                          GRID                               │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ┌──────────┬──────────┬──────────┐                   │  │
+    │  │  │  Col 1   │  Col 2   │  Col 3   │  ← grid-cols-{n}  │  │
+    │  │  │          │          │          │                   │  │
+    │  │  ├──────────┼──────────┼──────────┤  ← gap-{size}     │  │
+    │  │  │  Col 4   │  Col 5   │  Col 6   │                   │  │
+    │  │  └──────────┴──────────┴──────────┘                   │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • cols: 1-12 - Nombre de colonnes desktop                │
+    │    • gap: sm | md | lg | xl - Espacement                    │
+    │    • responsive: {sm?, md?, lg?} - Colonnes par breakpoint  │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Items de la grille                            │
+    │                                                             │
+    │  Events: Aucun (wrapper passif)                             │
+    │                                                             │
+    │  Responsive: mobile 1 col → tablet → desktop cols           │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div class="grid grid-cols-3 gap-6">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+</div>"
+`;
+
+exports[`Grid > snapshots > matches snapshot - responsive 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                          GRID                               │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ┌──────────┬──────────┬──────────┐                   │  │
+    │  │  │  Col 1   │  Col 2   │  Col 3   │  ← grid-cols-{n}  │  │
+    │  │  │          │          │          │                   │  │
+    │  │  ├──────────┼──────────┼──────────┤  ← gap-{size}     │  │
+    │  │  │  Col 4   │  Col 5   │  Col 6   │                   │  │
+    │  │  └──────────┴──────────┴──────────┘                   │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • cols: 1-12 - Nombre de colonnes desktop                │
+    │    • gap: sm | md | lg | xl - Espacement                    │
+    │    • responsive: {sm?, md?, lg?} - Colonnes par breakpoint  │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Items de la grille                            │
+    │                                                             │
+    │  Events: Aucun (wrapper passif)                             │
+    │                                                             │
+    │  Responsive: mobile 1 col → tablet → desktop cols           │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div class="grid grid-cols-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+  <div>A</div>
+  <div>B</div>
+</div>"
+`;

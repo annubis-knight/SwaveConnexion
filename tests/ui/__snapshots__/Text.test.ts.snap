@@ -1,0 +1,82 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Text > snapshots > matches snapshot - large light centered 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                          TEXT                               │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │                                                       │  │
+    │  │  <p|span> [slot: contenu texte] </p|span>             │  │
+    │  │                                                       │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • as: p | span - Balise HTML à rendre                    │
+    │    • size: small | large - Taille du texte                  │
+    │    • color: dark | light | primary - Couleur                │
+    │    • align: left | center | right - Alignement              │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu du texte                              │
+    │                                                             │
+    │  Events: Aucun (composant de présentation pure)             │
+    │                                                             │
+    │  Note: Styles via _typography.css (classes utilitaires)     │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<p class="text-large text-light text-center">Large centered text</p>"
+`;
+
+exports[`Text > snapshots > matches snapshot - paragraph default 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                          TEXT                               │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │                                                       │  │
+    │  │  <p|span> [slot: contenu texte] </p|span>             │  │
+    │  │                                                       │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • as: p | span - Balise HTML à rendre                    │
+    │    • size: small | large - Taille du texte                  │
+    │    • color: dark | light | primary - Couleur                │
+    │    • align: left | center | right - Alignement              │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu du texte                              │
+    │                                                             │
+    │  Events: Aucun (composant de présentation pure)             │
+    │                                                             │
+    │  Note: Styles via _typography.css (classes utilitaires)     │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<p class="">Default paragraph text.</p>"
+`;
+
+exports[`Text > snapshots > matches snapshot - span small 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                          TEXT                               │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │                                                       │  │
+    │  │  <p|span> [slot: contenu texte] </p|span>             │  │
+    │  │                                                       │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • as: p | span - Balise HTML à rendre                    │
+    │    • size: small | large - Taille du texte                  │
+    │    • color: dark | light | primary - Couleur                │
+    │    • align: left | center | right - Alignement              │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu du texte                              │
+    │                                                             │
+    │  Events: Aucun (composant de présentation pure)             │
+    │                                                             │
+    │  Note: Styles via _typography.css (classes utilitaires)     │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<span class="text-small">Small span</span>"
+`;

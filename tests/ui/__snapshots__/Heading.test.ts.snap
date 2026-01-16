@@ -1,0 +1,79 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Heading > snapshots > matches snapshot - h1 centered light 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                        HEADING                              │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │                                                       │  │
+    │  │  <h1-h6> [slot: contenu du titre] </h1-h6>            │  │
+    │  │                                                       │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • level: 1 | 2 | 3 | 4 | 5 | 6 - Niveau du heading      │
+    │    • color: dark | light | primary - Couleur               │
+    │    • align: left | center | right - Alignement             │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu du heading                            │
+    │                                                             │
+    │  Events: Aucun (composant de présentation pure)             │
+    │                                                             │
+    │  Note: Styles via _typography.css (h1-h6 globaux)           │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<h1 class="text-light text-center">Main Title</h1>"
+`;
+
+exports[`Heading > snapshots > matches snapshot - h2 default (no props) 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                        HEADING                              │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │                                                       │  │
+    │  │  <h1-h6> [slot: contenu du titre] </h1-h6>            │  │
+    │  │                                                       │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • level: 1 | 2 | 3 | 4 | 5 | 6 - Niveau du heading      │
+    │    • color: dark | light | primary - Couleur               │
+    │    • align: left | center | right - Alignement             │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu du heading                            │
+    │                                                             │
+    │  Events: Aucun (composant de présentation pure)             │
+    │                                                             │
+    │  Note: Styles via _typography.css (h1-h6 globaux)           │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<h2 class="">Default Heading</h2>"
+`;
+
+exports[`Heading > snapshots > matches snapshot - h3 primary 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                        HEADING                              │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │                                                       │  │
+    │  │  <h1-h6> [slot: contenu du titre] </h1-h6>            │  │
+    │  │                                                       │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • level: 1 | 2 | 3 | 4 | 5 | 6 - Niveau du heading      │
+    │    • color: dark | light | primary - Couleur               │
+    │    • align: left | center | right - Alignement             │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu du heading                            │
+    │                                                             │
+    │  Events: Aucun (composant de présentation pure)             │
+    │                                                             │
+    │  Note: Styles via _typography.css (h1-h6 globaux)           │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<h3 class="text-primary">Section Title</h3>"
+`;

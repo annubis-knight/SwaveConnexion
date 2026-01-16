@@ -1,0 +1,61 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Container > snapshots > matches snapshot - default 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                       CONTAINER                             │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │ ←─ padding-x ─→   ←─── max-w-{size} ───→   ←─ px ─→  │  │
+    │  │  ┌─────────────────────────────────────────────────┐  │  │
+    │  │  │                                                 │  │  │
+    │  │  │  [slot: default] ← contenu centré               │  │  │
+    │  │  │                                                 │  │  │
+    │  │  └─────────────────────────────────────────────────┘  │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • size: sm|md|lg|xl|2xl|full - Max-width                 │
+    │    • padding: boolean - Padding horizontal (px-6 md:px-8)   │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu du container                          │
+    │                                                             │
+    │  Events: Aucun (wrapper passif)                             │
+    │                                                             │
+    │  Sizes: sm=640px, md=768px, lg=1024px, xl=1280px, 2xl=1536px│
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div data-v-dfc73617="" class="w-full container-center max-w-full px-6 md:px-8">
+  <p>Container content</p>
+</div>"
+`;
+
+exports[`Container > snapshots > matches snapshot - lg without padding 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                       CONTAINER                             │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │ ←─ padding-x ─→   ←─── max-w-{size} ───→   ←─ px ─→  │  │
+    │  │  ┌─────────────────────────────────────────────────┐  │  │
+    │  │  │                                                 │  │  │
+    │  │  │  [slot: default] ← contenu centré               │  │  │
+    │  │  │                                                 │  │  │
+    │  │  └─────────────────────────────────────────────────┘  │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • size: sm|md|lg|xl|2xl|full - Max-width                 │
+    │    • padding: boolean - Padding horizontal (px-6 md:px-8)   │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu du container                          │
+    │                                                             │
+    │  Events: Aucun (wrapper passif)                             │
+    │                                                             │
+    │  Sizes: sm=640px, md=768px, lg=1024px, xl=1280px, 2xl=1536px│
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div data-v-dfc73617="" class="w-full container-center max-w-lg">
+  <p>No padding</p>
+</div>"
+`;

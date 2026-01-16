@@ -1,0 +1,76 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button > snapshots > matches snapshot - disabled 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                        BUTTON                               │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ╭───────────────────────────────────╮                │  │
+    │  │  │  [slot: texte/icône]             │  ← button.btn   │  │
+    │  │  ╰───────────────────────────────────╯                │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • variant: primary|secondary|accent|outline|outline-light│
+    │    • size: sm | md | lg                                     │
+    │    • disabled: boolean                                      │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu du bouton (texte, icône)              │
+    │                                                             │
+    │  Events:                                                    │
+    │    • click: MouseEvent - Émis au clic                       │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<button data-v-71ffbd51="" class="btn btn--primary btn--md btn--disabled" disabled="">Disabled</button>"
+`;
+
+exports[`Button > snapshots > matches snapshot - outline lg 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                        BUTTON                               │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ╭───────────────────────────────────╮                │  │
+    │  │  │  [slot: texte/icône]             │  ← button.btn   │  │
+    │  │  ╰───────────────────────────────────╯                │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • variant: primary|secondary|accent|outline|outline-light│
+    │    • size: sm | md | lg                                     │
+    │    • disabled: boolean                                      │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu du bouton (texte, icône)              │
+    │                                                             │
+    │  Events:                                                    │
+    │    • click: MouseEvent - Émis au clic                       │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<button data-v-71ffbd51="" class="btn btn--outline btn--lg">Outline Large</button>"
+`;
+
+exports[`Button > snapshots > matches snapshot - primary md 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                        BUTTON                               │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ╭───────────────────────────────────╮                │  │
+    │  │  │  [slot: texte/icône]             │  ← button.btn   │  │
+    │  │  ╰───────────────────────────────────╯                │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • variant: primary|secondary|accent|outline|outline-light│
+    │    • size: sm | md | lg                                     │
+    │    • disabled: boolean                                      │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu du bouton (texte, icône)              │
+    │                                                             │
+    │  Events:                                                    │
+    │    • click: MouseEvent - Émis au clic                       │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<button data-v-71ffbd51="" class="btn btn--primary btn--md">Primary Button</button>"
+`;

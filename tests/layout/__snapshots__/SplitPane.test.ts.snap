@@ -1,0 +1,81 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SplitPane > snapshots > matches snapshot - collapsible fullHeight 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                       SPLITPANE                             │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ┌─────────────┬─────────────────────────────────┐    │  │
+    │  │  │             │                                 │    │  │
+    │  │  │ [slot:left] │        [slot:right]             │    │  │
+    │  │  │   Sidebar   │        Main Content             │    │  │
+    │  │  │ col-span-N  │        col-span-(12-N)          │    │  │
+    │  │  │             │                                 │    │  │
+    │  │  └─────────────┴─────────────────────────────────┘    │  │
+    │  │  ← leftWidth →   ←───────── gap ─────────→            │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • leftWidth: 1-11 - Largeur sidebar (sur 12 colonnes)    │
+    │    • gap: none | sm | md | lg | xl - Espacement             │
+    │    • collapsible: boolean - Sidebar cachée sur mobile       │
+    │    • fullHeight: boolean - min-h-screen                     │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • left: Contenu sidebar (requis)                         │
+    │    • right: Contenu principal (requis)                      │
+    │                                                             │
+    │  Events: Aucun (wrapper passif)                             │
+    │                                                             │
+    │  Responsive: mobile stack vertical, desktop side-by-side    │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 min-h-screen">
+  <div class="w-full lg:col-span-4 lg:block hidden">
+    <aside>Menu</aside>
+  </div>
+  <div class="w-full lg:col-span-8">
+    <article>Article</article>
+  </div>
+</div>"
+`;
+
+exports[`SplitPane > snapshots > matches snapshot - default 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                       SPLITPANE                             │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ┌─────────────┬─────────────────────────────────┐    │  │
+    │  │  │             │                                 │    │  │
+    │  │  │ [slot:left] │        [slot:right]             │    │  │
+    │  │  │   Sidebar   │        Main Content             │    │  │
+    │  │  │ col-span-N  │        col-span-(12-N)          │    │  │
+    │  │  │             │                                 │    │  │
+    │  │  └─────────────┴─────────────────────────────────┘    │  │
+    │  │  ← leftWidth →   ←───────── gap ─────────→            │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • leftWidth: 1-11 - Largeur sidebar (sur 12 colonnes)    │
+    │    • gap: none | sm | md | lg | xl - Espacement             │
+    │    • collapsible: boolean - Sidebar cachée sur mobile       │
+    │    • fullHeight: boolean - min-h-screen                     │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • left: Contenu sidebar (requis)                         │
+    │    • right: Contenu principal (requis)                      │
+    │                                                             │
+    │  Events: Aucun (wrapper passif)                             │
+    │                                                             │
+    │  Responsive: mobile stack vertical, desktop side-by-side    │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+  <div class="w-full lg:col-span-3">
+    <nav>Sidebar</nav>
+  </div>
+  <div class="w-full lg:col-span-9">
+    <main>Main content</main>
+  </div>
+</div>"
+`;

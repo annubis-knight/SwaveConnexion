@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(npx kill-port:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(npm run build:*)",
+      "Bash(git restore:*)",
+      "Bash(cat:*)",
+      "Bash(git rm:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(git push:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(timeout 180 npm run build:*)",
+      "Bash(npm run test:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npx vitest:*)",
+      "Bash(xxd:*)",
+      "Bash(find:*)",
+      "Bash(timeout 30 npm run dev:*)",
+      "Bash(npx vue-tsc --noEmit)",
+      "Bash(dir \"c:\\\\Users\\\\arnau\\\\Documents\\\\Pro\\\\DevWeb\\\\Projets\\\\SwaveConnexion\\\\app\\\\assets\\\\images\"\")",
+      "Bash(node app/components/generate-inventory.js:*)",
+      "Bash(timeout 15 npm run dev:*)",
+      "Skill(create-ui-component)",
+      "Skill(create-ui-component:*)",
+      "Bash(node:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nrefactor: rename project from SwaveConnexion to DesignSys_Vue_Propulsite\n\n- Rename package.json name to DesignSys_Vue_Propulsite\n- Update localStorage keys \\(propulsite-color-mode, propulsite-theme\\)\n- Update branding in Header, Footer, Hero components \\(logo P + Propulsite\\)\n- Update SEO meta titles in all pages\n- Update documentation \\(CLAUDE.md, README.md, PDM, PRD, CDC\\)\n- Update CSS headers comments\n- Generalize client-specific content\n- Update git remote to new repository URL\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(curl:*)",
+      "Bash(grep:*)",
+      "Bash(unzip:*)",
+      "Bash(git init:*)",
+      "Bash(git config:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,56 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Input > snapshots > matches snapshot - basic input 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                         INPUT                               │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  Label (optionnel)                                    │  │
+    │  │  ┌─────────────────────────────────────────────────┐  │  │
+    │  │  │  [placeholder / valeur saisie]                  │  │  │
+    │  │  └─────────────────────────────────────────────────┘  │  │
+    │  │  ⚠ Message d'erreur (si error)                        │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • label: string - Libellé du champ                       │
+    │    • type: string - Type HTML (text, email, password...)    │
+    │    • modelValue: string - Valeur v-model                    │
+    │    • placeholder: string - Texte placeholder                │
+    │    • error: string - Message d'erreur                       │
+    │                                                             │
+    │  Events:                                                    │
+    │    • update:modelValue: string - Émis à chaque saisie       │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div data-v-3f2493a6="" class="input-group">
+  <!--v-if--><input data-v-3f2493a6="" id="v-0" class="input-group__input" type="text" placeholder="Enter text" value="">
+  <!--v-if-->
+</div>"
+`;
+
+exports[`Input > snapshots > matches snapshot - with label and error 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                         INPUT                               │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  Label (optionnel)                                    │  │
+    │  │  ┌─────────────────────────────────────────────────┐  │  │
+    │  │  │  [placeholder / valeur saisie]                  │  │  │
+    │  │  └─────────────────────────────────────────────────┘  │  │
+    │  │  ⚠ Message d'erreur (si error)                        │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • label: string - Libellé du champ                       │
+    │    • type: string - Type HTML (text, email, password...)    │
+    │    • modelValue: string - Valeur v-model                    │
+    │    • placeholder: string - Texte placeholder                │
+    │    • error: string - Message d'erreur                       │
+    │                                                             │
+    │  Events:                                                    │
+    │    • update:modelValue: string - Émis à chaque saisie       │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div data-v-3f2493a6="" class="input-group"><label data-v-3f2493a6="" for="v-0" class="input-group__label">Email</label><input data-v-3f2493a6="" id="v-0" class="input-group__input input-group__input--error" type="email" placeholder="email@example.com" value=""><span data-v-3f2493a6="" class="input-group__error">Format invalide</span></div>"
+`;

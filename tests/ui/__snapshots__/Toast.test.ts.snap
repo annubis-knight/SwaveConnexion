@@ -1,0 +1,82 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Toast > snapshots > matches snapshot - error without close button 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                         TOAST                               │
+    │                                                             │
+    │  Position: fixed top-right                                  │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ╭───────────────────────────────────────────────╮    │  │
+    │  │  │ ✓ │ Titre                                │ ✕ │    │  │
+    │  │  │   │ [slot: message optionnel]            │   │    │  │
+    │  │  ╰───────────────────────────────────────────────╯    │  │
+    │  │    ↑    ↑ content                            ↑ close  │  │
+    │  │   icon                                                │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • isOpen: boolean - Contrôle l'affichage                 │
+    │    • variant: success | warning | error | info              │
+    │    • title: string (requis) - Titre                         │
+    │    • duration: number - Auto-dismiss (ms), 0 = infini       │
+    │    • closable: boolean - Affiche bouton fermer              │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Message optionnel                             │
+    │                                                             │
+    │  Events:                                                    │
+    │    • close: Émis à la fermeture (auto ou manuelle)          │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<transition-stub data-v-abd843ac="" name="toast-slide" appear="false" persisted="false" css="true">
+  <div data-v-abd843ac="" class="toast toast--error" role="alert">
+    <div data-v-abd843ac="" class="toast__icon">✕</div>
+    <div data-v-abd843ac="" class="toast__content">
+      <div data-v-abd843ac="" class="toast__title">Error</div>
+      <!--v-if-->
+    </div>
+    <!--v-if-->
+  </div>
+</transition-stub>"
+`;
+
+exports[`Toast > snapshots > matches snapshot - success with message 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                         TOAST                               │
+    │                                                             │
+    │  Position: fixed top-right                                  │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ╭───────────────────────────────────────────────╮    │  │
+    │  │  │ ✓ │ Titre                                │ ✕ │    │  │
+    │  │  │   │ [slot: message optionnel]            │   │    │  │
+    │  │  ╰───────────────────────────────────────────────╯    │  │
+    │  │    ↑    ↑ content                            ↑ close  │  │
+    │  │   icon                                                │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • isOpen: boolean - Contrôle l'affichage                 │
+    │    • variant: success | warning | error | info              │
+    │    • title: string (requis) - Titre                         │
+    │    • duration: number - Auto-dismiss (ms), 0 = infini       │
+    │    • closable: boolean - Affiche bouton fermer              │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Message optionnel                             │
+    │                                                             │
+    │  Events:                                                    │
+    │    • close: Émis à la fermeture (auto ou manuelle)          │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<transition-stub data-v-abd843ac="" name="toast-slide" appear="false" persisted="false" css="true">
+  <div data-v-abd843ac="" class="toast toast--success" role="alert">
+    <div data-v-abd843ac="" class="toast__icon">✓</div>
+    <div data-v-abd843ac="" class="toast__content">
+      <div data-v-abd843ac="" class="toast__title">Saved!</div>
+      <div data-v-abd843ac="" class="toast__message">Your changes have been saved.</div>
+    </div><button data-v-abd843ac="" class="toast__close" aria-label="Fermer"> × </button>
+  </div>
+</transition-stub>"
+`;

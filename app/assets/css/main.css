@@ -1,0 +1,33 @@
+/**
+ * MAIN.CSS - Propulsite Design System
+ *
+ * @description Point d'entrée global du design system
+ * @order Reset → Variables → Typography → Tailwind
+ *
+ * @dev L'ordre d'import est CRITIQUE
+ * @dev Reset d'abord pour uniformiser les navigateurs
+ * @dev Variables ensuite pour définir les design tokens
+ * @dev Typography pour charger les polices et styles HTML
+ * @dev Tailwind en dernier pour les utilities de layout
+ */
+
+/* 1. Reset CSS (normalisation navigateurs) */
+@import "./_reset.css";
+
+
+
+/* 2. Tailwind CSS (utilities pour layouts) */
+/* @import "tailwindcss"; */
+
+/* Ces imports permettent de de pas générer trop de class tailwind */
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+/* pas d'import preflight */
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* 3. Variables CSS (design tokens) */
+@import "./_variables.css";
+
+/* 4. Typography (polices + type scale) */
+@import "./_typography.css";

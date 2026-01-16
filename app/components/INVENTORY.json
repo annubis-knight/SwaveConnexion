@@ -1,0 +1,552 @@
+{
+  "_meta": {
+    "generated": "2026-01-16T16:36:43.121Z",
+    "totalCount": 20
+  },
+  "categories": {
+    "sections": {
+      "count": 7,
+      "components": [
+        {
+          "name": "FeaturesGrid",
+          "path": "@/components/sections/FeaturesGrid.vue",
+          "props": [
+            {
+              "name": "title",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "subtitle",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "features",
+              "type": "Feature[]",
+              "optional": false
+            },
+            {
+              "name": "cols",
+              "type": "2 | 3 | 4",
+              "optional": true,
+              "default": "3"
+            }
+          ],
+          "events": []
+        },
+        {
+          "name": "Footer",
+          "path": "@/components/sections/Footer.vue",
+          "props": [],
+          "events": [],
+          "slots": [
+            "logo"
+          ]
+        },
+        {
+          "name": "LandingAgenda",
+          "path": "@/components/sections/LandingAgenda.vue",
+          "props": [],
+          "events": []
+        },
+        {
+          "name": "LandingEvents",
+          "path": "@/components/sections/LandingEvents.vue",
+          "props": [],
+          "events": []
+        },
+        {
+          "name": "LandingFeature",
+          "path": "@/components/sections/LandingFeature.vue",
+          "props": [],
+          "events": []
+        },
+        {
+          "name": "LandingHero",
+          "path": "@/components/sections/LandingHero.vue",
+          "props": [
+            {
+              "name": "ctaText",
+              "type": "string",
+              "optional": true,
+              "default": "RÉSERVER UN COURS"
+            }
+          ],
+          "events": [
+            "cta-click"
+          ]
+        },
+        {
+          "name": "SectionCTA",
+          "path": "@/components/sections/SectionCTA.vue",
+          "props": [
+            {
+              "name": "title",
+              "type": "string",
+              "optional": true,
+              "default": "SWAVE CONNECTION ÇA BOUGE!"
+            },
+            {
+              "name": "subtitle",
+              "type": "string",
+              "optional": true,
+              "default": "NE MANQUEZ PAS NOS ACTUS"
+            },
+            {
+              "name": "inputPlaceholder",
+              "type": "string",
+              "optional": true,
+              "default": "Votre adresse mail"
+            },
+            {
+              "name": "buttonText",
+              "type": "string",
+              "optional": true,
+              "default": "SABONNER"
+            },
+            {
+              "name": "backgroundImage",
+              "type": "string",
+              "optional": true,
+              "default": "ctaBackground"
+            }
+          ],
+          "events": [
+            "submit"
+          ]
+        }
+      ]
+    },
+    "layout": {
+      "count": 7,
+      "components": [
+        {
+          "name": "Container",
+          "path": "@/components/layout/Container.vue",
+          "props": [
+            {
+              "name": "size",
+              "type": "'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full'",
+              "optional": true,
+              "default": "full"
+            },
+            {
+              "name": "padding",
+              "type": "boolean",
+              "optional": true,
+              "default": "true"
+            }
+          ],
+          "events": [],
+          "slots": [
+            "default"
+          ]
+        },
+        {
+          "name": "ContainerFlex",
+          "path": "@/components/layout/ContainerFlex.vue",
+          "props": [
+            {
+              "name": "direction",
+              "type": "'vertical' | 'horizontal'",
+              "optional": true,
+              "default": "vertical"
+            },
+            {
+              "name": "gap",
+              "type": "'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'",
+              "optional": true,
+              "default": "md"
+            },
+            {
+              "name": "align",
+              "type": "'start' | 'center' | 'end' | 'stretch'",
+              "optional": true,
+              "default": "stretch"
+            },
+            {
+              "name": "justify",
+              "type": "'start' | 'center' | 'end' | 'between' | 'around'",
+              "optional": true,
+              "default": "start"
+            },
+            {
+              "name": "wrap",
+              "type": "boolean",
+              "optional": true,
+              "default": "false"
+            }
+          ],
+          "events": [],
+          "slots": [
+            "default"
+          ]
+        },
+        {
+          "name": "ContainerMax",
+          "path": "@/components/layout/ContainerMax.vue",
+          "props": [
+            {
+              "name": "maxWidth",
+              "type": "string",
+              "optional": true,
+              "default": "1300px"
+            }
+          ],
+          "events": [],
+          "slots": [
+            "default"
+          ]
+        },
+        {
+          "name": "Grid",
+          "path": "@/components/layout/Grid.vue",
+          "props": [
+            {
+              "name": "cols",
+              "type": "1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12",
+              "optional": true,
+              "default": "3"
+            },
+            {
+              "name": "gap",
+              "type": "'sm' | 'md' | 'lg' | 'xl'",
+              "optional": true,
+              "default": "md"
+            },
+            {
+              "name": "responsive",
+              "type": "{",
+              "optional": true
+            },
+            {
+              "name": "sm",
+              "type": "number",
+              "optional": true
+            },
+            {
+              "name": "md",
+              "type": "number",
+              "optional": true
+            },
+            {
+              "name": "lg",
+              "type": "number",
+              "optional": true
+            }
+          ],
+          "events": [],
+          "slots": [
+            "default"
+          ]
+        },
+        {
+          "name": "GridArea",
+          "path": "@/components/layout/GridArea.vue",
+          "props": [
+            {
+              "name": "cols",
+              "type": "number",
+              "optional": false
+            },
+            {
+              "name": "areas",
+              "type": "(string | null)[]",
+              "optional": false
+            },
+            {
+              "name": "colsLg",
+              "type": "number",
+              "optional": true
+            },
+            {
+              "name": "areasLg",
+              "type": "(string | null)[]",
+              "optional": true
+            },
+            {
+              "name": "gap",
+              "type": "'sm' | 'md' | 'lg' | 'xl'",
+              "optional": true,
+              "default": "md"
+            }
+          ],
+          "events": [],
+          "slots": [
+            "default"
+          ]
+        },
+        {
+          "name": "GridResponsive",
+          "path": "@/components/layout/GridResponsive.vue",
+          "props": [],
+          "events": [],
+          "slots": [
+            "default"
+          ]
+        },
+        {
+          "name": "SplitPane",
+          "path": "@/components/layout/SplitPane.vue",
+          "props": [
+            {
+              "name": "leftWidth",
+              "type": "1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11",
+              "optional": true,
+              "default": "3"
+            },
+            {
+              "name": "gap",
+              "type": "'none' | 'sm' | 'md' | 'lg' | 'xl'",
+              "optional": true,
+              "default": "md"
+            },
+            {
+              "name": "collapsible",
+              "type": "boolean",
+              "optional": true,
+              "default": "false"
+            },
+            {
+              "name": "fullHeight",
+              "type": "boolean",
+              "optional": true,
+              "default": "false"
+            }
+          ],
+          "events": [],
+          "slots": [
+            "left",
+            "right"
+          ]
+        }
+      ]
+    },
+    "ui": {
+      "count": 6,
+      "components": [
+        {
+          "name": "ButtonSwave",
+          "path": "@/components/ui/ButtonSwave.vue",
+          "props": [
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "optional": true,
+              "default": "false"
+            }
+          ],
+          "events": [],
+          "slots": [
+            "default"
+          ]
+        },
+        {
+          "name": "CardEvent",
+          "path": "@/components/ui/CardEvent.vue",
+          "props": [
+            {
+              "name": "day",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "month",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "subtitle",
+              "type": "string",
+              "optional": true
+            }
+          ],
+          "events": []
+        },
+        {
+          "name": "CardFeature",
+          "path": "@/components/ui/CardFeature.vue",
+          "props": [
+            {
+              "name": "image",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "imageAlt",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "href",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "format",
+              "type": "'portrait' | 'landscape'",
+              "optional": true,
+              "default": "portrait"
+            },
+            {
+              "name": "layout",
+              "type": "'outside' | 'overlay'",
+              "optional": true,
+              "default": "outside"
+            },
+            {
+              "name": "textColor",
+              "type": "'dark' | 'white'",
+              "optional": true,
+              "default": "dark"
+            }
+          ],
+          "events": [],
+          "slots": [
+            "title",
+            "description"
+          ]
+        },
+        {
+          "name": "Heading",
+          "path": "@/components/ui/Heading.vue",
+          "props": [
+            {
+              "name": "level",
+              "type": "1 | 2 | 3 | 4 | 5 | 6",
+              "optional": true,
+              "default": "2"
+            },
+            {
+              "name": "color",
+              "type": "'dark' | 'white' | 'primary'",
+              "optional": true
+            },
+            {
+              "name": "align",
+              "type": "'left' | 'center' | 'right'",
+              "optional": true
+            }
+          ],
+          "events": [],
+          "slots": [
+            "default"
+          ]
+        },
+        {
+          "name": "InputSwave",
+          "path": "@/components/ui/InputSwave.vue",
+          "props": [
+            {
+              "name": "modelValue",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "placeholder",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "type",
+              "type": "string",
+              "optional": true,
+              "default": "text"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "optional": true,
+              "default": "false"
+            }
+          ],
+          "events": []
+        },
+        {
+          "name": "Text",
+          "path": "@/components/ui/Text.vue",
+          "props": [
+            {
+              "name": "as",
+              "type": "'p' | 'span'",
+              "optional": true,
+              "default": "p"
+            },
+            {
+              "name": "font",
+              "type": "'sans' | 'display' | 'mono'",
+              "optional": true,
+              "default": "sans"
+            },
+            {
+              "name": "size",
+              "type": "'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '5xl'",
+              "optional": true,
+              "default": "base"
+            },
+            {
+              "name": "weight",
+              "type": "'extralight' | 'light' | 'regular' | 'medium' | 'semibold' | 'bold' | 'black'",
+              "optional": true,
+              "default": "regular"
+            },
+            {
+              "name": "color",
+              "type": "'dark' | 'white' | 'primary'",
+              "optional": true
+            },
+            {
+              "name": "align",
+              "type": "'left' | 'center' | 'right'",
+              "optional": true
+            },
+            {
+              "name": "transform",
+              "type": "'uppercase' | 'capitalize' | 'none'",
+              "optional": true,
+              "default": "none"
+            },
+            {
+              "name": "leading",
+              "type": "'xtratight' | 'tight' | 'snug' | 'normal' | 'relaxed' | 'loose'",
+              "optional": true,
+              "default": "normal"
+            },
+            {
+              "name": "tracking",
+              "type": "'tight' | 'normal' | 'wide'",
+              "optional": true,
+              "default": "normal"
+            },
+            {
+              "name": "maxWidth",
+              "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full'",
+              "optional": true,
+              "default": "full"
+            }
+          ],
+          "events": [],
+          "slots": [
+            "default"
+          ]
+        }
+      ]
+    }
+  }
+}

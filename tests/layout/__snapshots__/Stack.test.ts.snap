@@ -1,0 +1,62 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Stack > snapshots > matches snapshot - horizontal centered 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                         STACK                               │
+    │                                                             │
+    │  Vertical:                    Horizontal:                   │
+    │  ┌──────────────┐            ┌────┬───┬────┬───┬────┐       │
+    │  │   Item 1     │            │ 1  │gap│ 2  │gap│ 3  │       │
+    │  ├──────────────┤ ← gap      └────┴───┴────┴───┴────┘       │
+    │  │   Item 2     │                                           │
+    │  ├──────────────┤ ← gap                                     │
+    │  │   Item 3     │                                           │
+    │  └──────────────┘                                           │
+    │                                                             │
+    │  Props:                                                     │
+    │    • direction: vertical | horizontal                       │
+    │    • gap: none | xs | sm | md | lg | xl                     │
+    │    • align: start | center | end | stretch                  │
+    │    • justify: start | center | end | between | around       │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Items à empiler                               │
+    │                                                             │
+    │  Events: Aucun (wrapper passif)                             │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div class="flex flex-row gap-4 items-center justify-center"><button>1</button><button>2</button></div>"
+`;
+
+exports[`Stack > snapshots > matches snapshot - vertical default 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                         STACK                               │
+    │                                                             │
+    │  Vertical:                    Horizontal:                   │
+    │  ┌──────────────┐            ┌────┬───┬────┬───┬────┐       │
+    │  │   Item 1     │            │ 1  │gap│ 2  │gap│ 3  │       │
+    │  ├──────────────┤ ← gap      └────┴───┴────┴───┴────┘       │
+    │  │   Item 2     │                                           │
+    │  ├──────────────┤ ← gap                                     │
+    │  │   Item 3     │                                           │
+    │  └──────────────┘                                           │
+    │                                                             │
+    │  Props:                                                     │
+    │    • direction: vertical | horizontal                       │
+    │    • gap: none | xs | sm | md | lg | xl                     │
+    │    • align: start | center | end | stretch                  │
+    │    • justify: start | center | end | between | around       │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Items à empiler                               │
+    │                                                             │
+    │  Events: Aucun (wrapper passif)                             │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div class="flex flex-col gap-6 items-stretch justify-start">
+  <div>A</div>
+  <div>B</div>
+</div>"
+`;

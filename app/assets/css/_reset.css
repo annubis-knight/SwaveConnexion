@@ -1,0 +1,217 @@
+/**
+ * RESET CSS - Propulsite Design System
+ *
+ * @description Reset CSS moderne et minimal
+ * @inspiration Modern CSS Reset by Andy Bell + Normalize.css
+ * @purpose Uniformiser le rendu entre navigateurs
+ *
+ * @dev Encapsulé dans @layer base pour compatibilité Tailwind v4
+ * @dev Les utilities Tailwind (@layer utilities) auront priorité sur ce reset
+ */
+
+@layer base {
+  /* ============================================
+     BOX SIZING
+     ============================================ */
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* ============================================
+     MARGINS & PADDINGS
+     ============================================ */
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ============================================
+     DOCUMENT & BODY
+     ============================================ */
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+  }
+
+  /* ============================================
+     TYPOGRAPHIE
+     ============================================ */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+
+  /* ============================================
+     LISTES
+     ============================================ */
+
+  ul,
+  ol {
+    list-style: none;
+  }
+
+  /* ============================================
+     LIENS
+     ============================================ */
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a:not([class]) {
+    text-decoration-skip-ink: auto;
+  }
+
+  /* ============================================
+     MÉDIAS
+     ============================================ */
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ============================================
+     FORMULAIRES
+     ============================================ */
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  button {
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  input,
+  textarea {
+    background: none;
+  }
+
+  /* Remove default button styles */
+  button,
+  [type='button'],
+  [type='reset'],
+  [type='submit'] {
+    -webkit-appearance: button;
+    appearance: button;
+  }
+
+  /* Remove default input styles */
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  input[type='search'],
+  input[type='url'],
+  input[type='tel'],
+  input[type='number'],
+  textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  /* Remove spinner from number inputs */
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  /* ============================================
+     TABLES
+     ============================================ */
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  /* ============================================
+     FOCUS VISIBLE (Accessibilité)
+     ============================================ */
+
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* ============================================
+     SÉLECTION DE TEXTE
+     ============================================ */
+
+  ::selection {
+    background-color: var(--primary-light, #60a5fa);
+    color: var(--text-inverse);
+  }
+
+  ::-moz-selection {
+    background-color: var(--primary-light, #60a5fa);
+    color: var(--text-inverse);
+  }
+}
+
+/* ============================================
+   SUPPRESSION DES ANIMATIONS (Respect préférences utilisateur)
+   @dev Hors du @layer car doit s'appliquer à tout (y compris utilities)
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

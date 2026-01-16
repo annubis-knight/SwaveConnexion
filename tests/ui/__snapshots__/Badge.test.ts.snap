@@ -1,0 +1,47 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Badge > snapshots > matches snapshot - error sm 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                        BADGE                                │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ╭─────────────────────────╮                          │  │
+    │  │  │  [slot: texte/icône]   │  ← span.badge             │  │
+    │  │  ╰─────────────────────────╯                          │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • variant: primary|secondary|accent|success|warning|error│
+    │    • size: sm | md                                          │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu du badge (texte, icône)               │
+    │                                                             │
+    │  Events: Aucun (composant de présentation pure)             │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<span data-v-bba228fe="" class="badge badge--error badge--sm">Error</span>"
+`;
+
+exports[`Badge > snapshots > matches snapshot - primary md 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                        BADGE                                │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ╭─────────────────────────╮                          │  │
+    │  │  │  [slot: texte/icône]   │  ← span.badge             │  │
+    │  │  ╰─────────────────────────╯                          │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • variant: primary|secondary|accent|success|warning|error│
+    │    • size: sm | md                                          │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu du badge (texte, icône)               │
+    │                                                             │
+    │  Events: Aucun (composant de présentation pure)             │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<span data-v-bba228fe="" class="badge badge--primary badge--md">Primary Badge</span>"
+`;

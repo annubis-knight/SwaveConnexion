@@ -1,0 +1,451 @@
+/**
+ * TYPOGRAPHY - Propulsite Design System
+ *
+ * @description Polices custom, type scale et styles HTML globaux
+ * @fonts Josefin Sans (corps), Unbounded (titres/display)
+ * @scale Perfect Fourth (ratio 1.333)
+ * @base 16px (1rem)
+ *
+ * @dev Les polices sont chargées localement (performance optimale)
+ * @dev Type scale appliqué automatiquement aux éléments HTML
+ */
+
+/* ============================================
+   DÉCLARATIONS @FONT-FACE
+   ============================================ */
+
+/* Josefin Sans - Corps de texte */
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('../fonts/josefin-sans/JosefinSans-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('../fonts/josefin-sans/JosefinSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('../fonts/josefin-sans/JosefinSans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('../fonts/josefin-sans/JosefinSans-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('../fonts/josefin-sans/JosefinSans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+
+}
+
+/* Unbounded - Titres et Display
+   @dev Polices servies depuis /public/fonts/ pour preload efficace
+   @dev Le preload est défini dans nuxt.config.ts (app.head.link)
+   @dev font-display: optional → pas de FOUC, utilise le cache si dispo
+   @dev 7 weights disponibles : ExtraLight(200), Light(300), Regular(400), Medium(500), SemiBold(600), Bold(700), Black(900)
+*/
+@font-face {
+  font-family: 'Unbounded';
+  src: url('/fonts/unbounded/Unbounded-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unbounded';
+  src: url('/fonts/unbounded/Unbounded-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unbounded';
+  src: url('/fonts/unbounded/Unbounded-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unbounded';
+  src: url('/fonts/unbounded/Unbounded-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unbounded';
+  src: url('/fonts/unbounded/Unbounded-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unbounded';
+  src: url('/fonts/unbounded/Unbounded-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unbounded';
+  src: url('/fonts/unbounded/Unbounded-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+/* ============================================
+   VARIABLES TYPOGRAPHIQUES
+   ============================================ */
+
+:root {
+  /* Familles de polices */
+  --font-sans: 'Josefin Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Unbounded', var(--font-sans);
+
+
+  /* Type Scale - Basé sur multiples de 4px (cohérence grille design) */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.75rem; /* 28px */
+  --text-3xl: 2.25rem; /* 36px */
+  --text-4xl: 3rem; /* 48px */
+  --text-5xl: 4rem; /* 64px */
+  --text-6xl: 5.25rem; /* 84px */
+
+  /* Line Heights */
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* Font Weights
+     @dev Mappés sur les weights Unbounded disponibles (7 weights)
+     @dev ExtraLight(200), Light(300), Regular(400), Medium(500), SemiBold(600), Bold(700), Black(900)
+  */
+  --font-extralight: 200;
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-black: 900;
+}
+
+/* ============================================
+   STYLES HTML GLOBAUX
+   @dev Dans @layer base pour que Tailwind utilities puisse override
+   @dev Tes styles h1-h6 sont appliqués, mais mb-6 peut les écraser
+   ============================================ */
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: var(--font-regular);
+    line-height: var(--leading-normal);
+    color: var(--text-strong);
+    background-color: var(--bg-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  color: var(--text-strong);
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+}
+
+    /* Paragraphes */
+  p {
+    margin-top: 0;
+    margin-bottom: var(--space-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* Listes */
+  ul,
+  ol {
+    margin-top: 0;
+    margin-bottom: var(--space-sm);
+    padding-left: var(--space-lg);
+  }
+
+  li {
+    margin-bottom: var(--space-xs);
+  }
+
+  /* Liens */
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  a:hover {
+    color: var(--primary-dark);
+  }
+
+  a:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  /* Code */
+  code,
+  pre {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+
+  code {
+    background-color: var(--bg-subtle);
+    padding: 0.125rem 0.375rem;
+    border-radius: var(--border-radius-sm);
+    color: var(--error-dark);
+  }
+
+  pre {
+    background-color: var(--bg-code);
+    color: var(--text-code);
+    padding: var(--space-md);
+    border-radius: var(--border-radius-md);
+    overflow-x: auto;
+    margin-bottom: var(--space-md);
+  }
+
+  pre code {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+  }
+
+  /* Blockquote */
+  blockquote {
+    margin: 0 0 var(--space-md);
+    padding: var(--space-md);
+    border-left: 4px solid var(--primary);
+    background-color: var(--bg-subtle);
+    font-style: italic;
+  }
+
+  /* Strong et Em */
+  strong,
+  b {
+    font-weight: var(--font-bold);
+  }
+
+  em,
+  i {
+    font-style: italic;
+  }
+
+  /* Small */
+  small {
+    font-size: var(--text-sm);
+  }
+
+  /* Mark */
+  mark {
+    background-color: var(--accent-light);
+    color: var(--text-strong);
+    padding: 0.125rem 0.25rem;
+  }
+}
+
+
+/* --- Display (titres extra-larges) --- */
+
+/**
+ * Classe .display : style titre énorme pour Hero sections
+ * Override le comportement des headings standard (h1-h6)
+ * Utilisée avec Heading.vue : <Heading :level="1" class="display">
+ *
+ * Responsive avec clamp() :
+ *   - Min : 3rem (48px) - lisible sur mobile
+ *   - Preferred : 18vw - scale avec le viewport pour remplir la largeur
+ *   - Max : 25rem (400px) - énorme sur grands écrans
+ */
+.display {
+  font-family: var(--font-display);
+  /* font-size: clamp(3rem, 16vw, 15rem); */
+  font-size: clamp(3rem, 18cqi, 15rem);
+  font-weight: var(--font-bold);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+
+
+
+/* ============================================
+   STYLES HEADINGS - Hors @layer pour priorité sur reset Tailwind
+   @dev Tailwind v4 reset les headings avec font-size: inherit
+   @dev Ces styles doivent être appliqués APRÈS le reset
+   ============================================ */
+
+
+h1 {
+  font-size: var(--text-5xl);
+  margin-bottom: var(--space-lg);
+}
+
+h2 {
+  font-size: var(--text-4xl);
+}
+
+h3 {
+  font-size: var(--text-3xl);
+}
+
+h4 {
+  font-size: var(--text-2xl);
+}
+
+h5 {
+  font-size: var(--text-xl);
+}
+
+h6 {
+  font-size: var(--text-lg);
+}
+
+
+/* ============================================
+   CLASSES UTILITAIRES TYPOGRAPHIQUES
+   ============================================ */
+
+/**
+ * Classes réutilisables pour modifier la typographie
+ * Utilisées par les composants UI (Heading, Text) et directement dans les templates
+ *
+ * Nommage : .text-{propriété} pour cohérence et lisibilité
+ */
+
+/* --- Tailles --- */
+.text-xs {
+  font-size: var(--text-xs);
+}
+
+.text-small {
+  font-size: var(--text-sm);
+}
+
+.text-base {
+  font-size: var(--text-base);
+}
+
+.text-large {
+  font-size: var(--text-lg);
+}
+
+.text-xl {
+  font-size: var(--text-xl);
+}
+
+.text-2xl {
+  font-size: var(--text-2xl);
+}
+
+.text-3xl {
+  font-size: var(--text-3xl);
+}
+
+.text-4xl {
+  font-size: var(--text-4xl);
+}
+
+.text-5xl {
+  font-size: var(--text-5xl);
+}
+
+.text-6xl {
+  font-size: var(--text-6xl);
+}
+
+/* --- Poids --- */
+
+.text-light {
+  font-weight: var(--font-light);
+}
+
+.text-bold {
+  font-weight: var(--font-bold);
+}
+
+/* --- Couleurs --- */
+.text-dark {
+  color: var(--text-strong);
+}
+
+.text-white {
+  color: var(--text-inverse);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+/* --- Alignement --- */
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* --- Styles spéciaux --- */
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+

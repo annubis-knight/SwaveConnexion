@@ -1,0 +1,53 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Checkbox > snapshots > matches snapshot - checked disabled 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                       CHECKBOX                              │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ┌───┐                                                │  │
+    │  │  │ ✓ │  [slot: label ou texte]                        │  │
+    │  │  └───┘                                                │  │
+    │  │    ↑ checkmark    ↑ label                             │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • modelValue: boolean - État coché (v-model)             │
+    │    • label: string - Texte du label                         │
+    │    • disabled: boolean - Désactivé                          │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Remplace le label si fourni                   │
+    │                                                             │
+    │  Events:                                                    │
+    │    • update:modelValue: boolean - Émis au changement        │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<label data-v-d6990024="" class="checkbox checkbox--disabled"><input data-v-d6990024="" type="checkbox" class="checkbox__input" checked="" disabled=""><span data-v-d6990024="" class="checkbox__checkmark"></span><span data-v-d6990024="" class="checkbox__label">Disabled checkbox</span></label>"
+`;
+
+exports[`Checkbox > snapshots > matches snapshot - unchecked with label 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                       CHECKBOX                              │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ┌───┐                                                │  │
+    │  │  │ ✓ │  [slot: label ou texte]                        │  │
+    │  │  └───┘                                                │  │
+    │  │    ↑ checkmark    ↑ label                             │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • modelValue: boolean - État coché (v-model)             │
+    │    • label: string - Texte du label                         │
+    │    • disabled: boolean - Désactivé                          │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Remplace le label si fourni                   │
+    │                                                             │
+    │  Events:                                                    │
+    │    • update:modelValue: boolean - Émis au changement        │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<label data-v-d6990024="" class="checkbox"><input data-v-d6990024="" type="checkbox" class="checkbox__input"><span data-v-d6990024="" class="checkbox__checkmark"></span><span data-v-d6990024="" class="checkbox__label">I agree to terms</span></label>"
+`;

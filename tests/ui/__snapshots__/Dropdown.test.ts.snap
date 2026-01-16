@@ -1,0 +1,65 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Dropdown > snapshots > matches snapshot - closed 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                       DROPDOWN                              │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ┌─────────────────────────────────┬───┐              │  │
+    │  │  │  [placeholder ou sélection]     │ ▼ │ ← trigger    │  │
+    │  │  └─────────────────────────────────┴───┘              │  │
+    │  │  ┌─────────────────────────────────────┐              │  │
+    │  │  │  Item 1                             │              │  │
+    │  │  │  Item 2                             │ ← menu       │  │
+    │  │  │  Item 3                             │   (animé)    │  │
+    │  │  └─────────────────────────────────────┘              │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • items: {label: string, value: string}[] - Liste        │
+    │    • placeholder: string - Texte par défaut                 │
+    │                                                             │
+    │  Events:                                                    │
+    │    • select: string - Émis avec la value sélectionnée       │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div data-v-f052f5ae="" class="dropdown"><button data-v-f052f5ae="" class="dropdown__trigger">Select an option <span data-v-f052f5ae="" class="dropdown__arrow">▼</span></button>
+  <transition-stub data-v-f052f5ae="" name="dropdown" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`Dropdown > snapshots > matches snapshot - open 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                       DROPDOWN                              │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ┌─────────────────────────────────┬───┐              │  │
+    │  │  │  [placeholder ou sélection]     │ ▼ │ ← trigger    │  │
+    │  │  └─────────────────────────────────┴───┘              │  │
+    │  │  ┌─────────────────────────────────────┐              │  │
+    │  │  │  Item 1                             │              │  │
+    │  │  │  Item 2                             │ ← menu       │  │
+    │  │  │  Item 3                             │   (animé)    │  │
+    │  │  └─────────────────────────────────────┘              │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • items: {label: string, value: string}[] - Liste        │
+    │    • placeholder: string - Texte par défaut                 │
+    │                                                             │
+    │  Events:                                                    │
+    │    • select: string - Émis avec la value sélectionnée       │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div data-v-f052f5ae="" class="dropdown"><button data-v-f052f5ae="" class="dropdown__trigger">Sélectionner <span data-v-f052f5ae="" class="dropdown__arrow">▼</span></button>
+  <transition-stub data-v-f052f5ae="" name="dropdown" appear="false" persisted="false" css="true">
+    <ul data-v-f052f5ae="" class="dropdown__menu">
+      <li data-v-f052f5ae="" class="dropdown__item">Option 1</li>
+      <li data-v-f052f5ae="" class="dropdown__item">Option 2</li>
+      <li data-v-f052f5ae="" class="dropdown__item">Option 3</li>
+    </ul>
+  </transition-stub>
+</div>"
+`;

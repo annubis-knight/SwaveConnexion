@@ -1,0 +1,62 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ProgressBar > snapshots > matches snapshot - primary 50% 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                      PROGRESSBAR                            │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ┌─────────────────────────────────────────────────┐  │  │
+    │  │  │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░│  65%            │  │  │
+    │  │  └─────────────────────────────────────────────────┘  │  │
+    │  │    ↑ track + bar (width: value%)   ↑ label           │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • value: number (0-100) - Progression                    │
+    │    • variant: primary | success | warning | error           │
+    │    • showLabel: boolean - Affiche le pourcentage            │
+    │                                                             │
+    │  Slots: Aucun                                               │
+    │                                                             │
+    │  Events: Aucun (composant de présentation pure)             │
+    │                                                             │
+    │  ARIA: role="progressbar" aria-valuenow/min/max             │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div data-v-ca6b7b7f="" class="progress progress--primary">
+  <div data-v-ca6b7b7f="" class="progress__track">
+    <div data-v-ca6b7b7f="" class="progress__bar" style="width: 50%;" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  <!--v-if-->
+</div>"
+`;
+
+exports[`ProgressBar > snapshots > matches snapshot - success with label 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                      PROGRESSBAR                            │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ┌─────────────────────────────────────────────────┐  │  │
+    │  │  │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░│  65%            │  │  │
+    │  │  └─────────────────────────────────────────────────┘  │  │
+    │  │    ↑ track + bar (width: value%)   ↑ label           │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • value: number (0-100) - Progression                    │
+    │    • variant: primary | success | warning | error           │
+    │    • showLabel: boolean - Affiche le pourcentage            │
+    │                                                             │
+    │  Slots: Aucun                                               │
+    │                                                             │
+    │  Events: Aucun (composant de présentation pure)             │
+    │                                                             │
+    │  ARIA: role="progressbar" aria-valuenow/min/max             │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div data-v-ca6b7b7f="" class="progress progress--success">
+  <div data-v-ca6b7b7f="" class="progress__track">
+    <div data-v-ca6b7b7f="" class="progress__bar" style="width: 75%;" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+  </div><span data-v-ca6b7b7f="" class="progress__label">75%</span>
+</div>"
+`;

@@ -1,0 +1,131 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CTA > snapshots > matches snapshot - full with all props 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                           CTA                               │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  section.cta (padding: var(--space-2xl))              │  │
+    │  │  ┌─────────────────────────────────────────────────┐  │  │
+    │  │  │  LayoutContainer size="xl"                      │  │  │
+    │  │  │  ┌───────────────────────────────────────────┐  │  │  │
+    │  │  │  │  LayoutContainerFlex direction="vertical"  │  │  │  │
+    │  │  │  │                                           │  │  │  │
+    │  │  │  │   ┌─────────────────────────────────┐     │  │  │  │
+    │  │  │  │   │  Heading level=2 color="white"  │     │  │  │  │
+    │  │  │  │   │       {{ title }}               │     │  │  │  │
+    │  │  │  │   └─────────────────────────────────┘     │  │  │  │
+    │  │  │  │   ┌─────────────────────────────────┐     │  │  │  │
+    │  │  │  │   │  Text size="large" (optional)   │     │  │  │  │
+    │  │  │  │   │     {{ description }}           │     │  │  │  │
+    │  │  │  │   └─────────────────────────────────┘     │  │  │  │
+    │  │  │  │   ┌─────────────────────────────────┐     │  │  │  │
+    │  │  │  │   │  LayoutContainerFlex horizontal │     │  │  │  │
+    │  │  │  │   │  ┌────────┐     ┌──────────┐   │     │  │  │  │
+    │  │  │  │   │  │ Button │     │  Button  │   │     │  │  │  │
+    │  │  │  │   │  │primary │     │ outline  │   │     │  │  │  │
+    │  │  │  │   │  └────────┘     └──────────┘   │     │  │  │  │
+    │  │  │  │   └─────────────────────────────────┘     │  │  │  │
+    │  │  │  │                                           │  │  │  │
+    │  │  │  └───────────────────────────────────────────┘  │  │  │
+    │  │  └─────────────────────────────────────────────────┘  │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • title: string (requis) - Titre principal               │
+    │    • description: string - Description/sous-titre           │
+    │    • primaryText: string (défaut: "Commencer")              │
+    │    • secondaryText: string - Texte bouton secondaire        │
+    │    • variant: primary | gradient (défaut: primary)          │
+    │    • centered: boolean (défaut: true)                       │
+    │                                                             │
+    │  Events:                                                    │
+    │    • @primary-click: Clic bouton principal                  │
+    │    • @secondary-click: Clic bouton secondaire               │
+    │                                                             │
+    │  Slots: Aucun (données via props)                           │
+    │                                                             │
+    │  Variants CSS (BEM):                                        │
+    │    • .cta--primary: bg var(--primary)                       │
+    │    • .cta--gradient: linear-gradient primary→accent         │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<section data-v-27a307a0="" class="cta cta--gradient">
+  <div data-v-27a307a0="" class="layout-container">
+    <div data-v-27a307a0="" class="layout-container-flex">
+      <!-- Title -->
+      <h2 data-v-27a307a0="" class="heading">Join Our Community</h2><!-- Description -->
+      <p data-v-27a307a0="" class="text cta__description">Get access to exclusive content and updates.</p><!-- Buttons -->
+      <div data-v-27a307a0="" class="layout-container-flex">
+        <!-- Primary Button --><button data-v-27a307a0="" class="button">Sign Up Free</button><!-- Secondary Button (optional) --><button data-v-27a307a0="" class="button">Learn More</button>
+      </div>
+    </div>
+  </div>
+</section>"
+`;
+
+exports[`CTA > snapshots > matches snapshot - minimal 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                           CTA                               │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  section.cta (padding: var(--space-2xl))              │  │
+    │  │  ┌─────────────────────────────────────────────────┐  │  │
+    │  │  │  LayoutContainer size="xl"                      │  │  │
+    │  │  │  ┌───────────────────────────────────────────┐  │  │  │
+    │  │  │  │  LayoutContainerFlex direction="vertical"  │  │  │  │
+    │  │  │  │                                           │  │  │  │
+    │  │  │  │   ┌─────────────────────────────────┐     │  │  │  │
+    │  │  │  │   │  Heading level=2 color="white"  │     │  │  │  │
+    │  │  │  │   │       {{ title }}               │     │  │  │  │
+    │  │  │  │   └─────────────────────────────────┘     │  │  │  │
+    │  │  │  │   ┌─────────────────────────────────┐     │  │  │  │
+    │  │  │  │   │  Text size="large" (optional)   │     │  │  │  │
+    │  │  │  │   │     {{ description }}           │     │  │  │  │
+    │  │  │  │   └─────────────────────────────────┘     │  │  │  │
+    │  │  │  │   ┌─────────────────────────────────┐     │  │  │  │
+    │  │  │  │   │  LayoutContainerFlex horizontal │     │  │  │  │
+    │  │  │  │   │  ┌────────┐     ┌──────────┐   │     │  │  │  │
+    │  │  │  │   │  │ Button │     │  Button  │   │     │  │  │  │
+    │  │  │  │   │  │primary │     │ outline  │   │     │  │  │  │
+    │  │  │  │   │  └────────┘     └──────────┘   │     │  │  │  │
+    │  │  │  │   └─────────────────────────────────┘     │  │  │  │
+    │  │  │  │                                           │  │  │  │
+    │  │  │  └───────────────────────────────────────────┘  │  │  │
+    │  │  └─────────────────────────────────────────────────┘  │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • title: string (requis) - Titre principal               │
+    │    • description: string - Description/sous-titre           │
+    │    • primaryText: string (défaut: "Commencer")              │
+    │    • secondaryText: string - Texte bouton secondaire        │
+    │    • variant: primary | gradient (défaut: primary)          │
+    │    • centered: boolean (défaut: true)                       │
+    │                                                             │
+    │  Events:                                                    │
+    │    • @primary-click: Clic bouton principal                  │
+    │    • @secondary-click: Clic bouton secondaire               │
+    │                                                             │
+    │  Slots: Aucun (données via props)                           │
+    │                                                             │
+    │  Variants CSS (BEM):                                        │
+    │    • .cta--primary: bg var(--primary)                       │
+    │    • .cta--gradient: linear-gradient primary→accent         │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<section data-v-27a307a0="" class="cta cta--primary">
+  <div data-v-27a307a0="" class="layout-container">
+    <div data-v-27a307a0="" class="layout-container-flex">
+      <!-- Title -->
+      <h2 data-v-27a307a0="" class="heading">Simple CTA</h2><!-- Description -->
+      <!--v-if-->
+      <!-- Buttons -->
+      <div data-v-27a307a0="" class="layout-container-flex">
+        <!-- Primary Button --><button data-v-27a307a0="" class="button">Commencer</button><!-- Secondary Button (optional) -->
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+</section>"
+`;

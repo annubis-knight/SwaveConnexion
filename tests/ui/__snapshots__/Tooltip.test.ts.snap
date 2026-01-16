@@ -1,0 +1,64 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Tooltip > snapshots > matches snapshot - hidden 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                        TOOLTIP                              │
+    │                                                             │
+    │                    ╭───────────────╮                        │
+    │                    │  Texte info   │ ← tooltip__content     │
+    │                    ╰───────┬───────╯   (position: top)      │
+    │                            ▼                                │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  [slot: default] ← élément déclencheur                │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • text: string (requis) - Texte de la tooltip            │
+    │    • position: top | bottom | left | right                  │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Élément déclencheur (requis)                  │
+    │                                                             │
+    │  Events: Aucun (composant de présentation pure)             │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div data-v-1fa13a82="" class="tooltip">
+  <div data-v-1fa13a82="" class="tooltip__trigger"><button>Hover</button></div>
+  <transition-stub data-v-1fa13a82="" name="tooltip-fade" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`Tooltip > snapshots > matches snapshot - visible top 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                        TOOLTIP                              │
+    │                                                             │
+    │                    ╭───────────────╮                        │
+    │                    │  Texte info   │ ← tooltip__content     │
+    │                    ╰───────┬───────╯   (position: top)      │
+    │                            ▼                                │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  [slot: default] ← élément déclencheur                │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • text: string (requis) - Texte de la tooltip            │
+    │    • position: top | bottom | left | right                  │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Élément déclencheur (requis)                  │
+    │                                                             │
+    │  Events: Aucun (composant de présentation pure)             │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div data-v-1fa13a82="" class="tooltip">
+  <div data-v-1fa13a82="" class="tooltip__trigger"><button>Hover</button></div>
+  <transition-stub data-v-1fa13a82="" name="tooltip-fade" appear="false" persisted="false" css="true">
+    <div data-v-1fa13a82="" class="tooltip__content tooltip__content--top" role="tooltip">Top tooltip <div data-v-1fa13a82="" class="tooltip__arrow"></div>
+    </div>
+  </transition-stub>
+</div>"
+`;

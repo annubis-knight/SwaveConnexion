@@ -1,0 +1,53 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Switch > snapshots > matches snapshot - off with label 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                        SWITCH                               │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ╭──────────╮                                         │  │
+    │  │  │ ○───────→│  [slot: label ou texte]                 │  │
+    │  │  ╰──────────╯                                         │  │
+    │  │    ↑ track + thumb (animé)                            │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • modelValue: boolean - État on/off (v-model)            │
+    │    • label: string - Texte du label                         │
+    │    • disabled: boolean - Désactivé                          │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Remplace le label si fourni                   │
+    │                                                             │
+    │  Events:                                                    │
+    │    • update:modelValue: boolean - Émis au changement        │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<label data-v-86bd7045="" class="switch"><input data-v-86bd7045="" type="checkbox" class="switch__input"><span data-v-86bd7045="" class="switch__track"><span data-v-86bd7045="" class="switch__thumb"></span></span><span data-v-86bd7045="" class="switch__label">Toggle me</span></label>"
+`;
+
+exports[`Switch > snapshots > matches snapshot - on disabled 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                        SWITCH                               │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ╭──────────╮                                         │  │
+    │  │  │ ○───────→│  [slot: label ou texte]                 │  │
+    │  │  ╰──────────╯                                         │  │
+    │  │    ↑ track + thumb (animé)                            │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • modelValue: boolean - État on/off (v-model)            │
+    │    • label: string - Texte du label                         │
+    │    • disabled: boolean - Désactivé                          │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Remplace le label si fourni                   │
+    │                                                             │
+    │  Events:                                                    │
+    │    • update:modelValue: boolean - Émis au changement        │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<label data-v-86bd7045="" class="switch switch--checked switch--disabled"><input data-v-86bd7045="" type="checkbox" class="switch__input" checked="" disabled=""><span data-v-86bd7045="" class="switch__track"><span data-v-86bd7045="" class="switch__thumb"></span></span><span data-v-86bd7045="" class="switch__label">Disabled switch</span></label>"
+`;

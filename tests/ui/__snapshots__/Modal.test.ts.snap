@@ -1,0 +1,47 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Modal > snapshots > matches snapshot - open with content 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                         MODAL                               │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░│  │
+    │  │░░░░░░░┌─────────────────────────────────────┐░░░░░░░░░│  │
+    │  │░░░░░░░│  Titre                          [✕] │░░░░░░░░░│  │
+    │  │░░░░░░░├─────────────────────────────────────┤░░░░░░░░░│  │
+    │  │░░░░░░░│                                     │░░░░░░░░░│  │
+    │  │░░░░░░░│  [slot: default]                    │░░░░░░░░░│  │
+    │  │░░░░░░░│                                     │░░░░░░░░░│  │
+    │  │░░░░░░░├─────────────────────────────────────┤░░░░░░░░░│  │
+    │  │░░░░░░░│  [slot: footer] (actions)           │░░░░░░░░░│  │
+    │  │░░░░░░░└─────────────────────────────────────┘░░░░░░░░░│  │
+    │  │░░░░░░░░░░░░░░░ backdrop (click=close) ░░░░░░░░░░░░░░░░│  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • isOpen: boolean - Contrôle l'affichage                 │
+    │    • title: string - Titre de la modale                     │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu de la modale                          │
+    │    • footer: Actions (boutons)                              │
+    │                                                             │
+    │  Events:                                                    │
+    │    • close: Émis au clic backdrop/bouton/ESC                │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<transition-stub data-v-adbd1984="" name="modal" appear="false" persisted="false" css="true">
+  <div data-v-adbd1984="" class="modal">
+    <div data-v-adbd1984="" class="modal__backdrop"></div>
+    <div data-v-adbd1984="" class="modal__container">
+      <div data-v-adbd1984="" class="modal__header">
+        <heading data-v-adbd1984="" level="3" class="modal__title">Confirmation</heading><button data-v-adbd1984="" class="modal__close" aria-label="Fermer"> ✕ </button>
+      </div>
+      <div data-v-adbd1984="" class="modal__body">
+        <p>Are you sure?</p>
+      </div>
+      <div data-v-adbd1984="" class="modal__footer"><button>Yes</button><button>No</button></div>
+    </div>
+  </div>
+</transition-stub>"
+`;

@@ -1,0 +1,75 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Tabs > snapshots > matches snapshot - first tab active 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                         TABS                                │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ┌────────┬────────┬────────┐                         │  │
+    │  │  │ Tab 1  │ Tab 2  │ Tab 3  │  ← tabs__list           │  │
+    │  │  └────────┴────────┴────────┘    (role="tablist")     │  │
+    │  │  ─────────────────────────────                        │  │
+    │  │  ┌─────────────────────────────────────────────────┐  │  │
+    │  │  │                                                 │  │  │
+    │  │  │  [slot: default] ← contenu panel actif          │  │  │
+    │  │  │                                                 │  │  │
+    │  │  └─────────────────────────────────────────────────┘  │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • modelValue: string (requis) - Value onglet actif       │
+    │    • items: TabItem[] (requis) - Liste des onglets          │
+    │      └─ TabItem: {label, value, disabled?}                  │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu panel (v-if avec modelValue)          │
+    │                                                             │
+    │  Events:                                                    │
+    │    • update:modelValue: string - Changement d'onglet        │
+    │                                                             │
+    │  Keyboard: ←/→ navigation, Home/End, Enter/Space            │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div data-v-99cbc16a="" class="tabs">
+  <!-- Tab list -->
+  <div data-v-99cbc16a="" class="tabs__list" role="tablist"><button data-v-99cbc16a="" class="tabs__item tabs__item--active" role="tab" aria-selected="true" tabindex="0">Tab 1</button><button data-v-99cbc16a="" class="tabs__item" role="tab" aria-selected="false" tabindex="-1">Tab 2</button><button data-v-99cbc16a="" class="tabs__item" role="tab" aria-selected="false" tabindex="-1">Tab 3</button></div><!-- Tab panels (content) -->
+  <div data-v-99cbc16a="" class="tabs__panels"></div>
+</div>"
+`;
+
+exports[`Tabs > snapshots > matches snapshot - with disabled tab 1`] = `
+"<!--
+    ┌─────────────────────────────────────────────────────────────┐
+    │                         TABS                                │
+    │  ┌───────────────────────────────────────────────────────┐  │
+    │  │  ┌────────┬────────┬────────┐                         │  │
+    │  │  │ Tab 1  │ Tab 2  │ Tab 3  │  ← tabs__list           │  │
+    │  │  └────────┴────────┴────────┘    (role="tablist")     │  │
+    │  │  ─────────────────────────────                        │  │
+    │  │  ┌─────────────────────────────────────────────────┐  │  │
+    │  │  │                                                 │  │  │
+    │  │  │  [slot: default] ← contenu panel actif          │  │  │
+    │  │  │                                                 │  │  │
+    │  │  └─────────────────────────────────────────────────┘  │  │
+    │  └───────────────────────────────────────────────────────┘  │
+    │                                                             │
+    │  Props:                                                     │
+    │    • modelValue: string (requis) - Value onglet actif       │
+    │    • items: TabItem[] (requis) - Liste des onglets          │
+    │      └─ TabItem: {label, value, disabled?}                  │
+    │                                                             │
+    │  Slots:                                                     │
+    │    • default: Contenu panel (v-if avec modelValue)          │
+    │                                                             │
+    │  Events:                                                    │
+    │    • update:modelValue: string - Changement d'onglet        │
+    │                                                             │
+    │  Keyboard: ←/→ navigation, Home/End, Enter/Space            │
+    └─────────────────────────────────────────────────────────────┘
+  -->
+<div data-v-99cbc16a="" class="tabs">
+  <!-- Tab list -->
+  <div data-v-99cbc16a="" class="tabs__list" role="tablist"><button data-v-99cbc16a="" class="tabs__item tabs__item--active" role="tab" aria-selected="true" tabindex="0">Active</button><button data-v-99cbc16a="" class="tabs__item tabs__item--disabled" role="tab" aria-selected="false" aria-disabled="true" tabindex="-1">Disabled</button><button data-v-99cbc16a="" class="tabs__item" role="tab" aria-selected="false" tabindex="-1">Normal</button></div><!-- Tab panels (content) -->
+  <div data-v-99cbc16a="" class="tabs__panels"></div>
+</div>"
+`;
