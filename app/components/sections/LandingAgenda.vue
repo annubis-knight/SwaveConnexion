@@ -55,12 +55,21 @@
             PROCHAINS COURS & EVENTS
           </Text>
 
-          <!-- Cards container (scroll horizontal, prêt pour Swiper) -->
-          <div class="landing-events__cards">
-            <div v-for="(event, index) in events" :key="index" class="landing-events__card-wrapper">
-              <CardEvent :day="event.day" :month="event.month" :title="event.title" :subtitle="event.subtitle" />
-            </div>
-          </div>
+          <!-- Swiper slider -->
+          <SwiperSwave
+            v-model="activeIndex"
+            :items="events"
+            class="landing-events__swiper"
+          >
+            <template #default="{ item }">
+              <CardEvent
+                :day="(item as EventData).day"
+                :month="(item as EventData).month"
+                :title="(item as EventData).title"
+                :subtitle="(item as EventData).subtitle"
+              />
+            </template>
+          </SwiperSwave>
         </div>
       </LayoutGridResponsive>
     </LayoutContainerMax>
@@ -124,7 +133,11 @@
   └─────────────────────────────────────────────────────────────────────────────┘
 */
 
+import { ref } from 'vue';
 import eventsImage from '~/assets/images/EventsImg.png';
+
+/* Index de la slide active (v-model pour SwiperSwave) */
+const activeIndex = ref(0);
 
 /* Type pour les événements */
 interface EventData {
@@ -284,48 +297,8 @@ const featured = events[0] as EventData;
   }
 }
 
-/* Element: Cards container - prêt pour Swiper.js */
-.landing-events__cards {
-  display: flex;
-  gap: 30px;
-  overflow: visible;
-
-  /*
-   * Swiper.js ready:
-   * - Remplacer ce conteneur par <Swiper> avec slidesPerView="auto"
-   * - Les .landing-events__card-wrapper deviennent des <SwiperSlide>
-   * - Ajouter freeMode, spaceBetween, etc.
-   */
-}
-
-/* Element: Card wrapper - impose la taille aux cards */
-.landing-events__card-wrapper {
-  flex-shrink: 0;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-
-  /* Taille responsive des cards */
-  width: 280px;
-  height: 100px;
-
-  /* Tablet */
-  @media (min-width: 768px) {
-    width: 320px;
-    height: 110px;
-  }
-
-  /* Desktop */
-  @media (min-width: 1024px) {
-    width: 360px;
-    height: 120px;
-  }
-
-  /* Large desktop */
-  @media (min-width: 1280px) {
-    width: 400px;
-    height: 130px;
-  }
+/* Element: Swiper container */
+.landing-events__swiper {
+  margin-top: 1rem;
 }
 </style>

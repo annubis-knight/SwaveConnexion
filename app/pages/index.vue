@@ -4,6 +4,7 @@
     <SectionsLandingFeature />
     <SectionsLandingAgenda />
     <SectionsLandingEvents />
+
     <SectionsSectionCTA @submit="handleNewsletterSubmit" />
   </div>
 </template>

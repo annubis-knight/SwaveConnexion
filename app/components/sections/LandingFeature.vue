@@ -1,128 +1,130 @@
 <template>
-
-  <section class="landing-feature py-16 lg:py-40">
+  <section class="landing-feature py-16 lg:py-24">
     <LayoutContainerMax>
-      <!-- Titre -->
-      <Heading :level="2" class="mb-20">
-        LE MEILLEUR APPRENTISSAGE,<br />
-        <span class="landing-feature__subtitle">C'EST CELUI AVEC LE SOURIRE</span>
-      </Heading>
+      <!-- Titre + Text dans GridResponsive -->
+      <LayoutGridResponsive class="mb-40">
+        <!-- Titre: full width mobile, colonnes 1-7 desktop -->
+        <Heading :level="2" class="col-span-full">
+          LE MEILLEUR APPRENTISSAGE,<br />
+          <span class="landing-feature__subtitle">C'EST CELUI AVEC LE SOURIRE</span>
+        </Heading>
 
-      <!-- Grid: Text + Cards (mobile-first) -->
-      <LayoutGridArea
-        :cols="1"
-        :areas="['text', 'card1', 'card2', 'card3']"
-        :cols-lg="2"
-        :areas-lg="['card1', 'text', 'card1', 'card2', null, 'card3']"
-        gap="xl"
-      >
-        <!-- Text -->
-        <Text style="grid-area: text">
+        <!-- Text: full width mobile, colonnes 8-12 desktop -->
+        <Text class="col-span-4 md:col-span-8 lg:col-span-5 lg:col-start-8">
           Découvre SwaveConnexion, l'école de bachata la plus fun et sensuelle de Montréal !
           Viens te connecter au rythme, à l'énergie et à la passion. Que tu sois débutant ou
           confirmé, notre équipe dynamique t'accompagne pour danser, progresser et vibrer à
           chaque pas. Rejoins la vibe Swave !
         </Text>
+      </LayoutGridResponsive>
 
-        <!-- Card 1 - Bachata Débutant -->
-        <CardFeature
-          style="grid-area: card1"
-          :image="bachataDebutant"
-          image-alt="Cours de Bachata débutant"
-          title="BACHATA DÉBUTANT"
-          href="/cours/bachata-debutant"
-          layout="overlay"
-          textColor="white"
-          class="lg:translate-y-[150px]"
-        />
+      <!-- GridGolden avec 3 CardFeature -->
+      <LayoutGridGolden gap="md">
+          <template #primary>
+            <CardFeature
+              :image="bachataImage"
+              image-alt="Cours de Bachata débutant"
+              title="Bachata Débutant"
+              description="Apprenez les bases de la bachata dans une ambiance conviviale. Parfait pour débuter votre aventure dansante."
+              format="portrait"
+              layout="overlay"
+              text-color="white"
+            />
+          </template>
 
-        <!-- Card 2 - Cours Privés -->
-        <CardFeature
-          style="grid-area: card2" class="lg:justify-self-end"
-          format="landscape"
-          :image="coursPrivé"
-          image-alt="Cours privés de danse"
-          title="COURS PRIVÉS"
-          href="/cours/prives"
-          layout="overlay"
-          textColor="white"
-        />
+          <template #secondary>
+            <CardFeature
+              :image="kizombaImage"
+              image-alt="Cours de Kizomba"
+              title="Kizomba"
+              description="Explorez la sensualité de la kizomba avec nos instructeurs passionnés."
+              format="portrait"
+              layout="overlay"
+              text-color="white"
+            />
+          </template>
 
-        <!-- Card 3 - Kizomba -->
-        <CardFeature
-          image-alt="Cours de Kizomba"
-          title="KIZOMBA"
-          format="landscape"
-          :image="kizomba"
-          href="/cours/kizomba"
-          style="grid-area: card3" class="lg:justify-self-end"
-          layout="overlay"
-          textColor="white"
-        />
-      </LayoutGridArea>
+          <template #tertiary>
+            <CardFeature
+              :image="coursPriveImage"
+              image-alt="Cours privés personnalisés"
+              title="Cours Privés"
+              description="Sessions personnalisées pour progresser rapidement. Idéal pour les couples ou ceux qui veulent perfectionner leur technique."
+              format="landscape"
+              layout="overlay"
+              text-color="white"
+            />
+          </template>
+        </LayoutGridGolden>
     </LayoutContainerMax>
   </section>
 </template>
 
 <script setup lang="ts">
 /*
-  <!--
-    ┌─────────────────────────────────────────────────────────────┐
-    │                     LANDING FEATURE                         │
-    │                                                             │
-    │  ┌───────────────────────────────────────────────────────┐  │
-    │  │  section.landing-feature                              │  │
-    │  │  ┌─────────────────────────────────────────────────┐  │  │
-    │  │  │  ContainerMax                                   │  │  │
-    │  │  │  ┌───────────────────────────────────────────┐  │  │  │
-    │  │  │  │  Heading (titre seul)                     │  │  │  │
-    │  │  │  └───────────────────────────────────────────┘  │  │  │
-    │  │  │  ┌───────────────────────────────────────────┐  │  │  │
-    │  │  │  │  GridArea (text + cards)                  │  │  │  │
-    │  │  │  │                                           │  │  │  │
-    │  │  │  │  MOBILE:     DESKTOP (lg:):               │  │  │  │
-    │  │  │  │  "text"      "card1  text"                │  │  │  │
-    │  │  │  │  "card1"     "card1  card2"               │  │  │  │
-    │  │  │  │  "card2"     ".      card3"               │  │  │  │
-    │  │  │  │  "card3"                                  │  │  │  │
-    │  │  │  │                                           │  │  │  │
-    │  │  │  └───────────────────────────────────────────┘  │  │  │
-    │  │  └─────────────────────────────────────────────────┘  │  │
-    │  └───────────────────────────────────────────────────────┘  │
-    │                                                             │
-    │  Props: Aucune (contenu en dur)                             │
-    │                                                             │
-    │  Events: Aucun (wrapper visuel)                             │
-    │                                                             │
-    │  Slots: Aucun                                               │
-    │                                                             │
-    │  Responsive: Mobile-first (cols=1 → cols-lg=2)              │
-    └─────────────────────────────────────────────────────────────┘
-  -->
+  ┌─────────────────────────────────────────────────────────────┐
+  │                      LANDING FEATURE                        │
+  │  ┌───────────────────────────────────────────────────────┐  │
+  │  │  section.landing-feature                              │  │
+  │  │    └─ LayoutContainerMax                              │  │
+  │  │         ├─ LayoutGridResponsive (header)              │  │
+  │  │         │    ├─ Heading (col-span-full)               │  │
+  │  │         │    └─ Text (col 8-12 desktop)               │  │
+  │  │         └─ LayoutGridGolden                           │  │
+  │  │              ├─ #primary: CardFeature (Bachata)       │  │
+  │  │              ├─ #secondary: CardFeature (Kizomba)     │  │
+  │  │              └─ #tertiary: CardFeature (Privés)       │  │
+  │  └───────────────────────────────────────────────────────┘  │
+  │                                                             │
+  │  Desktop:                      Mobile:                      │
+  │  ┌────────────┬───────┐        ┌──────────────────┐         │
+  │  │  Bachata   │Kizomba│        │     Bachata      │         │
+  │  │  (61.8%)   │(38.2%)│        ├──────────────────┤         │
+  │  ├────────────┴───────┤        │     Kizomba      │         │
+  │  │    Cours Privés    │        ├──────────────────┤         │
+  │  └────────────────────┘        │   Cours Privés   │         │
+  │                                └──────────────────┘         │
+  │                                                             │
+  │  Props: Aucune (données hardcodées pour démo)               │
+  │                                                             │
+  │  Events: Aucun (section de présentation)                    │
+  │                                                             │
+  │  Slots: Aucun                                               │
+  └─────────────────────────────────────────────────────────────┘
+
+  @dev Utilise GridGolden pour layout golden ratio
+  @dev 3 CardFeature en mode overlay avec images grayscale
+  @dev Fond subtil pour contraste avec sections adjacentes
 */
-import bachataDebutant from '~/assets/images/bachataDebutant.jpg';
-import coursPrivé from '~/assets/images/coursPrivé.jpg';
-import kizomba from '~/assets/images/kizomba.jpg';
+
+import bachataImage from '~/assets/images/bachataDebutant.jpg';
+import kizombaImage from '~/assets/images/kizomba.jpg';
+import coursPriveImage from '~/assets/images/coursPrivé.jpg';
 </script>
 
 <style scoped>
-/**
- * LANDING FEATURE STYLES - CSS Nesting + BEM strict
- *
- * Section avec grille asymétrique
- * @dev Fond clair, layout en grid-areas
- * @dev CSS Nesting natif (pas SASS)
- */
-
-/* Block */
 .landing-feature {
-  position: relative;
   background-color: var(--bg-subtle);
-  overflow: hidden;
 
   /* Element: Subtitle */
   .landing-feature__subtitle {
     color: var(--primary);
   }
+}
+
+/* Cards hover group effect - CSS pur avec :has() */
+.landing-feature :deep(.card-feature) {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Quand une card est hover : scale up */
+.landing-feature :deep(.card-feature:hover) {
+  transform: scale(1.02);
+  z-index: 10;
+}
+
+/* Quand la section contient une card hover : scale down les autres */
+.landing-feature:has(.card-feature:hover) :deep(.card-feature:not(:hover)) {
+  transform: scale(0.98);
 }
 </style>

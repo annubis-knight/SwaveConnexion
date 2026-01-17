@@ -81,10 +81,18 @@ withDefaults(defineProps<Props>(), {});
 /* Block : .card-event - hauteur définie par le bloc date */
 .card-event {
   display: flex;
-  gap:20px;
+  gap: 12px;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.9);
-  min-width: 360px;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    gap: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    gap: 20px;
+  }
 }
 
 /* Element : .card-event__date - Carré 1:1 basé sur la HAUTEUR du contenu */

@@ -30,9 +30,10 @@
    - Responsive natif avec breakpoints (sm:, md:, lg:)
    - Pas de duplication de styles entre CSS natif et Tailwind
 
-3. **Type scale harmonieux**
+3. **Type scale harmonieux et responsive**
    - Ratio Perfect Fourth (1.333x entre chaque niveau)
    - Base de 16px pour le corps de texte
+   - Responsive via `clamp()` pour transitions fluides
    - Calcule via [typescale.com](https://typescale.com)
 
 4. **`_typography.css` = source unique de verite (fichier protege)**
@@ -269,6 +270,36 @@ npm run test:watch   # Tests en mode watch
 /* Weights (exemples) */
 --font-regular, --font-medium, --font-semibold, --font-bold...
 ```
+
+### Typographie Responsive (clamp)
+
+Les headings et classes utilitaires utilisent `clamp()` pour un scaling fluide entre mobile et desktop.
+
+**Headings (h1-h6):**
+
+| Heading | Mobile (320px) | Desktop (1024px+) |
+|---------|----------------|-------------------|
+| h1 | 36px (2.25rem) | 64px (4rem) |
+| h2 | 28px (1.75rem) | 48px (3rem) |
+| h3 | 24px (1.5rem) | 36px (2.25rem) |
+| h4 | 20px (1.25rem) | 28px (1.75rem) |
+| h5 | 18px (1.125rem) | 20px (1.25rem) |
+| h6 | 16px (1rem) | 18px (1.125rem) |
+
+**Classes utilitaires (.text-*):**
+
+| Classe | Mobile | Desktop | Comportement |
+|--------|--------|---------|--------------|
+| `.text-xs` | 12px | 12px | Fixe |
+| `.text-small` | 14px | 14px | Fixe |
+| `.text-base` | 16px | 16px | Fixe |
+| `.text-large` | 16px | 18px | Responsive |
+| `.text-xl` | 18px | 20px | Responsive |
+| `.text-2xl` | 20px | 28px | Responsive |
+| `.text-3xl` | 24px | 36px | Responsive |
+| `.text-4xl` | 28px | 48px | Responsive |
+| `.text-5xl` | 36px | 64px | Responsive |
+| `.text-6xl` | 48px | 84px | Responsive |
 
 ---
 

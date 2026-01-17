@@ -309,35 +309,52 @@ h6 {
 
 
 /* ============================================
-   STYLES HEADINGS - Hors @layer pour priorité sur reset Tailwind
+   STYLES HEADINGS - Responsive avec clamp()
+   ============================================
+
    @dev Tailwind v4 reset les headings avec font-size: inherit
    @dev Ces styles doivent être appliqués APRÈS le reset
+   @dev clamp(min, preferred, max) pour transitions fluides
+   @dev Min = mobile (~320px), Max = desktop (~1024px+)
+
+   TABLEAU DE RÉFÉRENCE - Headings responsive
+   ┌─────────┬────────────────┬─────────────────┐
+   │ Heading │ Mobile (320px) │ Desktop (1024px)│
+   ├─────────┼────────────────┼─────────────────┤
+   │ h1      │ 36px (2.25rem) │ 64px (4rem)     │
+   │ h2      │ 28px (1.75rem) │ 48px (3rem)     │
+   │ h3      │ 24px (1.5rem)  │ 36px (2.25rem)  │
+   │ h4      │ 20px (1.25rem) │ 28px (1.75rem)  │
+   │ h5      │ 18px (1.125rem)│ 20px (1.25rem)  │
+   │ h6      │ 16px (1rem)    │ 18px (1.125rem) │
+   └─────────┴────────────────┴─────────────────┘
+
    ============================================ */
 
 
 h1 {
-  font-size: var(--text-5xl);
+  font-size: clamp(2.25rem, 5vw + 1rem, 4rem); /* 36px → 64px */
   margin-bottom: var(--space-lg);
 }
 
 h2 {
-  font-size: var(--text-4xl);
+  font-size: clamp(1.75rem, 4vw + 0.5rem, 3rem); /* 28px → 48px */
 }
 
 h3 {
-  font-size: var(--text-3xl);
+  font-size: clamp(1.5rem, 3vw + 0.5rem, 2.25rem); /* 24px → 36px */
 }
 
 h4 {
-  font-size: var(--text-2xl);
+  font-size: clamp(1.25rem, 2vw + 0.5rem, 1.75rem); /* 20px → 28px */
 }
 
 h5 {
-  font-size: var(--text-xl);
+  font-size: clamp(1.125rem, 1vw + 0.75rem, 1.25rem); /* 18px → 20px */
 }
 
 h6 {
-  font-size: var(--text-lg);
+  font-size: clamp(1rem, 0.5vw + 0.75rem, 1.125rem); /* 16px → 18px */
 }
 
 
@@ -352,45 +369,66 @@ h6 {
  * Nommage : .text-{propriété} pour cohérence et lisibilité
  */
 
-/* --- Tailles --- */
+/* --- Tailles (responsive avec clamp()) ---
+
+   @dev Les petites tailles (xs, small, base) restent fixes
+   @dev Les grandes tailles (lg+) utilisent clamp() pour le responsive
+
+   TABLEAU DE RÉFÉRENCE - Classes utilitaires
+   ┌─────────────┬────────────────┬─────────────────┬─────────────┐
+   │ Classe      │ Mobile (320px) │ Desktop (1024px)│ Comportement│
+   ├─────────────┼────────────────┼─────────────────┼─────────────┤
+   │ .text-xs    │ 12px           │ 12px            │ Fixe        │
+   │ .text-small │ 14px           │ 14px            │ Fixe        │
+   │ .text-base  │ 16px           │ 16px            │ Fixe        │
+   │ .text-large │ 16px           │ 18px            │ Responsive  │
+   │ .text-xl    │ 18px           │ 20px            │ Responsive  │
+   │ .text-2xl   │ 20px           │ 28px            │ Responsive  │
+   │ .text-3xl   │ 24px           │ 36px            │ Responsive  │
+   │ .text-4xl   │ 28px           │ 48px            │ Responsive  │
+   │ .text-5xl   │ 36px           │ 64px            │ Responsive  │
+   │ .text-6xl   │ 48px           │ 84px            │ Responsive  │
+   └─────────────┴────────────────┴─────────────────┴─────────────┘
+
+*/
 .text-xs {
-  font-size: var(--text-xs);
+  font-size: var(--text-xs); /* 12px - fixe */
 }
 
 .text-small {
-  font-size: var(--text-sm);
+  font-size: var(--text-sm); /* 14px - fixe */
 }
 
 .text-base {
-  font-size: var(--text-base);
+  font-size: var(--text-base); /* 16px - fixe */
 }
 
 .text-large {
-  font-size: var(--text-lg);
+  font-size: clamp(1rem, 0.5vw + 0.875rem, 1.125rem); /* 16px → 18px */
 }
 
 .text-xl {
-  font-size: var(--text-xl);
+  font-size: clamp(1.125rem, 1vw + 0.75rem, 1.25rem); /* 18px → 20px */
 }
 
 .text-2xl {
-  font-size: var(--text-2xl);
+  font-size: clamp(1.25rem, 2vw + 0.5rem, 1.75rem); /* 20px → 28px */
 }
 
 .text-3xl {
-  font-size: var(--text-3xl);
+  font-size: clamp(1.5rem, 3vw + 0.5rem, 2.25rem); /* 24px → 36px */
 }
 
 .text-4xl {
-  font-size: var(--text-4xl);
+  font-size: clamp(1.75rem, 4vw + 0.5rem, 3rem); /* 28px → 48px */
 }
 
 .text-5xl {
-  font-size: var(--text-5xl);
+  font-size: clamp(2.25rem, 5vw + 1rem, 4rem); /* 36px → 64px */
 }
 
 .text-6xl {
-  font-size: var(--text-6xl);
+  font-size: clamp(3rem, 6vw + 1rem, 5.25rem); /* 48px → 84px */
 }
 
 /* --- Poids --- */

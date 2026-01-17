@@ -142,6 +142,11 @@ const cardClass = computed(() => {
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
+
+    h4{
+    text-transform: uppercase;      
+    }
+
   }
 
   /* Element : Arrow */
@@ -169,9 +174,9 @@ const cardClass = computed(() => {
   }
 
   @media (min-width: 1024px) {
-    max-width: 500px;
+    max-width: 800px;
     .card-feature__image {
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 5 / 3;
     }
   }
 }
@@ -180,6 +185,17 @@ const cardClass = computed(() => {
 .card-feature--clickable {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+}
+
+/* Modifier : Layout overlay - contenu par dessus l'image */
+/* Modifier : Scale hover group (contrôlé par Section parente) */
+.card-feature--scale-up {
+  transform: scale(1.02);
+  z-index: 10;
+}
+
+.card-feature--scale-down {
+  transform: scale(0.98);
 }
 
 /* Modifier : Layout overlay - contenu par dessus l'image */
@@ -199,7 +215,51 @@ const cardClass = computed(() => {
     bottom: 10px;
     left: 10px;
     right: 0;
-    /* background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent); */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  /* Dégradé pour lisibilité des textes blancs */
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .card-feature__content {
+    z-index: 1;
+  }
+
+  /* Heading : toujours visible, positionné en bas */
+  .card-feature__content h4 {
+    margin: 0;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Text : masqué par défaut */
+  .card-feature__content p {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(10px);
+    transition:
+      opacity 0.3s ease-in-out,
+      max-height 0.3s ease-in-out,
+      transform 0.3s ease-in-out;
+  }
+
+  /* Hover : Text apparaît et pousse le Heading vers le haut */
+  &:hover .card-feature__content p {
+    opacity: 1;
+    max-height: 200px;
+    transform: translateY(0);
   }
 }
 </style>

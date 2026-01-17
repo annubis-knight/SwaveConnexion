@@ -252,7 +252,7 @@ const handleMobileCtaClick = () => {
 */
 onMounted(() => {
   /* Étape 1: Récupérer toutes les sections avec un fond clair */
-  const lightSections = document.querySelectorAll('.landing-feature, .landing-agenda');
+  const lightSections = document.querySelectorAll('.landing-feature, .landing-agenda, .features-grid, .section-golden');
 
   /* Si aucune section claire n'existe, pas besoin d'observer */
   if (lightSections.length === 0) return;

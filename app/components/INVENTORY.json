@@ -1,11 +1,11 @@
 {
   "_meta": {
-    "generated": "2026-01-17T14:22:54.250Z",
-    "totalCount": 26
+    "generated": "2026-01-17T16:02:27.573Z",
+    "totalCount": 28
   },
   "categories": {
     "sections": {
-      "count": 8,
+      "count": 9,
       "components": [
         {
           "name": "FeaturesGrid",
@@ -130,11 +130,17 @@
           "events": [
             "submit"
           ]
+        },
+        {
+          "name": "SectionGolden",
+          "path": "@/components/sections/SectionGolden.vue",
+          "props": [],
+          "events": []
         }
       ]
     },
     "layout": {
-      "count": 7,
+      "count": 8,
       "components": [
         {
           "name": "Container",
@@ -293,6 +299,24 @@
           ]
         },
         {
+          "name": "GridGolden",
+          "path": "@/components/layout/GridGolden.vue",
+          "props": [
+            {
+              "name": "gap",
+              "type": "'sm' | 'md' | 'lg' | 'xl'",
+              "optional": true,
+              "default": "md"
+            }
+          ],
+          "events": [],
+          "slots": [
+            "primary",
+            "secondary",
+            "tertiary"
+          ]
+        },
+        {
           "name": "GridResponsive",
           "path": "@/components/layout/GridResponsive.vue",
           "props": [],
@@ -342,9 +366,15 @@
       "count": 11,
       "components": [
         {
-          "name": "ButtonSwave",
-          "path": "@/components/ui/ButtonSwave.vue",
+          "name": "ButtonPromoSwave",
+          "path": "@/components/ui/ButtonPromoSwave.vue",
           "props": [
+            {
+              "name": "promo",
+              "type": "string",
+              "optional": true,
+              "default": "CODE"
+            },
             {
               "name": "disabled",
               "type": "boolean",
@@ -358,15 +388,9 @@
           ]
         },
         {
-          "name": "ButtonPromoSwave",
-          "path": "@/components/ui/ButtonPromoSwave.vue",
+          "name": "ButtonSwave",
+          "path": "@/components/ui/ButtonSwave.vue",
           "props": [
-            {
-              "name": "promo",
-              "type": "string",
-              "optional": true,
-              "default": "CODE"
-            },
             {
               "name": "disabled",
               "type": "boolean",
@@ -478,8 +502,34 @@
           "events": []
         },
         {
-          "name": "EventInfo",
-          "path": "@/components/ui/EventInfo.vue",
+          "name": "Heading",
+          "path": "@/components/ui/Heading.vue",
+          "props": [
+            {
+              "name": "level",
+              "type": "1 | 2 | 3 | 4 | 5 | 6",
+              "optional": true,
+              "default": "2"
+            },
+            {
+              "name": "color",
+              "type": "'dark' | 'white' | 'primary'",
+              "optional": true
+            },
+            {
+              "name": "align",
+              "type": "'left' | 'center' | 'right'",
+              "optional": true
+            }
+          ],
+          "events": [],
+          "slots": [
+            "default"
+          ]
+        },
+        {
+          "name": "InfoEvent",
+          "path": "@/components/ui/InfoEvent.vue",
           "props": [
             {
               "name": "location",
@@ -513,6 +563,12 @@
               "default": "ACHETER LE PASS"
             },
             {
+              "name": "promoText",
+              "type": "string",
+              "optional": true,
+              "default": "CODE"
+            },
+            {
               "name": "image",
               "type": "string",
               "optional": false
@@ -521,35 +577,15 @@
               "name": "imageAlt",
               "type": "string",
               "optional": true
+            },
+            {
+              "name": "imagePosition",
+              "type": "'left' | 'right'",
+              "optional": true,
+              "default": "right"
             }
           ],
           "events": []
-        },
-        {
-          "name": "Heading",
-          "path": "@/components/ui/Heading.vue",
-          "props": [
-            {
-              "name": "level",
-              "type": "1 | 2 | 3 | 4 | 5 | 6",
-              "optional": true,
-              "default": "2"
-            },
-            {
-              "name": "color",
-              "type": "'dark' | 'white' | 'primary'",
-              "optional": true
-            },
-            {
-              "name": "align",
-              "type": "'left' | 'center' | 'right'",
-              "optional": true
-            }
-          ],
-          "events": [],
-          "slots": [
-            "default"
-          ]
         },
         {
           "name": "InputSwave",
@@ -636,7 +672,7 @@
               "name": "weight",
               "type": "'extralight' | 'light' | 'regular' | 'medium' | 'semibold' | 'bold' | 'black'",
               "optional": true,
-              "default": "regular"
+              "default": "light"
             },
             {
               "name": "color",
