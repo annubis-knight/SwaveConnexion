@@ -33,7 +33,9 @@
       "Bash(grep:*)",
       "Bash(unzip:*)",
       "Bash(git init:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(gh auth:*)",
+      "Bash(git remote add:*)"
     ],
     "deny": [],
     "ask": []

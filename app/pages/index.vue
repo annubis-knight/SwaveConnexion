@@ -2,8 +2,8 @@
   <div>
     <SectionsLandingHero />
     <SectionsLandingFeature />
-    <SectionsLandingEvents />
     <SectionsLandingAgenda />
+    <SectionsLandingEvents />
     <SectionsSectionCTA @submit="handleNewsletterSubmit" />
   </div>
 </template>

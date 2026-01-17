@@ -74,8 +74,8 @@ withDefaults(defineProps<Props>(), {
   width: 100%;
 
   /* Desktop: taille selon contenu */
-  @media (min-width: 1024px) {
-    width: auto;
+  @media (min-width: 768px) {
+    width: min-content;
     min-width: 300px;
   }
 }

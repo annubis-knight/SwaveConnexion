@@ -1,9 +1,9 @@
 <template>
   <!--
-    Layout Default - Template standard avec Header et Footer
+    Layout Default - Template standard avec Navbar et Footer
 
     Description : Layout principal utilisé par toutes les pages
-    State Owner : Gère le thème (dark mode + theme custom) et menu mobile
+    State Owner : Gère le thème (dark mode + theme custom)
 
     Slots :
       - NuxtPage : Contenu de la page active
@@ -13,16 +13,8 @@
     @dev flex-1 sur main pousse le footer vers le bas
   -->
   <div class="min-h-screen flex flex-col">
-    <!-- Header sticky -->
-    <SectionsHeader
-      :is-dark="isDark"
-      :is-menu-open="isMenuOpen"
-      :current-theme="currentTheme"
-      :available-themes="availableThemes"
-      @toggle-menu="handleToggleMenu"
-      @toggle-dark="handleToggleDark"
-      @change-theme="handleChangeTheme"
-    />
+    <!-- Navbar sticky -->
+    <SectionsNavbar @cta-click="handleCtaClick" />
 
     <!-- Contenu principal -->
     <main class="flex-1">
@@ -39,27 +31,14 @@
  * DEFAULT LAYOUT
  *
  * @dev Layout standard pour la majorité des pages
- * @dev Header sticky en haut, footer collé en bas
- * @dev State Owner pour thème et menu mobile
+ * @dev Navbar sticky en haut, footer collé en bas
+ * @dev State Owner pour thème
  */
-import type { ThemeName } from '~/composables/useThemeManager';
 
-// Theme management (state owner)
-const { isDark, setColorMode, currentTheme, setTheme, availableThemes } = useThemeManager();
+const router = useRouter();
 
-// Mobile menu state
-const isMenuOpen = ref(false);
-
-// Event handlers
-const handleToggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value;
-};
-
-const handleToggleDark = () => {
-  setColorMode(isDark.value ? 'light' : 'dark');
-};
-
-const handleChangeTheme = (theme: ThemeName) => {
-  setTheme(theme);
+// Handler CTA click - navigation vers réservation
+const handleCtaClick = () => {
+  router.push('#reservation');
 };
 </script>

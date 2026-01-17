@@ -106,6 +106,7 @@ const handleCtaClick = () => {
   position: relative;
   overflow: hidden;
   background-color: var(--primary-light);
+  padding-top:8vh;
 
   /*
    * Z-INDEX STACK (réorganisé pour overlay grain)
@@ -163,7 +164,7 @@ const handleCtaClick = () => {
 
     /* Desktop: 100vh minimum, contenu aligné en bas */
     @media (min-width: 1024px) {
-      min-height: 100vh;
+      min-height: 105vh;
       /* justify-content: space-between; */
       justify-content: flex-start;
     }

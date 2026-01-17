@@ -85,7 +85,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 // Tailwind spacing uniquement
 const gapClass = computed(() => {
-  const gapMap = { sm: 'gap-4', md: 'gap-6', lg: 'gap-8', xl: 'gap-20'};
+  const gapMap = { sm: 'gap-4', md: 'gap-6', lg: 'gap-8', xl: 'gap-40'};
   return gapMap[props.gap];
 });
 

@@ -47,7 +47,7 @@
 interface Props {
   as?: 'p' | 'span';
   font?: 'sans' | 'display' | 'mono';
-  size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '5xl';
+  size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl'| '5xl';
   weight?: 'extralight' | 'light' | 'regular' | 'medium' | 'semibold' | 'bold' | 'black';
   color?: 'dark' | 'white' | 'primary';
   align?: 'left' | 'center' | 'right';
@@ -61,7 +61,7 @@ const props = withDefaults(defineProps<Props>(), {
   as: 'p',
   font: 'sans',
   size: 'base',
-  weight: 'regular',
+  weight: 'light',
   leading: 'normal',
   tracking: 'normal',
   transform: 'none',
@@ -91,6 +91,7 @@ const sizeMap: Record<SizeKey, string> = {
   xl: 'var(--text-xl)',
   '2xl': 'var(--text-2xl)',
   '3xl': 'var(--text-3xl)',
+  '4xl': 'var(--text-4xl)',
   '5xl': 'var(--text-5xl)',
 };
 

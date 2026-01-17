@@ -37,25 +37,6 @@ Si un Layout utilise des variables CSS (rare), **toujours lire `app/assets/css/_
 - **Ajouter au besoin** : quand un projet réel le nécessite
 - **Éviter la sur-ingénierie** : pas de props "au cas où"
 
-```typescript
-// ❌ TROP
-interface Props {
-  direction?: 'horizontal' | 'vertical' | 'row-reverse' | 'column-reverse';
-  gap?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
-  align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
-  justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
-  wrap?: boolean;
-  reverse?: boolean;
-}
-
-// ✅ BIEN
-interface Props {
-  direction?: 'horizontal' | 'vertical';
-  gap?: 'sm' | 'md' | 'lg';
-  align?: 'start' | 'center' | 'end';
-}
-```
-
 ---
 
 ## Structure de fichier obligatoire
@@ -107,6 +88,7 @@ const modifierClass = computed(() =>
 
 // Tailwind spacing uniquement
 const gapClass = computed(() => {
+  // Consulter les composants existants pour le mapping gap → classes Tailwind
   const gapMap = { sm: 'gap-4', md: 'gap-6', lg: 'gap-8' };
   return gapMap[props.gap];
 });
@@ -139,129 +121,15 @@ const gapClass = computed(() => {
 
 ---
 
-## Pattern de base
+## Fichiers sources (SSOT)
 
-```vue
-<template>
-  <div :class="['container', sizeClass, paddingClass]">
-    <slot />
-  </div>
-</template>
+| Besoin | Fichier à consulter |
+|--------|---------------------|
+| Variables CSS | `app/assets/css/_variables.css` |
+| Props d'un composant existant | Le fichier `.vue` du composant |
+| Mapping gap → classes Tailwind | Les composants Layout existants |
 
-<script setup lang="ts">
-interface Props {
-  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
-  padding?: boolean;
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  size: 'lg',
-  padding: true,
-});
-
-// BEM modifier pour size
-const sizeClass = computed(() => `container--${props.size}`);
-
-// Tailwind pour padding (spacing)
-const paddingClass = computed(() =>
-  props.padding ? 'px-4 sm:px-6 lg:px-8' : ''
-);
-</script>
-
-<style scoped>
-.container {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.container--sm { max-width: 640px; }
-.container--md { max-width: 768px; }
-.container--lg { max-width: 1024px; }
-.container--xl { max-width: 1280px; }
-.container--full { max-width: 100%; }
-</style>
-```
-
----
-
-## Composants existants
-
-| Composant | Rôle | Props clés |
-|-----------|------|------------|
-| `Container` | Centrer le contenu avec max-width | `size`, `padding` |
-| `ContainerFlex` | Flex vertical ou horizontal | `direction`, `gap`, `align`, `justify`, `wrap` |
-| `Grid` | Grille CSS responsive | `cols`, `gap`, `responsive` |
-| `SplitPane` | Layout 2 colonnes | `leftWidth`, `gap`, `collapsible`, `fullHeight` |
-
----
-
-## Exemples d'utilisation
-
-```vue
-<!-- Container centré -->
-<LayoutContainer size="lg" :padding="true">
-  <p>Contenu centré max 1024px</p>
-</LayoutContainer>
-
-<!-- ContainerFlex vertical -->
-<LayoutContainerFlex direction="vertical" gap="md" align="center">
-  <Heading :level="2">Titre</Heading>
-  <Text>Description</Text>
-</LayoutContainerFlex>
-
-<!-- ContainerFlex horizontal (boutons) -->
-<LayoutContainerFlex direction="horizontal" gap="sm" :wrap="true">
-  <Button>Action 1</Button>
-  <Button>Action 2</Button>
-</LayoutContainerFlex>
-
-<!-- Grid 3 colonnes -->
-<LayoutGrid :cols="3" gap="lg">
-  <Card>Item 1</Card>
-  <Card>Item 2</Card>
-  <Card>Item 3</Card>
-</LayoutGrid>
-
-<!-- SplitPane (sidebar + content) -->
-<LayoutSplitPane :leftWidth="4" gap="lg" :collapsible="true">
-  <template #left>Navigation</template>
-  <template #right>Contenu principal</template>
-</LayoutSplitPane>
-```
-
----
-
-## Mapping Props → Classes
-
-### Gap (Tailwind - spacing)
-```typescript
-const gapClasses = {
-  none: 'gap-0',
-  xs: 'gap-2',    // 8px
-  sm: 'gap-4',    // 16px
-  md: 'gap-6',    // 24px
-  lg: 'gap-8',    // 32px
-  xl: 'gap-12',   // 48px
-};
-```
-
-### Align (CSS scoped - structure)
-```css
-.layout--align-start { align-items: flex-start; }
-.layout--align-center { align-items: center; }
-.layout--align-end { align-items: flex-end; }
-.layout--align-stretch { align-items: stretch; }
-```
-
-### Justify (CSS scoped - structure)
-```css
-.layout--justify-start { justify-content: flex-start; }
-.layout--justify-center { justify-content: center; }
-.layout--justify-end { justify-content: flex-end; }
-.layout--justify-between { justify-content: space-between; }
-.layout--justify-around { justify-content: space-around; }
-```
+**Ne jamais supposer qu'une variable ou prop existe** - toujours vérifier le fichier source.
 
 ---
 
@@ -277,7 +145,7 @@ const gapClasses = {
 <div class="flex flex-col items-center justify-between">  <!-- NON ! Utiliser CSS scoped -->
 
 <!-- ❌ CSS natif avec variables globales -->
-<div style="padding: var(--space-md)">  <!-- NON ! Utiliser Tailwind pour spacing -->
+<div style="padding: var(--nom-variable)">  <!-- NON ! Utiliser Tailwind pour spacing -->
 
 <!-- ❌ Events -->
 <script setup>

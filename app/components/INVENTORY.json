@@ -1,11 +1,11 @@
 {
   "_meta": {
-    "generated": "2026-01-16T16:36:43.121Z",
-    "totalCount": 20
+    "generated": "2026-01-17T14:22:54.250Z",
+    "totalCount": 26
   },
   "categories": {
     "sections": {
-      "count": 7,
+      "count": 8,
       "components": [
         {
           "name": "FeaturesGrid",
@@ -71,6 +71,21 @@
               "type": "string",
               "optional": true,
               "default": "RÉSERVER UN COURS"
+            }
+          ],
+          "events": [
+            "cta-click"
+          ]
+        },
+        {
+          "name": "Navbar",
+          "path": "@/components/sections/Navbar.vue",
+          "props": [
+            {
+              "name": "ctaText",
+              "type": "string",
+              "optional": true,
+              "default": "RÉSERVE UN COURS"
             }
           ],
           "events": [
@@ -324,12 +339,34 @@
       ]
     },
     "ui": {
-      "count": 6,
+      "count": 11,
       "components": [
         {
           "name": "ButtonSwave",
           "path": "@/components/ui/ButtonSwave.vue",
           "props": [
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "optional": true,
+              "default": "false"
+            }
+          ],
+          "events": [],
+          "slots": [
+            "default"
+          ]
+        },
+        {
+          "name": "ButtonPromoSwave",
+          "path": "@/components/ui/ButtonPromoSwave.vue",
+          "props": [
+            {
+              "name": "promo",
+              "type": "string",
+              "optional": true,
+              "default": "CODE"
+            },
             {
               "name": "disabled",
               "type": "boolean",
@@ -424,6 +461,71 @@
           ]
         },
         {
+          "name": "DateEvent",
+          "path": "@/components/ui/DateEvent.vue",
+          "props": [
+            {
+              "name": "day",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "month",
+              "type": "string",
+              "optional": false
+            }
+          ],
+          "events": []
+        },
+        {
+          "name": "EventInfo",
+          "path": "@/components/ui/EventInfo.vue",
+          "props": [
+            {
+              "name": "location",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "day",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "month",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "ctaText",
+              "type": "string",
+              "optional": true,
+              "default": "ACHETER LE PASS"
+            },
+            {
+              "name": "image",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "imageAlt",
+              "type": "string",
+              "optional": true
+            }
+          ],
+          "events": []
+        },
+        {
           "name": "Heading",
           "path": "@/components/ui/Heading.vue",
           "props": [
@@ -479,6 +581,36 @@
           "events": []
         },
         {
+          "name": "LabelSwave",
+          "path": "@/components/ui/LabelSwave.vue",
+          "props": [],
+          "events": [],
+          "slots": [
+            "default"
+          ]
+        },
+        {
+          "name": "NavLink",
+          "path": "@/components/ui/NavLink.vue",
+          "props": [
+            {
+              "name": "to",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "variant",
+              "type": "'light' | 'dark'",
+              "optional": true,
+              "default": "light"
+            }
+          ],
+          "events": [],
+          "slots": [
+            "default"
+          ]
+        },
+        {
           "name": "Text",
           "path": "@/components/ui/Text.vue",
           "props": [
@@ -496,7 +628,7 @@
             },
             {
               "name": "size",
-              "type": "'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '5xl'",
+              "type": "'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl'| '5xl'",
               "optional": true,
               "default": "base"
             },

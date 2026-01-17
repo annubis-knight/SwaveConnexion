@@ -14,6 +14,7 @@ Composants atomiques de **présentation pure**. Aucune logique métier, uniqueme
 - **CSS natif** dans `<style scoped>` avec variables `var(--*)`
 - **Nommage BEM** : `.block__element--modifier`
 - **Aucun Tailwind** (réservé aux Layouts)
+- **Variables CSS** : toujours consulter `_variables.css` et `_typography.css` pour les valeurs disponibles
 
 ### Events
 - **Uniquement natifs** : `@click`, `@input`, `@change`, `@focus`, `@blur`
@@ -34,26 +35,6 @@ Composants atomiques de **présentation pure**. Aucune logique métier, uniqueme
 - **Ajouter au besoin** : les props supplémentaires viendront avec les vrais cas d'usage
 - **Éviter la sur-ingénierie** : pas de props "au cas où"
 - Un composant peut évoluer quand un projet réel le nécessite
-
-```typescript
-// ❌ TROP : Sur-ingénierie dès le départ
-interface Props {
-  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'ghost' | 'link';
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  rounded?: 'none' | 'sm' | 'md' | 'lg' | 'full';
-  loading?: boolean;
-  icon?: string;
-  iconPosition?: 'left' | 'right';
-}
-
-// ✅ BIEN : Minimum efficient
-interface Props {
-  variant?: 'primary' | 'secondary' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
-  disabled?: boolean;
-}
-// → Ajouter loading, icon, etc. quand un projet réel le demande
-```
 
 ---
 
@@ -88,16 +69,15 @@ const btnClass = computed(() => [
 
 <style scoped>
 .btn {
-  padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-md);
-  font-weight: var(--font-medium);
-  transition: all var(--transition-fast);
+  /* Consulter _variables.css pour les variables disponibles */
+  padding: var(--space-*);
+  border-radius: var(--radius-*);
 }
-.btn--primary { background: var(--primary); color: var(--text-inverse); }
-.btn--secondary { background: var(--secondary); color: var(--text-inverse); }
+.btn--primary { background: var(--primary); color: var(--text-*); }
+.btn--secondary { background: var(--secondary); color: var(--text-*); }
 .btn--outline { border: 1px solid var(--primary); color: var(--primary); }
-.btn--sm { padding: var(--space-xs) var(--space-sm); }
-.btn--lg { padding: var(--space-md) var(--space-lg); }
+.btn--sm { padding: var(--space-*) var(--space-*); }
+.btn--lg { padding: var(--space-*) var(--space-*); }
 </style>
 ```
 
@@ -108,48 +88,6 @@ const btnClass = computed(() => [
 Ces composants sont **légers** - ils utilisent les classes utilitaires de `_typography.css` + styles inline.
 
 **Pas de `<style scoped>`** - les props génèrent les styles.
-
-### Text - Props complètes
-
-```vue
-<!-- Défaut : <p> classique 16px 400weight -->
-<Text>Paragraphe simple</Text>
-
-<!-- Personnalisé via props -->
-<Text
-  as="span"
-  font="display"
-  size="lg"
-  weight="bold"
-  color="primary"
-  transform="uppercase"
-  tracking="wide"
-  leading="tight"
->
-  Texte stylisé
-</Text>
-```
-
-| Prop | Valeurs | Défaut | Description |
-|------|---------|--------|-------------|
-| `as` | `p`, `span` | `p` | Balise HTML |
-| `font` | `sans`, `display`, `mono` | `sans` | Famille de police |
-| `size` | `xs`, `sm`, `base`, `lg`, `xl`, `2xl`, `3xl` | `base` | Taille |
-| `weight` | `light`, `regular`, `medium`, `semibold`, `bold` | `regular` | Graisse |
-| `color` | `dark`, `light`, `primary` | - | Couleur (classe CSS) |
-| `align` | `left`, `center`, `right` | - | Alignement (classe CSS) |
-| `transform` | `uppercase`, `capitalize`, `none` | `none` | Casse |
-| `leading` | `tight`, `snug`, `normal`, `relaxed`, `loose` | `normal` | Interligne |
-| `tracking` | `tight`, `normal`, `wide` | `normal` | Espacement lettres |
-| `maxWidth` | `xs`, `sm`, `md`, `lg`, `xl`, `full` | `full` | Largeur max |
-
-### Heading - Props
-
-| Prop | Valeurs | Description |
-|------|---------|-------------|
-| `level` | `1-6` | Niveau de titre (h1-h6) |
-| `color` | `dark`, `light`, `primary` | Couleur |
-| `align` | `left`, `center`, `right` | Alignement |
 
 ### ⚠️ Règle critique : utiliser les props, pas les classes CSS
 
@@ -162,61 +100,25 @@ Ces composants sont **légers** - ils utilisent les classes utilitaires de `_typ
 <Text size="lg" weight="bold" transform="uppercase">
 ```
 
-**Les props Text gèrent TOUTE la typographie** :
-- `font-family` → prop `font`
-- `font-size` → prop `size`
-- `font-weight` → prop `weight`
-- `line-height` → prop `leading`
-- `letter-spacing` → prop `tracking`
-- `text-transform` → prop `transform`
-- `color` → prop `color` (via classes `_typography.css`)
+**Les props Text/Heading gèrent TOUTE la typographie.**
 
 **Seules exceptions autorisées dans CSS scoped :**
 - Layout : `margin`, `padding`, `display`, `gap`
 - Positionnement : `position`, `top`, `left`
 
----
-
-## Variables CSS disponibles
-
-```css
-/* Couleurs */
-var(--primary), var(--secondary), var(--accent)
-var(--text-strong), var(--text-inverse)
-var(--success), var(--warning), var(--error), var(--info)
-
-/* Espacements */
-var(--space-xs), var(--space-sm), var(--space-md), var(--space-lg), var(--space-xl)
-
-/* Bordures */
-var(--radius-sm), var(--radius-md), var(--radius-lg)
-
-/* Transitions */
-var(--transition-fast), var(--transition-normal)
-```
+**Pour les props disponibles** : consulter directement `Text.vue` et `Heading.vue`.
 
 ---
 
-## Composants existants
+## Fichiers sources (SSOT)
 
-| Composant | Description | Props clés |
-|-----------|-------------|------------|
-| `Button` | Bouton 5 variantes | `variant`, `size`, `disabled` |
-| `IconButton` | Bouton carré pour icônes | `variant`, `size`, `ariaLabel` |
-| `Card` | Carte avec props ou slot | `variant`, `icon`, `title`, `description` |
-| `Input` | Champ formulaire | `label`, `type`, `error`, `modelValue` |
-| `Badge` | Label sémantique | `variant`, `size` |
-| `Checkbox` | Case à cocher | `label`, `modelValue` |
-| `Switch` | Toggle animé | `modelValue` |
-| `Dropdown` | Menu déroulant | `items`, `placeholder` |
-| `Modal` | Dialogue modal | `isOpen`, `title` |
-| `Toast` | Notification | `message`, `type`, `duration` |
-| `Tooltip` | Infobulle | `content`, `position` |
-| `ProgressBar` | Barre progression | `value`, `max`, `variant` |
-| `Tabs` | Onglets keyboard | `tabs`, `activeTab` |
-| `Heading` | Titres h1-h6 | `level`, `color`, `align` |
-| `Text` | Paragraphes/spans | `as`, `font`, `size`, `weight`, `color`, `transform`, `leading`, `tracking` |
-| `CardEvent` | Carte événement | `day`, `month`, `title`, `subtitle` |
+| Besoin | Fichier à consulter |
+|--------|---------------------|
+| Variables CSS (couleurs, espacements, bordures, transitions) | `app/assets/css/_variables.css` |
+| Typographie (polices, tailles, weights) | `app/assets/css/_typography.css` |
+| Props d'un composant existant | Le fichier `.vue` du composant |
+
+**Ne jamais supposer qu'une variable ou prop existe** - toujours vérifier le fichier source.
 
 ---
 
@@ -251,6 +153,6 @@ const router = useRouter();  // NON ! C'est pour les pages
 - [ ] **Props minimales** (YAGNI - pas de props "au cas où")
 - [ ] `withDefaults()` pour valeurs par défaut
 - [ ] Classes BEM dans `<style scoped>`
-- [ ] Variables CSS (pas de valeurs hardcodées)
+- [ ] Variables CSS vérifiées dans `_variables.css` (pas de valeurs hardcodées)
 - [ ] Événements natifs uniquement
 - [ ] Aucune logique métier

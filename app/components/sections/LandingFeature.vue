@@ -1,6 +1,6 @@
 <template>
 
-  <section class="landing-feature py-16 lg:py-24">
+  <section class="landing-feature py-16 lg:py-40">
     <LayoutContainerMax>
       <!-- Titre -->
       <Heading :level="2" class="mb-20">
@@ -27,19 +27,20 @@
         <!-- Card 1 - Bachata Débutant -->
         <CardFeature
           style="grid-area: card1"
-          :image="cardImage"
+          :image="bachataDebutant"
           image-alt="Cours de Bachata débutant"
-          title="BACHATA DEBUTANT"
+          title="BACHATA DÉBUTANT"
           href="/cours/bachata-debutant"
           layout="overlay"
           textColor="white"
+          class="lg:translate-y-[150px]"
         />
 
         <!-- Card 2 - Cours Privés -->
         <CardFeature
           style="grid-area: card2" class="lg:justify-self-end"
           format="landscape"
-          :image="cardImage"
+          :image="coursPrivé"
           image-alt="Cours privés de danse"
           title="COURS PRIVÉS"
           href="/cours/prives"
@@ -52,7 +53,7 @@
           image-alt="Cours de Kizomba"
           title="KIZOMBA"
           format="landscape"
-          :image="cardImage"
+          :image="kizomba"
           href="/cours/kizomba"
           style="grid-area: card3" class="lg:justify-self-end"
           layout="overlay"
@@ -99,7 +100,9 @@
     └─────────────────────────────────────────────────────────────┘
   -->
 */
-import cardImage from '~/assets/images/cardPortraitAsset.jpg';
+import bachataDebutant from '~/assets/images/bachataDebutant.jpg';
+import coursPrivé from '~/assets/images/coursPrivé.jpg';
+import kizomba from '~/assets/images/kizomba.jpg';
 </script>
 
 <style scoped>

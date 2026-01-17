@@ -1,339 +1,132 @@
 <template>
-  <section class="landing-events py-24 lg:py-32">
-    <!-- Glow effect (behind image) -->
-    <div class="landing-events__glow" aria-hidden="true"></div>
+  <section class="landing-agenda py-16 lg:py-40">
+    <LayoutContainerMax>
+      <!-- Titre + Text dans GridResponsive -->
+      <LayoutGridResponsive class="mb-40">
+        <!-- Titre: full width mobile, colonnes 1-7 desktop -->
+        <Heading :level="2" class="col-span-full">
+          NOS ÉVENEMENTS SUR MONTRÉAL<br />
+          <span class="landing-events__subtitle">& NOS PARTENAIRES</span>
+        </Heading>
 
-    <!-- Background image (absolute) -->
-    <img
-      :src="eventsImage"
-      alt="Event illustration"
-      class="landing-events__bg"
-    />
-
-    <!-- Desktop: GridResponsive pour placement précis -->
-    <LayoutContainerMax class="relative z-10">
-      <LayoutGridResponsive>
-        <!-- Featured Event Info (droite sur desktop) -->
-        <div class="landing-events__featured col-span-4 md:col-span-8 lg:col-span-5 lg:col-start-8">
-          <!-- Date line: DAY + DATE + MONTH -->
-          <Heading :level="2" color="white" class="flex gap-4">
-            <span class="text-primary">{{ featured.dayName }}</span>
-            <span>{{ featured.day }}</span>
-            <span>{{ featured.month }}</span>
-          </Heading>
-
-          <!-- Time & Location -->
-          <Text v-if="featured.time && featured.location" as="span" color="white" size="sm">
-            {{ featured.time }} | {{ featured.location }}
-          </Text>
-
-          <!-- Dance type -->
-          <Heading :level="3" color="white" class="text-light">
-            {{ featured.title }}
-          </Heading>
-
-          <!-- Level/subtitle -->
-          <Text v-if="featured.subtitle" as="span" color="white">
-            {{ featured.subtitle }}
-          </Text>
-
-          <!-- Instructors -->
-          <Text v-if="featured.instructors" as="span" color="white">
-            {{ featured.instructors }}
-          </Text>
-
-          <!-- CTA Button -->
-          <ButtonSwave class="mt-6">
-            RÉSERVER UN COURS
-          </ButtonSwave>
-        </div>
-
-        <!-- Slider Section (full width) -->
-        <div class="col-span-4 md:col-span-8 lg:col-span-12">
-          <Text as="span" size="2xl" weight="semibold" color="white">
-            PROCHAINS COURS & EVENTS
-          </Text>
-
-          <!-- Cards container (scroll horizontal, prêt pour Swiper) -->
-          <div class="landing-events__cards">
-            <div
-              v-for="(event, index) in events"
-              :key="index"
-              class="landing-events__card-wrapper"
-            >
-              <CardEvent
-                :day="event.day"
-                :month="event.month"
-                :title="event.title"
-                :subtitle="event.subtitle"
-              />
-            </div>
-          </div>
-        </div>
+        <!-- Text: full width mobile, colonnes 8-12 desktop -->
+        <Text class="col-span-4 md:col-span-8 lg:col-span-5 lg:col-start-8">
+          Découvre SwaveConnexion, l'école de bachata la plus fun et sensuelle de Montréal !
+          Viens te connecter au rythme, à l'énergie et à la passion. Que tu sois débutant ou
+          confirmé, notre équipe dynamique t'accompagne pour danser, progresser et vibrer à
+          chaque pas. Rejoins la vibe Swave !
+        </Text>
       </LayoutGridResponsive>
+
+      <!-- Stack d'événements -->
+      <div class="landing-agenda__events">
+        <InfoEvent
+          location="BARCELONE"
+          day="17"
+          month="NOV"
+          title="BACHATA SENSUAL PARADISE"
+          description="Una semana para combinarlo todo, para explorar el movimiento corporal a través de distintas disciplinas. Conecta con la naturaleza en el agua, sintoniza con tu cuerpo mediante el yoga y amplía tu conciencia del movimiento a través de la danza."
+          cta-text="ACHETER LE PASS -5€"
+          :image="eventImage1"
+          image-alt="Bachata Sensual Paradise"
+        />
+
+        <InfoEvent
+          location="MONTREAL"
+          day="25"
+          month="DEC"
+          title="BACHATA SENSUAL 5+"
+          description="Découvre SwaveConnexion, l'école de bachata la plus fun et sensuelle de Montréal ! Viens te connecter au rythme, à l'énergie et à la passion. Une expérience unique qui équilibre l'énergie, la flexibilité et le rythme."
+          cta-text="ACHETER LE PASS -5€"
+          :image="eventImage2"
+          image-alt="Bachata Sensual 5+"
+          image-position="left"
+        />
+
+        <InfoEvent
+          location="BERLIN"
+          day="08"
+          month="JAN"
+          title="BS GERMANY REAL LEVELS"
+          description="Connecta con la naturaleza en el agua, sintoniza con tu cuerpo mediante el yoga y amplía tu conciencia del movimiento a través de la danza. Una experiencia única que equilibra la energía, la flexibilidad y el ritmo."
+          cta-text="ACHETER LE PASS -5€"
+          :image="eventImage3"
+          image-alt="BS Germany Real Levels"
+        />
+      </div>
     </LayoutContainerMax>
   </section>
 </template>
 
 <script setup lang="ts">
 /*
-  ┌─────────────────────────────────────────────────────────────────────────────┐
-  │                            LANDING EVENTS                                    │
-  │                                                                              │
-  │  MOBILE (image en background overlay):                                       │
-  │  ┌────────────────────────────────────────────────────────────────────────┐  │
-  │  │  section.landing-events                                                │  │
-  │  │  ┌──────────────────────────────────────────────────────────────────┐  │  │
-  │  │  │  img.landing-events__bg (absolute, full cover + overlay)        │  │  │
-  │  │  └──────────────────────────────────────────────────────────────────┘  │  │
-  │  │  ┌──────────────────────────────────────────────────────────────────┐  │  │
-  │  │  │  .landing-events__featured (stack vertical)                     │  │  │
-  │  │  │    ├─ Date (WED 17 NOV)                                         │  │  │
-  │  │  │    ├─ Infos (6PM | Salle 2)                                     │  │  │
-  │  │  │    ├─ Type (BACHATA DÉBUTANT)                                   │  │  │
-  │  │  │    ├─ Instructeurs (Denise & Jordan)                            │  │  │
-  │  │  │    └─ ButtonSwave (RÉSERVER UN COURS)                           │  │  │
-  │  │  └──────────────────────────────────────────────────────────────────┘  │  │
-  │  │  ┌──────────────────────────────────────────────────────────────────┐  │  │
-  │  │  │  .landing-events__slider                                        │  │  │
-  │  │  │    ├─ Heading H4 "PROCHAINS COURS & EVENTS"                     │  │  │
-  │  │  │    └─ .landing-events__cards (overflow-x scroll)                │  │  │
-  │  │  │         └─ CardEvent × N                                        │  │  │
-  │  │  └──────────────────────────────────────────────────────────────────┘  │  │
-  │  └────────────────────────────────────────────────────────────────────────┘  │
-  │                                                                              │
-  │  DESKTOP (image à gauche, infos à droite sur grid 12 cols):                  │
-  │  ┌────────────────────────────────────────────────────────────────────────┐  │
-  │  │  GridResponsive (12 cols)                                              │  │
-  │  │  ┌──────────────────────────┬───────────────────────────────────────┐  │  │
-  │  │  │  Image (col-span-5)      │  Featured Info (col-span-6 col-start-7)│  │  │
-  │  │  │  (absolute, clip-path)   │    ├─ Date line                       │  │  │
-  │  │  │                          │    ├─ Time/Location                   │  │  │
-  │  │  │                          │    ├─ Dance type                      │  │  │
-  │  │  │                          │    ├─ Instructors                     │  │  │
-  │  │  │                          │    └─ ButtonSwave                     │  │  │
-  │  │  └──────────────────────────┴───────────────────────────────────────┘  │  │
-  │  │  ┌────────────────────────────────────────────────────────────────────┐│  │
-  │  │  │  Slider (col-span-12)                                             ││  │
-  │  │  │    ├─ Heading                                                     ││  │
-  │  │  │    └─ CardEvent × N                                               ││  │
-  │  │  └────────────────────────────────────────────────────────────────────┘│  │
-  │  └────────────────────────────────────────────────────────────────────────┘  │
-  │                                                                              │
-  │  Props: Aucune (données statiques internes)                                  │
-  │                                                                              │
-  │  Events: Aucun                                                               │
-  │                                                                              │
-  │  Slots: Aucun                                                                │
-  │                                                                              │
-  │  @dev Le premier événement de la liste devient le featured                   │
-  │  @dev Utilise GridResponsive pour placement desktop avec col-span/col-start │
-  │  @dev Slider horizontal prêt pour intégration Swiper.js                      │
-  └─────────────────────────────────────────────────────────────────────────────┘
+  ┌─────────────────────────────────────────────────────────────┐
+  │                     LANDING AGENDA                           │
+  │                                                             │
+  │  ┌───────────────────────────────────────────────────────┐  │
+  │  │  section.landing-agenda                               │  │
+  │  │  ┌─────────────────────────────────────────────────┐  │  │
+  │  │  │  ContainerMax                                   │  │  │
+  │  │  │  ┌───────────────────────────────────────────┐  │  │  │
+  │  │  │  │  Heading (titre)                          │  │  │  │
+  │  │  │  └───────────────────────────────────────────┘  │  │  │
+  │  │  │  ┌───────────────────────────────────────────┐  │  │  │
+  │  │  │  │  Text (paragraphe)                        │  │  │  │
+  │  │  │  └───────────────────────────────────────────┘  │  │  │
+  │  │  │  ┌───────────────────────────────────────────┐  │  │  │
+  │  │  │  │  .landing-agenda__events (stack)          │  │  │  │
+  │  │  │  │  ┌─────────────────────────────────────┐  │  │  │  │
+  │  │  │  │  │  InfoEvent 1                        │  │  │  │  │
+  │  │  │  │  └─────────────────────────────────────┘  │  │  │  │
+  │  │  │  │  ┌─────────────────────────────────────┐  │  │  │  │
+  │  │  │  │  │  InfoEvent 2                        │  │  │  │  │
+  │  │  │  │  └─────────────────────────────────────┘  │  │  │  │
+  │  │  │  │  ┌─────────────────────────────────────┐  │  │  │  │
+  │  │  │  │  │  InfoEvent 3                        │  │  │  │  │
+  │  │  │  │  └─────────────────────────────────────┘  │  │  │  │
+  │  │  │  └───────────────────────────────────────────┘  │  │  │
+  │  │  └─────────────────────────────────────────────────┘  │  │
+  │  └───────────────────────────────────────────────────────┘  │
+  │                                                             │
+  │  Props: Aucune (contenu en dur)                             │
+  │                                                             │
+  │  Events: Aucun (wrapper visuel)                             │
+  │                                                             │
+  │  Slots: Aucun                                               │
+  └─────────────────────────────────────────────────────────────┘
 */
 
-import eventsImage from '~/assets/images/EventsImg.png';
-
-/* Type pour les événements */
-interface EventData {
-  day: string;
-  month: string;
-  dayName: string;
-  title: string;
-  subtitle: string;
-  time: string;
-  location: string;
-  instructors: string;
-}
-
-/* Données statiques des événements (format uniforme) */
-const events: EventData[] = [
-  {
-    day: '17',
-    month: 'NOV',
-    dayName: 'WED',
-    title: 'BACHATA',
-    subtitle: 'DÉBUTANT',
-    time: '6PM',
-    location: 'Salle 2',
-    instructors: 'Denise & Jordan',
-  },
-  {
-    day: '18',
-    month: 'NOV',
-    dayName: 'THU',
-    title: 'BACHATA',
-    subtitle: 'LADY STYLE',
-    time: '7PM',
-    location: 'Salle 1',
-    instructors: 'Marie & Sophie',
-  },
-  {
-    day: '20',
-    month: 'NOV',
-    dayName: 'SAT',
-    title: 'KIZOMBA',
-    subtitle: 'INTERMÉDIAIRE',
-    time: '3PM',
-    location: 'Salle 2',
-    instructors: 'Lucas & Emma',
-  },
-  {
-    day: '22',
-    month: 'NOV',
-    dayName: 'MON',
-    title: 'SALSA',
-    subtitle: 'DÉBUTANT',
-    time: '6PM',
-    location: 'Salle 1',
-    instructors: 'Carlos & Ana',
-  },
-];
-
-/* Le premier événement est le featured */
-const featured = events[0] as EventData;
+/* Images des événements */
+import eventImage1 from '~/assets/images/agendaAsset1.png';
+import eventImage2 from '~/assets/images/agendaAsset2.png';
+import eventImage3 from '~/assets/images/agendaAsset3.png';
 </script>
 
 <style scoped>
 /**
- * LANDING EVENTS STYLES - BEM strict + CSS Nesting natif
+ * LANDING AGENDA STYLES - CSS Nesting + BEM strict
  *
- * Mobile: Image en background avec overlay, contenu centré
- * Desktop: Image à gauche (absolute), infos à droite via grid
- *
- * @dev Tailwind pour spacing (py-12, lg:py-0, col-span-*)
- * @dev CSS scoped BEM pour visuel (backgrounds, colors, effects)
- * @dev CSS Nesting natif pour organisation hiérarchique
+ * Section événements avec stack d'InfoEvent
+ * @dev Fond clair, layout vertical
+ * @dev CSS Nesting natif (pas SASS)
  */
 
-/* Block: .landing-events */
-.landing-events {
+/* Block */
+.landing-agenda {
   position: relative;
+  background-color: var(--bg-subtle);
   overflow: hidden;
-  background-color: var(--bg-invert);
-  min-height: 80vh;
-
-  /* Overlay sombre pour lisibilité mobile */
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.6) 0%,
-      rgba(0, 0, 0, 0.4) 50%,
-      rgba(0, 0, 0, 0.8) 100%
-    );
-    z-index: 1;
-    pointer-events: none;
-
-    /* Desktop: overlay uniquement sur la gauche */
-    @media (min-width: 1024px) {
-      background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.3) 0%,
-        rgba(0, 0, 0, 0.7) 40%,
-        rgba(0, 0, 0, 0.95) 60%,
-        var(--neutral-black) 100%
-      );
-    }
-  }
 }
 
-/* Element: Glow effect (halo behind image) */
-.landing-events__glow {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  left: 10%;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--primary);
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.8;
-  z-index: 0;
-  pointer-events: none;
-
-  @media (min-width: 1024px) {
-    width: 800px;
-    height: 800px;
-    left: 5%;
+  /* Element: Subtitle */
+  .landing-events__subtitle {
+    color: var(--primary);
   }
-}
 
-/* Element: Background image */
-.landing-events__bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: 0;
-
-  @media (min-width: 1024px) {
-    width: 60%;
-    object-position: center top;
-  }
-}
-
-/* Element: Featured event container */
-.landing-events__featured {
+/* Element : stack d'événements */
+.landing-agenda__events {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-  min-height: 60vh;
-
-
-  @media (min-width: 1024px) {
-    min-height: 70vh;
-  }
-}
-
-/* Element: Cards container - prêt pour Swiper.js */
-.landing-events__cards {
-  display: flex;
-  gap: 30px;
-  overflow: visible;
-
-  /*
-   * Swiper.js ready:
-   * - Remplacer ce conteneur par <Swiper> avec slidesPerView="auto"
-   * - Les .landing-events__card-wrapper deviennent des <SwiperSlide>
-   * - Ajouter freeMode, spaceBetween, etc.
-   */
-}
-
-/* Element: Card wrapper - impose la taille aux cards */
-.landing-events__card-wrapper {
-  flex-shrink: 0;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-
-  /* Taille responsive des cards */
-  width: 280px;
-  height: 100px;
-
-  /* Tablet */
-  @media (min-width: 768px) {
-    width: 320px;
-    height: 110px;
-  }
-
-  /* Desktop */
-  @media (min-width: 1024px) {
-    width: 360px;
-    height: 120px;
-  }
-
-  /* Large desktop */
-  @media (min-width: 1280px) {
-    width: 400px;
-    height: 130px;
-  }
+  gap: 160px;
 }
 </style>

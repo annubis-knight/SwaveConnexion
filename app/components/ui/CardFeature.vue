@@ -133,6 +133,7 @@ const cardClass = computed(() => {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: filter 0.3s ease-in-out;
   }
 
   /* Element : Content */
@@ -146,13 +147,13 @@ const cardClass = computed(() => {
   /* Element : Arrow */
   .card-feature__arrow {
     margin-left: var(--space-xs);
-    transition: transform var(--transition-fast);
+    transition: transform 0.3s ease-in-out;
   }
 }
 
 /* Modifier : Format portrait (défaut) */
 .card-feature--portrait {
-  max-width: 400px;
+  max-width: 500px;
 
   @media (max-width: 640px) {
     max-width: 100%;
@@ -178,7 +179,7 @@ const cardClass = computed(() => {
 /* Modifier : Cliquable */
 .card-feature--clickable {
   cursor: pointer;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: all 0.3s ease-in-out;
 }
 
 /* Modifier : Layout overlay - contenu par dessus l'image */
@@ -187,6 +188,10 @@ const cardClass = computed(() => {
 
   .card-feature__img {
     filter: grayscale(100%);
+  }
+
+  &:hover .card-feature__img {
+    filter: grayscale(0%);
   }
 
   .card-feature__content {
