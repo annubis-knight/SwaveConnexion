@@ -1,11 +1,11 @@
 <template>
   <div>
     <SectionsLandingHero />
-    <SectionsLandingFeature />
-    <SectionsLandingAgenda />
-    <SectionsLandingEvents />
+    <SectionsLandingFeature id="cours" />
+    <!-- Section masquée temporairement (déploiement simplifié) : <SectionsLandingAgenda id="agenda" /> -->
+    <!-- Section masquée temporairement (déploiement simplifié) : <SectionsLandingEvents id="events" /> -->
 
-    <SectionsSectionCTA @submit="handleNewsletterSubmit" />
+    <SectionsSectionCTA id="contact" @submit="handleNewsletterSubmit" />
   </div>
 </template>
 
@@ -14,11 +14,11 @@ definePageMeta({
   layout: 'default'
 });
 
-useHead({
-  title: 'Swave Connexion - Make It Smooth',
-  meta: [
-    { name: 'description', content: 'Swave Connexion - Réservez votre cours et apprenez à danser.' }
-  ]
+useSeo({
+  title: 'Make It Smooth',
+  description: 'École de bachata à Montréal. Cours collectifs, privés, lady styling, sensual et team chorégraphie. Rejoignez Swave Connection.',
+  path: '/',
+  jsonLd: seoSchemaLocalBusiness(),
 });
 
 const handleNewsletterSubmit = (payload: { email: string }) => {
