@@ -27,7 +27,7 @@
   /* Primary - Bleu Swave (cyan/turquoise) */
   --primary: #0f8fc5;
   --primary-light: #65bde2;
-  --primary-dark: #2E8AB3;
+  --primary-dark: rgb(0, 96, 151);
 
   /* Secondary - Gris neutre */
   --secondary: #525252;
