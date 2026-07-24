@@ -4,21 +4,26 @@
       <div class="navbar__inner">
         <!-- Logo + Nom -->
         <NuxtLink to="/" class="navbar__brand">
-          <img
-            src="~/assets/images/logo_alpha.png"
-            alt="Swave Connexion Logo"
+          <NuxtImg
+            src="/images/logo_alpha.png"
+            alt="Swave Connection Logo"
             class="navbar__logo"
+            width="40"
+            height="40"
+            format="webp"
           />
-          <Text
-            as="span"
-            font="display"
-            size="lg"
-            weight="bold"
-            :color="isScrolled ? 'dark' : 'white'"
-            tracking="wide"
-          >
-            SWAVE CONNEXION
-          </Text>
+          <span class="navbar__brand-text">
+            <Text
+              as="span"
+              font="display"
+              size="lg"
+              weight="bold"
+              :color="isScrolled ? 'dark' : 'white'"
+              tracking="wide"
+            >
+              SWAVE CONNECTION
+            </Text>
+          </span>
         </NuxtLink>
 
         <!-- Navigation Desktop -->
@@ -28,14 +33,15 @@
             :key="link.href"
             :to="link.href"
             :variant="linkVariant"
+            :size="linkSize"
           >
             {{ link.label }}
           </NavLink>
         </div>
 
-        <!-- CTA Button Desktop -->
-        <div class="navbar__cta">
-          <ButtonSwave @click="handleCtaClick">
+        <!-- CTA Button Desktop - Apparaît après avoir quitté le Hero -->
+        <div class="navbar__cta" :class="{ 'navbar__cta--visible': showNavbarCta }">
+          <ButtonSwave :href="BOOKING_LINKS.bachata" external>
             {{ ctaText }}
           </ButtonSwave>
         </div>
@@ -79,7 +85,7 @@
           </NuxtLink>
         </div>
         <div class="navbar__mobile-cta">
-          <ButtonSwave @click="handleMobileCtaClick">
+          <ButtonSwave :href="BOOKING_LINKS.bachata" external @click="closeMenu">
             {{ ctaText }}
           </ButtonSwave>
         </div>
@@ -89,57 +95,28 @@
 </template>
 
 <script setup lang="ts">
-/*
-  ┌─────────────────────────────────────────────────────────────┐
-  │                         NAVBAR                              │
-  │                                                             │
-  │  DESKTOP (lg+):                                             │
-  │  ┌───────────────────────────────────────────────────────┐  │
-  │  │  nav.navbar (sticky top, bg transparent)              │  │
-  │  │  ┌─────────────────────────────────────────────────┐  │  │
-  │  │  │  .navbar__inner (flex row, justify-between)     │  │  │
-  │  │  │    ├─ .navbar__brand                            │  │  │
-  │  │  │    │    ├─ img.navbar__logo                     │  │  │
-  │  │  │    │    └─ Text (SWAVE CONNEXION)               │  │  │
-  │  │  │    ├─ .navbar__nav                              │  │  │
-  │  │  │    │    └─ NuxtLink × 5 (Text)                  │  │  │
-  │  │  │    └─ .navbar__cta                              │  │  │
-  │  │  │         └─ ButtonSwave                          │  │  │
-  │  │  └─────────────────────────────────────────────────┘  │  │
-  │  └───────────────────────────────────────────────────────┘  │
-  │                                                             │
-  │  MOBILE (<lg):                                              │
-  │  ┌───────────────────────────────────────────────────────┐  │
-  │  │  nav.navbar                                           │  │
-  │  │    ├─ .navbar__brand (logo + nom)                     │  │
-  │  │    ├─ .navbar__hamburger (3 lignes animées)           │  │
-  │  │    └─ .navbar__mobile-menu (overlay plein écran)      │  │
-  │  │         ├─ .navbar__mobile-links (liens centrés)      │  │
-  │  │         └─ .navbar__mobile-cta (ButtonSwave)          │  │
-  │  └───────────────────────────────────────────────────────┘  │
-  │                                                             │
-  │  Props:                                                     │
-  │    • ctaText: string (défaut: "RÉSERVE UN COURS")          │
-  │                                                             │
-  │  Events:                                                    │
-  │    • @cta-click: Émis au clic sur le bouton CTA            │
-  │                                                             │
-  │  Slots: Aucun (structure fixe)                              │
-  └─────────────────────────────────────────────────────────────┘
+/**
+ * NAVBAR
+ *
+ * Navigation principale avec 3 fonctionnalités dynamiques :
+ * - Détection sections claires/sombres via data-theme → change le style
+ * - CTA slide-in après Hero (showNavbarCta) → via useHeroVisibility
+ * - Menu mobile (isMenuOpen) → hamburger + overlay
+ *
+ * SYSTÈME DE THÈME (data-theme) :
+ * - Les sections ajoutent data-theme="light" ou data-theme="dark"
+ * - La navbar détecte automatiquement quelle section est sous elle
+ * - Elle adapte ses couleurs (texte clair sur fond sombre, texte sombre sur fond clair)
+ *
+ * Voir la documentation détaillée dans <style scoped>
+ */
 
-  Navbar sticky avec fond transparent, hamburger menu en mobile.
-  Utilise Text.vue pour les liens et ButtonSwave.vue pour le CTA.
-
-  @dev Tailwind pour spacing responsive
-  @dev CSS scoped BEM pour visuel (backgrounds, animations)
-*/
+/* ============================================================================
+   TYPES
+   ============================================================================ */
 
 interface Props {
   ctaText?: string;
-}
-
-interface Emits {
-  'cta-click': [];
 }
 
 interface NavLink {
@@ -147,46 +124,51 @@ interface NavLink {
   href: string;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+/* ============================================================================
+   PROPS
+   ============================================================================ */
+
+withDefaults(defineProps<Props>(), {
   ctaText: 'RÉSERVE UN COURS',
 });
 
-const emit = defineEmits<Emits>();
+/* ============================================================================
+   STATE
+   ============================================================================ */
 
-// État menu mobile
 const isMenuOpen = ref(false);
-
-// État scroll (détection sections à fond clair)
 const isScrolled = ref(false);
-let observer: IntersectionObserver | null = null;
+const windowWidth = ref(1280);
 
-// Variant pour les liens (réactif selon scroll)
-const linkVariant = computed(() => isScrolled.value ? 'dark' : 'light');
+const { isHeroVisible } = useHeroVisibility();
+const showNavbarCta = computed(() => !isHeroVisible.value);
 
-// Classes navbar (réactif)
+const linkVariant = computed(() => (isScrolled.value ? 'dark' : 'light'));
+const linkSize = computed(() => (windowWidth.value < 1280 ? 'xs' : 'sm'));
 const navbarClasses = computed(() => ({
   'navbar--open': isMenuOpen.value,
   'navbar--scrolled': isScrolled.value,
 }));
 
-// Liens de navigation
+/* ============================================================================
+   DATA
+   ============================================================================ */
+
 const navLinks: NavLink[] = [
-  { label: 'Cours', href: '#cours' },
-  { label: 'Professeurs', href: '#professeurs' },
-  { label: 'Events', href: '#events' },
-  { label: 'Agenda', href: '#agenda' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Cours', href: '/#cours' },
+  { label: 'Professeurs', href: '/professeurs' },
+  // Nav item masqué temporairement (déploiement simplifié) : { label: 'Events', href: '/#events' },
+  // Nav item masqué temporairement (déploiement simplifié) : { label: 'Agenda', href: '/#agenda' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
-// Handlers
+/* ============================================================================
+   HANDLERS
+   ============================================================================ */
+
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
-  // Bloquer le scroll du body quand le menu est ouvert
-  if (isMenuOpen.value) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
+  document.body.style.overflow = isMenuOpen.value ? 'hidden' : '';
 };
 
 const closeMenu = () => {
@@ -194,313 +176,311 @@ const closeMenu = () => {
   document.body.style.overflow = '';
 };
 
-const handleCtaClick = () => {
-  emit('cta-click');
+/* ============================================================================
+   LIFECYCLE - Détection sections claires + resize
+   ============================================================================ */
+
+const handleResize = () => {
+  windowWidth.value = window.innerWidth;
 };
 
-const handleMobileCtaClick = () => {
-  closeMenu();
-  emit('cta-click');
-};
+const checkSectionTheme = () => {
+  /* Re-query à chaque appel pour supporter les changements de route (SPA) */
+  const sections = document.querySelectorAll('[data-theme]');
+  if (sections.length === 0) {
+    isScrolled.value = false;
+    return;
+  }
 
-/*
-  ╔═══════════════════════════════════════════════════════════════════════╗
-  ║  IntersectionObserver - Détection des sections à fond clair           ║
-  ╠═══════════════════════════════════════════════════════════════════════╣
-  ║                                                                       ║
-  ║  PROBLÈME RÉSOLU:                                                     ║
-  ║  La navbar a un fond transparent avec du texte blanc par défaut.      ║
-  ║  Quand on scroll sur une section à fond clair (ex: Features, Agenda), ║
-  ║  le texte blanc devient illisible. On doit donc:                      ║
-  ║    → Détecter quand la navbar "passe au-dessus" d'une section claire  ║
-  ║    → Changer le style (fond clair + texte sombre) via isScrolled      ║
-  ║                                                                       ║
-  ║  FONCTIONNEMENT:                                                      ║
-  ║                                                                       ║
-  ║  1. On sélectionne toutes les sections à fond clair                   ║
-  ║     (classes .landing-feature et .landing-agenda)                     ║
-  ║                                                                       ║
-  ║  2. On crée un IntersectionObserver qui surveille ces sections        ║
-  ║                                                                       ║
-  ║  3. À chaque intersection détectée, on vérifie si une section         ║
-  ║     est positionnée sous la navbar (hauteur = 80px)                   ║
-  ║                                                                       ║
-  ║  4. Si rect.top <= 80 ET rect.bottom > 80, ça signifie que:           ║
-  ║       - Le haut de la section est passé sous la navbar                ║
-  ║       - Le bas de la section n'a pas encore dépassé la navbar         ║
-  ║       → La navbar est AU-DESSUS de cette section claire               ║
-  ║                                                                       ║
-  ║  SCHÉMA VISUEL:                                                       ║
-  ║                                                                       ║
-  ║     ┌──────────────────────────┐  ← top: 0px                          ║
-  ║     │  NAVBAR (80px height)    │                                      ║
-  ║     └──────────────────────────┘  ← bottom: 80px                      ║
-  ║     ┌──────────────────────────┐  ← rect.top (section)                ║
-  ║     │                          │                                      ║
-  ║     │   SECTION CLAIRE         │  ← isScrolled = true si:             ║
-  ║     │   (landing-feature)      │    rect.top <= 80 && rect.bottom > 80║
-  ║     │                          │                                      ║
-  ║     └──────────────────────────┘  ← rect.bottom                       ║
-  ║                                                                       ║
-  ║  OPTIONS DE L'OBSERVER:                                               ║
-  ║    • threshold: [0, 0.1, 0.2, ... 1] → callbacks tous les 10%         ║
-  ║      de visibilité pour une détection très réactive                   ║
-  ║    • rootMargin: '0px' → observe tout le viewport, le callback        ║
-  ║      utilise getBoundingClientRect() pour le calcul précis            ║
-  ║                                                                       ║
-  ╚═══════════════════════════════════════════════════════════════════════╝
-*/
-onMounted(() => {
-  /* Étape 1: Récupérer toutes les sections avec un fond clair */
-  const lightSections = document.querySelectorAll('.landing-feature, .landing-agenda, .features-grid, .section-golden');
+  let isOverLightSection = false;
 
-  /* Si aucune section claire n'existe, pas besoin d'observer */
-  if (lightSections.length === 0) return;
+  sections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    const navbarHeight = 80;
 
-  /* Étape 2: Créer l'observer avec callback et options */
-  observer = new IntersectionObserver(
-    () => {
-      /*
-        Callback exécuté à chaque changement d'intersection.
-        On parcourt TOUTES les sections claires pour vérifier
-        si l'une d'elles est actuellement sous la navbar.
-      */
-      let isOverLightSection = false;
-
-      lightSections.forEach((section) => {
-        /* getBoundingClientRect() donne la position relative au viewport */
-        const rect = section.getBoundingClientRect();
-
-        /*
-          Condition: la section est "sous" la navbar si:
-          - rect.top <= 80   → le haut de la section a atteint/dépassé le bas de la navbar
-          - rect.bottom > 80 → le bas de la section n'a pas encore dépassé le bas de la navbar
-
-          En d'autres termes: la bande des 80px du haut est AU-DESSUS de cette section
-        */
-        if (rect.top <= 80 && rect.bottom > 80) {
-          isOverLightSection = true;
-        }
-      });
-
-      /* Met à jour le state réactif → déclenche le changement de style */
-      isScrolled.value = isOverLightSection;
-    },
-    {
-      /*
-        threshold: pourcentages de visibilité qui déclenchent le callback
-        Plus de valeurs = plus de callbacks pendant le scroll = détection plus réactive
-      */
-      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-
-      /*
-        rootMargin: pas de décalage - on observe tout le viewport
-        Le callback utilise getBoundingClientRect() pour le calcul précis
-      */
-      rootMargin: '0px 0px 0px 0px'
+    /* Section visible sous la navbar ? */
+    if (rect.top <= navbarHeight && rect.bottom > navbarHeight) {
+      const theme = section.getAttribute('data-theme');
+      if (theme === 'light') {
+        isOverLightSection = true;
+      }
     }
-  );
+  });
 
-  /* Étape 3: Activer l'observation sur chaque section claire */
-  lightSections.forEach(section => observer!.observe(section));
+  isScrolled.value = isOverLightSection;
+};
+
+onMounted(() => {
+  windowWidth.value = window.innerWidth;
+  window.addEventListener('resize', handleResize);
+  window.addEventListener('scroll', checkSectionTheme, { passive: true });
+  checkSectionTheme();
 });
 
-/*
-  ╔═══════════════════════════════════════════════════════════════════════╗
-  ║  Cleanup - Nettoyage au démontage du composant                        ║
-  ╠═══════════════════════════════════════════════════════════════════════╣
-  ║  Important pour éviter les fuites mémoire et les effets de bord:      ║
-  ║    1. Rétablir le scroll du body (au cas où le menu mobile était      ║
-  ║       ouvert lors du changement de page)                              ║
-  ║    2. Déconnecter l'observer pour arrêter la surveillance             ║
-  ╚═══════════════════════════════════════════════════════════════════════╝
-*/
 onUnmounted(() => {
-  /* Rétablir le scroll si le menu était ouvert */
   document.body.style.overflow = '';
-
-  /* Arrêter l'observer (libère les ressources) */
-  observer?.disconnect();
+  window.removeEventListener('resize', handleResize);
+  window.removeEventListener('scroll', checkSectionTheme);
 });
 </script>
 
 <style scoped>
 /**
- * NAVBAR STYLES - CSS Nesting + BEM strict
+ * NAVBAR STYLES
  *
- * Sticky navbar avec fond transparent.
- * Hamburger animé en mobile, liens en row sur desktop.
+ * Structure BEM : .navbar > __inner > __brand, __nav, __cta, __hamburger
+ * Mobile-first : hamburger + overlay menu
+ * Desktop (1024px+) : liens inline + CTA animé
  *
- * @dev Variables de _variables.css
- * @dev CSS Nesting natif (pas SASS)
- * @dev Transitions pour hamburger et menu mobile
+ * ============================================================================
+ * FONCTIONNALITÉS DYNAMIQUES
+ * ============================================================================
+ *
+ * 1. DÉTECTION SECTIONS CLAIRES/SOMBRES (isScrolled)
+ *    ----------------------------------------
+ *    La navbar détecte automatiquement le thème de la section
+ *    sous elle via l'attribut data-theme="light" ou data-theme="dark".
+ *
+ *    - data-theme="light" → .navbar--scrolled (texte sombre)
+ *    - data-theme="dark" ou absent → navbar par défaut (texte clair)
+ *    - Détection : scroll listener + getBoundingClientRect()
+ *
+ *
+ * 2. CTA SLIDE-IN APRÈS HERO (showNavbarCta)
+ *    ----------------------------------------
+ *    Le bouton CTA de la navbar apparaît uniquement après avoir
+ *    quitté la section LandingHero (évite doublon avec le CTA du Hero).
+ *
+ *    Mécanisme :
+ *    - LandingHero utilise IntersectionObserver pour détecter sa sortie
+ *    - Il update le composable useHeroVisibility (useState partagé)
+ *    - Navbar lit isHeroVisible et affiche le CTA quand false
+ *
+ *    Animation (CSS) :
+ *    ┌─────────────────────────────────────────────────────────────┐
+ *    │  ÉTAT CACHÉ                    ÉTAT VISIBLE                 │
+ *    │  .navbar__cta                  .navbar__cta--visible        │
+ *    │  ├─ max-width: 0        →      ├─ max-width: 30vw           │
+ *    │  ├─ overflow: hidden           ├─ overflow: hidden          │
+ *    │  └─ .btn-swave                 └─ .btn-swave                │
+ *    │      └─ translateX(100%)           └─ translateX(0)         │
+ *    └─────────────────────────────────────────────────────────────┘
+ *
+ *    Pourquoi cette approche ?
+ *    - flex-grow: 1 sur __brand ET __cta → ils partagent l'espace équitablement
+ *    - max-width animé de 0 à 30vw → l'espace s'ouvre progressivement
+ *    - translateX sur le bouton → effet slide-in depuis la droite
+ *    - Les deux animations sont synchronisées (même durée/easing)
+ *
+ *
+ * 3. MENU MOBILE (isMenuOpen)
+ *    ----------------------------------------
+ *    - Hamburger visible < 1024px, caché en desktop
+ *    - Classe .navbar--open transforme les 3 lignes en X
+ *    - Overlay plein écran avec Vue <Transition> (fade)
+ *
  */
+
+/* ==========================================================================
+   NAVBAR - Block principal
+   ========================================================================== */
 
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  inset: 0 0 auto 0;
   z-index: 100;
-  background-color: transparent;
   height: 80px;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
 
-  /* Bordures haut et bas */
-  /* border-top: 1px solid color-mix(in srgb, var(--text-inverse) 30%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--text-inverse) 30%, transparent); */
-
-  /* Modifier: scrolled (fond clair) */
+  /* --scrolled : fond clair sur sections light */
   &.navbar--scrolled {
     background-color: var(--bg-subtle);
-    border-top-color: var(--border-base);
-    border-bottom-color: var(--border-base);
 
     .navbar__hamburger-line {
       background-color: var(--text-strong);
     }
   }
 
-  /* Modifier: open (menu mobile ouvert) */
+  /* --open : hamburger en X */
   &.navbar--open {
-    .navbar__hamburger-line:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .navbar__hamburger-line:nth-child(2) {
-      opacity: 0;
-    }
-
-    .navbar__hamburger-line:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-  }
-
-  /* Element: inner container */
-  .navbar__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    gap: 1rem;
-  }
-
-  /* Element: brand (logo + nom) */
-  .navbar__brand {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
-    flex-shrink: 0;
-  }
-
-  .navbar__logo {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-  }
-
-  /* Element: navigation links - HIDDEN on mobile */
-  .navbar__nav {
-    display: none;
-    align-items: center;
-    gap: 2rem;
-
-    @media (min-width: 1024px) {
-      display: flex;
-    }
-  }
-
-  /* Element: CTA button - HIDDEN on mobile */
-  .navbar__cta {
-    display: none;
-    flex-shrink: 0;
-
-    @media (min-width: 1024px) {
-      display: block;
-    }
-
-    /* Override ButtonSwave sizing for navbar */
-    :deep(.btn-swave) {
-      padding: 0.625rem 1.5rem;
-      min-width: auto;
-      width: auto;
-      font-size: var(--text-sm);
-    }
-  }
-
-  /* Element: hamburger button - VISIBLE only on mobile */
-  .navbar__hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    width: 40px;
-    height: 40px;
-    padding: 8px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 101;
-
-    @media (min-width: 1024px) {
-      display: none;
-    }
-  }
-
-  .navbar__hamburger-line {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: var(--text-inverse);
-    border-radius: 1px;
-    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
-  }
-
-  /* Element: mobile menu overlay */
-  .navbar__mobile-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 99;
-    background-color: var(--primary);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    padding: 2rem;
-
-    @media (min-width: 1024px) {
-      display: none;
-    }
-  }
-
-  .navbar__mobile-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  .navbar__mobile-link {
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-
-  .navbar__mobile-cta {
-    margin-top: 1rem;
+    .navbar__hamburger-line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .navbar__hamburger-line:nth-child(2) { opacity: 0; }
+    .navbar__hamburger-line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   }
 }
 
-/* Transitions for mobile menu (Vue Transition) */
+/* ==========================================================================
+   INNER - Conteneur flex
+   ========================================================================== */
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* ==========================================================================
+   BRAND - Logo + nom
+   ========================================================================== */
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  flex-basis: 0%;
+  text-decoration: none;
+
+  @media (min-width: 1024px) {
+    flex-grow: 1;
+  }
+}
+
+.navbar__logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.navbar__brand-text :deep(span) {
+  font-size: var(--text-sm) !important;
+
+  @media (min-width: 1280px) {
+    font-size: var(--text-lg) !important;
+  }
+}
+
+/* ==========================================================================
+   NAV - Liens de navigation (desktop only)
+   ========================================================================== */
+
+.navbar__nav {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 1rem;
+  }
+
+  @media (min-width: 1280px) {
+    gap: 2rem;
+  }
+}
+
+/* ==========================================================================
+   CTA - Bouton desktop avec animation slide-in
+   ========================================================================== */
+
+.navbar__cta {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1 0 0%;
+    max-width: 0;
+    overflow: hidden;
+    transition: max-width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &.navbar__cta--visible {
+    @media (min-width: 1024px) {
+      max-width: 30vw;
+    }
+  }
+}
+
+/* Animation du bouton à l'intérieur */
+.navbar__cta :deep(.btn-swave) {
+  transform: translateX(100%);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar__cta--visible :deep(.btn-swave) {
+  transform: translateX(0);
+}
+
+/* ==========================================================================
+   HAMBURGER - Menu mobile (visible < 1024px)
+   ========================================================================== */
+
+.navbar__hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.navbar__hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-inverse);
+  border-radius: 1px;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/* ==========================================================================
+   MOBILE MENU - Overlay plein écran
+   ========================================================================== */
+
+.navbar__mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem;
+  background-color: var(--primary);
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.navbar__mobile-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navbar__mobile-link {
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.navbar__mobile-cta {
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   VUE TRANSITIONS - Menu mobile fade
+   ========================================================================== */
+
 .menu-fade-enter-active,
 .menu-fade-leave-active {
   transition: opacity 0.3s ease;

@@ -66,12 +66,12 @@ const gapClass = computed(() => {
 </script>
 
 <style scoped>
-/* Mobile-first : stack vertical avec hauteurs égales */
+/* Mobile-first : stack vertical, hauteur naturelle de chaque slot */
 .grid-golden {
   display: grid;
   width: 100%;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
   grid-template-areas:
     "primary"
     "secondary"

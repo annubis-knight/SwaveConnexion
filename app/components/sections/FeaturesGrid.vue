@@ -1,5 +1,5 @@
 <template>
-  <section class="features-grid py-16 lg:py-24">
+  <section class="features-grid py-16 lg:py-24" data-theme="light">
     <LayoutContainer size="xl" :padding="true">
       <!-- Header -->
       <div class="mb-12">

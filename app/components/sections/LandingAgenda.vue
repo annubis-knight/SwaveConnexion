@@ -1,22 +1,22 @@
 <template>
-  <section class="landing-events py-24 lg:py-32">
+  <section :class="sectionClass" class="landing-agenda py-24 lg:py-32" :data-theme="theme">
     <!-- Glow effect (behind image) -->
-    <div class="landing-events__glow" aria-hidden="true"></div>
+    <div class="landing-agenda__glow" aria-hidden="true"></div>
 
     <!-- Background image (absolute) -->
     <img
-      :src="eventsImage"
+      :src="agendaImage"
       alt="Event illustration"
-      class="landing-events__bg"
+      class="landing-agenda__bg"
     />
 
     <!-- Desktop: GridResponsive pour placement précis -->
     <LayoutContainerMax class="relative z-10">
       <LayoutGridResponsive>
         <!-- Featured Event Info (droite sur desktop) -->
-        <div class="landing-events__featured col-span-4 md:col-span-8 lg:col-span-5 lg:col-start-8">
+        <div class="landing-agenda__featured col-span-4 md:col-span-8 lg:col-span-5 lg:col-start-8">
           <!-- Date line: DAY + DATE + MONTH -->
-          <Heading :level="2" color="white" class="flex gap-4">
+          <Heading :level="2" :color="textColor" class="flex gap-4">
             <span class="text-primary">{{ featured.dayName }}</span>
             <span>{{ featured.day }}</span>
             <span>{{ featured.month }}</span>
@@ -24,22 +24,22 @@
 
           <div class="flex flex-col gap-1 items-end">
             <!-- Time & Location -->
-            <Text v-if="featured.time && featured.location" as="span" color="white" size="lg">
+            <Text v-if="featured.time && featured.location" as="span" :color="textColor" size="lg">
               {{ featured.time }} | {{ featured.location }}
             </Text>
 
             <!-- Dance type -->
-            <Text font="display" as="span" color="white" size="4xl" >
+            <Text font="display" as="span" :color="textColor" size="4xl">
               {{ featured.title }}
-            </text>
+            </Text>
 
             <!-- Level/subtitle -->
-            <Text v-if="featured.subtitle" as="span" color="white" size="2xl">
+            <Text v-if="featured.subtitle" as="span" :color="textColor" size="2xl">
               {{ featured.subtitle }}
             </Text>
 
             <!-- Instructors -->
-            <Text v-if="featured.instructors" as="span" color="white" size="2xl" class="mt-4">
+            <Text v-if="featured.instructors" as="span" :color="textColor" size="2xl" class="mt-4">
               {{ featured.instructors }}
             </Text>
           </div>
@@ -51,7 +51,7 @@
 
         <!-- Slider Section (full width) -->
         <div class="col-span-4 md:col-span-8 lg:col-span-12">
-          <Text as="span" size="2xl" weight="semibold" color="white">
+          <Text as="span" size="2xl" weight="semibold" :color="textColor">
             PROCHAINS COURS & EVENTS
           </Text>
 
@@ -59,7 +59,7 @@
           <SwiperSwave
             v-model="activeIndex"
             :items="events"
-            class="landing-events__swiper"
+            class="landing-agenda__swiper"
           >
             <template #default="{ item }">
               <CardEvent
@@ -79,16 +79,18 @@
 <script setup lang="ts">
 /*
   ┌─────────────────────────────────────────────────────────────────────────────┐
-  │                            LANDING EVENTS                                    │
+  │                            LANDING AGENDA                                    │
+  │                                                                              │
+  │  Agenda des prochains cours : featured event + slider CardEvent              │
   │                                                                              │
   │  MOBILE (image en background overlay):                                       │
   │  ┌────────────────────────────────────────────────────────────────────────┐  │
-  │  │  section.landing-events                                                │  │
+  │  │  section.landing-agenda                                                │  │
   │  │  ┌──────────────────────────────────────────────────────────────────┐  │  │
-  │  │  │  img.landing-events__bg (absolute, full cover + overlay)        │  │  │
+  │  │  │  img.landing-agenda__bg (absolute, full cover + overlay)        │  │  │
   │  │  └──────────────────────────────────────────────────────────────────┘  │  │
   │  │  ┌──────────────────────────────────────────────────────────────────┐  │  │
-  │  │  │  .landing-events__featured (stack vertical)                     │  │  │
+  │  │  │  .landing-agenda__featured (stack vertical)                     │  │  │
   │  │  │    ├─ Date (WED 17 NOV)                                         │  │  │
   │  │  │    ├─ Infos (6PM | Salle 2)                                     │  │  │
   │  │  │    ├─ Type (BACHATA DÉBUTANT)                                   │  │  │
@@ -96,9 +98,9 @@
   │  │  │    └─ ButtonSwave (RÉSERVER UN COURS)                           │  │  │
   │  │  └──────────────────────────────────────────────────────────────────┘  │  │
   │  │  ┌──────────────────────────────────────────────────────────────────┐  │  │
-  │  │  │  .landing-events__slider                                        │  │  │
-  │  │  │    ├─ Heading H4 "PROCHAINS COURS & EVENTS"                     │  │  │
-  │  │  │    └─ .landing-events__cards (overflow-x scroll)                │  │  │
+  │  │  │  .landing-agenda__slider                                        │  │  │
+  │  │  │    ├─ Text "PROCHAINS COURS & EVENTS"                           │  │  │
+  │  │  │    └─ .landing-agenda__cards (SwiperSwave)                      │  │  │
   │  │  │         └─ CardEvent × N                                        │  │  │
   │  │  └──────────────────────────────────────────────────────────────────┘  │  │
   │  └────────────────────────────────────────────────────────────────────────┘  │
@@ -116,12 +118,13 @@
   │  │  └──────────────────────────┴───────────────────────────────────────┘  │  │
   │  │  ┌────────────────────────────────────────────────────────────────────┐│  │
   │  │  │  Slider (col-span-12)                                             ││  │
-  │  │  │    ├─ Heading                                                     ││  │
+  │  │  │    ├─ Text                                                        ││  │
   │  │  │    └─ CardEvent × N                                               ││  │
   │  │  └────────────────────────────────────────────────────────────────────┘│  │
   │  └────────────────────────────────────────────────────────────────────────┘  │
   │                                                                              │
-  │  Props: Aucune (données statiques internes)                                  │
+  │  Props:                                                                      │
+  │    • theme: 'dark' | 'light' (défaut: 'dark') - Thème visuel de la section  │
   │                                                                              │
   │  Events: Aucun                                                               │
   │                                                                              │
@@ -129,12 +132,30 @@
   │                                                                              │
   │  @dev Le premier événement de la liste devient le featured                   │
   │  @dev Utilise GridResponsive pour placement desktop avec col-span/col-start │
-  │  @dev Slider horizontal prêt pour intégration Swiper.js                      │
+  │  @dev SwiperSwave pour le slider horizontal                                  │
   └─────────────────────────────────────────────────────────────────────────────┘
 */
 
-import { ref } from 'vue';
-import eventsImage from '~/assets/images/EventsImg.png';
+import { ref, computed } from 'vue';
+import agendaImage from '~/assets/images/EventsImg.png';
+
+/* Props interface */
+interface Props {
+  theme?: 'dark' | 'light';
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  theme: 'dark',
+});
+
+/* Computed: classe BEM avec modifier de thème */
+const sectionClass = computed(() => [
+  'landing-agenda',
+  `landing-agenda--${props.theme}`,
+]);
+
+/* Computed: couleur des textes selon le thème */
+const textColor = computed(() => (props.theme === 'dark' ? 'white' : 'dark'));
 
 /* Index de la slide active (v-model pour SwiperSwave) */
 const activeIndex = ref(0);
@@ -201,22 +222,33 @@ const featured = events[0] as EventData;
 
 <style scoped>
 /**
- * LANDING EVENTS STYLES - BEM strict + CSS Nesting natif
+ * LANDING AGENDA STYLES - BEM strict + CSS Nesting natif
  *
+ * Agenda des prochains cours : featured event + slider CardEvent
  * Mobile: Image en background avec overlay, contenu centré
  * Desktop: Image à gauche (absolute), infos à droite via grid
+ *
+ * Themes:
+ * - dark (défaut): fond noir, textes blancs, overlay sombre
+ * - light: fond blanc, textes noirs, overlay clair
  *
  * @dev Tailwind pour spacing (py-12, lg:py-0, col-span-*)
  * @dev CSS scoped BEM pour visuel (backgrounds, colors, effects)
  * @dev CSS Nesting natif pour organisation hiérarchique
  */
 
-/* Block: .landing-events */
-.landing-events {
+/* Block: .landing-agenda */
+.landing-agenda {
   position: relative;
   overflow: hidden;
-  background-color: var(--bg-invert);
   min-height: 80vh;
+}
+
+/* ============================================
+   Modifier: --dark (thème par défaut)
+   ============================================ */
+.landing-agenda--dark {
+  background-color: var(--bg-invert);
 
   /* Overlay sombre pour lisibilité mobile */
   &::before {
@@ -239,24 +271,67 @@ const featured = events[0] as EventData;
         rgba(0, 0, 0, 0.3) 0%,
         rgba(0, 0, 0, 0.7) 40%,
         rgba(0, 0, 0, 0.95) 60%,
-        var(--neutral-black) 100%
+        var(--bg-invert) 100%
       );
     }
+  }
+
+  /* Glow dark theme */
+  & .landing-agenda__glow {
+    background: var(--primary);
+    opacity: 0.8;
+  }
+}
+
+/* ============================================
+   Modifier: --light (thème clair)
+   ============================================ */
+.landing-agenda--light {
+  background-color: var(--bg-base);
+
+  /* Overlay clair pour lisibilité mobile */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.6) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.8) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+
+    /* Desktop: overlay uniquement sur la gauche */
+    @media (min-width: 1024px) {
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.7) 40%,
+        rgba(255, 255, 255, 0.95) 60%,
+        var(--bg-base) 100%
+      );
+    }
+  }
+
+  /* Glow light theme */
+  & .landing-agenda__glow {
+    background: var(--primary);
+    opacity: 0.6;
   }
 }
 
 /* Element: Glow effect (halo behind image) */
-.landing-events__glow {
+.landing-agenda__glow {
   position: absolute;
   width: 600px;
   height: 600px;
   left: 10%;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--primary);
   border-radius: 50%;
   filter: blur(100px);
-  opacity: 0.8;
   z-index: 0;
   pointer-events: none;
 
@@ -268,7 +343,7 @@ const featured = events[0] as EventData;
 }
 
 /* Element: Background image */
-.landing-events__bg {
+.landing-agenda__bg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -284,7 +359,7 @@ const featured = events[0] as EventData;
 }
 
 /* Element: Featured event container */
-.landing-events__featured {
+.landing-agenda__featured {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -298,7 +373,7 @@ const featured = events[0] as EventData;
 }
 
 /* Element: Swiper container */
-.landing-events__swiper {
+.landing-agenda__swiper {
   margin-top: 1rem;
 }
 </style>

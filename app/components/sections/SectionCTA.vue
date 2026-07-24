@@ -1,10 +1,14 @@
 <template>
-  <section class="section-cta">
+  <section class="section-cta" data-theme="dark">
     <!-- Background image -->
-    <img
+    <NuxtImg
       :src="backgroundImage"
       alt=""
       class="section-cta__bg"
+      sizes="xs:320px sm:640px md:768px lg:1024px xl:1280px xxl:1280px"
+      format="webp"
+      loading="lazy"
+      decoding="async"
     />
     <!-- Blue overlay with gradient fade -->
     <div class="section-cta__overlay" />
@@ -92,7 +96,8 @@
   @dev Tailwind pour spacing, CSS scoped BEM pour visuel
 */
 
-import ctaBackground from '~/assets/images/assetCTA.jpg';
+/* Image servie depuis public/ pour optimisation @nuxt/image (NuxtImg) */
+const ctaBackground = '/images/assetCTA.jpg';
 
 interface Props {
   title?: string;

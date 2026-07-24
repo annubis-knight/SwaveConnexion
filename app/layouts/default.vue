@@ -13,8 +13,8 @@
     @dev flex-1 sur main pousse le footer vers le bas
   -->
   <div class="min-h-screen flex flex-col">
-    <!-- Navbar sticky -->
-    <SectionsNavbar @cta-click="handleCtaClick" />
+    <!-- Navbar sticky (CTA = lien externe géré dans la Navbar) -->
+    <SectionsNavbar />
 
     <!-- Contenu principal -->
     <main class="flex-1">
@@ -34,11 +34,4 @@
  * @dev Navbar sticky en haut, footer collé en bas
  * @dev State Owner pour thème
  */
-
-const router = useRouter();
-
-// Handler CTA click - navigation vers réservation
-const handleCtaClick = () => {
-  router.push('#reservation');
-};
 </script>

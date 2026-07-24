@@ -1,5 +1,5 @@
 <template>
-  <section class="landing-agenda py-16 lg:py-40">
+  <section class="landing-events py-16 lg:py-40" data-theme="light">
     <LayoutContainerMax>
       <!-- Titre + Text dans GridResponsive -->
       <LayoutGridResponsive class="mb-40">
@@ -11,7 +11,7 @@
 
         <!-- Text: full width mobile, colonnes 8-12 desktop -->
         <Text class="col-span-4 md:col-span-8 lg:col-span-5 lg:col-start-8">
-          Découvre SwaveConnexion, l'école de bachata la plus fun et sensuelle de Montréal !
+          Découvre SwaveConnection, l'école de bachata la plus fun et sensuelle de Montréal !
           Viens te connecter au rythme, à l'énergie et à la passion. Que tu sois débutant ou
           confirmé, notre équipe dynamique t'accompagne pour danser, progresser et vibrer à
           chaque pas. Rejoins la vibe Swave !
@@ -19,7 +19,7 @@
       </LayoutGridResponsive>
 
       <!-- Stack d'événements -->
-      <div class="landing-agenda__events">
+      <div class="landing-events__events">
         <InfoEvent
           location="BARCELONE"
           day="17"
@@ -36,7 +36,7 @@
           day="25"
           month="DEC"
           title="BACHATA SENSUAL 5+"
-          description="Découvre SwaveConnexion, l'école de bachata la plus fun et sensuelle de Montréal ! Viens te connecter au rythme, à l'énergie et à la passion. Une expérience unique qui équilibre l'énergie, la flexibilité et le rythme."
+          description="Découvre SwaveConnection, l'école de bachata la plus fun et sensuelle de Montréal ! Viens te connecter au rythme, à l'énergie et à la passion. Une expérience unique qui équilibre l'énergie, la flexibilité et le rythme."
           cta-text="ACHETER LE PASS -5€"
           :image="eventImage2"
           image-alt="Bachata Sensual 5+"
@@ -61,10 +61,12 @@
 <script setup lang="ts">
 /*
   ┌─────────────────────────────────────────────────────────────┐
-  │                     LANDING AGENDA                           │
+  │                     LANDING EVENTS                           │
+  │                                                             │
+  │  Événements à Montréal & partenaires internationaux          │
   │                                                             │
   │  ┌───────────────────────────────────────────────────────┐  │
-  │  │  section.landing-agenda                               │  │
+  │  │  section.landing-events                               │  │
   │  │  ┌─────────────────────────────────────────────────┐  │  │
   │  │  │  ContainerMax                                   │  │  │
   │  │  │  ┌───────────────────────────────────────────┐  │  │  │
@@ -74,15 +76,15 @@
   │  │  │  │  Text (paragraphe)                        │  │  │  │
   │  │  │  └───────────────────────────────────────────┘  │  │  │
   │  │  │  ┌───────────────────────────────────────────┐  │  │  │
-  │  │  │  │  .landing-agenda__events (stack)          │  │  │  │
+  │  │  │  │  .landing-events__events (stack)          │  │  │  │
   │  │  │  │  ┌─────────────────────────────────────┐  │  │  │  │
-  │  │  │  │  │  InfoEvent 1                        │  │  │  │  │
+  │  │  │  │  │  InfoEvent 1 (Barcelone)            │  │  │  │  │
   │  │  │  │  └─────────────────────────────────────┘  │  │  │  │
   │  │  │  │  ┌─────────────────────────────────────┐  │  │  │  │
-  │  │  │  │  │  InfoEvent 2                        │  │  │  │  │
+  │  │  │  │  │  InfoEvent 2 (Montreal)             │  │  │  │  │
   │  │  │  │  └─────────────────────────────────────┘  │  │  │  │
   │  │  │  │  ┌─────────────────────────────────────┐  │  │  │  │
-  │  │  │  │  │  InfoEvent 3                        │  │  │  │  │
+  │  │  │  │  │  InfoEvent 3 (Berlin)               │  │  │  │  │
   │  │  │  │  └─────────────────────────────────────┘  │  │  │  │
   │  │  │  └───────────────────────────────────────────┘  │  │  │
   │  │  └─────────────────────────────────────────────────┘  │  │
@@ -104,15 +106,16 @@ import eventImage3 from '~/assets/images/agendaAsset3.png';
 
 <style scoped>
 /**
- * LANDING AGENDA STYLES - CSS Nesting + BEM strict
+ * LANDING EVENTS STYLES - CSS Nesting + BEM strict
  *
- * Section événements avec stack d'InfoEvent
+ * Événements à Montréal & partenaires internationaux
+ * Section avec stack d'InfoEvent
  * @dev Fond clair, layout vertical
  * @dev CSS Nesting natif (pas SASS)
  */
 
 /* Block */
-.landing-agenda {
+.landing-events {
   position: relative;
   background-color: var(--bg-subtle);
   overflow: hidden;
@@ -124,7 +127,7 @@ import eventImage3 from '~/assets/images/agendaAsset3.png';
   }
 
 /* Element : stack d'événements */
-.landing-agenda__events {
+.landing-events__events {
   display: flex;
   flex-direction: column;
   gap: 160px;
