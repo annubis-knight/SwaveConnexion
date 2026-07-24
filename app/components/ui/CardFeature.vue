@@ -5,7 +5,7 @@
     :class="cardClass"
   >
     <!-- Image -->
-    <div class="card-feature__image">
+    <div ref="cardEl" class="card-feature__image">
       <NuxtImg :src="image" :alt="imageAlt" class="card-feature__img" sizes="100vw sm:50vw lg:800px" format="webp" loading="lazy" decoding="async" />
     </div>
     <!-- Content -->
@@ -29,7 +29,7 @@
     :class="cardClass"
   >
     <!-- Image -->
-    <div class="card-feature__image">
+    <div ref="cardEl" class="card-feature__image">
       <NuxtImg :src="image" :alt="imageAlt" class="card-feature__img" sizes="100vw sm:50vw lg:800px" format="webp" loading="lazy" decoding="async" />
     </div>
     <!-- Content -->
@@ -118,6 +118,19 @@ const props = withDefaults(defineProps<Props>(), {
   textColor: 'dark',
 });
 
+/*
+  SPOTLIGHT AU SCROLL (tactile uniquement)
+  Sur un appareil sans survol (mobile), impossible de "hover". Plutôt que
+  tout révéler en permanence, on met en avant la carte qui passe au CENTRE
+  du viewport pendant le scroll (effet projecteur), les autres au repos.
+  Progressive enhancement : sans JS, le CSS révèle tout (fallback sûr).
+  @dev Presentation-only (effet visuel), pas de logique métier.
+*/
+const cardEl = ref<HTMLElement | null>(null);
+const isActive = ref(false);
+const spotlightEnabled = ref(false);
+let observer: IntersectionObserver | null = null;
+
 // Computed class BEM
 const cardClass = computed(() => {
   return [
@@ -125,8 +138,28 @@ const cardClass = computed(() => {
     `card-feature--${props.format}`,
     `card-feature--${props.layout}`,
     (props.href || props.to) ? 'card-feature--clickable' : '',
+    spotlightEnabled.value ? 'card-feature--js' : '',
+    isActive.value ? 'card-feature--active' : '',
   ].filter(Boolean).join(' ');
 });
+
+onMounted(() => {
+  /* Uniquement pour les cartes overlay, sur tactile, hors reduced-motion */
+  if (props.layout !== 'overlay' || !cardEl.value) return;
+  const noHover = window.matchMedia('(hover: none)').matches;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!noHover || reduced) return;
+
+  spotlightEnabled.value = true; /* bascule le CSS en mode "repos sauf carte centrée" */
+  observer = new IntersectionObserver(
+    ([entry]) => { isActive.value = entry?.isIntersecting ?? false; },
+    /* bande centrale ~20% de hauteur : la carte s'active quand elle passe au milieu */
+    { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
+  );
+  observer.observe(cardEl.value);
+});
+
+onUnmounted(() => observer?.disconnect());
 </script>
 
 <style scoped>
@@ -286,16 +319,16 @@ const cardClass = computed(() => {
 }
 
 /**
- * FALLBACK TACTILE (mobile / tablette portrait)
+ * TACTILE (mobile / tablette portrait) — pas de :hover possible.
  *
- * Sur un appareil sans survol possible (`hover: none`), le `:hover` ne se
- * déclenche jamais → la description resterait invisible et l'image en N&B.
- * On révèle donc description + couleur en permanence pour ces appareils.
- *
- * @dev Pur CSS (aucun JS) : plus fiable qu'un IntersectionObserver et
- *      conforme à l'archi UI (composants "dumb" sans logique).
+ * 1. FALLBACK sans JS : on révèle tout (couleur + description) en permanence,
+ *    pour que le contenu reste accessible même sans JavaScript.
+ * 2. SPOTLIGHT avec JS (.card-feature--js posé par l'IntersectionObserver) :
+ *    on repasse les cartes au REPOS, sauf celle centrée au scroll
+ *    (.card-feature--active) → effet projecteur qui suit le doigt.
  */
 @media (hover: none) {
+  /* 1. Fallback : tout révélé */
   .card-feature--overlay .card-feature__img {
     filter: grayscale(0%);
   }
@@ -304,6 +337,17 @@ const cardClass = computed(() => {
     opacity: 1;
     max-height: 200px;
     transform: translateY(0);
+  }
+
+  /* 2. Spotlight : cartes non centrées → repos (N&B + description repliée) */
+  .card-feature--overlay.card-feature--js:not(.card-feature--active) .card-feature__img {
+    filter: grayscale(100%);
+  }
+
+  .card-feature--overlay.card-feature--js:not(.card-feature--active) .card-feature__content p {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(10px);
   }
 }
 </style>
