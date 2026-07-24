@@ -1,25 +1,43 @@
 <template>
-  <component
-    :is="href ? 'a' : 'div'"
-    :href="href"
+  <NuxtLink
+    v-if="to"
+    :to="to"
     :class="cardClass"
   >
     <!-- Image -->
     <div class="card-feature__image">
-      <img
-        :src="image"
-        :alt="imageAlt"
-        class="card-feature__img"
-      />
+      <NuxtImg :src="image" :alt="imageAlt" class="card-feature__img" sizes="100vw sm:50vw lg:800px" format="webp" loading="lazy" decoding="async" />
     </div>
-
     <!-- Content -->
     <div class="card-feature__content">
       <Heading :level="4" :color="textColor">
         <slot name="title">{{ title }}</slot>
         <span class="card-feature__arrow">→</span>
       </Heading>
+      <Text :color="textColor" size="sm">
+        <slot name="description">{{ description }}</slot>
+      </Text>
+    </div>
+  </NuxtLink>
 
+  <component
+    v-else
+    :is="href ? 'a' : 'div'"
+    :href="href || undefined"
+    :target="href && external ? '_blank' : undefined"
+    :rel="href && external ? 'noopener noreferrer' : undefined"
+    :class="cardClass"
+  >
+    <!-- Image -->
+    <div class="card-feature__image">
+      <NuxtImg :src="image" :alt="imageAlt" class="card-feature__img" sizes="100vw sm:50vw lg:800px" format="webp" loading="lazy" decoding="async" />
+    </div>
+    <!-- Content -->
+    <div class="card-feature__content">
+      <Heading :level="4" :color="textColor">
+        <slot name="title">{{ title }}</slot>
+        <span class="card-feature__arrow">→</span>
+      </Heading>
       <Text :color="textColor" size="sm">
         <slot name="description">{{ description }}</slot>
       </Text>
@@ -55,6 +73,8 @@
   │    • title: string - Titre de la card                       │
   │    • description: string - Description de la card           │
   │    • href: string - Lien (optionnel, rend la card cliquable)│
+  │    • external: boolean - Ouvre href dans un nouvel onglet    │
+  │      (target=_blank + rel=noopener noreferrer)               │
   │    • format: 'portrait' | 'landscape' - Format de la card   │
   │    • textColor: 'dark' | 'white' - Couleur des textes       │
   │                                                             │
@@ -82,6 +102,8 @@ interface Props {
   title?: string;
   description?: string;
   href?: string;
+  external?: boolean;
+  to?: string;
   format?: 'portrait' | 'landscape';
   layout?: 'outside' | 'overlay';
   textColor?: 'dark' | 'white';
@@ -102,7 +124,7 @@ const cardClass = computed(() => {
     'card-feature',
     `card-feature--${props.format}`,
     `card-feature--${props.layout}`,
-    props.href ? 'card-feature--clickable' : '',
+    (props.href || props.to) ? 'card-feature--clickable' : '',
   ].filter(Boolean).join(' ');
 });
 </script>
@@ -257,6 +279,28 @@ const cardClass = computed(() => {
 
   /* Hover : Text apparaît et pousse le Heading vers le haut */
   &:hover .card-feature__content p {
+    opacity: 1;
+    max-height: 200px;
+    transform: translateY(0);
+  }
+}
+
+/**
+ * FALLBACK TACTILE (mobile / tablette portrait)
+ *
+ * Sur un appareil sans survol possible (`hover: none`), le `:hover` ne se
+ * déclenche jamais → la description resterait invisible et l'image en N&B.
+ * On révèle donc description + couleur en permanence pour ces appareils.
+ *
+ * @dev Pur CSS (aucun JS) : plus fiable qu'un IntersectionObserver et
+ *      conforme à l'archi UI (composants "dumb" sans logique).
+ */
+@media (hover: none) {
+  .card-feature--overlay .card-feature__img {
+    filter: grayscale(0%);
+  }
+
+  .card-feature--overlay .card-feature__content p {
     opacity: 1;
     max-height: 200px;
     transform: translateY(0);

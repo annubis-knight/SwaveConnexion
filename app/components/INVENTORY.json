@@ -1,11 +1,11 @@
 {
   "_meta": {
-    "generated": "2026-01-17T16:02:27.573Z",
-    "totalCount": 28
+    "generated": "2026-01-19T19:40:03.591Z",
+    "totalCount": 43
   },
   "categories": {
     "sections": {
-      "count": 9,
+      "count": 21,
       "components": [
         {
           "name": "FeaturesGrid",
@@ -93,6 +93,706 @@
           ]
         },
         {
+          "name": "PageAmbianceCinematic",
+          "path": "@/components/sections/PageAmbianceCinematic.vue",
+          "props": [
+            {
+              "name": "image",
+              "type": "string",
+              "optional": true,
+              "default": "defaultImage"
+            },
+            {
+              "name": "imageAlt",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "tag",
+              "type": "string",
+              "optional": true,
+              "default": "Ambiance"
+            },
+            {
+              "name": "headline",
+              "type": "string",
+              "optional": true,
+              "default": "Ressens la musique. Vis le moment."
+            },
+            {
+              "name": "subheadline",
+              "type": "string",
+              "optional": true,
+              "default": "Chaque cours est une invitation à te connecter avec toi-même et les autres. La danse, c\\est bien plus que des pas."
+            },
+            {
+              "name": "scrollText",
+              "type": "string",
+              "optional": true,
+              "default": "Découvrir"
+            }
+          ],
+          "events": []
+        },
+        {
+          "name": "PageAmbianceMinimal",
+          "path": "@/components/sections/PageAmbianceMinimal.vue",
+          "props": [
+            {
+              "name": "image",
+              "type": "string",
+              "optional": true,
+              "default": "defaultImage"
+            },
+            {
+              "name": "imageAlt",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "line1",
+              "type": "string",
+              "optional": true,
+              "default": "Danse comme si"
+            },
+            {
+              "name": "highlight",
+              "type": "string",
+              "optional": true,
+              "default": "personne ne regardait"
+            },
+            {
+              "name": "line2",
+              "type": "string",
+              "optional": true,
+              "default": "et vis pleinement"
+            },
+            {
+              "name": "caption",
+              "type": "string",
+              "optional": true,
+              "default": "Swave Connection — Là où la danse devient une seconde nature"
+            }
+          ],
+          "events": []
+        },
+        {
+          "name": "PageAmbiancePoetic",
+          "path": "@/components/sections/PageAmbiancePoetic.vue",
+          "props": [
+            {
+              "name": "image",
+              "type": "string",
+              "optional": true,
+              "default": "defaultImage"
+            },
+            {
+              "name": "imageAlt",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "quote",
+              "type": "string",
+              "optional": true,
+              "default": "La danse est le langage caché de l\\âme. Elle révèle ce que les mots ne peuvent exprimer."
+            },
+            {
+              "name": "quoteAuthor",
+              "type": "string",
+              "optional": true,
+              "default": "Martha Graham"
+            },
+            {
+              "name": "keywords",
+              "type": "string[]",
+              "optional": true,
+              "default": "() => [Passion, Connexion, Liberté]"
+            },
+            {
+              "name": "tagline",
+              "type": "string",
+              "optional": true,
+              "default": "Rejoins une communauté où chaque pas compte et chaque sourire est sincère."
+            },
+            {
+              "name": "bandText",
+              "type": "string",
+              "optional": true,
+              "default": "Swave Connection"
+            }
+          ],
+          "events": []
+        },
+        {
+          "name": "PageBenefitsAlternate",
+          "path": "@/components/sections/PageBenefitsAlternate.vue",
+          "props": [
+            {
+              "name": "titleLine1",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "titleLine2",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "benefits",
+              "type": "Benefit[]",
+              "optional": false
+            }
+          ],
+          "events": []
+        },
+        {
+          "name": "PageBenefitsClassic",
+          "path": "@/components/sections/PageBenefitsClassic.vue",
+          "props": [
+            {
+              "name": "badge",
+              "type": "string",
+              "optional": true,
+              "default": "Pourquoi nous choisir"
+            },
+            {
+              "name": "titleLine1",
+              "type": "string",
+              "optional": true,
+              "default": "Le cours parfait"
+            },
+            {
+              "name": "titleLine2",
+              "type": "string",
+              "optional": true,
+              "default": "pour débuter en confiance"
+            },
+            {
+              "name": "intro",
+              "type": "string",
+              "optional": true,
+              "default": "Tu n\\as jamais dansé ? Parfait. Notre cours débutant est conçu spécialement pour toi. Zéro prérequis, zéro stress, 100% de découverte."
+            }
+          ],
+          "events": []
+        },
+        {
+          "name": "PageBenefitsImmersive",
+          "path": "@/components/sections/PageBenefitsImmersive.vue",
+          "props": [
+            {
+              "name": "badge",
+              "type": "string",
+              "optional": true,
+              "default": "L\\expérience Swave"
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "optional": true,
+              "default": "Pourquoi nous ?"
+            },
+            {
+              "name": "subtitle",
+              "type": "string",
+              "optional": true,
+              "default": "Trois promesses. Une seule mission : te faire danser."
+            },
+            {
+              "name": "ctaTitle",
+              "type": "string",
+              "optional": true,
+              "default": "Ton premier cours t\\attend"
+            },
+            {
+              "name": "ctaSubtitle",
+              "type": "string",
+              "optional": true,
+              "default": "Rejoins la communauté Swave et découvre une nouvelle façon de bouger."
+            },
+            {
+              "name": "ctaButton",
+              "type": "string",
+              "optional": true,
+              "default": "Je réserve mon cours découverte"
+            }
+          ],
+          "events": []
+        },
+        {
+          "name": "PageBenefitsSticky",
+          "path": "@/components/sections/PageBenefitsSticky.vue",
+          "props": [
+            {
+              "name": "badge",
+              "type": "string",
+              "optional": true,
+              "default": "L\\expérience Swave"
+            },
+            {
+              "name": "titleLine1",
+              "type": "string",
+              "optional": true,
+              "default": "Pourquoi des centaines"
+            },
+            {
+              "name": "titleLine2",
+              "type": "string",
+              "optional": true,
+              "default": "de débutants nous choisissent"
+            },
+            {
+              "name": "intro",
+              "type": "string",
+              "optional": true,
+              "default": "Parce qu\\apprendre à danser, c\\est bien plus qu\\une technique. C\\est une expérience humaine."
+            }
+          ],
+          "events": []
+        },
+        {
+          "name": "PageBenefitsTimeline",
+          "path": "@/components/sections/PageBenefitsTimeline.vue",
+          "props": [
+            {
+              "name": "title",
+              "type": "string",
+              "optional": true,
+              "default": "Ton parcours vers la danse"
+            },
+            {
+              "name": "subtitle",
+              "type": "string",
+              "optional": true,
+              "default": "En 3 étapes simples, passe de je n\\ai jamais dansé à tu danses depuis combien de temps ?"
+            },
+            {
+              "name": "ctaTitle",
+              "type": "string",
+              "optional": true,
+              "default": "Prêt à commencer ?"
+            },
+            {
+              "name": "ctaText",
+              "type": "string",
+              "optional": true,
+              "default": "Rejoins des centaines de débutants qui ont franchi le pas."
+            },
+            {
+              "name": "ctaButton",
+              "type": "string",
+              "optional": true,
+              "default": "Réserver mon premier cours"
+            }
+          ],
+          "events": []
+        },
+        {
+          "name": "PageHero",
+          "path": "@/components/sections/PageHero.vue",
+          "props": [
+            {
+              "name": "title",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "subtitle",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "tag",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "image",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "imageAlt",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "ctaText",
+              "type": "string",
+              "optional": true
+            }
+          ],
+          "events": [
+            "cta-click"
+          ]
+        },
+        {
+          "name": "PageVideoPreview",
+          "path": "@/components/sections/PageVideoPreview.vue",
+          "props": [
+            {
+              "name": "tag",
+              "type": "string",
+              "optional": true,
+              "default": "Aperçu"
+            },
+            {
+              "name": "titleStart",
+              "type": "string",
+              "optional": true,
+              "default": "Découvrez notre"
+            },
+            {
+              "name": "titleHighlight",
+              "type": "string",
+              "optional": true,
+              "default": "ambiance"
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "optional": true,
+              "default": "Plongez dans l\\univers Swave Connection à travers nos vidéos. Danse, passion et bonne humeur garanties !"
+            },
+            {
+              "name": "videoUrl",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "poster",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "source",
+              "type": "'instagram' | 'tiktok'",
+              "optional": true
+            },
+            {
+              "name": "likes",
+              "type": "number",
+              "optional": true,
+              "default": "0"
+            },
+            {
+              "name": "views",
+              "type": "number",
+              "optional": true,
+              "default": "0"
+            },
+            {
+              "name": "showEngagement",
+              "type": "boolean",
+              "optional": true,
+              "default": "true"
+            },
+            {
+              "name": "caption",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "ctaText",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "stats",
+              "type": "StatItem[]",
+              "optional": true,
+              "default": "() => []"
+            }
+          ],
+          "events": [
+            "cta-click"
+          ]
+        },
+        {
+          "name": "PageVideoPreviewClassic",
+          "path": "@/components/sections/PageVideoPreviewClassic.vue",
+          "props": [
+            {
+              "name": "tag",
+              "type": "string",
+              "optional": true,
+              "default": "Vidéo"
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "optional": true,
+              "default": "Un aperçu de nos cours"
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "optional": true,
+              "default": "Découvrez l\\ambiance unique de Swave Connection à travers nos vidéos."
+            },
+            {
+              "name": "videoUrl",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "poster",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "source",
+              "type": "'instagram' | 'tiktok'",
+              "optional": true
+            },
+            {
+              "name": "likes",
+              "type": "number",
+              "optional": true,
+              "default": "0"
+            },
+            {
+              "name": "views",
+              "type": "number",
+              "optional": true,
+              "default": "0"
+            },
+            {
+              "name": "showEngagement",
+              "type": "boolean",
+              "optional": true,
+              "default": "true"
+            },
+            {
+              "name": "caption",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "ctaText",
+              "type": "string",
+              "optional": true
+            }
+          ],
+          "events": [
+            "cta-click"
+          ]
+        },
+        {
+          "name": "PageVideoPreviewDynamic",
+          "path": "@/components/sections/PageVideoPreviewDynamic.vue",
+          "props": [
+            {
+              "name": "tag",
+              "type": "string",
+              "optional": true,
+              "default": "Live"
+            },
+            {
+              "name": "titleLine1",
+              "type": "string",
+              "optional": true,
+              "default": "Ressens"
+            },
+            {
+              "name": "titleLine2",
+              "type": "string",
+              "optional": true,
+              "default": "l\\énergie Swave"
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "optional": true,
+              "default": "Plonge dans l\\univers de la danse latine avec notre communauté passionnée. Chaque cours est une nouvelle aventure."
+            },
+            {
+              "name": "danceStyle",
+              "type": "string",
+              "optional": true,
+              "default": "Bachata"
+            },
+            {
+              "name": "stat1Value",
+              "type": "string",
+              "optional": true,
+              "default": "500+"
+            },
+            {
+              "name": "stat1Label",
+              "type": "string",
+              "optional": true,
+              "default": "Élèves actifs"
+            },
+            {
+              "name": "stat2Value",
+              "type": "string",
+              "optional": true,
+              "default": "4.9"
+            },
+            {
+              "name": "stat2Label",
+              "type": "string",
+              "optional": true,
+              "default": "Note moyenne"
+            },
+            {
+              "name": "stat3Value",
+              "type": "string",
+              "optional": true,
+              "default": "50+"
+            },
+            {
+              "name": "stat3Label",
+              "type": "string",
+              "optional": true,
+              "default": "Cours/mois"
+            },
+            {
+              "name": "videoUrl",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "poster",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "source",
+              "type": "'instagram' | 'tiktok'",
+              "optional": true
+            },
+            {
+              "name": "likes",
+              "type": "number",
+              "optional": true,
+              "default": "0"
+            },
+            {
+              "name": "views",
+              "type": "number",
+              "optional": true,
+              "default": "0"
+            },
+            {
+              "name": "showEngagement",
+              "type": "boolean",
+              "optional": true,
+              "default": "true"
+            },
+            {
+              "name": "caption",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "ctaText",
+              "type": "string",
+              "optional": true
+            }
+          ],
+          "events": [
+            "cta-click"
+          ]
+        },
+        {
+          "name": "PageVideoPreviewImmersive",
+          "path": "@/components/sections/PageVideoPreviewImmersive.vue",
+          "props": [
+            {
+              "name": "tag",
+              "type": "string",
+              "optional": true,
+              "default": "Expérience"
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "optional": true,
+              "default": "Plongez dans l\\univers Swave"
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "optional": true,
+              "default": "Une immersion totale dans la danse latine. Rejoignez notre communauté et vivez des moments inoubliables."
+            },
+            {
+              "name": "videoUrl",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "poster",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "source",
+              "type": "'instagram' | 'tiktok'",
+              "optional": true
+            },
+            {
+              "name": "likes",
+              "type": "number",
+              "optional": true,
+              "default": "0"
+            },
+            {
+              "name": "views",
+              "type": "number",
+              "optional": true,
+              "default": "0"
+            },
+            {
+              "name": "stat1Value",
+              "type": "string",
+              "optional": true,
+              "default": "8.5K"
+            },
+            {
+              "name": "stat1Label",
+              "type": "string",
+              "optional": true,
+              "default": "Vues"
+            },
+            {
+              "name": "stat2Value",
+              "type": "string",
+              "optional": true,
+              "default": "1.2K"
+            },
+            {
+              "name": "stat2Label",
+              "type": "string",
+              "optional": true,
+              "default": "Likes"
+            },
+            {
+              "name": "ctaText",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "showSocial",
+              "type": "boolean",
+              "optional": true,
+              "default": "true"
+            },
+            {
+              "name": "socialText",
+              "type": "string",
+              "optional": true,
+              "default": "+200 personnes ont rejoint ce mois-ci"
+            }
+          ],
+          "events": [
+            "cta-click"
+          ]
+        },
+        {
           "name": "SectionCTA",
           "path": "@/components/sections/SectionCTA.vue",
           "props": [
@@ -130,12 +830,6 @@
           "events": [
             "submit"
           ]
-        },
-        {
-          "name": "SectionGolden",
-          "path": "@/components/sections/SectionGolden.vue",
-          "props": [],
-          "events": []
         }
       ]
     },
@@ -363,7 +1057,7 @@
       ]
     },
     "ui": {
-      "count": 11,
+      "count": 14,
       "components": [
         {
           "name": "ButtonPromoSwave",
@@ -396,6 +1090,34 @@
               "type": "boolean",
               "optional": true,
               "default": "false"
+            }
+          ],
+          "events": [],
+          "slots": [
+            "default"
+          ]
+        },
+        {
+          "name": "ButtonTest",
+          "path": "@/components/ui/ButtonTest.vue",
+          "props": [
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "optional": true,
+              "default": "false"
+            },
+            {
+              "name": "hoverEffect",
+              "type": "'snake' | 'orbital' | 'both' | 'sweep' | 'spin' | 'shine' | 'slide' | 'sweepshine' | 'none'",
+              "optional": true,
+              "default": "both"
+            },
+            {
+              "name": "withSnake",
+              "type": "boolean",
+              "optional": true,
+              "default": "undefined"
             }
           ],
           "events": [],
@@ -639,6 +1361,39 @@
               "type": "'light' | 'dark'",
               "optional": true,
               "default": "light"
+            },
+            {
+              "name": "size",
+              "type": "'xs' | 'sm'",
+              "optional": true,
+              "default": "sm"
+            }
+          ],
+          "events": [],
+          "slots": [
+            "default"
+          ]
+        },
+        {
+          "name": "SwiperSwave",
+          "path": "@/components/ui/SwiperSwave.vue",
+          "props": [
+            {
+              "name": "items",
+              "type": "unknown[]",
+              "optional": false
+            },
+            {
+              "name": "pagination",
+              "type": "boolean",
+              "optional": true,
+              "default": "false"
+            },
+            {
+              "name": "modelValue",
+              "type": "number",
+              "optional": true,
+              "default": "0"
             }
           ],
           "events": [],
@@ -713,6 +1468,70 @@
           "slots": [
             "default"
           ]
+        },
+        {
+          "name": "VideoPreview",
+          "path": "@/components/ui/VideoPreview.vue",
+          "props": [
+            {
+              "name": "videoUrl",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "poster",
+              "type": "string",
+              "optional": true
+            },
+            {
+              "name": "source",
+              "type": "'instagram' | 'tiktok'",
+              "optional": true
+            },
+            {
+              "name": "likes",
+              "type": "number",
+              "optional": true,
+              "default": "0"
+            },
+            {
+              "name": "views",
+              "type": "number",
+              "optional": true,
+              "default": "0"
+            },
+            {
+              "name": "showEngagement",
+              "type": "boolean",
+              "optional": true,
+              "default": "true"
+            },
+            {
+              "name": "loop",
+              "type": "boolean",
+              "optional": true,
+              "default": "true"
+            },
+            {
+              "name": "muted",
+              "type": "boolean",
+              "optional": true,
+              "default": "true"
+            },
+            {
+              "name": "tilt",
+              "type": "'none' | 'left' | 'right'",
+              "optional": true,
+              "default": "right"
+            },
+            {
+              "name": "theme",
+              "type": "'light' | 'dark'",
+              "optional": true,
+              "default": "light"
+            }
+          ],
+          "events": []
         }
       ]
     }

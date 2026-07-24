@@ -35,11 +35,19 @@
 interface Props {
   to: string;
   variant?: 'light' | 'dark';
+  size?: 'xs' | 'sm';
 }
 
 const props = withDefaults(defineProps<Props>(), {
   variant: 'light',
+  size: 'sm',
 });
+
+/* Map des tailles vers les variables CSS */
+const sizeMap: Record<string, string> = {
+  xs: 'var(--text-xs)',
+  sm: 'var(--text-sm)',
+};
 
 // Classe BEM pour la variante
 const linkClass = computed(() => ['navlink', `navlink--${props.variant}`]);
@@ -47,7 +55,7 @@ const linkClass = computed(() => ['navlink', `navlink--${props.variant}`]);
 // Styles inline (comme Text.vue)
 const linkStyle = computed(() => ({
   fontFamily: 'var(--font-sans)',
-  fontSize: 'var(--text-sm)',
+  fontSize: sizeMap[props.size],
   fontWeight: 'var(--font-medium)',
   textTransform: 'uppercase' as const,
   letterSpacing: '0.05em',
