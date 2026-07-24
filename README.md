@@ -1,4 +1,4 @@
-# Swave Connexion - Design System
+# Swave Connection - Design System
 
 Design system minimaliste et moderne construit avec Nuxt 4, Vue 3, TypeScript et Tailwind CSS v4.
 
@@ -23,7 +23,7 @@ Design system minimaliste et moderne construit avec Nuxt 4, Vue 3, TypeScript et
 ```bash
 # Cloner le depot
 git clone <repository-url>
-cd SwaveConnexion
+cd SwaveConnection
 
 # Installer les dependances
 npm install

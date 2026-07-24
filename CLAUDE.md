@@ -1,8 +1,8 @@
-# CLAUDE.md - Swave Connexion Design System
+# CLAUDE.md - Swave Connection Design System
 
 ## Apercu du projet
 
-**Swave Connexion** est un design system minimaliste et moderne construit avec Nuxt 4, Vue 3, TypeScript et Tailwind CSS v4. Ce projet combine l'efficacité de CSS natif avec variables pour les composants UI et les utilities Tailwind pour les layouts, créant ainsi une architecture hybride performante et maintenable.
+**Swave Connection** est un design system minimaliste et moderne construit avec Nuxt 4, Vue 3, TypeScript et Tailwind CSS v4. Ce projet combine l'efficacité de CSS natif avec variables pour les composants UI et les utilities Tailwind pour les layouts, créant ainsi une architecture hybride performante et maintenable.
 
 ### Technologies principales
 
@@ -68,7 +68,7 @@ Le projet utilise 2 polices avec forte personnalite :
 ## Structure du projet
 
 ```
-SwaveConnexion/
+SwaveConnection/
 ├── app/
 │   ├── assets/
 │   │   ├── css/
@@ -128,7 +128,7 @@ SwaveConnexion/
 ```bash
 # Cloner le depot
 git clone <repository-url>
-cd SwaveConnexion
+cd SwaveConnection
 
 # Installer les dependances
 npm install
