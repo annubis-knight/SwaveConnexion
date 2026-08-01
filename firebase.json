@@ -7,12 +7,8 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/200.html"
-      }
-    ],
+    "comment_routing": "Site 100% pre-genere (nuxt generate) : PAS de catch-all SPA. Les URL inconnues renvoient 404.html avec un vrai HTTP 404 (evite les soft 404 sur le spam herite du domaine). trailingSlash:false aligne les URL sur la canonical sans slash. NE PAS activer cleanUrls (casserait /google6e98290a3fd5b817.html, verif GSC).",
+    "trailingSlash": false,
     "headers": [
       {
         "source": "**/*.@(js|css)",
