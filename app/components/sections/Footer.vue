@@ -78,11 +78,23 @@
           </ul>
         </nav>
 
-        <!-- Copyright (full width) -->
-        <div class="col-span-4 md:col-span-8 lg:col-span-12 mt-8 pt-6 border-t border-white/10">
+        <!-- Copyright + crédit agence (full width) -->
+        <div
+          class="col-span-4 md:col-span-8 lg:col-span-12 mt-8 pt-6 border-t border-white/10 flex flex-col items-center gap-1"
+        >
           <Text as="p" size="xs" color="white" align="center">
             © {{ currentYear }} Swave Connection. Tous droits réservés.
           </Text>
+          <!-- Crédit d'agence (backlink brandé, dofollow) -->
+          <a
+            href="https://www.propulsitetoulouse.website"
+            target="_blank"
+            rel="noopener"
+            class="footer__credit"
+            aria-label="Site réalisé par PropulSite, agence web à Toulouse"
+          >
+            <Text as="span" size="xs" color="white" align="center">Réalisé par PropulSite</Text>
+          </a>
         </div>
       </LayoutGridResponsive>
     </LayoutContainer>
@@ -168,5 +180,18 @@ const currentYear = new Date().getFullYear();
 
 .footer__link:hover {
   opacity: 0.8;
+}
+
+/* Crédit d'agence : discret par défaut, plein au survol */
+.footer__credit {
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.footer__credit:hover,
+.footer__credit:focus-visible {
+  opacity: 1;
+  text-decoration: underline;
 }
 </style>
