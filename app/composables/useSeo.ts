@@ -23,6 +23,9 @@
 
 export interface SeoOptions {
   title: string;
+  /* Titre <title> complet, verbatim (bypasse le template "{title} | Swave
+     Connection"). Utile quand on veut la marque en premier, ex. sur la home. */
+  fullTitle?: string;
   description: string;
   path?: string;
   ogType?: 'website' | 'article' | 'profile';
@@ -49,7 +52,7 @@ const SITE = {
    ============================================================================ */
 
 export const useSeo = (options: SeoOptions) => {
-  const fullTitle = `${options.title} | ${SITE.name}`;
+  const fullTitle = options.fullTitle ?? `${options.title} | ${SITE.name}`;
   const canonical = `${SITE.url}${options.path || '/'}`;
   const ogImage = `${SITE.url}${SITE.image}`;
 

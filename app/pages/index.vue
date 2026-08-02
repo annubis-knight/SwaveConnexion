@@ -15,7 +15,8 @@ definePageMeta({
 });
 
 useSeo({
-  title: 'Make It Smooth',
+  title: 'École de danse Bachata à Montréal',
+  fullTitle: 'Swave Connection | École de danse Bachata à Montréal',
   description: 'École de bachata à Montréal. Cours collectifs, privés, lady styling, sensual et team chorégraphie. Rejoignez Swave Connection.',
   path: '/',
   jsonLd: seoSchemaLocalBusiness(),
