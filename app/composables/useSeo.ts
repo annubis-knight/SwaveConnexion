@@ -29,9 +29,16 @@ export interface SeoOptions {
   description: string;
   path?: string;
   ogType?: 'website' | 'article' | 'profile';
+  /* Image OG/Twitter spécifique à la page (chemin racine ou URL absolue).
+     Par défaut : visuel global SITE.image. */
+  ogImage?: string;
   robots?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
+
+/* Absolutise un chemin d'image (laisse une URL http intacte) */
+const absUrl = (src: string) =>
+  src.startsWith('http') ? src : `${SITE.url}${src}`;
 
 /* ============================================================================
    CONSTANTES GLOBALES
@@ -54,7 +61,7 @@ const SITE = {
 export const useSeo = (options: SeoOptions) => {
   const fullTitle = options.fullTitle ?? `${options.title} | ${SITE.name}`;
   const canonical = `${SITE.url}${options.path || '/'}`;
-  const ogImage = `${SITE.url}${SITE.image}`;
+  const ogImage = options.ogImage ? absUrl(options.ogImage) : `${SITE.url}${SITE.image}`;
 
   /* --- Head: lang + canonical --- */
   useHead({
@@ -109,7 +116,7 @@ export const seoSchemaLocalBusiness = (): Record<string, unknown> => ({
     'École de bachata à Montréal. Cours collectifs, privés, lady styling, sensual et team chorégraphie.',
   url: SITE.url,
   image: `${SITE.url}${SITE.image}`,
-  telephone: '+1-XXX-XXX-XXXX',
+  telephone: '+15794210132',
   email: 'contact@swaveconnection.com',
   address: {
     '@type': 'PostalAddress',
@@ -122,6 +129,11 @@ export const seoSchemaLocalBusiness = (): Record<string, unknown> => ({
     latitude: 45.5017,
     longitude: -73.5673,
   },
+  /* Zones desservies : Montréal (Denise) + Sherbrooke (Jordan) */
+  areaServed: [
+    { '@type': 'City', name: 'Montréal' },
+    { '@type': 'City', name: 'Sherbrooke' },
+  ],
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -186,6 +198,8 @@ export const seoSchemaPerson = (person: {
   path: string;
   jobTitle?: string;
   specialties?: string[];
+  image?: string;
+  sameAs?: string[];
 }): Record<string, unknown> => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -193,10 +207,34 @@ export const seoSchemaPerson = (person: {
   description: person.description,
   url: `${SITE.url}${person.path}`,
   jobTitle: person.jobTitle || 'Professeur de bachata',
+  ...(person.image ? { image: absUrl(person.image) } : {}),
+  ...(person.sameAs?.length ? { sameAs: person.sameAs } : {}),
   worksFor: {
     '@type': 'Organization',
     name: SITE.name,
     url: SITE.url,
   },
   knowsAbout: person.specialties || [],
+});
+
+/**
+ * Schema ItemList pour la page listant les professeurs (/professeurs)
+ */
+export const seoSchemaTeacherList = (): Record<string, unknown> => ({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      url: `${SITE.url}/denise-rodriguez`,
+      name: 'Denise Rodriguez',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      url: `${SITE.url}/jordan-gallon`,
+      name: 'Jordan Gallon',
+    },
+  ],
 });

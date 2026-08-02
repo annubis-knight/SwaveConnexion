@@ -46,16 +46,21 @@ definePageMeta({
 });
 
 useSeo({
-  title: 'Denise Rodriguez — Professeur',
-  description: 'Découvrez Denise Rodriguez, chorégraphe et pédagogue chez Swave Connection. Une approche artistique et créative de la bachata à Montréal.',
+  title: 'Denise Rodriguez — Professeure de Bachata à Montréal',
+  description:
+    'Professeure de bachata à Montréal chez Swave Connection. 12 ans d\'expérience, formée en Bachata Sensual auprès de Korke & Judith. Chorégraphie & lady styling.',
   path: '/denise-rodriguez',
   ogType: 'profile',
+  ogImage: '/images/professeur_denise.jpg',
   jsonLd: seoSchemaPerson({
     name: 'Denise Rodriguez',
-    description: 'Chorégraphe et pédagogue bachata chez Swave Connection. Approche artistique et créative de la danse latine.',
+    description:
+      'Professeure de bachata et chorégraphe chez Swave Connection à Montréal. 12 ans d\'expérience (Toulouse), formée en Bachata Sensual auprès de Korke & Judith, les créateurs du style.',
     path: '/denise-rodriguez',
-    jobTitle: 'Professeur de bachata & Chorégraphe',
+    jobTitle: 'Professeure de bachata & Chorégraphe',
     specialties: ['Chorégraphie créative', 'Lady Styling avancé', 'Expression scénique', 'Danse contemporaine latine', 'Body movement', 'Performance & spectacle'],
+    image: '/images/professeur_denise.jpg',
+    sameAs: ['https://instagram.com/denise.rodriguez'],
   }),
 });
 
@@ -112,14 +117,14 @@ const bentoContent = {
   subtitle:
     "Une approche artistique de la bachata, où technique et expression ne font qu'un.",
   parcoursLabel: 'Parcours',
-  parcoursTitle: 'De la scène à la salle de cours',
+  parcoursTitle: 'De Toulouse à Montréal',
   bio: [
-    "Formée en danse contemporaine au Conservatoire de Madrid, Denise a découvert la bachata lors d'un voyage en République Dominicaine. Coup de foudre immédiat. Elle a fusionné ses deux mondes pour créer un style unique, entre grâce et sensualité.",
-    "Après 5 ans sur scène dans des compagnies de danse latine, elle s'est tournée vers l'enseignement avec la conviction que chaque élève porte en lui un artiste.",
+    "Denise a grandi dans la danse : 12 ans à Toulouse comme danseuse puis professeure, avant de poser ses valises à Montréal il y a 5 ans. C'est là qu'est né son partenariat avec Jordan, au sein de Swave Connection.",
+    "Elle s'est formée en Bachata Sensual directement auprès de Korke & Judith, les créateurs du style. De cet héritage elle a fait sa signature : une bachata artistique où technique, musicalité et expression scénique ne font qu'un.",
   ],
   stats: [
-    { value: '8', label: "Années d'enseignement" },
-    { value: '1500+', label: 'Élèves inspirés' },
+    { value: '12', label: "Ans d'expérience" },
+    { value: '5', label: 'Ans à Montréal' },
   ],
   skills,
   images: [
