@@ -30,24 +30,29 @@
               </NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/cours" class="footer__link">
-                <Text as="span" size="sm" color="white">Nos cours</Text>
+              <NuxtLink to="/professeurs" class="footer__link">
+                <Text as="span" size="sm" color="white">Nos professeurs</Text>
               </NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/agenda" class="footer__link">
-                <Text as="span" size="sm" color="white">Agenda</Text>
+              <NuxtLink to="/denise-rodriguez" class="footer__link">
+                <Text as="span" size="sm" color="white">Denise Rodriguez</Text>
               </NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/contact" class="footer__link">
+              <NuxtLink to="/jordan-gallon" class="footer__link">
+                <Text as="span" size="sm" color="white">Jordan Gallon</Text>
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/#contact" class="footer__link">
                 <Text as="span" size="sm" color="white">Contact</Text>
               </NuxtLink>
             </li>
           </ul>
         </nav>
 
-        <!-- Legal (4 cols mobile, 4 cols desktop) -->
+        <!-- Nos cours (4 cols mobile, 4 cols desktop) -->
         <nav class="col-span-4 lg:col-span-4">
           <Text
             as="span"
@@ -57,22 +62,32 @@
             transform="uppercase"
             tracking="wide"
           >
-            Informations légales
+            Nos cours
           </Text>
           <ul class="footer__nav-list mt-4">
             <li>
-              <NuxtLink to="/mentions-legales" class="footer__link">
-                <Text as="span" size="sm" color="white">Mentions légales</Text>
+              <NuxtLink to="/bachata-debutant" class="footer__link">
+                <Text as="span" size="sm" color="white">Bachata débutant</Text>
               </NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/cgu" class="footer__link">
-                <Text as="span" size="sm" color="white">CGU</Text>
+              <NuxtLink to="/bachata-sensual-cours" class="footer__link">
+                <Text as="span" size="sm" color="white">Bachata sensual</Text>
               </NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/confidentialite" class="footer__link">
-                <Text as="span" size="sm" color="white">Politique de confidentialité</Text>
+              <NuxtLink to="/bachata-lady-style" class="footer__link">
+                <Text as="span" size="sm" color="white">Lady styling</Text>
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/bachata-team" class="footer__link">
+                <Text as="span" size="sm" color="white">Team chorégraphie</Text>
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/bachata-cours-prives" class="footer__link">
+                <Text as="span" size="sm" color="white">Cours privés</Text>
               </NuxtLink>
             </li>
           </ul>
