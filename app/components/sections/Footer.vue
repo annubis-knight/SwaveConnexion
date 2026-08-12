@@ -2,13 +2,24 @@
   <footer class="footer py-12 lg:py-16">
     <LayoutContainer size="xl" :padding="true">
       <LayoutGridResponsive>
-        <!-- Logo (4 cols mobile, 4 cols desktop) -->
-        <div class="col-span-4 lg:col-span-4 flex items-center lg:items-start">
+        <!-- Logo + coordonnées (NAP : Name/Address/Phone pour le SEO local) -->
+        <div class="col-span-4 lg:col-span-4 flex flex-col items-center lg:items-start gap-4">
           <div class="footer__logo">
             <slot name="logo">
               <span class="footer__logo-placeholder">LOGO</span>
             </slot>
           </div>
+          <address class="footer__contact flex flex-col gap-2 text-center lg:text-left">
+            <Text as="p" size="sm" color="white">
+              9 Rue Sainte-Catherine Est, 2e étage<br />Montréal, QC H2X 1K3
+            </Text>
+            <a href="tel:+15794210132" class="footer__link">
+              <Text as="span" size="sm" color="white">+1 579-421-0132</Text>
+            </a>
+            <Text as="p" size="xs" color="white">
+              Lun–Jeu &amp; Dim : 12 h–22 h · Ven–Sam : 10 h–22 h
+            </Text>
+          </address>
         </div>
 
         <!-- Navigation (4 cols mobile, 4 cols desktop) -->
@@ -195,6 +206,11 @@ const currentYear = new Date().getFullYear();
 
 .footer__link:hover {
   opacity: 0.8;
+}
+
+/* Bloc coordonnées : reset l'italique par défaut de <address> */
+.footer__contact {
+  font-style: normal;
 }
 
 /* Crédit d'agence : discret par défaut, plein au survol */

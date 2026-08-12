@@ -120,8 +120,10 @@ export const seoSchemaLocalBusiness = (): Record<string, unknown> => ({
   email: 'contact@swaveconnection.com',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: '9 Rue Sainte-Catherine Est, 2e étage',
     addressLocality: 'Montréal',
     addressRegion: 'QC',
+    postalCode: 'H2X 1K3',
     addressCountry: 'CA',
   },
   geo: {
@@ -137,15 +139,15 @@ export const seoSchemaLocalBusiness = (): Record<string, unknown> => ({
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '18:00',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Sunday'],
+      opens: '12:00',
       closes: '22:00',
     },
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Saturday', 'Sunday'],
+      dayOfWeek: ['Friday', 'Saturday'],
       opens: '10:00',
-      closes: '18:00',
+      closes: '22:00',
     },
   ],
   sameAs: [
