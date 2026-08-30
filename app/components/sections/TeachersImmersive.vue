@@ -1,10 +1,13 @@
 <template>
   <section class="teachers-immersive">
-    <!-- Header optionnel (au-dessus du split) — fond clair : navbar en mode sombre -->
+    <!-- Header optionnel (au-dessus du split)
+         Desktop : fond clair → navbar opaque. Mobile : fond sombre → la navbar
+         transparente se fond dedans (d'où data-theme-mobile). -->
     <div
       v-if="title || subtitle"
       class="teachers-immersive__header"
       data-theme="light"
+      data-theme-mobile="dark"
     >
       <LayoutContainerMax>
         <Heading v-if="title" :level="2">{{ title }}</Heading>
@@ -172,9 +175,10 @@ const NuxtLink = resolveComponent('NuxtLink');
 }
 
 /* Header optionnel au-dessus du split
-   @dev padding-top compense la navbar fixed (80px) : sans ça le titre passe
-   dessous, et le logo se superpose au texte en mobile.
-   @dev mobile = aligné à gauche / desktop = centré */
+   @dev mobile : fond sombre (continuité avec le split) + texte à gauche
+        desktop : fond clair + texte centré
+   @dev padding-top compense la navbar fixed (80px), qui se superpose au
+        header : sans ça le titre passe dessous. */
 .teachers-immersive__header {
   display: flex;
   flex-direction: column;
@@ -182,14 +186,26 @@ const NuxtLink = resolveComponent('NuxtLink');
   gap: 0.75rem;
   padding-top: calc(80px + 2rem);
   padding-bottom: 2.5rem;
-  background-color: var(--bg-base);
+  background-color: var(--bg-invert);
+  color: var(--text-inverse);
   text-align: left;
 
   @media (min-width: 768px) {
     align-items: center;
     padding-top: calc(80px + 3rem);
+    background-color: var(--bg-base);
+    color: var(--text-strong);
     text-align: center;
   }
+}
+
+/* _typography.css impose une couleur aux h1-h6 : sans ce reset le titre
+   resterait sombre sur le fond sombre du mobile. On délègue à la couleur
+   du header plutôt que de la redéfinir deux fois. */
+.teachers-immersive__header :deep(h1),
+.teachers-immersive__header :deep(h2),
+.teachers-immersive__header :deep(h3) {
+  color: inherit;
 }
 
 /* Split : 2 panneaux côte à côte (desktop) / empilés (mobile) */

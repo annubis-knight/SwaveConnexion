@@ -182,6 +182,8 @@ const closeMenu = () => {
 
 const handleResize = () => {
   windowWidth.value = window.innerWidth;
+  /* Une section peut changer de thème au passage mobile/desktop (data-theme-mobile) */
+  checkSectionTheme();
 };
 
 const checkSectionTheme = () => {
@@ -200,7 +202,18 @@ const checkSectionTheme = () => {
 
     /* Section visible sous la navbar ? */
     if (rect.top <= navbarHeight && rect.bottom > navbarHeight) {
-      const theme = section.getAttribute('data-theme');
+      /*
+        data-theme-mobile (optionnel) : thème à utiliser sous 768px, pour les
+        sections dont le fond s'inverse en responsive. Lu ici plutôt que posé
+        en JS par la section : pas de largeur à connaître au SSR, donc pas de
+        flash d'hydratation.
+      */
+      const mobileTheme = section.getAttribute('data-theme-mobile');
+      const theme =
+        mobileTheme && window.innerWidth < 768
+          ? mobileTheme
+          : section.getAttribute('data-theme');
+
       if (theme === 'light') {
         isOverLightSection = true;
       }
@@ -254,7 +267,9 @@ onUnmounted(() => {
  *
  *    - data-theme="light" → .navbar--scrolled (texte sombre)
  *    - data-theme="dark" ou absent → navbar par défaut (texte clair)
- *    - Détection : scroll listener + getBoundingClientRect()
+ *    - data-theme-mobile="dark|light" (optionnel) → remplace data-theme
+ *      sous 768px, pour les sections dont le fond s'inverse en responsive
+ *    - Détection : scroll + resize + page:finish, via getBoundingClientRect()
  *
  *
  * 2. CTA SLIDE-IN APRÈS HERO (showNavbarCta)
