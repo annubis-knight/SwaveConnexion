@@ -210,6 +210,17 @@ const checkSectionTheme = () => {
   isScrolled.value = isOverLightSection;
 };
 
+/*
+  La navbar est montée une seule fois (layout) : sans ce hook, une navigation
+  SPA change le DOM sous la navbar sans jamais redéclencher la détection, et
+  celle-ci reste sur le thème de la page précédente jusqu'au premier scroll.
+*/
+const nuxtApp = useNuxtApp();
+nuxtApp.hook('page:finish', () => {
+  /* nextTick : attendre que le DOM de la nouvelle page soit en place */
+  nextTick(() => checkSectionTheme());
+});
+
 onMounted(() => {
   windowWidth.value = window.innerWidth;
   window.addEventListener('resize', handleResize);

@@ -1,23 +1,21 @@
 <template>
-  <section class="teachers-immersive" data-theme="dark">
-    <!-- Header optionnel (au-dessus du split) -->
-    <div v-if="title || subtitle" class="teachers-immersive__header">
+  <section class="teachers-immersive">
+    <!-- Header optionnel (au-dessus du split) — fond clair : navbar en mode sombre -->
+    <div
+      v-if="title || subtitle"
+      class="teachers-immersive__header"
+      data-theme="light"
+    >
       <LayoutContainerMax>
-        <Heading v-if="title" :level="2" align="center">{{ title }}</Heading>
-        <Text
-          v-if="subtitle"
-          align="center"
-          weight="light"
-          max-width="md"
-          leading="relaxed"
-        >
+        <Heading v-if="title" :level="2">{{ title }}</Heading>
+        <Text v-if="subtitle" weight="light" max-width="md" leading="relaxed">
           {{ subtitle }}
         </Text>
       </LayoutContainerMax>
     </div>
 
     <!-- Split immersif plein écran -->
-    <div class="teachers-immersive__split">
+    <div class="teachers-immersive__split" data-theme="dark">
       <component
         :is="teacher.to ? NuxtLink : 'div'"
         v-for="teacher in teachers"
@@ -133,7 +131,9 @@
   └─────────────────────────────────────────────────────────────┘
 
   @dev Full-bleed : la section occupe toute la largeur du viewport
-  @dev data-theme="dark" → contexte sombre (textes en color="white")
+  @dev data-theme est posé par zone, pas sur la section entière :
+       header (fond clair) → "light" pour que la Navbar passe en fond opaque
+       + texte sombre ; split (photos sombres) → "dark" (textes color="white").
 */
 
 interface Teacher {
@@ -171,15 +171,25 @@ const NuxtLink = resolveComponent('NuxtLink');
   background-color: var(--bg-invert);
 }
 
-/* Header optionnel au-dessus du split */
+/* Header optionnel au-dessus du split
+   @dev padding-top compense la navbar fixed (80px) : sans ça le titre passe
+   dessous, et le logo se superpose au texte en mobile.
+   @dev mobile = aligné à gauche / desktop = centré */
 .teachers-immersive__header {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 0.75rem;
-  padding-top: 4rem;
+  padding-top: calc(80px + 2rem);
   padding-bottom: 2.5rem;
   background-color: var(--bg-base);
+  text-align: left;
+
+  @media (min-width: 768px) {
+    align-items: center;
+    padding-top: calc(80px + 3rem);
+    text-align: center;
+  }
 }
 
 /* Split : 2 panneaux côte à côte (desktop) / empilés (mobile) */
