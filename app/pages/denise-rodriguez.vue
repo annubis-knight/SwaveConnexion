@@ -119,12 +119,12 @@ const bentoContent = {
   parcoursLabel: 'Parcours',
   parcoursTitle: 'De Toulouse à Montréal',
   bio: [
-    "Denise a grandi dans la danse : 12 ans à Toulouse comme danseuse puis professeure, avant de poser ses valises à Montréal il y a 5 ans. C'est là qu'est né son partenariat avec Jordan, au sein de Swave Connection.",
+    "Denise a grandi dans la danse : 12 ans à Toulouse comme danseuse puis professeure, avant de poser ses valises à Montréal il y a 4 ans. C'est avec Jordan, rencontré par la danse une dizaine d'années plus tôt, qu'elle y fait vivre Swave Connection.",
     "Elle s'est formée en Bachata Sensual directement auprès de Korke & Judith, les créateurs du style. De cet héritage elle a fait sa signature : une bachata artistique où technique, musicalité et expression scénique ne font qu'un.",
   ],
   stats: [
     { value: '12', label: "Ans d'expérience" },
-    { value: '5', label: 'Ans à Montréal' },
+    { value: '4', label: 'Ans à Montréal' },
   ],
   skills,
   images: [

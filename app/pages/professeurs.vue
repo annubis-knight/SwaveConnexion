@@ -15,7 +15,7 @@
 /*
   Page Professeurs — présentation de l'équipe (Denise / Jordan)
 
-  Deux professeurs : Denise (Montréal) et Jordan (Sherbrooke),
+  Deux professeurs : Denise (Montréal) et Jordan (Sherbrooke & Montréal),
   chacun renvoyant vers sa page dédiée via le split immersif.
 */
 
@@ -60,10 +60,10 @@ const teachers: Teacher[] = [
   },
   {
     name: 'Jordan',
-    city: 'Sherbrooke',
+    city: 'Sherbrooke & Montréal',
     role: 'Professeur',
     description:
-      "Jordan porte la vibe Swave à Sherbrooke. Dans une ambiance conviviale et énergique, il te guide pour progresser et prendre du plaisir à chaque cours.",
+      "Jordan porte la vibe Swave à Sherbrooke comme à Montréal. Dans une ambiance conviviale et énergique, il te guide pour progresser et prendre du plaisir à chaque cours.",
     image: jordanPhoto,
     to: '/jordan-gallon',
   },

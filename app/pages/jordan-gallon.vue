@@ -32,7 +32,7 @@
   Structure identique à la page Denise Rodriguez :
     Hero → Bento → Instagram → CTA
 
-  Bio et chiffres = vrais (12 ans, Toulouse/Montauban, Québec depuis 5 ans).
+  Bio et chiffres = vrais (12 ans, Toulouse/Montauban, Québec depuis 4 ans).
   ⚠️ Reste en placeholder : le handle/URL Instagram et les reels (en attente des vrais).
 */
 
@@ -60,16 +60,16 @@ const skills = [
 ];
 
 useSeo({
-  title: 'Jordan Gallon — Professeur de Bachata à Sherbrooke',
+  title: 'Jordan Gallon — Prof de Bachata à Sherbrooke et Montréal',
   description:
-    'Professeur de bachata à Sherbrooke chez Swave Connection. 12 ans d\'expérience (Toulouse, Montauban), ambiance conviviale et énergique pour progresser en dansant.',
+    'Professeur de bachata à Sherbrooke et Montréal chez Swave Connection. 12 ans d\'expérience, une ambiance conviviale et énergique pour progresser en dansant.',
   path: '/jordan-gallon',
   ogType: 'profile',
   ogImage: '/images/professeur_jordan.png',
   jsonLd: seoSchemaPerson({
     name: 'Jordan Gallon',
     description:
-      'Professeur de bachata chez Swave Connection à Sherbrooke. 12 ans d\'expérience (Toulouse, Montauban), approche conviviale et énergique de la danse latine.',
+      'Professeur de bachata chez Swave Connection à Sherbrooke et Montréal. 12 ans d\'expérience (Toulouse, Montauban), approche conviviale et énergique de la danse latine.',
     path: '/jordan-gallon',
     jobTitle: 'Professeur de bachata',
     specialties: skills,
@@ -107,11 +107,11 @@ onUnmounted(() => {
 
 /* Props partagées par les 4 variantes de hero (à comparer) */
 const heroProps = {
-  eyebrow: 'Professeur — Sherbrooke',
+  eyebrow: 'Professeur — Sherbrooke & Montréal',
   firstName: 'Jordan',
   lastName: 'Gallon',
   description:
-    "À Sherbrooke, Jordan fait de chaque cours un moment de plaisir. Énergie, convivialité et technique précise : sa signature, c'est te faire progresser vite sans jamais te prendre la tête.",
+    "À Sherbrooke comme à Montréal, Jordan fait de chaque cours un moment de plaisir. Énergie, convivialité et technique précise : sa signature, c'est te faire progresser vite sans jamais te prendre la tête.",
   tags: ['Ambiance', 'Musicalité', 'Guidage'],
   photo: heroPhoto,
 };
@@ -123,12 +123,12 @@ const bentoContent = {
   parcoursLabel: 'Parcours',
   parcoursTitle: 'De Montauban à Sherbrooke',
   bio: [
-    "Jordan danse et enseigne depuis 12 ans. Formé à Toulouse, il a animé ses propres cours pendant 5 ans à Montauban — c'est d'ailleurs lui qui a transmis la bachata à Denise. Arrivés au Québec il y a 5 ans, ils portent Swave Connection en duo.",
-    "À Sherbrooke, Jordan cultive une bachata accessible et vivante, où l'on progresse vite dans une ambiance conviviale — du grand débutant au danseur confirmé.",
+    "Jordan danse et enseigne depuis 12 ans. Formé à Toulouse, il a animé ses propres cours pendant 5 ans à Montauban. C'est d'ailleurs la danse qui l'a réuni avec Denise, il y a une dizaine d'années. Arrivés au Québec il y a 4 ans, ils portent Swave Connection ensemble.",
+    "À Sherbrooke comme à Montréal, Jordan cultive une bachata accessible et vivante, où l'on progresse vite dans une ambiance conviviale — du grand débutant au danseur confirmé.",
   ],
   stats: [
     { value: '12', label: "Ans d'expérience" },
-    { value: '5', label: 'Ans au Québec' },
+    { value: '4', label: 'Ans au Québec' },
   ],
   skills,
   images: [
@@ -145,7 +145,7 @@ const bentoContent = {
 /* TODO: renseigner les vrais reels de Jordan (handle + URL OK) */
 const instagramProps = {
   handle: '@jordan.gln',
-  tagline: 'Professeur de bachata · Sherbrooke',
+  tagline: 'Professeur de bachata · Sherbrooke & Montréal',
   profileImage: heroPhoto,
   profileUrl: 'https://www.instagram.com/jordan.gln',
   stories: [
