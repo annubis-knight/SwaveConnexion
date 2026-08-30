@@ -9,7 +9,6 @@
             alt="Swave Connection Logo"
             class="navbar__logo"
             width="40"
-            height="40"
             format="webp"
           />
           <span class="navbar__brand-text">
@@ -364,10 +363,14 @@ onUnmounted(() => {
   }
 }
 
+/*
+  Le logo source n'est pas carré (538x575). Lui demander un 40x40 le faisait
+  rogner par le module image (fit "cover" par défaut) : ~1,4px mangés en haut
+  et en bas. On ne contraint donc que la largeur, la hauteur suit le ratio.
+*/
 .navbar__logo {
   width: 40px;
-  height: 40px;
-  object-fit: contain;
+  height: auto;
 }
 
 .navbar__brand-text :deep(span) {
