@@ -173,7 +173,10 @@ const currentYear = new Date().getFullYear();
 
 <style scoped>
 /* BEM : Block */
+/* z-index : passe devant le watermark fixe de PageBenefitsAlternate */
 .footer {
+  position: relative;
+  z-index: 1;
   background-color: var(--bg-invert);
 }
 

@@ -183,6 +183,8 @@ withDefaults(defineProps<Props>(), {
 
 .ambiance-poetic {
   position: relative;
+  /* z-index : passe devant le watermark fixe de PageBenefitsAlternate */
+  z-index: 1;
   overflow: hidden;
   background-color: var(--bg-invert);
 }

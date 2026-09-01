@@ -180,6 +180,9 @@ onUnmounted(() => {
 /* Block: .page-hero */
 .page-hero {
   position: relative;
+  /* z-index : le hero precede la section benefits dans le DOM, il lui faut un
+     z-index explicite pour passer devant son watermark fixe */
+  z-index: 1;
   overflow: hidden;
   min-height: 95vh;
   display: flex;

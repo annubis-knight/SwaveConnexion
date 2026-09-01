@@ -142,7 +142,10 @@ const embedUrl = computed(
  * Section sombre + lecteur en ratio 16/9 avec facade cliquable
  */
 
+/* z-index : passe devant le watermark fixe de PageBenefitsAlternate */
 .video-youtube {
+  position: relative;
+  z-index: 1;
   background-color: var(--bg-invert);
 }
 

@@ -147,6 +147,8 @@ const handleSubmit = () => {
 
 .section-cta {
   position: relative;
+  /* z-index : passe devant le watermark fixe de PageBenefitsAlternate */
+  z-index: 1;
   overflow: hidden;
   background-color: var(--primary);
 }

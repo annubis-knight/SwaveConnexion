@@ -152,15 +152,19 @@ const onScroll = () => {
 }
 
 /*
-  Logo watermark centré dans SA section.
-  @dev absolute et non fixed : en fixed le watermark se référait au viewport,
-  echappait à l'overflow:hidden du parent et restait affiché par-dessus les
-  sections suivantes. Étant positionné (z-index:0), il était peint APRÈS les
-  éléments en flux normal et recouvrait leur contenu — d'où l'impression que
-  les cartes des sections d'en dessous étaient translucides.
+  Logo watermark fixe : il reste centré à l'écran pendant le scroll de la
+  section (effet filigrane voulu).
+
+  @dev Contrepartie du fixed : le watermark se réfère au viewport, échappe à
+  l'overflow:hidden de la section et flotte sur toute la page. Comme il est
+  positionné avec z-index:0, il est peint APRÈS tous les éléments en flux
+  normal. Les sections voisines doivent donc TOUTES être positionnées avec
+  z-index:1 pour le masquer (page-hero, video-youtube, auditions,
+  ambiance-poetic, section-cta, footer) — sinon il transparaît par-dessus
+  leur contenu. Toute nouvelle section ajoutée à ces pages doit faire pareil.
 */
 .page-benefits-alternate__watermark {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

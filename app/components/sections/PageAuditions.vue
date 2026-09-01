@@ -120,7 +120,10 @@ withDefaults(defineProps<Props>(), {
  * Section claire listant les dates d'audition ouvertes
  */
 
+/* z-index : passe devant le watermark fixe de PageBenefitsAlternate */
 .auditions {
+  position: relative;
+  z-index: 1;
   background-color: var(--bg-subtle);
 }
 
