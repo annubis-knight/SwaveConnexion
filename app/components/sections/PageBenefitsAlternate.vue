@@ -38,7 +38,12 @@
         >
           <!-- Visual side -->
           <div class="page-benefits-alternate__visual">
-            <div class="page-benefits-alternate__image-wrapper">
+            <div
+              class="page-benefits-alternate__image-wrapper"
+              @pointerenter="onFramePointerEnter"
+              @pointermove="onFramePointerMove"
+              @pointerleave="onFramePointerLeave"
+            >
               <NuxtImg :src="benefit.image" :alt="benefit.title" class="page-benefits-alternate__image" sizes="100vw lg:600px" format="webp" loading="lazy" />
               <!-- Cadre fin décalé, dans la couleur de la page -->
               <div class="page-benefits-alternate__frame" aria-hidden="true"></div>
@@ -137,6 +142,50 @@ const onScroll = () => {
 
 // onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }));
 // onUnmounted(() => window.removeEventListener('scroll', onScroll));
+
+/* ============================================================================
+   MICRO-INTERACTION : le cadre fuit le curseur
+   Il se déplace en symétrie du curseur par rapport au centre de l'image.
+
+   @dev La géométrie de l'image est lue UNE SEULE FOIS, à l'entrée du curseur,
+   puis réutilisée pendant tout le survol. Un getBoundingClientRect() à chaque
+   pointermove forcerait le navigateur à recalculer la mise en page des
+   dizaines de fois par seconde. Ici il ne reste que deux divisions et
+   l'écriture d'une variable CSS, qui ne modifie qu'un transform : le
+   navigateur se contente de recomposer.
+
+   @dev Souris uniquement : sur écran tactile, pointerenter se déclenche au
+   toucher et le cadre resterait figé de travers.
+   ========================================================================== */
+
+/* Amplitude maximale du déplacement, en pixels */
+const FRAME_DRIFT = 9;
+
+let frameRect: DOMRect | null = null;
+
+const onFramePointerEnter = (event: PointerEvent) => {
+  if (event.pointerType !== 'mouse') return;
+  frameRect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+};
+
+const onFramePointerMove = (event: PointerEvent) => {
+  if (!frameRect) return;
+
+  /* Position du curseur rapportée au centre, normalisée entre -1 et 1 */
+  const ratioX = (event.clientX - (frameRect.left + frameRect.width / 2)) / (frameRect.width / 2);
+  const ratioY = (event.clientY - (frameRect.top + frameRect.height / 2)) / (frameRect.height / 2);
+
+  const target = event.currentTarget as HTMLElement;
+  target.style.setProperty('--frame-drift-x', `${(-ratioX * FRAME_DRIFT).toFixed(1)}px`);
+  target.style.setProperty('--frame-drift-y', `${(-ratioY * FRAME_DRIFT).toFixed(1)}px`);
+};
+
+const onFramePointerLeave = (event: PointerEvent) => {
+  frameRect = null;
+  const target = event.currentTarget as HTMLElement;
+  target.style.removeProperty('--frame-drift-x');
+  target.style.removeProperty('--frame-drift-y');
+};
 </script>
 
 <style scoped>
@@ -287,13 +336,35 @@ const onScroll = () => {
 .page-benefits-alternate__frame {
   position: absolute;
   inset: 0;
-  transform: translate(10px, 10px);
   border: 1px solid var(--primary);
   border-radius: 4px;
   pointer-events: none;
+  /* Décalage de repos + dérive pilotée par le curseur (voir script) */
+  transform: translate(
+    calc(10px + var(--frame-drift-x, 0px)),
+    calc(10px + var(--frame-drift-y, 0px))
+  );
+  /* Court, pour suivre le curseur sans traîner, et adoucir le retour au repos */
+  transition: transform 0.14s ease-out;
 
   @media (min-width: 1024px) {
-    transform: translate(14px, 14px);
+    transform: translate(
+      calc(14px + var(--frame-drift-x, 0px)),
+      calc(14px + var(--frame-drift-y, 0px))
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-benefits-alternate__frame {
+    transition: none;
+    transform: translate(10px, 10px);
+  }
+
+  @media (min-width: 1024px) {
+    .page-benefits-alternate__frame {
+      transform: translate(14px, 14px);
+    }
   }
 }
 
