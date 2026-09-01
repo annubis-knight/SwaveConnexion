@@ -40,8 +40,8 @@
           <div class="page-benefits-alternate__visual">
             <div class="page-benefits-alternate__image-wrapper">
               <NuxtImg :src="benefit.image" :alt="benefit.title" class="page-benefits-alternate__image" sizes="100vw lg:600px" format="webp" loading="lazy" />
-              <!-- Halo coloré diffus derrière l'image -->
-              <div class="page-benefits-alternate__halo" aria-hidden="true"></div>
+              <!-- Cadre fin décalé, dans la couleur de la page -->
+              <div class="page-benefits-alternate__frame" aria-hidden="true"></div>
             </div>
             <!-- Decorative number -->
             <span class="page-benefits-alternate__number">0{{ index + 1 }}</span>
@@ -273,40 +273,28 @@ const onScroll = () => {
 }
 
 /*
-  Halo coloré diffus derrière l'image.
+  Cadre fin décalé derrière l'image.
 
-  @dev Le flou fait tout le dégradé : un aplat de --primary est simplement
-  flouté, ce qui évite un radial-gradient vers `transparent` (qui vire au gris
-  selon l'interpolation du navigateur).
+  @dev La couleur vient de --primary, redéfinie par chaque page cours dans son
+  <style scoped> : le filet prend donc automatiquement la teinte de la page.
 
-  @dev inset NÉGATIF : le halo doit dépasser de l'image, sinon il reste
-  entièrement masqué derrière elle. Il déborde un peu plus en bas pour que la
-  lueur semble poser l'image plutôt que l'entourer uniformément.
-  Le wrapper est en overflow:visible, ce débordement est donc conservé.
+  @dev Le wrapper est en overflow:visible, le décalage n'est donc pas rogné.
+  Décalage plus discret en mobile, où l'image est nettement plus petite.
 
-  @dev Remplace l'ancienne « shadow card » : un rectangle plein tourné de 6deg
-  qui pivotait au survol. Conservée ici si besoin de revenir en arrière :
-
-  .page-benefits-alternate__shadow-card {
-    position: absolute;
-    inset: 0;
-    background-color: var(--primary);
-    border-radius: 4px;
-    transform: rotate(6deg);
-    transform-origin: bottom left;
-    transition: transform 0.3s ease;
-  }
+  @dev Deux traitements essayés avant celui-ci, tous deux écartés : un aplat
+  plein tourné de 6deg qui pivotait au survol, puis un halo flouté.
 */
-.page-benefits-alternate__halo {
+.page-benefits-alternate__frame {
   position: absolute;
-  inset: -4% -9% -11%;
-  /* Rectangulaire comme l'image : un halo circulaire jurait avec le cadre
-     3/4. Le rayon reste doux, le flou arrondit de toute façon les angles. */
-  border-radius: 18px;
-  background-color: var(--primary);
-  filter: blur(38px);
-  opacity: 0.45;
+  inset: 0;
+  transform: translate(10px, 10px);
+  border: 1px solid var(--primary);
+  border-radius: 4px;
   pointer-events: none;
+
+  @media (min-width: 1024px) {
+    transform: translate(14px, 14px);
+  }
 }
 
 .page-benefits-alternate__image {
@@ -316,8 +304,6 @@ const onScroll = () => {
   height: 100%;
   object-fit: cover;
   border-radius: 4px;
-  /* Ombre neutre : détache l'image du halo coloré */
-  box-shadow: 0 20px 45px -25px rgba(0, 0, 0, 0.45);
 }
 
 .page-benefits-alternate__number {
