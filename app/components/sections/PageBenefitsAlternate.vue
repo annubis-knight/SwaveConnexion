@@ -272,7 +272,11 @@ const onScroll = () => {
   }
 }
 
-/* Shadow card - Effet éventail (carte derrière l'image) */
+/*
+  Halo coloré derrière l'image.
+  @dev Statique : la rotation au survol (rotate 6deg -> 0) a été retirée,
+  seule la trace de couleur est conservée.
+*/
 .page-benefits-alternate__shadow-card {
   position: absolute;
   inset: 0;
@@ -280,11 +284,6 @@ const onScroll = () => {
   border-radius: 4px;
   transform: rotate(6deg);
   transform-origin: bottom left;
-  transition: transform 0.3s ease;
-
-  .page-benefits-alternate__image-wrapper:hover & {
-    transform: rotate(0deg);
-  }
 }
 
 .page-benefits-alternate__image {
