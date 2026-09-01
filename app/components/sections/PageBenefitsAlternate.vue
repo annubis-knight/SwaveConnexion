@@ -40,8 +40,8 @@
           <div class="page-benefits-alternate__visual">
             <div class="page-benefits-alternate__image-wrapper">
               <NuxtImg :src="benefit.image" :alt="benefit.title" class="page-benefits-alternate__image" sizes="100vw lg:600px" format="webp" loading="lazy" />
-              <!-- Shadow card (effet éventail) -->
-              <div class="page-benefits-alternate__shadow-card"></div>
+              <!-- Halo coloré diffus derrière l'image -->
+              <div class="page-benefits-alternate__halo" aria-hidden="true"></div>
             </div>
             <!-- Decorative number -->
             <span class="page-benefits-alternate__number">0{{ index + 1 }}</span>
@@ -273,17 +273,38 @@ const onScroll = () => {
 }
 
 /*
-  Halo coloré derrière l'image.
-  @dev Statique : la rotation au survol (rotate 6deg -> 0) a été retirée,
-  seule la trace de couleur est conservée.
+  Halo coloré diffus derrière l'image.
+
+  @dev Le flou fait tout le dégradé : un aplat de --primary est simplement
+  flouté, ce qui évite un radial-gradient vers `transparent` (qui vire au gris
+  selon l'interpolation du navigateur).
+
+  @dev inset NÉGATIF : le halo doit dépasser de l'image, sinon il reste
+  entièrement masqué derrière elle. Il déborde un peu plus en bas pour que la
+  lueur semble poser l'image plutôt que l'entourer uniformément.
+  Le wrapper est en overflow:visible, ce débordement est donc conservé.
+
+  @dev Remplace l'ancienne « shadow card » : un rectangle plein tourné de 6deg
+  qui pivotait au survol. Conservée ici si besoin de revenir en arrière :
+
+  .page-benefits-alternate__shadow-card {
+    position: absolute;
+    inset: 0;
+    background-color: var(--primary);
+    border-radius: 4px;
+    transform: rotate(6deg);
+    transform-origin: bottom left;
+    transition: transform 0.3s ease;
+  }
 */
-.page-benefits-alternate__shadow-card {
+.page-benefits-alternate__halo {
   position: absolute;
-  inset: 0;
+  inset: -4% -9% -11%;
+  border-radius: 50%;
   background-color: var(--primary);
-  border-radius: 4px;
-  transform: rotate(6deg);
-  transform-origin: bottom left;
+  filter: blur(38px);
+  opacity: 0.45;
+  pointer-events: none;
 }
 
 .page-benefits-alternate__image {
@@ -293,6 +314,8 @@ const onScroll = () => {
   height: 100%;
   object-fit: cover;
   border-radius: 4px;
+  /* Ombre neutre : détache l'image du halo coloré */
+  box-shadow: 0 20px 45px -25px rgba(0, 0, 0, 0.45);
 }
 
 .page-benefits-alternate__number {
