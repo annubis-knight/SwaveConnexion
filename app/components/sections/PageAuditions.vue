@@ -120,10 +120,12 @@ withDefaults(defineProps<Props>(), {
  * Section claire listant les dates d'audition ouvertes
  */
 
-/* z-index : passe devant le watermark fixe de PageBenefitsAlternate */
+/*
+  Volontairement NON positionnée : son fond est donc peint avant le watermark
+  fixe de PageBenefitsAlternate, qui reste visible en filigrane par-dessus.
+  Seules les cartes remontent au-dessus du logo (voir plus bas).
+*/
 .auditions {
-  position: relative;
-  z-index: 1;
   background-color: var(--bg-subtle);
 }
 
@@ -154,6 +156,10 @@ withDefaults(defineProps<Props>(), {
 /* CardEvent est translucide par défaut (blanc à 90 %) : sur le fond clair
    de cette section, la carte manquait de contraste. */
 .auditions__list :deep(.card-event) {
+  /* z-index 1 : seul élément de la section à passer devant le watermark
+     (z-index 0), pour que les dates restent parfaitement lisibles */
+  position: relative;
+  z-index: 1;
   background-color: var(--bg-elevated);
   border: 1px solid var(--border-base);
   border-radius: 12px;
