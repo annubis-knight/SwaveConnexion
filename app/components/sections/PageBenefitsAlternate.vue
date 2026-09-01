@@ -1,5 +1,9 @@
 <template>
-  <section class="page-benefits-alternate py-16 lg:py-24" data-theme="light">
+  <section
+    ref="rootEl"
+    class="page-benefits-alternate py-16 lg:py-24"
+    data-theme="light"
+  >
     <!-- Logo décoratif centré, grande taille, faible opacité -->
     <NuxtImg
       src="/images/logo_alpha.png"
@@ -38,12 +42,7 @@
         >
           <!-- Visual side -->
           <div class="page-benefits-alternate__visual">
-            <div
-              class="page-benefits-alternate__image-wrapper"
-              @pointerenter="onFramePointerEnter"
-              @pointermove="onFramePointerMove"
-              @pointerleave="onFramePointerLeave"
-            >
+            <div class="page-benefits-alternate__image-wrapper">
               <NuxtImg :src="benefit.image" :alt="benefit.title" class="page-benefits-alternate__image" sizes="100vw lg:600px" format="webp" loading="lazy" />
               <!-- Cadre fin décalé, dans la couleur de la page -->
               <div class="page-benefits-alternate__frame" aria-hidden="true"></div>
@@ -144,48 +143,107 @@ const onScroll = () => {
 // onUnmounted(() => window.removeEventListener('scroll', onScroll));
 
 /* ============================================================================
-   MICRO-INTERACTION : le cadre fuit le curseur
-   Il se déplace en symétrie du curseur par rapport au centre de l'image.
+   MICRO-INTERACTION : les cadres fuient le curseur
 
-   @dev La géométrie de l'image est lue UNE SEULE FOIS, à l'entrée du curseur,
-   puis réutilisée pendant tout le survol. Un getBoundingClientRect() à chaque
-   pointermove forcerait le navigateur à recalculer la mise en page des
-   dizaines de fois par seconde. Ici il ne reste que deux divisions et
-   l'écriture d'une variable CSS, qui ne modifie qu'un transform : le
-   navigateur se contente de recomposer.
+   Chaque cadre se déplace en symétrie du curseur par rapport au centre de SON
+   image. Le suivi est global : nul besoin de survoler l'image, la souris agit
+   depuis n'importe où dans la page.
 
-   @dev Souris uniquement : sur écran tactile, pointerenter se déclenche au
-   toucher et le cadre resterait figé de travers.
+   Trois principes rendent l'effet quasi gratuit :
+
+   1. La géométrie des images n'est PAS relue à chaque mouvement. Elle est
+      mesurée une fois, puis marquée périmée au scroll et au resize seulement
+      (deux opérations qui, elles, ne coûtent qu'un booléen). Un
+      getBoundingClientRect() à chaque mouvement forcerait le navigateur à
+      recalculer sa mise en page des dizaines de fois par seconde : c'est le
+      « layout thrashing », la vraie source de lenteur de ce type d'effet.
+
+   2. Le travail est plafonné à une fois par image affichée à l'écran, via
+      requestAnimationFrame : bouger la souris très vite ne produit pas plus
+      d'écritures que le moniteur ne peut afficher.
+
+   3. On n'écrit qu'une variable CSS qui ne pilote qu'un transform, sur un
+      élément en position absolute. Le navigateur se contente de recomposer :
+      ni recalcul de mise en page, ni repeinture.
    ========================================================================== */
 
 /* Amplitude maximale du déplacement, en pixels */
 const FRAME_DRIFT = 9;
 
-let frameRect: DOMRect | null = null;
+/* Distance du curseur au centre, en px, à laquelle l'amplitude est atteinte */
+const DRIFT_RANGE = 420;
 
-const onFramePointerEnter = (event: PointerEvent) => {
-  if (event.pointerType !== 'mouse') return;
-  frameRect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+const rootEl = ref<HTMLElement | null>(null);
+
+let wrappers: HTMLElement[] = [];
+let rects: DOMRect[] = [];
+let rectsStale = true;
+let frameRequest = 0;
+let pointerX = 0;
+let pointerY = 0;
+
+const markRectsStale = () => {
+  rectsStale = true;
 };
 
-const onFramePointerMove = (event: PointerEvent) => {
-  if (!frameRect) return;
+const applyDrift = () => {
+  frameRequest = 0;
 
-  /* Position du curseur rapportée au centre, normalisée entre -1 et 1 */
-  const ratioX = (event.clientX - (frameRect.left + frameRect.width / 2)) / (frameRect.width / 2);
-  const ratioY = (event.clientY - (frameRect.top + frameRect.height / 2)) / (frameRect.height / 2);
+  if (rectsStale) {
+    rects = wrappers.map((el) => el.getBoundingClientRect());
+    rectsStale = false;
+  }
 
-  const target = event.currentTarget as HTMLElement;
-  target.style.setProperty('--frame-drift-x', `${(-ratioX * FRAME_DRIFT).toFixed(1)}px`);
-  target.style.setProperty('--frame-drift-y', `${(-ratioY * FRAME_DRIFT).toFixed(1)}px`);
+  const viewportHeight = window.innerHeight;
+
+  for (let i = 0; i < wrappers.length; i++) {
+    const rect = rects[i];
+    if (!rect) continue;
+
+    /* Hors écran : inutile de toucher au style */
+    if (rect.bottom < 0 || rect.top > viewportHeight) continue;
+
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    /* Direction depuis le centre de l'image, bornée à l'amplitude max */
+    const ratioX = Math.max(-1, Math.min(1, (pointerX - centerX) / DRIFT_RANGE));
+    const ratioY = Math.max(-1, Math.min(1, (pointerY - centerY) / DRIFT_RANGE));
+
+    const style = wrappers[i]!.style;
+    style.setProperty('--frame-drift-x', `${(-ratioX * FRAME_DRIFT).toFixed(1)}px`);
+    style.setProperty('--frame-drift-y', `${(-ratioY * FRAME_DRIFT).toFixed(1)}px`);
+  }
 };
 
-const onFramePointerLeave = (event: PointerEvent) => {
-  frameRect = null;
-  const target = event.currentTarget as HTMLElement;
-  target.style.removeProperty('--frame-drift-x');
-  target.style.removeProperty('--frame-drift-y');
+const onPointerMove = (event: MouseEvent) => {
+  pointerX = event.clientX;
+  pointerY = event.clientY;
+  if (!frameRequest) frameRequest = requestAnimationFrame(applyDrift);
 };
+
+onMounted(() => {
+  /* Appareil sans curseur (tactile) : aucun écouteur n'est installé */
+  const hasMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!hasMouse || reducedMotion) return;
+
+  wrappers = Array.from(
+    rootEl.value?.querySelectorAll<HTMLElement>('.page-benefits-alternate__image-wrapper') ?? []
+  );
+  if (!wrappers.length) return;
+
+  window.addEventListener('mousemove', onPointerMove, { passive: true });
+  window.addEventListener('scroll', markRectsStale, { passive: true });
+  window.addEventListener('resize', markRectsStale, { passive: true });
+});
+
+onUnmounted(() => {
+  window.removeEventListener('mousemove', onPointerMove);
+  window.removeEventListener('scroll', markRectsStale);
+  window.removeEventListener('resize', markRectsStale);
+  if (frameRequest) cancelAnimationFrame(frameRequest);
+});
 </script>
 
 <style scoped>
