@@ -152,7 +152,7 @@ withDefaults(defineProps<Props>(), {
   line1: 'Danse comme si',
   highlight: 'personne ne regardait',
   line2: 'et vis pleinement',
-  caption: 'Swave Connection — Là où la danse devient une seconde nature',
+  caption: 'Swave Connection, là où la danse devient une seconde nature',
 });
 </script>
 

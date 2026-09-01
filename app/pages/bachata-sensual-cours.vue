@@ -2,7 +2,7 @@
   <div class="page-sensual">
     <SectionsPageHero
       title="BACHATA SENSUAL"
-      subtitle="Explore la connexion profonde entre partenaires. Body waves, isolations, musicalité avancée — apprends à raconter des histoires à travers le mouvement."
+      subtitle="Explore la connexion profonde entre partenaires. Body waves, isolations, musicalité avancée, apprends à raconter des histoires à travers le mouvement."
       tag="Niveau intermédiaire"
       :image="heroImage"
       image-alt="Danseurs de bachata sensual"
@@ -54,8 +54,8 @@
     <SectionsPageAmbiancePoetic
       :image="ambianceSwave"
       image-alt="Couple dansant la bachata sensual"
-      quote="Danser, c'est comme parler en silence. C'est dire plein de choses sans dire un mot."
-      quote-author="Yuri Buenaventura"
+      quote="Écouter son partenaire, c'est déjà danser."
+      quote-author="Swave Connection"
       :keywords="['Émotion', 'Connexion', 'Intensité']"
       tagline="Un espace où tu apprends à écouter ton partenaire et à te laisser guider par la musique."
       band-text="Swave Connection"
@@ -102,7 +102,7 @@ const benefitsData: Benefit[] = [
     image: ambianceSwave,
     tag: 'Connexion',
     title: 'Dialogue sans paroles',
-    description: 'La bachata sensuelle, c\'est avant tout une conversation corporelle. Tu apprendras à écouter les micro-mouvements de ton partenaire, à anticiper et à y répondre.',
+    description: 'La bachata sensual, c\'est avant tout une conversation corporelle. Tu apprendras à écouter les micro-mouvements de ton partenaire, à anticiper et à y répondre.',
     stat: '100%',
     statLabel: 'de nos élèves améliorent leur connexion',
   },
@@ -110,7 +110,7 @@ const benefitsData: Benefit[] = [
     image: progression1,
     tag: 'Technique',
     title: 'Body waves et isolations',
-    description: 'Les mouvements du corps sont la signature de la bachata sensuelle. Notre méthode décompose chaque isolation — poitrine, hanches, épaules — afin que tu puisses maîtriser et comprendre les codes sur la piste.',
+    description: 'Les mouvements du corps sont la signature de la bachata sensual. Notre méthode décompose chaque isolation : poitrine, hanches, épaules, afin que tu puisses maîtriser et comprendre les codes sur la piste.',
     stat: '8 semaines',
     statLabel: 'pour des waves fluides',
   },

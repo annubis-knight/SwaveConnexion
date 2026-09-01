@@ -36,11 +36,11 @@
     ═══════════════════════════════════════════════════════════════════════ -->
     <SectionsPageAuditions
       id="auditions"
-      tag="Swave Sensual Team — Saison 3"
+      tag="Swave Sensual Team, Saison 3"
       title="AUDITIONS OUVERTES"
       description="Deux mardis pour passer l'audition et rejoindre la team cette saison."
       :sessions="auditionSessions"
-      location="Studio Uffizi — Espace des Arts, 9 rue Sainte-Catherine Est, Montréal QC H2X 1K3"
+      location="Studio Uffizi, Espace des Arts, 9 rue Sainte-Catherine Est, Montréal QC H2X 1K3"
       :notes="auditionNotes"
       cta-text="CONTACTER DENISE"
       cta-href="https://www.instagram.com/denise_rdrgz"
@@ -76,19 +76,18 @@
     /> -->
 
     <!-- ═══════════════════════════════════════════════════════════════════════
-         AMBIANCE: POETIC - Retirée : la citation « Seul on va plus vite... »
-         et son attribution « Proverbe africain » ont été refusées en
-         relecture. Réactiver avec une autre citation validée par le client.
+         AMBIANCE: POETIC - Phrase maison signée Swave (plus de citation
+         d'auteur : le « proverbe africain » a été refusé en relecture)
     ═══════════════════════════════════════════════════════════════════════ -->
-    <!-- <SectionsPageAmbiancePoetic
+    <SectionsPageAmbiancePoetic
       :image="ambianceSwave"
       image-alt="Team bachata en répétition"
-      quote=""
-      quote-author=""
+      quote="Ce qui se voit sur scène, c'est tout ce qu'on a répété ensemble."
+      quote-author="Swave Connection"
       :keywords="['Synchronisation', 'Cohésion', 'Performance']"
       tagline="Plus qu'un cours, une aventure collective où chaque répétition forge des liens."
       band-text="Swave Connection"
-    /> -->
+    />
 
   </div>
 </template>
@@ -137,7 +136,7 @@ const auditionSessions: AuditionSession[] = [
 const auditionNotes = [
   'Pas besoin de venir avec un partenaire.',
   'Les entraînements de la team ont lieu tous les mardis de 19 h à 21 h, au Studio Uffizi.',
-  'Musiques de la saison : Delito — Montelier & Nicko Play.',
+  'Musiques de la saison : Delito, par Montelier & Nicko Play.',
   'Pour toute question ou pour t\'inscrire, écris-nous sur Instagram : @swaveconnection, @jordan.gln ou @denise_rdrgz.',
 ];
 
@@ -157,7 +156,7 @@ const benefitsData: Benefit[] = [
     image: professeurDenise,
     tag: 'Performance',
     title: 'Monte sur scène',
-    description: 'L\'objectif final : performer devant un vrai public. Soirées, événements, festivals — tu vivras l\'adrénaline de la scène et la fierté de présenter le fruit de mois de travail collectif.',
+    description: 'L\'objectif final : performer devant un vrai public. Soirées, événements, festivals, tu vivras l\'adrénaline de la scène et la fierté de présenter le fruit de mois de travail collectif.',
     stat: '3+',
     statLabel: 'shows par an',
     cta: 'Rencontrer l\'équipe',

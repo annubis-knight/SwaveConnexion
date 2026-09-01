@@ -46,7 +46,7 @@ definePageMeta({
 });
 
 useSeo({
-  title: 'Denise Rodriguez — Professeure de Bachata à Montréal',
+  title: 'Denise Rodriguez, Professeure de Bachata à Montréal',
   description:
     'Professeure de bachata à Montréal chez Swave Connection. 12 ans d\'expérience, formée en Bachata Sensual auprès de Korke & Judith. Chorégraphie & lady styling.',
   path: '/denise-rodriguez',
@@ -128,7 +128,7 @@ const bentoContent = {
   ],
   skills,
   images: [
-    { src: bentoPhoto, alt: 'Denise Rodriguez — portrait' },
+    { src: bentoPhoto, alt: 'Denise Rodriguez, portrait' },
     { src: progressionImage, alt: 'Denise en cours' },
     { src: simpliciteImage, alt: 'Ambiance Swave' },
     { src: ambianceImage, alt: 'Sur scène' },

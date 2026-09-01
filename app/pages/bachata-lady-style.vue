@@ -57,8 +57,8 @@
     <SectionsPageAmbiancePoetic
       :image="ambianceSwave"
       image-alt="Danseuse en lady styling"
-      quote="La danse est la poésie du pied. Elle révèle la grâce que chaque femme porte en elle."
-      quote-author="Isadora Duncan"
+      quote="Ta danse t'appartient. On t'aide juste à la trouver."
+      quote-author="Swave Connection"
       :keywords="['Grâce', 'Féminité', 'Expression']"
       tagline="Un espace où chaque femme peut s'épanouir et exprimer sa singularité à travers le mouvement."
       band-text="Swave Connection"

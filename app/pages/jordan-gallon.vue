@@ -60,7 +60,7 @@ const skills = [
 ];
 
 useSeo({
-  title: 'Jordan Gallon — Prof de Bachata à Sherbrooke et Montréal',
+  title: 'Jordan Gallon, Prof de Bachata à Sherbrooke et Montréal',
   description:
     'Professeur de bachata à Sherbrooke et Montréal chez Swave Connection. 12 ans d\'expérience, une ambiance conviviale et énergique pour progresser en dansant.',
   path: '/jordan-gallon',
@@ -107,7 +107,7 @@ onUnmounted(() => {
 
 /* Props partagées par les 4 variantes de hero (à comparer) */
 const heroProps = {
-  eyebrow: 'Professeur — Sherbrooke & Montréal',
+  eyebrow: 'Professeur, Sherbrooke & Montréal',
   firstName: 'Jordan',
   lastName: 'Gallon',
   description:
@@ -124,7 +124,7 @@ const bentoContent = {
   parcoursTitle: 'De Montauban à Sherbrooke',
   bio: [
     "Jordan danse et enseigne depuis 12 ans. Formé à Toulouse, il a animé ses propres cours pendant 5 ans à Montauban. C'est d'ailleurs la danse qui l'a réuni avec Denise, il y a une dizaine d'années. Arrivés au Québec il y a 4 ans, ils portent Swave Connection ensemble.",
-    "À Sherbrooke comme à Montréal, Jordan cultive une bachata accessible et vivante, où l'on progresse vite dans une ambiance conviviale — du grand débutant au danseur confirmé.",
+    "À Sherbrooke comme à Montréal, Jordan cultive une bachata accessible et vivante, où l'on progresse vite dans une ambiance conviviale, du grand débutant au danseur confirmé.",
   ],
   stats: [
     { value: '12', label: "Ans d'expérience" },
@@ -132,9 +132,9 @@ const bentoContent = {
   ],
   skills,
   images: [
-    { src: bwPhoto, alt: 'Jordan Gallon — portrait studio' },
+    { src: bwPhoto, alt: 'Jordan Gallon, portrait studio' },
     { src: studioPhoto, alt: 'Jordan en studio' },
-    { src: bombersPhoto, alt: 'Jordan — séance photo' },
+    { src: bombersPhoto, alt: 'Jordan, séance photo' },
     { src: canadaPhoto, alt: 'Lac Louise, Canada' },
     { src: cancunPhoto, alt: 'Tulum, Mexique' },
     { src: randoPhoto, alt: 'Rando au Québec' },

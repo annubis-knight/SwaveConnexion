@@ -169,8 +169,8 @@
     <SectionsPageAmbiancePoetic
       :image="ambianceSwave"
       image-alt="Danseurs de bachata"
-      quote="La danse est le langage caché de l'âme. Elle révèle ce que les mots ne peuvent exprimer."
-      quote-author="Martha Graham"
+      quote="Personne ne naît en sachant danser. Tout le monde commence par le premier pas."
+      quote-author="Swave Connection"
       :keywords="['Passion', 'Connexion', 'Liberté']"
       tagline="Rejoins une communauté où chaque pas compte et chaque sourire est sincère."
       band-text="Swave Connection"
@@ -186,7 +186,7 @@
       line1="Danse comme si"
       highlight="personne ne regardait"
       line2="et vis pleinement"
-      caption="Swave Connection — Là où la danse devient une seconde nature"
+      caption="Swave Connection, là où la danse devient une seconde nature"
     /> -->
 
 
@@ -264,8 +264,8 @@ const benefitsData: Benefit[] = [
   {
     image: professeurDenise,
     tag: 'Excellence',
-    title: 'Guidé par les meilleurs de Montréal',
-    description: 'Nos instructeurs ne sont pas que des danseurs — ce sont avant tout des passionnés, formés pour t\'apprendre de la meilleure des façons. Ils ont l\'œil pour repérer ce qui bloque et les mots pour t\'aider à avancer.',
+    title: 'Apprendre avec des passionnés',
+    description: 'Nos instructeurs ne sont pas que des danseurs, ce sont avant tout des passionnés, formés pour t\'apprendre de la meilleure des façons. Ils ont l\'œil pour repérer ce qui bloque et les mots pour t\'aider à avancer.',
     stat: '15+ ans',
     statLabel: 'd\'expérience combinée',
     cta: 'Rencontrer l\'équipe',

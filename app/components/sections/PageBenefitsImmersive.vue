@@ -177,7 +177,7 @@ const benefits = computed<Benefit[]>(() => [
     icon: IconParty,
     tag: 'Le plaisir d\'abord',
     title: 'Oublie tout ce que tu crois savoir sur les cours de danse',
-    description: 'Ici, pas de miroir intimidant, pas de prof distant, pas de pression. On rit, on fait des erreurs, on recommence. Et bizarrement, c\'est comme ça qu\'on apprend le mieux. Tu vas découvrir que danser, c\'est naturel — il suffisait juste de trouver le bon environnement.',
+    description: 'Ici, pas de miroir intimidant, pas de prof distant, pas de pression. On rit, on fait des erreurs, on recommence. Et bizarrement, c\'est comme ça qu\'on apprend le mieux. Tu vas découvrir que danser, c\'est naturel, il suffisait juste de trouver le bon environnement.',
     theme: 'light',
     stats: [
       { value: '100%', label: 'de sourires garantis' },

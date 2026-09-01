@@ -32,7 +32,7 @@
           <NuxtImg
             v-if="teacher.image"
             :src="teacher.image"
-            :alt="`${teacher.name} — professeur de bachata à ${teacher.city}`"
+            :alt="`${teacher.name}, professeur de bachata à ${teacher.city}`"
             class="panel__img"
             sizes="100vw md:50vw"
             format="webp"

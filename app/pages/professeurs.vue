@@ -37,7 +37,7 @@ definePageMeta({
 });
 
 useSeo({
-  title: 'Nos professeurs de Bachata — Montréal & Sherbrooke',
+  title: 'Nos professeurs de Bachata, Montréal & Sherbrooke',
   description:
     'Rencontrez les professeurs de Swave Connection : Denise à Montréal et Jordan à Sherbrooke. Cours de bachata fun et sensuel au Québec.',
   path: '/professeurs',

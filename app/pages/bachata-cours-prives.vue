@@ -15,8 +15,8 @@
          BENEFITS: ALTERNATE - Avantages des cours privés
     ═══════════════════════════════════════════════════════════════════════ -->
     <SectionsPageBenefitsAlternate
-      title-line1="L'EXCELLENCE "
-      title-line2="SUR MESURE"
+      title-line1="TON RYTHME "
+      title-line2="TES OBJECTIFS"
       :benefits="benefitsData"
     />
 
@@ -54,9 +54,9 @@
     <SectionsPageAmbiancePoetic
       :image="ambianceSwave"
       image-alt="Cours privé personnalisé"
-      quote="L'excellence n'est pas un acte, mais une habitude. Chaque détail compte quand on vise le meilleur."
-      quote-author="Aristote"
-      :keywords="['Excellence', 'Précision', 'Résultats']"
+      quote="Une heure rien qu'à toi, c'est souvent là que le déclic arrive."
+      quote-author="Swave Connection"
+      :keywords="['Sur mesure', 'Précision', 'Résultats']"
       tagline="Un investissement dans toi-même qui transforme ta danse et ta confiance."
       band-text="Swave Connection"
     />
@@ -118,7 +118,7 @@ const benefitsData: Benefit[] = [
     image: ambianceSwave,
     tag: 'Flexibilité',
     title: 'Ton planning, tes règles',
-    description: 'Cours tôt le matin, pause déjeuner, soirée tardive ou week-end — tu choisis. Besoin de reporter ? Pas de stress. Le cours privé s\'adapte à ta vie, pas l\'inverse.',
+    description: 'Cours tôt le matin, pause déjeuner, soirée tardive ou week-end, tu choisis. Besoin de reporter ? Pas de stress. Le cours privé s\'adapte à ta vie, pas l\'inverse.',
     cta: 'Rencontrer l\'équipe',
     ctaTo: '/denise-rodriguez',
   },
