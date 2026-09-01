@@ -16,6 +16,9 @@
             <a href="tel:+15794210132" class="footer__link">
               <Text as="span" size="sm" color="white">+1 579-421-0132</Text>
             </a>
+            <a :href="`mailto:${CONTACT_EMAIL}`" class="footer__link">
+              <Text as="span" size="sm" color="white">{{ CONTACT_EMAIL }}</Text>
+            </a>
             <Text as="p" size="xs" color="white">
               Lun–Jeu &amp; Dim : 12 h–22 h · Ven–Sam : 10 h–22 h
             </Text>

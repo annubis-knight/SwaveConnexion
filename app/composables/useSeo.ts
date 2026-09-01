@@ -117,7 +117,7 @@ export const seoSchemaLocalBusiness = (): Record<string, unknown> => ({
   url: SITE.url,
   image: `${SITE.url}${SITE.image}`,
   telephone: '+15794210132',
-  email: 'contact@swaveconnection.com',
+  email: CONTACT_EMAIL,
   address: {
     '@type': 'PostalAddress',
     streetAddress: '9 Rue Sainte-Catherine Est, 2e étage',

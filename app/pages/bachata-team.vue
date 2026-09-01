@@ -21,6 +21,29 @@
     />
 
     <!-- ═══════════════════════════════════════════════════════════════════════
+         VIDEO YOUTUBE - La chorégraphie travaillée cette saison
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <SectionsPageVideoYoutube
+      tag="Saison en cours"
+      title="LA CHORÉ DE CETTE ANNÉE"
+      description="Voici la routine que la team travaille cette saison. Regarde-la avant de venir en audition : c'est elle que tu apprendras."
+      video-id="8-aC39RWmEg"
+      thumbnail-alt="Chorégraphie bachata de la team Swave Connection"
+    />
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         AUDITIONS - Dates ouvertes pour rejoindre la team
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <SectionsPageAuditions
+      tag="Rejoindre la team"
+      title="AUDITIONS OUVERTES"
+      description="Deux dates pour passer l'audition et intégrer la team cette saison. Écris-nous pour réserver ta place et recevoir les détails pratiques."
+      :sessions="auditionSessions"
+      cta-text="RÉSERVER MA PLACE"
+      :cta-href="`mailto:${CONTACT_EMAIL}?subject=Audition%20Bachata%20Team`"
+    />
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
                               SECTION AGENDA
     ═══════════════════════════════════════════════════════════════════════ -->
     <!-- <SectionsLandingAgenda /> -->
@@ -93,6 +116,16 @@ useSeo({
     path: '/bachata-team',
   }),
 });
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DATES D'AUDITION - À retirer ou mettre à jour une fois passées
+   ═══════════════════════════════════════════════════════════════════════════ */
+import type { AuditionSession } from '~/components/sections/PageAuditions.vue';
+
+const auditionSessions: AuditionSession[] = [
+  { day: '01', month: 'Sept', title: 'Audition', subtitle: 'Première session' },
+  { day: '08', month: 'Sept', title: 'Audition', subtitle: 'Seconde session' },
+];
 
 /* ═══════════════════════════════════════════════════════════════════════════
    DONNÉES BENEFITS - Avantages des cours Team Chorégraphie

@@ -47,6 +47,13 @@
             {{ buttonText }}
           </ButtonSwave>
         </form>
+
+        <Text as="p" size="sm" color="white" class="section-cta__mail mt-6">
+          Une question ? Écris-nous à
+          <a :href="`mailto:${CONTACT_EMAIL}`" class="section-cta__mail-link">
+            {{ CONTACT_EMAIL }}
+          </a>
+        </Text>
       </div>
     </LayoutContainerMax>
   </section>
@@ -173,6 +180,19 @@ const handleSubmit = () => {
 .section-cta__content {
   position: relative;
   z-index: 10;
+}
+
+/* Adresse de contact : le lien hérite du blanc du Text plutôt que de
+   prendre le --primary des liens globaux, illisible sur ce fond bleu */
+.section-cta__mail-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.section-cta__mail-link:hover {
+  color: inherit;
+  opacity: 0.8;
 }
 
 /* Form layout */
