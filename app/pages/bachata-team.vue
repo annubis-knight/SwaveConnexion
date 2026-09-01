@@ -76,17 +76,19 @@
     /> -->
 
     <!-- ═══════════════════════════════════════════════════════════════════════
-         AMBIANCE: POETIC - Citation sur l'esprit d'équipe
+         AMBIANCE: POETIC - Retirée : la citation « Seul on va plus vite... »
+         et son attribution « Proverbe africain » ont été refusées en
+         relecture. Réactiver avec une autre citation validée par le client.
     ═══════════════════════════════════════════════════════════════════════ -->
-    <SectionsPageAmbiancePoetic
+    <!-- <SectionsPageAmbiancePoetic
       :image="ambianceSwave"
       image-alt="Team bachata en répétition"
-      quote="Seul on va plus vite, ensemble on va plus loin. Sur scène, nous ne faisons qu'un."
-      quote-author="Proverbe africain"
+      quote=""
+      quote-author=""
       :keywords="['Synchronisation', 'Cohésion', 'Performance']"
-      tagline="Plus qu'un cours, une aventure collective où chaque répétition forge des liens et prépare des moments inoubliables."
+      tagline="Plus qu'un cours, une aventure collective où chaque répétition forge des liens."
       band-text="Swave Connection"
-    />
+    /> -->
 
   </div>
 </template>
@@ -102,7 +104,8 @@
 
 const heroImage = '/images/cours-team.png';
 const ambianceSwave = '/images/ambianceSwave.jpg';
-const progression1 = '/images/progression1.jpg';
+/* Servait au bénéfice « Des créations originales », retiré en relecture */
+// const progression1 = '/images/progression1.jpg';
 const professeurDenise = '/images/professeur_denise.jpg';
 import type { Benefit } from '~/components/sections/PageBenefitsAlternate.vue';
 
@@ -127,8 +130,8 @@ useSeo({
 import type { AuditionSession } from '~/components/sections/PageAuditions.vue';
 
 const auditionSessions: AuditionSession[] = [
-  { day: '01', month: 'Sept', title: 'Audition', subtitle: 'Mardi · 19 h – 21 h' },
-  { day: '08', month: 'Sept', title: 'Audition', subtitle: 'Mardi · 19 h – 21 h' },
+  { day: '01', month: 'Sept', title: 'Audition', subtitle: '19 h – 21 h' },
+  { day: '08', month: 'Sept', title: 'Audition', subtitle: '19 h – 21 h' },
 ];
 
 const auditionNotes = [
@@ -145,18 +148,10 @@ const benefitsData: Benefit[] = [
   {
     image: ambianceSwave,
     tag: 'Synchronisation',
-    title: 'Danser comme un seul corps',
-    description: 'Tu apprendras à te synchroniser avec les autres danseurs, à anticiper les mouvements collectifs et à créer cette unité visuelle qui fait frissonner le public. Chaque répétition renforce cette connexion unique.',
+    title: 'Danser en équipe',
+    description: 'Tu apprendras à te synchroniser avec les autres danseurs, à anticiper les mouvements collectifs et à créer cette unité visuelle qui fait frissonner le public.',
     stat: '12',
     statLabel: 'danseurs par team',
-  },
-  {
-    image: progression1,
-    tag: 'Chorégraphie',
-    title: 'Des créations originales',
-    description: 'Nos chorégraphies sont créées spécialement pour le groupe. Tu participeras à l\'élaboration des enchaînements, tu pourras proposer des idées et voir ta créativité prendre vie sur scène.',
-    stat: '3',
-    statLabel: 'nouvelles choré/an',
   },
   {
     image: professeurDenise,

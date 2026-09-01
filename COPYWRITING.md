@@ -161,7 +161,13 @@ tout seuls : à revoir chaque année, ou à remplacer par une année fixe (« de
 - `app/pages/bachata-debutant.vue:267` — « Guidé par les meilleurs de Montréal »
 - `app/pages/bachata-cours-prives.vue:18-19` — « L'EXCELLENCE / SUR MESURE »
 
+**Chiffres et superlatifs non encore traités (même motif que ceux déjà retirés)**
+- `app/pages/bachata-sensual-cours.vue` — « 8 semaines pour des waves fluides » : même cas que le « 4 semaines » supprimé (R3)
+- `app/pages/bachata-team.vue` — « 3+ shows par an »
+- `app/components/sections/LandingEvents.vue` — « l'école de bachata la plus fun et sensuelle de Montréal » (R2)
+
 **En attente de retour**
+- `app/pages/bachata-team.vue` — section ambiance retirée : la citation « Seul on va plus vite, ensemble on va plus loin » et son attribution « Proverbe africain » ont été refusées. **Une nouvelle citation est à fournir**, ou la section reste supprimée.
 - Section Lady Styling — relecture confiée à Denise, aucune action code d'ici là.
 - `app/pages/denise-rodriguez.vue:122` — phrase de rencontre réécrite par déduction depuis la bio de Jordan (voir §5). **À faire valider par Denise.**
 
