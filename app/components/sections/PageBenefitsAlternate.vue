@@ -151,9 +151,16 @@ const onScroll = () => {
   background-color: var(--bg-subtle);
 }
 
-/* Logo watermark centré */
+/*
+  Logo watermark centré dans SA section.
+  @dev absolute et non fixed : en fixed le watermark se référait au viewport,
+  echappait à l'overflow:hidden du parent et restait affiché par-dessus les
+  sections suivantes. Étant positionné (z-index:0), il était peint APRÈS les
+  éléments en flux normal et recouvrait leur contenu — d'où l'impression que
+  les cartes des sections d'en dessous étaient translucides.
+*/
 .page-benefits-alternate__watermark {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
