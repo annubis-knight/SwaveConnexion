@@ -60,7 +60,7 @@ useSeo({
     jobTitle: 'Professeure de bachata & Chorégraphe',
     specialties: ['Chorégraphie créative', 'Lady Styling avancé', 'Expression scénique', 'Danse contemporaine latine', 'Body movement', 'Performance & spectacle'],
     image: '/images/professeur_denise.jpg',
-    sameAs: ['https://instagram.com/denise.rodriguez'],
+    sameAs: ['https://instagram.com/denise_rdrgz'],
   }),
 });
 
@@ -170,10 +170,10 @@ const reels: Reel[] = [
 
 /* Props de la section Instagram (structure identique à la page Jordan) */
 const instagramProps = {
-  handle: '@denise.rodriguez',
+  handle: '@denise_rdrgz',
   tagline: 'Chorégraphe & Pédagogue Bachata',
   profileImage: bentoPhoto,
-  profileUrl: 'https://instagram.com/denise.rodriguez',
+  profileUrl: 'https://instagram.com/denise_rdrgz',
   stories,
   reels,
 };

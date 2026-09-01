@@ -26,9 +26,8 @@
           month="SEPT"
           title="Auditions Swave Sensual Team 3"
           description="Deux mardis pour rejoindre la troupe bachata sensual : les 1er et 8 septembre 2026, de 19 h à 21 h, au Studio Uffizi (Espace des Arts, 9 rue Sainte-Catherine Est). Niveau amateur intermédiaire. Pas besoin de venir avec un partenaire."
-          cta-text="NOUS ÉCRIRE"
-          cta-href="https://www.instagram.com/swaveconnection"
-          cta-external
+          cta-text="VOIR PLUS D'INFOS"
+          cta-href="/bachata-team#auditions"
           :image="auditionsImage"
           image-alt="Auditions Swave Sensual Team 3, les 1er et 8 septembre 2026"
         />
@@ -138,7 +137,9 @@ const auditionsImage = '/images/portrait_auditions.jpg';
 /* Block */
 .landing-events {
   position: relative;
-  background-color: var(--bg-subtle);
+  /* bg-base (blanc) et non bg-subtle : la section cours juste au-dessus est
+     deja en bg-subtle, les deux se confondaient */
+  background-color: var(--bg-base);
   overflow: hidden;
 }
 

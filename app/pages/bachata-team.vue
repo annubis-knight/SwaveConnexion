@@ -24,7 +24,7 @@
          VIDEO YOUTUBE - La chorégraphie travaillée cette saison
     ═══════════════════════════════════════════════════════════════════════ -->
     <SectionsPageVideoYoutube
-      tag="Saison en cours"
+      tag="Saison 2027"
       title="LA CHORÉ DE CETTE ANNÉE"
       description="Voici la routine que la team travaille cette saison. Regarde-la avant de venir en audition : c'est elle que tu apprendras."
       video-id="8-aC39RWmEg"
@@ -35,6 +35,7 @@
          AUDITIONS - Dates ouvertes pour rejoindre la team
     ═══════════════════════════════════════════════════════════════════════ -->
     <SectionsPageAuditions
+      id="auditions"
       tag="Swave Sensual Team — Saison 3"
       title="AUDITIONS OUVERTES"
       description="Deux mardis pour passer l'audition et rejoindre la team cette saison."

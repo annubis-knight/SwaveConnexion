@@ -127,6 +127,9 @@ withDefaults(defineProps<Props>(), {
 */
 .auditions {
   background-color: var(--bg-subtle);
+  /* Cible d'ancre (#auditions) : compense la navbar fixe de 80px, sinon le
+     haut de la section arrive dessous */
+  scroll-margin-top: 80px;
 }
 
 .auditions__head {
