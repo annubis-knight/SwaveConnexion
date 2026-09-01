@@ -27,7 +27,14 @@
 
     <!-- Image (droite) -->
     <div class="event-info__image">
-      <img :src="image" :alt="imageAlt" />
+      <NuxtImg
+        :src="image"
+        :alt="imageAlt"
+        sizes="100vw md:600px"
+        format="webp"
+        loading="lazy"
+        decoding="async"
+      />
     </div>
   </div>
 </template>
@@ -84,6 +91,10 @@
   └─────────────────────────────────────────────────────────────────────────────┘
 
   @dev Composant UI composé utilisant DateEvent, LabelSwave, Text, ButtonPromoSwave
+  @dev NuxtImg et non <img> : une balise native sert le fichier brut et fait
+       echouer la gate de poids (scripts/check-image-weights.mjs). Le `src`
+       doit donc pointer vers public/ (/images/...) pour etre optimise ; un
+       import depuis ~/assets ne passerait pas par _ipx.
   @dev CSS natif avec variables de _variables.css
   @dev BEM strict : .event-info, .event-info__content, .event-info__image
 */
