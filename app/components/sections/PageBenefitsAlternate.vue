@@ -300,7 +300,9 @@ const onScroll = () => {
 .page-benefits-alternate__halo {
   position: absolute;
   inset: -4% -9% -11%;
-  border-radius: 50%;
+  /* Rectangulaire comme l'image : un halo circulaire jurait avec le cadre
+     3/4. Le rayon reste doux, le flou arrondit de toute façon les angles. */
+  border-radius: 18px;
   background-color: var(--primary);
   filter: blur(38px);
   opacity: 0.45;
