@@ -156,7 +156,7 @@ const navbarClasses = computed(() => ({
 const navLinks: NavLink[] = [
   { label: 'Cours', href: '/#cours' },
   { label: 'Professeurs', href: '/professeurs' },
-  // Nav item masqué temporairement (déploiement simplifié) : { label: 'Events', href: '/#events' },
+  { label: 'Events', href: '/#events' },
   // Nav item masqué temporairement (déploiement simplifié) : { label: 'Agenda', href: '/#agenda' },
   { label: 'Contact', href: '/#contact' },
 ];

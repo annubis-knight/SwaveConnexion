@@ -3,7 +3,7 @@
     <SectionsLandingHero />
     <SectionsLandingFeature id="cours" />
     <!-- Section masquée temporairement (déploiement simplifié) : <SectionsLandingAgenda id="agenda" /> -->
-    <!-- Section masquée temporairement (déploiement simplifié) : <SectionsLandingEvents id="events" /> -->
+    <SectionsLandingEvents id="events" />
 
     <SectionsSectionCTA id="contact" @submit="handleNewsletterSubmit" />
   </div>

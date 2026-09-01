@@ -18,8 +18,11 @@
         {{ description }}
       </Text>
 
-      <!-- CTA Button avec code promo -->
-      <ButtonPromoSwave :promo="promoText">{{ ctaText }}</ButtonPromoSwave>
+      <!-- CTA : lien simple si ctaHref fourni, sinon bouton + code promo -->
+      <ButtonSwave v-if="ctaHref" :href="ctaHref" :external="ctaExternal">
+        {{ ctaText }}
+      </ButtonSwave>
+      <ButtonPromoSwave v-else :promo="promoText">{{ ctaText }}</ButtonPromoSwave>
     </div>
 
     <!-- Image (droite) -->
@@ -64,7 +67,10 @@
   │    • title: string - Titre de l'événement                                    │
   │    • description: string - Description de l'événement                        │
   │    • ctaText: string - Texte du bouton CTA (default: "ACHETER LE PASS")      │
-  │    • promoText: string - Texte du code promo (default: "CODE")               │
+  │    • ctaHref: string - Si fourni, le CTA devient un lien sans code promo     │
+  │    • ctaExternal: boolean - Ouvre le lien dans un nouvel onglet              │
+  │    • promoText: string - Texte du code promo (default: "CODE"), ignoré       │
+  │      quand ctaHref est fourni                                                │
   │    • image: string - URL/chemin de l'image                                   │
   │    • imageAlt: string - Alt text de l'image (default: title)                 │
   │                                                                              │
@@ -89,6 +95,8 @@ interface Props {
   title: string;
   description: string;
   ctaText?: string;
+  ctaHref?: string;
+  ctaExternal?: boolean;
   promoText?: string;
   image: string;
   imageAlt?: string;
@@ -97,6 +105,8 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   ctaText: 'ACHETER LE PASS',
+  ctaHref: undefined,
+  ctaExternal: false,
   promoText: 'CODE',
   imageAlt: '',
   imagePosition: 'right',

@@ -21,6 +21,24 @@
       <!-- Stack d'événements -->
       <div class="landing-events__events">
         <InfoEvent
+          location="MONTRÉAL"
+          day="01"
+          month="SEPT"
+          title="Auditions Swave Sensual Team 3"
+          description="Deux mardis pour rejoindre la troupe bachata sensual : les 1er et 8 septembre 2026, de 19 h à 21 h, au Studio Uffizi (Espace des Arts, 9 rue Sainte-Catherine Est). Niveau amateur intermédiaire. Pas besoin de venir avec un partenaire."
+          cta-text="NOUS ÉCRIRE"
+          cta-href="https://www.instagram.com/swaveconnection"
+          cta-external
+          :image="auditionsImage"
+          image-alt="Auditions Swave Sensual Team 3, les 1er et 8 septembre 2026"
+        />
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             Exemples conservés comme modèle de mise en forme (contenu fictif :
+             dates, lieux et prix inventés). Renseigner de vrais événements
+             avant de les réafficher.
+        ═══════════════════════════════════════════════════════════════════ -->
+        <!-- <InfoEvent
           location="BARCELONE"
           day="17"
           month="NOV"
@@ -52,7 +70,7 @@
           cta-text="ACHETER LE PASS -5€"
           :image="eventImage3"
           image-alt="BS Germany Real Levels"
-        />
+        /> -->
       </div>
     </LayoutContainerMax>
   </section>
@@ -98,10 +116,13 @@
   └─────────────────────────────────────────────────────────────┘
 */
 
-/* Images des événements */
-import eventImage1 from '~/assets/images/agendaAsset1.png';
-import eventImage2 from '~/assets/images/agendaAsset2.png';
-import eventImage3 from '~/assets/images/agendaAsset3.png';
+/* Visuel de l'affiche d'auditions (servi depuis public/) */
+const auditionsImage = '/images/portrait_auditions.jpg';
+
+/* Images des exemples mis en commentaire dans le template, à réactiver avec eux */
+// import eventImage1 from '~/assets/images/agendaAsset1.png';
+// import eventImage2 from '~/assets/images/agendaAsset2.png';
+// import eventImage3 from '~/assets/images/agendaAsset3.png';
 </script>
 
 <style scoped>
