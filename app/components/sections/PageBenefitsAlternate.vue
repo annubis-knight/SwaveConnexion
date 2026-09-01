@@ -170,8 +170,10 @@ const onScroll = () => {
 /* Amplitude maximale du déplacement, en pixels */
 const FRAME_DRIFT = 9;
 
-/* Distance du curseur au centre, en px, à laquelle l'amplitude est atteinte */
-const DRIFT_RANGE = 420;
+/* Distance du curseur au centre, en px, à laquelle l'amplitude est atteinte.
+   Valeur élevée = réaction très progressive, le cadre ne sature qu'en bord
+   d'écran. */
+const DRIFT_RANGE = 900;
 
 const rootEl = ref<HTMLElement | null>(null);
 
