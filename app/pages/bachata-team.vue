@@ -42,6 +42,9 @@
       :sessions="auditionSessions"
       location="Studio Uffizi — Espace des Arts, 9 rue Sainte-Catherine Est, Montréal QC H2X 1K3"
       :notes="auditionNotes"
+      cta-text="CONTACTER DENISE"
+      cta-href="https://www.instagram.com/denise_rdrgz"
+      cta-external
     />
 
     <!-- ═══════════════════════════════════════════════════════════════════════

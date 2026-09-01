@@ -53,6 +53,12 @@
           </Text>
         </li>
       </ul>
+
+      <div v-if="ctaHref" class="auditions__cta">
+        <ButtonSwave :href="ctaHref" :external="ctaExternal">
+          {{ ctaText }}
+        </ButtonSwave>
+      </div>
     </LayoutContainerMax>
   </section>
 </template>
@@ -71,7 +77,8 @@
   │  │         ├─ .auditions__list                           │  │
   │  │         │    └─ CardEvent × N (une par date)          │  │
   │  │         ├─ .auditions__location (lieu)                │  │
-  │  │         └─ ul.auditions__notes (bon à savoir)         │  │
+  │  │         ├─ ul.auditions__notes (bon à savoir)         │  │
+  │  │         └─ .auditions__cta (si ctaHref fourni)        │  │
   │  └───────────────────────────────────────────────────────┘  │
   │                                                             │
   │  Props:                                                     │
@@ -81,6 +88,10 @@
   │    • tag?: string - Petit label au-dessus du titre          │
   │    • location?: string - Adresse du lieu des auditions      │
   │    • notes?: string[] - Infos pratiques (bon à savoir)      │
+  │    • ctaHref?: string - Lien du bouton (absent = pas de     │
+  │      bouton affiché)                                        │
+  │    • ctaText?: string - Libellé du bouton                   │
+  │    • ctaExternal?: boolean - Ouvre dans un nouvel onglet    │
   │                                                             │
   │  Events: Aucun (section purement informative)               │
   │  Slots: Aucun (données via props)                           │
@@ -104,6 +115,10 @@ interface Props {
   tag?: string;
   location?: string;
   notes?: string[];
+  /* Le bouton n'apparaît que si ctaHref est fourni */
+  ctaHref?: string;
+  ctaText?: string;
+  ctaExternal?: boolean;
 }
 
 withDefaults(defineProps<Props>(), {
@@ -111,6 +126,9 @@ withDefaults(defineProps<Props>(), {
   tag: '',
   location: '',
   notes: () => [],
+  ctaHref: undefined,
+  ctaText: 'NOUS CONTACTER',
+  ctaExternal: false,
 });
 </script>
 
@@ -184,5 +202,12 @@ withDefaults(defineProps<Props>(), {
 
 .auditions__note {
   margin-bottom: 0.5rem;
+}
+
+/* z-index : comme les cartes, le bouton passe devant le watermark */
+.auditions__cta {
+  position: relative;
+  z-index: 1;
+  margin-top: 2.5rem;
 }
 </style>
