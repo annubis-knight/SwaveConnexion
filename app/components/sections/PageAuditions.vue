@@ -53,12 +53,6 @@
           </Text>
         </li>
       </ul>
-
-      <div class="auditions__cta">
-        <ButtonSwave :href="ctaHref" :external="ctaExternal">
-          {{ ctaText }}
-        </ButtonSwave>
-      </div>
     </LayoutContainerMax>
   </section>
 </template>
@@ -77,23 +71,18 @@
   │  │         ├─ .auditions__list                           │  │
   │  │         │    └─ CardEvent × N (une par date)          │  │
   │  │         ├─ .auditions__location (lieu)                │  │
-  │  │         ├─ ul.auditions__notes (bon à savoir)         │  │
-  │  │         └─ .auditions__cta                            │  │
-  │  │              └─ ButtonSwave (lien externe)            │  │
+  │  │         └─ ul.auditions__notes (bon à savoir)         │  │
   │  └───────────────────────────────────────────────────────┘  │
   │                                                             │
   │  Props:                                                     │
   │    • title: string (requis) - Titre de la section           │
   │    • sessions: AuditionSession[] (requis) - Dates ouvertes  │
-  │    • ctaHref: string (requis) - Lien du bouton              │
-  │    • ctaText?: string - Libellé du bouton                   │
-  │    • ctaExternal?: boolean - Nouvel onglet (false = mailto) │
   │    • description?: string - Texte sous le titre             │
   │    • tag?: string - Petit label au-dessus du titre          │
   │    • location?: string - Adresse du lieu des auditions      │
   │    • notes?: string[] - Infos pratiques (bon à savoir)      │
   │                                                             │
-  │  Events: Aucun (le CTA est un lien, pas un bouton d'action) │
+  │  Events: Aucun (section purement informative)               │
   │  Slots: Aucun (données via props)                           │
   └─────────────────────────────────────────────────────────────┘
 
@@ -111,9 +100,6 @@ export interface AuditionSession {
 interface Props {
   title: string;
   sessions: AuditionSession[];
-  ctaHref: string;
-  ctaText?: string;
-  ctaExternal?: boolean;
   description?: string;
   tag?: string;
   location?: string;
@@ -121,8 +107,6 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  ctaText: 'NOUS CONTACTER',
-  ctaExternal: false,
   description: '',
   tag: '',
   location: '',
@@ -188,9 +172,5 @@ withDefaults(defineProps<Props>(), {
 
 .auditions__note {
   margin-bottom: 0.5rem;
-}
-
-.auditions__cta {
-  margin-top: 2.5rem;
 }
 </style>

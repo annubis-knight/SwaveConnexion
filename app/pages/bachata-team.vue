@@ -41,9 +41,6 @@
       :sessions="auditionSessions"
       location="Studio Uffizi — Espace des Arts, 9 rue Sainte-Catherine Est, Montréal QC H2X 1K3"
       :notes="auditionNotes"
-      cta-text="NOUS ÉCRIRE SUR INSTAGRAM"
-      cta-href="https://www.instagram.com/swaveconnection"
-      cta-external
     />
 
     <!-- ═══════════════════════════════════════════════════════════════════════
