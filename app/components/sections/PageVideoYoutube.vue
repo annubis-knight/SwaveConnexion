@@ -158,7 +158,8 @@ const embedUrl = computed(
   aspect-ratio: 16 / 9;
   width: 100%;
   overflow: hidden;
-  border-radius: var(--border-radius-md);
+  /* Valeur en dur : --border-radius-md n'est pas defini dans _variables.css */
+  border-radius: 12px;
   background-color: var(--secondary-dark);
 }
 

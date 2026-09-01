@@ -35,12 +35,15 @@
          AUDITIONS - Dates ouvertes pour rejoindre la team
     ═══════════════════════════════════════════════════════════════════════ -->
     <SectionsPageAuditions
-      tag="Rejoindre la team"
+      tag="Swave Sensual Team — Saison 3"
       title="AUDITIONS OUVERTES"
-      description="Deux dates pour passer l'audition et intégrer la team cette saison. Écris-nous pour réserver ta place et recevoir les détails pratiques."
+      description="Deux mardis pour passer l'audition et rejoindre la team cette saison."
       :sessions="auditionSessions"
-      cta-text="RÉSERVER MA PLACE"
-      :cta-href="`mailto:${CONTACT_EMAIL}?subject=Audition%20Bachata%20Team`"
+      location="Studio Uffizi — Espace des Arts, 9 rue Sainte-Catherine Est, Montréal QC H2X 1K3"
+      :notes="auditionNotes"
+      cta-text="NOUS ÉCRIRE SUR INSTAGRAM"
+      cta-href="https://www.instagram.com/swaveconnection"
+      cta-external
     />
 
     <!-- ═══════════════════════════════════════════════════════════════════════
@@ -123,8 +126,15 @@ useSeo({
 import type { AuditionSession } from '~/components/sections/PageAuditions.vue';
 
 const auditionSessions: AuditionSession[] = [
-  { day: '01', month: 'Sept', title: 'Audition', subtitle: 'Première session' },
-  { day: '08', month: 'Sept', title: 'Audition', subtitle: 'Seconde session' },
+  { day: '01', month: 'Sept', title: 'Audition', subtitle: 'Mardi · 19 h – 21 h' },
+  { day: '08', month: 'Sept', title: 'Audition', subtitle: 'Mardi · 19 h – 21 h' },
+];
+
+const auditionNotes = [
+  'Pas besoin de venir avec un partenaire.',
+  'Les entraînements de la team ont lieu tous les mardis de 19 h à 21 h, au Studio Uffizi.',
+  'Musiques de la saison : Delito — Montelier & Nicko Play.',
+  'Pour toute question ou pour t\'inscrire, écris-nous sur Instagram : @swaveconnection, @jordan.gln ou @denise_rdrgz.',
 ];
 
 /* ═══════════════════════════════════════════════════════════════════════════

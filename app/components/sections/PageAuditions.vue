@@ -32,6 +32,28 @@
         />
       </div>
 
+      <div v-if="location" class="auditions__location">
+        <Text
+          as="span"
+          size="sm"
+          weight="semibold"
+          transform="uppercase"
+          tracking="wide"
+          color="primary"
+        >
+          Lieu
+        </Text>
+        <Text as="p" weight="light" leading="relaxed">{{ location }}</Text>
+      </div>
+
+      <ul v-if="notes.length" class="auditions__notes">
+        <li v-for="note in notes" :key="note" class="auditions__note">
+          <Text as="span" size="sm" weight="light" leading="relaxed">
+            {{ note }}
+          </Text>
+        </li>
+      </ul>
+
       <div class="auditions__cta">
         <ButtonSwave :href="ctaHref" :external="ctaExternal">
           {{ ctaText }}
@@ -54,6 +76,8 @@
   │  │         │    └─ Text (description)                    │  │
   │  │         ├─ .auditions__list                           │  │
   │  │         │    └─ CardEvent × N (une par date)          │  │
+  │  │         ├─ .auditions__location (lieu)                │  │
+  │  │         ├─ ul.auditions__notes (bon à savoir)         │  │
   │  │         └─ .auditions__cta                            │  │
   │  │              └─ ButtonSwave (lien externe)            │  │
   │  └───────────────────────────────────────────────────────┘  │
@@ -66,6 +90,8 @@
   │    • ctaExternal?: boolean - Nouvel onglet (false = mailto) │
   │    • description?: string - Texte sous le titre             │
   │    • tag?: string - Petit label au-dessus du titre          │
+  │    • location?: string - Adresse du lieu des auditions      │
+  │    • notes?: string[] - Infos pratiques (bon à savoir)      │
   │                                                             │
   │  Events: Aucun (le CTA est un lien, pas un bouton d'action) │
   │  Slots: Aucun (données via props)                           │
@@ -87,14 +113,20 @@ interface Props {
   sessions: AuditionSession[];
   ctaHref: string;
   ctaText?: string;
+  ctaExternal?: boolean;
   description?: string;
   tag?: string;
+  location?: string;
+  notes?: string[];
 }
 
 withDefaults(defineProps<Props>(), {
   ctaText: 'NOUS CONTACTER',
+  ctaExternal: false,
   description: '',
   tag: '',
+  location: '',
+  notes: () => [],
 });
 </script>
 
@@ -114,18 +146,48 @@ withDefaults(defineProps<Props>(), {
   gap: 0.5rem;
 }
 
-/* Les cartes se posent côte à côte dès qu'il y a la place */
+/*
+  Grid plutôt que flex : CardEvent impose width:100% à ses instances, donc
+  en flex-row chaque carte prenait toute la ligne et repassait dessous.
+  La grid contraint la colonne, la carte remplit sa cellule.
+*/
 .auditions__list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
   gap: 1.5rem;
   margin-top: 2.5rem;
 
   @media (min-width: 768px) {
-    flex-direction: row;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
   }
+}
+
+/* CardEvent est translucide par défaut (blanc à 90 %) : sur le fond clair
+   de cette section, la carte manquait de contraste. */
+.auditions__list :deep(.card-event) {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-base);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.auditions__location {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 2.5rem;
+}
+
+.auditions__notes {
+  margin-top: 1.5rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.auditions__note {
+  margin-bottom: 0.5rem;
 }
 
 .auditions__cta {
