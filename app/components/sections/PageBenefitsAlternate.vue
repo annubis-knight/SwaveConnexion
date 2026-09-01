@@ -404,8 +404,9 @@ onUnmounted(() => {
     calc(10px + var(--frame-drift-x, 0px)),
     calc(10px + var(--frame-drift-y, 0px))
   );
-  /* Court, pour suivre le curseur sans traîner, et adoucir le retour au repos */
-  transition: transform 0.14s ease-out;
+  /* Long et très décéléré : le cadre traîne derrière le curseur au lieu de
+     lui coller, ce qui donne le flottement. */
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 
   @media (min-width: 1024px) {
     transform: translate(
