@@ -15,9 +15,9 @@ definePageMeta({
 });
 
 useSeo({
-  title: 'École de danse Bachata à Montréal',
-  fullTitle: 'Swave Connection | École de danse Bachata à Montréal',
-  description: 'École de bachata à Montréal. Cours collectifs, privés, lady styling, sensual et team chorégraphie. Rejoignez Swave Connection.',
+  title: 'École de Bachata Sensual à Montréal',
+  fullTitle: 'Swave Connection | École de Bachata Sensual à Montréal',
+  description: 'École de bachata sensual à Montréal : cours collectifs, privés, lady styling et team chorégraphie. Apprends, progresse et trouve ta connexion.',
   path: '/',
   jsonLd: seoSchemaLocalBusiness(),
 });

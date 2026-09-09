@@ -2,7 +2,7 @@
   <component
     :is="tag"
     class="btn-swave"
-    :class="{ 'btn-swave--disabled': disabled }"
+    :class="[`btn-swave--${variant}`, { 'btn-swave--disabled': disabled }]"
     :href="href || undefined"
     :target="isExternal ? '_blank' : undefined"
     :rel="isExternal ? 'noopener noreferrer' : undefined"
@@ -32,6 +32,9 @@
   │    • href: string - Si fourni, rend un <a> au lieu de <button>│
   │    • external: boolean - Ouvre dans un nouvel onglet         │
   │      (target=_blank + rel=noopener noreferrer)               │
+  │    • variant: 'primary' | 'outline' (default: primary)       │
+  │      outline = contour seul, pour un second CTA a cote du    │
+  │      bouton principal. Prevu pour fond sombre.               │
   │                                                             │
   │  Slots:                                                     │
   │    • default: Contenu du bouton (texte)                     │
@@ -54,12 +57,14 @@ interface Props {
   disabled?: boolean;
   href?: string;
   external?: boolean;
+  variant?: 'primary' | 'outline';
 }
 
 const props = withDefaults(defineProps<Props>(), {
   disabled: false,
   href: undefined,
   external: false,
+  variant: 'primary',
 });
 
 /* <a> quand href fourni (lien), sinon <button> */
@@ -152,6 +157,27 @@ const isExternal = computed(() => Boolean(props.href && props.external));
 
 .btn-swave:hover:not(.btn-swave--disabled) .btn-swave__shine {
   left: 100%;
+}
+
+/* ============================================
+   VARIANTE OUTLINE - Second CTA
+   ============================================
+   Contour seul, pour accompagner le bouton principal sans lui faire
+   concurrence. Le texte reste en --text-inverse : cette variante est
+   prevue pour un fond sombre (hero, sections data-theme="dark").
+
+   @dev Ces regles doivent rester APRES le bloc hover ci-dessus : meme
+   specificite, c'est l'ordre du fichier qui tranche.
+   ============================================ */
+
+.btn-swave--outline {
+  background-color: transparent;
+  border-color: currentColor;
+}
+
+.btn-swave--outline:hover:not(.btn-swave--disabled) {
+  background-color: rgba(255, 255, 255, 0.14);
+  box-shadow: none;
 }
 
 /* ============================================

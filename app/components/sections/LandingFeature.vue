@@ -9,13 +9,23 @@
           <span class="landing-feature__subtitle">C'EST CELUI AVEC LE SOURIRE</span>
         </Heading>
 
-        <!-- Text: full width mobile, colonnes 8-12 desktop -->
-        <Text class="col-span-4 md:col-span-8 lg:col-span-5 lg:col-start-8">
-          Découvre SwaveConnection, l'école de bachata la plus fun et sensuelle de Montréal !
-          Viens te connecter au rythme, à l'énergie et à la passion. Que tu sois débutant ou
-          confirmé, notre équipe dynamique t'accompagne pour danser, progresser et vibrer à
-          chaque pas. Rejoins la vibe Swave !
-        </Text>
+        <!-- Texte de présentation : full width mobile, colonnes 8-12 desktop -->
+        <div class="col-span-4 md:col-span-8 lg:col-span-5 lg:col-start-8">
+          <Text>
+            Bienvenue chez Swave Connection, une école et une communauté dédiées
+            à la Bachata Sensual à Montréal.
+          </Text>
+          <Text>
+            Nous partageons une danse qui va bien au-delà des mouvements : la
+            connexion, la musicalité, l'expression et le plaisir de danser avec
+            intention.
+          </Text>
+          <Text>
+            Que tu souhaites découvrir la bachata, perfectionner ta technique,
+            développer ton Lady Styling ou te préparer à rejoindre une équipe de
+            danse, nous t'accompagnons dans ton évolution.
+          </Text>
+        </div>
       </LayoutGridResponsive>
 
       <!-- GridGolden 1 : Sensual, Team, Débutant -->

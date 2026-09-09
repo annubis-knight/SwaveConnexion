@@ -25,18 +25,33 @@
           <span class="landing-hero__line text-shadow-md">SMOOTH</span>
         </Heading>
         <div>
-          <Text color="white" max-width="md" class="relative z-5 my-4">
-            Découvre SwaveConnection, l'école de bachata fun et sensual de Montréal. Que tu sois débutant ou avancé, notre équipe t'accompagne
-            pour danser, progresser et vibrer à chaque pas. Rejoins la vibe Swave !
-          </Text>
-          <ButtonSwave
-            hover-effect="halo"
-            :href="BOOKING_LINKS.bachata"
-            external
-            class="relative z-5"
+          <Text
+            color="white"
+            size="xl"
+            max-width="md"
+            class="relative z-5 my-4"
           >
-            {{ ctaText }}
-          </ButtonSwave>
+            La Bachata Sensual à Montréal. Apprends, progresse et trouve ta
+            connexion.
+          </Text>
+
+          <Text color="white" max-width="md" class="relative z-5 my-4">
+            Apprends à danser avec plus de confiance, de précision et de
+            connexion.
+          </Text>
+
+          <div class="relative z-5 flex flex-col md:flex-row gap-4">
+            <ButtonSwave href="#cours">
+              {{ ctaText }}
+            </ButtonSwave>
+            <ButtonSwave
+              variant="outline"
+              :href="BOOKING_LINKS.bachata"
+              external
+            >
+              {{ ctaSecondaryText }}
+            </ButtonSwave>
+          </div>
           <!-- Test buttons for glow effects -->
           <div class="flex flex-wrap gap-4 mt-4 relative z-5 hidden">
             <ButtonTest hover-effect="snake">
@@ -94,11 +109,14 @@
   │  └───────────────────────────────────────────────────────┘  │
   │                                                             │
   │  Props:                                                     │
-  │    • ctaText: string (défaut: "RÉSERVER UN COURS")          │
+  │    • ctaText: string (défaut: "DÉCOUVRIR NOS COURS")        │
+  │    • ctaSecondaryText: string                               │
+  │      (défaut: "RÉSERVER UN COURS PRIVÉ")                    │
   │                                                             │
   │  CTA:                                                       │
-  │    • Lien externe vers la réservation (BOOKING_LINKS.bachata)│
-  │      ouvert dans un nouvel onglet                           │
+  │    • Principal : ancre #cours, reste sur la page            │
+  │    • Secondaire (outline) : réservation externe             │
+  │      (BOOKING_LINKS.bachata), nouvel onglet                 │
   └─────────────────────────────────────────────────────────────┘
 
   Section Hero plein écran avec titre display et CTA.
@@ -110,10 +128,12 @@
 
 interface Props {
   ctaText?: string;
+  ctaSecondaryText?: string;
 }
 
 withDefaults(defineProps<Props>(), {
-  ctaText: 'RÉSERVER UN COURS',
+  ctaText: 'DÉCOUVRIR NOS COURS',
+  ctaSecondaryText: 'RÉSERVER UN COURS PRIVÉ',
 });
 
 /* Composable pour signaler la visibilité du Hero à la Navbar */
