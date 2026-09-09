@@ -5,25 +5,23 @@
       <LayoutGridResponsive class="mb-40">
         <!-- Titre: full width mobile, colonnes 1-7 desktop -->
         <Heading :level="2" class="col-span-full">
-          LE MEILLEUR APPRENTISSAGE,<br />
-          <span class="landing-feature__subtitle">C'EST CELUI AVEC LE SOURIRE</span>
+          CETTE SAISON,<br />
+          <span class="landing-feature__subtitle">CHEZ SWAVE CONNECTION</span>
         </Heading>
 
         <!-- Texte de présentation : full width mobile, colonnes 8-12 desktop -->
         <div class="col-span-4 md:col-span-8 lg:col-span-5 lg:col-start-8">
           <Text>
-            Bienvenue chez Swave Connection, une école et une communauté dédiées
-            à la Bachata Sensual à Montréal.
+            Cette saison, on mise sur le sur-mesure : cours privés, initiations,
+            Lady Styling en ligne, événements ponctuels et la Swave Sensual
+            Team. Pas de cours de groupe réguliers au programme.
           </Text>
           <Text>
-            Nous partageons une danse qui va bien au-delà des mouvements : la
-            connexion, la musicalité, l'expression et le plaisir de danser avec
-            intention.
+            Que tu veuilles commencer, affiner ta technique ou rejoindre une
+            équipe, on t'accompagne.
           </Text>
           <Text>
-            Que tu souhaites découvrir la bachata, perfectionner ta technique,
-            développer ton Lady Styling ou te préparer à rejoindre une équipe de
-            danse, nous t'accompagnons dans ton évolution.
+            Découvre nos prochaines opportunités de danser avec nous.
           </Text>
         </div>
       </LayoutGridResponsive>

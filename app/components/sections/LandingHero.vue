@@ -25,20 +25,22 @@
           <span class="landing-hero__line text-shadow-md">SMOOTH</span>
         </Heading>
         <div>
-          <Text
-            color="white"
-            size="xl"
-            max-width="md"
-            class="relative z-5 my-4"
-          >
-            La Bachata Sensual à Montréal. Apprends, progresse et trouve ta
-            connexion.
-          </Text>
-
-          <Text color="white" max-width="md" class="relative z-5 my-4">
-            Apprends à danser avec plus de confiance, de précision et de
-            connexion.
-          </Text>
+          <div class="relative z-5 my-4">
+            <Text color="white" max-width="md">
+              Bienvenue chez Swave Connection, une école et une communauté
+              dédiées à la Bachata Sensual à Montréal.
+            </Text>
+            <Text color="white" max-width="md">
+              Nous partageons une danse qui va bien au-delà des mouvements : la
+              connexion, la musicalité, l'expression et le plaisir de danser
+              avec intention.
+            </Text>
+            <Text color="white" max-width="md">
+              Que tu souhaites découvrir la bachata, perfectionner ta technique,
+              développer ton Lady Styling ou te préparer à rejoindre une équipe
+              de danse, nous t'accompagnons dans ton évolution.
+            </Text>
+          </div>
 
           <div class="relative z-5 flex flex-col md:flex-row gap-4">
             <ButtonSwave href="#cours">
@@ -109,9 +111,9 @@
   │  └───────────────────────────────────────────────────────┘  │
   │                                                             │
   │  Props:                                                     │
-  │    • ctaText: string (défaut: "DÉCOUVRIR NOS COURS")        │
+  │    • ctaText: string (défaut: "DÉCOUVRE NOS COURS")         │
   │    • ctaSecondaryText: string                               │
-  │      (défaut: "RÉSERVER UN COURS PRIVÉ")                    │
+  │      (défaut: "RÉSERVE UN COURS")                           │
   │                                                             │
   │  CTA:                                                       │
   │    • Principal : ancre #cours, reste sur la page            │
@@ -132,8 +134,8 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  ctaText: 'DÉCOUVRIR NOS COURS',
-  ctaSecondaryText: 'RÉSERVER UN COURS PRIVÉ',
+  ctaText: 'DÉCOUVRE NOS COURS',
+  ctaSecondaryText: 'RÉSERVE UN COURS',
 });
 
 /* Composable pour signaler la visibilité du Hero à la Navbar */
