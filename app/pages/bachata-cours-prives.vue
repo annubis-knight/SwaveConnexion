@@ -2,8 +2,8 @@
   <div class="page-cours-prives">
     <SectionsPageHero
       title="COURS PRIVÉS"
-      subtitle="Un accompagnement sur-mesure pour progresser à ton rythme. Objectifs personnalisés, attention exclusive et flexibilité totale pour une expérience d'apprentissage premium."
-      tag="Formule premium"
+      subtitle="Tu veux progresser plus vite, travailler un mouvement précis ou être accompagné selon ton niveau ? Les cours privés s'adaptent à tes objectifs, que tu débutes ou que tu danses depuis des années."
+      tag="Sur-mesure"
       :image="heroImage"
       image-alt="Cours privé de bachata"
       bg-color="primary"
@@ -18,6 +18,16 @@
       title-line1="TON RYTHME "
       title-line2="TES OBJECTIFS"
       :benefits="benefitsData"
+    />
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         OFFER LIST - Ce qu'on peut travailler en cours privé
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <SectionsPageOfferList
+      tag="Au programme"
+      title="CE QU'ON PEUT TRAVAILLER ENSEMBLE"
+      :items="privateLessonTopics"
+      footnote="Un accompagnement personnalisé, pour progresser à ton rythme."
     />
 
     <!-- ═══════════════════════════════════════════════════════════════════════
@@ -73,10 +83,11 @@
   - Reste dans la famille du bleu Swave
 */
 
-const heroImage = '/images/cours-prive.jpg';
+const heroImage = '/images/cours-prive.jpeg';
 const ambianceSwave = '/images/ambianceSwave.jpg';
-const progression1 = '/images/progression1.jpg';
-const professeurDenise = '/images/professeur_denise.jpg';
+/* Visuels des bénéfices en attente : placeholder gris affiché en attendant */
+// const progression1 = '/images/progression1.jpg';
+// const professeurDenise = '/images/professeur_denise.jpg';
 import type { Benefit } from '~/components/sections/PageBenefitsAlternate.vue';
 
 definePageMeta({
@@ -95,11 +106,23 @@ useSeo({
 });
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   POINTS TRAVAILLÉS EN COURS PRIVÉ
+   ═══════════════════════════════════════════════════════════════════════════ */
+const privateLessonTopics = [
+  'Les bases et la technique',
+  'La connexion et le guidage',
+  'Les body waves et les isolations',
+  'La musicalité et l\'interprétation',
+  'Le Lady Styling',
+  'La préparation d\'une performance',
+  'Les mouvements que tu veux mieux comprendre',
+];
+
+/* ═══════════════════════════════════════════════════════════════════════════
    DONNÉES BENEFITS - Avantages des cours privés
    ═══════════════════════════════════════════════════════════════════════════ */
 const benefitsData: Benefit[] = [
   {
-    image: professeurDenise,
     tag: 'Personnalisation',
     title: 'Un programme taillé pour toi',
     description: 'Oublie les programmes génériques. Ton instructeur analyse ton niveau, tes forces, tes axes d\'amélioration et construit un parcours unique. Chaque minute de cours est optimisée pour ta progression.',
@@ -107,7 +130,6 @@ const benefitsData: Benefit[] = [
     statLabel: 'adapté à tes objectifs',
   },
   {
-    image: progression1,
     tag: 'Efficacité',
     title: 'Progresse deux fois plus vite',
     description: 'Sans attendre ton tour, sans suivre le rythme du groupe, tu maximises chaque seconde. Les corrections sont immédiates, les répétitions ciblées. Résultat : une progression significative.',
@@ -115,7 +137,6 @@ const benefitsData: Benefit[] = [
     statLabel: 'plus rapide qu\'en groupe',
   },
   {
-    image: ambianceSwave,
     tag: 'Flexibilité',
     title: 'Ton planning, tes règles',
     description: 'Cours tôt le matin, pause déjeuner, soirée tardive ou week-end, tu choisis. Besoin de reporter ? Pas de stress. Le cours privé s\'adapte à ta vie, pas l\'inverse.',

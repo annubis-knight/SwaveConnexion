@@ -30,6 +30,16 @@
         </Heading>
       </div>
 
+      <Text
+        v-if="intro"
+        weight="light"
+        leading="relaxed"
+        max-width="lg"
+        class="page-benefits-alternate__intro"
+      >
+        {{ intro }}
+      </Text>
+
       <!-- Benefits alternés -->
       <div class="page-benefits-alternate__list">
         <div
@@ -43,7 +53,21 @@
           <!-- Visual side -->
           <div class="page-benefits-alternate__visual">
             <div class="page-benefits-alternate__image-wrapper">
-              <NuxtImg :src="benefit.image" :alt="benefit.title" class="page-benefits-alternate__image" sizes="100vw lg:600px" format="webp" loading="lazy" />
+              <!-- Image si le benefice en fournit une, placeholder gris sinon -->
+              <NuxtImg
+                v-if="benefit.image"
+                :src="benefit.image"
+                :alt="benefit.title"
+                class="page-benefits-alternate__image"
+                sizes="100vw lg:600px"
+                format="webp"
+                loading="lazy"
+              />
+              <div
+                v-else
+                class="page-benefits-alternate__image page-benefits-alternate__image--placeholder"
+                aria-hidden="true"
+              ></div>
               <!-- Cadre fin décalé, dans la couleur de la page -->
               <div class="page-benefits-alternate__frame" aria-hidden="true"></div>
             </div>
@@ -114,7 +138,8 @@
 
 /* Types - exporté pour réutilisation */
 export interface Benefit {
-  image: string;
+  /* Optionnelle : sans image, un placeholder gris occupe la meme boite */
+  image?: string;
   tag: string;
   title: string;
   description: string;
@@ -128,6 +153,8 @@ interface Props {
   titleLine1?: string;
   titleLine2?: string;
   benefits: Benefit[];
+  /* Texte de présentation affiché sous le titre de section */
+  intro?: string;
 }
 
 const props = defineProps<Props>();
@@ -291,6 +318,11 @@ onUnmounted(() => {
   z-index: 1;
 }
 
+/* Texte de présentation sous le titre de section */
+.page-benefits-alternate__intro {
+  margin-bottom: 4rem;
+}
+
 /* Header */
 .page-benefits-alternate__header {
   display: flex;
@@ -436,6 +468,12 @@ onUnmounted(() => {
   height: 100%;
   object-fit: cover;
   border-radius: 4px;
+}
+
+/* Placeholder : occupe exactement la meme boite que l'image (le wrapper
+   impose la taille et le ratio 3/4), simple aplat gris. */
+.page-benefits-alternate__image--placeholder {
+  background-color: var(--bg-active);
 }
 
 .page-benefits-alternate__number {

@@ -10,20 +10,14 @@
         </Heading>
 
         <!-- Texte de présentation : full width mobile, colonnes 8-12 desktop -->
-        <div class="col-span-4 md:col-span-8 lg:col-span-5 lg:col-start-8">
-          <Text>
-            Cette saison, on mise sur le sur-mesure : cours privés, initiations,
-            Lady Styling en ligne, événements ponctuels et la Swave Sensual
-            Team. Pas de cours de groupe réguliers au programme.
-          </Text>
-          <Text>
-            Que tu veuilles commencer, affiner ta technique ou rejoindre une
-            équipe, on t'accompagne.
-          </Text>
-          <Text>
-            Découvre nos prochaines opportunités de danser avec nous.
-          </Text>
-        </div>
+        <Text class="col-span-4 md:col-span-8 lg:col-span-5 lg:col-start-8">
+          Cette saison, on mise sur le sur-mesure : cours privés, initiations,
+          Lady Styling en ligne, événements ponctuels et la Swave Sensual Team.
+          Pas de cours de groupe réguliers au programme. Que tu veuilles
+          commencer, affiner ta technique ou rejoindre une équipe, on
+          t'accompagne. Découvre nos prochaines opportunités de danser avec
+          nous.
+        </Text>
       </LayoutGridResponsive>
 
       <!-- GridGolden 1 : Sensual, Team, Débutant -->
@@ -141,11 +135,11 @@
 */
 
 /* Images servies depuis public/ pour optimisation @nuxt/image (NuxtImg) */
-const bachataImage = '/images/cours-debutant.jpg';
-const sensualImage = '/images/cours-sensual.png';
-const coursPriveImage = '/images/cours-prive.jpg';
+const bachataImage = '/images/cours-debutant.jpeg';
+const sensualImage = '/images/cours-sensual.jpeg';
+const coursPriveImage = '/images/cours-prive.jpeg';
 const ladyStyleImage = '/images/cours-lady-style.png';
-const teamImage = '/images/cours-team.png';
+const teamImage = '/images/cours-team.jpeg';
 </script>
 
 <style scoped>

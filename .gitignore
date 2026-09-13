@@ -30,6 +30,11 @@ tmpclaude-*
 
 # Rushes video bruts (sources lourdes, jamais commitees ni deployees)
 _medias-source
+
+# Images hors du dossier servi : sauvegardes et visuels pas encore integres.
+# Toute image posee dans public/images sans etre referencee fait echouer la
+# gate de poids (elle y est comptee comme servie brute aux visiteurs).
+_images-source
 *.mp4
 *.MP4
 *.mov

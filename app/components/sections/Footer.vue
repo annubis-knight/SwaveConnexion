@@ -6,9 +6,25 @@
         <div class="col-span-4 lg:col-span-4 flex flex-col items-center lg:items-start gap-4">
           <div class="footer__logo">
             <slot name="logo">
-              <span class="footer__logo-placeholder">LOGO</span>
+              <NuxtImg
+                src="/images/logo_alpha.png"
+                alt="Swave Connection"
+                class="footer__logo-img"
+                width="72"
+                format="webp"
+                loading="lazy"
+              />
             </slot>
           </div>
+
+          <Text as="p" size="sm" weight="medium" color="white">
+            Bachata Sensual à Montréal et Sherbrooke
+          </Text>
+          <Text as="p" size="xs" color="white">
+            Cours privés · Initiations · Lady Styling en ligne ·
+            Swave Sensual Team · Événements
+          </Text>
+
           <address class="footer__contact flex flex-col gap-2 text-center lg:text-left">
             <Text as="p" size="sm" color="white">
               9 Rue Sainte-Catherine Est, 2e étage<br />Montréal, QC H2X 1K3
@@ -184,6 +200,12 @@ const currentYear = new Date().getFullYear();
 .footer__logo {
   display: flex;
   align-items: center;
+}
+
+/* Logo : largeur seule, la hauteur suit le ratio (l image n est pas carree) */
+.footer__logo-img {
+  width: 72px;
+  height: auto;
 }
 
 .footer__logo-placeholder {

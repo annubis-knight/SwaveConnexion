@@ -2,12 +2,12 @@
   <div class="page-sensual">
     <SectionsPageHero
       title="BACHATA SENSUAL"
-      subtitle="Explore la connexion profonde entre partenaires. Body waves, isolations, musicalité avancée, apprends à raconter des histoires à travers le mouvement."
-      tag="Niveau intermédiaire"
+      subtitle="La Bachata Sensual est au cœur de Swave Connection. On y travaille la qualité du mouvement, la connexion entre partenaires, la musicalité et l'expression personnelle."
+      tag="Notre spécialité"
       :image="heroImage"
       image-alt="Danseurs de bachata sensual"
       bg-color="primary"
-      cta-text="RÉSERVER CE COURS"
+      cta-text="RÉSERVER UN COURS PRIVÉ"
       @cta-click="handleReservation"
     />
 
@@ -17,6 +17,7 @@
     <SectionsPageBenefitsAlternate
       title-line1="L'ART DE LA "
       title-line2="CONNEXION"
+      intro="Notre approche s'adresse autant aux personnes qui découvrent cette danse qu'aux danseurs qui souhaitent aller plus loin. À travers les cours privés, les initiations, les ateliers et la Swave Sensual Team, on crée des occasions d'apprendre et de progresser. Notre objectif : t'aider à mieux comprendre la danse pour mieux la ressentir."
       :benefits="benefitsData"
     />
 
@@ -73,10 +74,13 @@
   - Évoque la douceur et l'intimité du sensual
 */
 
-const heroImage = '/images/cours-sensual.png';
+const heroImage = '/images/cours-sensual.jpeg';
 const ambianceSwave = '/images/ambianceSwave.jpg';
-const progression1 = '/images/progression1.jpg';
-const professeurDenise = '/images/professeur_denise.jpg';
+
+/* Visuels des bénéfices, propres à cette page */
+const sensualImage1 = '/images/bachata_senusal1.jpeg';
+const sensualImage2 = '/images/bachata_senusal2.jpeg';
+const sensualImage3 = '/images/bachata_senusal3.jpeg';
 import type { Benefit } from '~/components/sections/PageBenefitsAlternate.vue';
 
 definePageMeta({
@@ -99,19 +103,19 @@ useSeo({
    ═══════════════════════════════════════════════════════════════════════════ */
 const benefitsData: Benefit[] = [
   {
-    image: ambianceSwave,
+    image: sensualImage1,
     tag: 'Connexion',
     title: 'Dialogue sans paroles',
     description: 'La bachata sensual, c\'est avant tout une conversation corporelle. Tu apprendras à écouter les micro-mouvements de ton partenaire, à anticiper et à y répondre.',
   },
   {
-    image: progression1,
+    image: sensualImage2,
     tag: 'Technique',
     title: 'Body waves et isolations',
     description: 'Les mouvements du corps sont la signature de la bachata sensual. Notre méthode décompose chaque isolation : poitrine, hanches, épaules, afin que tu puisses maîtriser et comprendre les codes sur la piste.',
   },
   {
-    image: professeurDenise,
+    image: sensualImage3,
     tag: 'Musicalité',
     title: 'Interprète chaque note',
     description: 'Au-delà des pas, c\'est la musique qui guide. Tu développeras une oreille fine pour les breaks, les accents, les moments de suspension. Ta danse deviendra une interprétation unique de chaque chanson.',

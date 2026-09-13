@@ -79,8 +79,9 @@
 
 const heroImage = '/images/cours-lady-style.png';
 const ambianceSwave = '/images/ambianceSwave.jpg';
-const progression1 = '/images/progression1.jpg';
-const professeurDenise = '/images/professeur_denise.jpg';
+/* Visuels des bénéfices en attente : placeholder gris affiché en attendant */
+// const progression1 = '/images/progression1.jpg';
+// const professeurDenise = '/images/professeur_denise.jpg';
 import type { Benefit } from '~/components/sections/PageBenefitsAlternate.vue';
 
 definePageMeta({
@@ -103,24 +104,21 @@ useSeo({
    ═══════════════════════════════════════════════════════════════════════════ */
 const benefitsData: Benefit[] = [
   {
-    image: ambianceSwave,
-    tag: 'Expression',
+    tag:'Expression',
     title: 'Libère ta personnalité sur la piste',
     description: 'Le lady styling, c\'est bien plus que des mouvements de bras. C\'est l\'art d\'exprimer qui tu es à travers chaque geste. Ici, tu apprends à danser avec ton âme, pas juste avec ton corps.',
     stat: '100%',
     statLabel: 'de nos élèves gagnent en confiance',
   },
   {
-    image: progression1,
-    tag: 'Technique',
+    tag:'Technique',
     title: 'Des fondations solides pour briller',
     description: 'Body waves, isolations, tours, jeux de bras... Notre méthode progressive te permet de maîtriser chaque technique étape par étape. Tu développes ta grâce naturellement, sans précipitation.',
     stat: '6 semaines',
     statLabel: 'pour maîtriser les bases du styling',
   },
   {
-    image: professeurDenise,
-    tag: 'Mentorat',
+    tag:'Mentorat',
     title: 'Guidée par des danseuses inspirantes',
     description: 'Nos instructrices sont des passionnées qui comprennent le parcours de chaque femme. Elles créent un espace bienveillant où tu peux explorer, te tromper et grandir. Leur énergie est contagieuse.',
     stat: '10+ ans',

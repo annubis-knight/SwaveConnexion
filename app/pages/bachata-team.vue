@@ -1,9 +1,9 @@
 <template>
   <div class="page-team">
     <SectionsPageHero
-      title="BACHATA TEAM"
-      subtitle="Rejoins une équipe de danseurs passionnés et monte sur scène ensemble. Apprends des chorégraphies complètes, développe ta synchronisation et vis l'adrénaline des performances."
-      tag="Chorégraphie collective"
+      title="SWAVE SENSUAL TEAM"
+      subtitle="Tu veux relever un nouveau défi et faire partie d'un projet collectif ? La Swave Sensual Team développe la technique, la musicalité, la présence scénique et l'esprit d'équipe, à travers des chorégraphies et des performances."
+      tag="Projet de troupe"
       :image="heroImage"
       image-alt="Team de danseurs bachata"
       bg-color="primary"
@@ -15,8 +15,8 @@
          BENEFITS: ALTERNATE - Avantages du cours Team
     ═══════════════════════════════════════════════════════════════════════ -->
     <SectionsPageBenefitsAlternate
-      title-line1="DANSE EN "
-      title-line2="ÉQUIPE"
+      title-line1="NOTRE TROUPE"
+      title-line2=", NOTRE FAMILLE"
       :benefits="benefitsData"
     />
 
@@ -101,11 +101,12 @@
   - primary-light: bleu vif mais pas trop clair
 */
 
-const heroImage = '/images/cours-team.png';
+const heroImage = '/images/cours-team.jpeg';
 const ambianceSwave = '/images/ambianceSwave.jpg';
 /* Servait au bénéfice « Des créations originales », retiré en relecture */
 // const progression1 = '/images/progression1.jpg';
-const professeurDenise = '/images/professeur_denise.jpg';
+/* Visuels des bénéfices en attente : placeholder gris affiché en attendant */
+// const professeurDenise = '/images/professeur_denise.jpg';
 import type { Benefit } from '~/components/sections/PageBenefitsAlternate.vue';
 
 definePageMeta({
@@ -145,7 +146,6 @@ const auditionNotes = [
    ═══════════════════════════════════════════════════════════════════════════ */
 const benefitsData: Benefit[] = [
   {
-    image: ambianceSwave,
     tag: 'Synchronisation',
     title: 'Danser en équipe',
     description: 'Tu apprendras à te synchroniser avec les autres danseurs, à anticiper les mouvements collectifs et à créer cette unité visuelle qui fait frissonner le public.',
@@ -153,15 +153,14 @@ const benefitsData: Benefit[] = [
     statLabel: 'danseurs par team',
   },
   {
-    image: professeurDenise,
     tag: 'Performance',
     title: 'Monte sur scène',
     description: 'L\'objectif final : performer devant un vrai public. Soirées, événements, festivals, tu vivras l\'adrénaline de la scène et la fierté de présenter le fruit de mois de travail collectif.',
-    stat: '3+',
-    statLabel: 'shows par an',
+    stat: '3e',
+    statLabel: 'année consécutive',
     cta: 'Rencontrer l\'équipe',
     ctaTo: '/denise-rodriguez',
-  },
+  }
 ];
 
 const handleReservation = () => {

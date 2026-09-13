@@ -3,7 +3,7 @@
     <!-- Split immersif plein écran (hover-expand) -->
     <SectionsTeachersImmersive
       title="Nos professeurs"
-      subtitle="Deux professeurs, deux villes. Retrouve Swave Connection à Montréal et à Sherbrooke."
+      subtitle="Deux professeurs, deux villes, une même passion."
       :teachers="teachers"
     />
 
@@ -54,16 +54,16 @@ const teachers: Teacher[] = [
     city: 'Montréal',
     role: 'Professeure & Chorégraphe',
     description:
-      "Fondatrice de Swave Connection, Denise enseigne la bachata avec une approche artistique et sensuelle. Elle t'accompagne du premier pas à la scène.",
+      "Denise accompagne les danseurs avec une approche axée sur la technique, la connexion et l'expression. Cours privés, initiations, Lady Styling en ligne et projets Swave.",
     image: denisePhoto,
     to: '/denise-rodriguez',
   },
   {
     name: 'Jordan',
-    city: 'Sherbrooke & Montréal',
+    city: 'Sherbrooke',
     role: 'Professeur',
     description:
-      "Jordan porte la vibe Swave à Sherbrooke comme à Montréal. Dans une ambiance conviviale et énergique, il te guide pour progresser et prendre du plaisir à chaque cours.",
+      "Jordan partage sa passion à travers les cours privés, les événements et les projets Swave. Son approche met l'accent sur la musicalité, la connexion et le plaisir de danser. Chaque mois, il anime aussi des ateliers à Montréal.",
     image: jordanPhoto,
     to: '/jordan-gallon',
   },

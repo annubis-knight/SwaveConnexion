@@ -87,7 +87,11 @@ const isExternal = computed(() => Boolean(props.href && props.external));
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 3rem;
+  padding: 1rem 2rem;
+  /* Libelle toujours sur une seule ligne. Le bouton etant en overflow:hidden,
+     un texte trop long serait tronque plutot que replie : d'ou le padding
+     horizontal reduit en mobile, qui laisse la place au texte. */
+  white-space: nowrap;
   font-family: var(--font-sans);
   font-weight: var(--font-medium);
   font-size: var(--text-md);
@@ -108,7 +112,8 @@ const isExternal = computed(() => Boolean(props.href && props.external));
 
   /* Desktop: taille selon contenu */
   @media (min-width: 768px) {
-    width: min-content;
+    padding: 1rem 3rem;
+    width: max-content;
     min-width: 300px;
   }
 }
