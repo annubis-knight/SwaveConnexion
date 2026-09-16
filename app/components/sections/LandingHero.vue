@@ -2,8 +2,8 @@
   <section class="landing-hero" data-theme="dark">
     <!-- Background image: remplit l'espace, s'adapte au contenu -->
     <NuxtImg
-      src="/images/heroSwave6alpha.png"
-      alt="Swave illustration"
+      src="/images/photo_hero_alpha.png"
+      alt="Denise Rodriguez et Jordan Gallon, professeurs de Swave Connection"
       class="landing-hero__bg"
       sizes="xs:320px sm:640px md:768px lg:1024px xl:1280px xxl:1280px"
       format="webp"
@@ -234,7 +234,15 @@ onUnmounted(() => {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: -150px 0px;
+    /*
+      Mobile : le conteneur est bien plus etroit que la photo (portrait
+      954x1159 detouree, les deux danseurs occupent toute la largeur). En
+      cover, un tiers de la largeur est rogne : 40% decale la fenetre vers la
+      gauche pour garder les deux visages, Jordan etant tres pres du bord
+      gauche de la photo. En pourcentage et non en pixels, pour rester juste
+      quelle que soit la largeur de l'ecran.
+    */
+    object-position: 40% bottom;
     pointer-events: none;
     z-index: 2;
 

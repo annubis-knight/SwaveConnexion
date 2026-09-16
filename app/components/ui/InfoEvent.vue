@@ -6,8 +6,17 @@
       <LabelSwave>{{ location }}</LabelSwave>
 
       <!-- Date + Titre -->
-      <div class="event-info__header">
-        <DateEvent :day="day" :month="month" />
+      <div
+        class="event-info__header"
+        :class="{ 'event-info__header--wide-date': hasWideDate }"
+      >
+        <DateEvent
+          :day="day"
+          :month="month"
+          :end-day="endDay"
+          :end-month="endMonth"
+          :separator="dateSeparator"
+        />
         <Text as="span" size="3xl" weight="bold" transform="uppercase" color="dark">
           {{ title }}
         </Text>
@@ -18,18 +27,25 @@
         {{ description }}
       </Text>
 
-      <!-- CTA : lien simple si ctaHref fourni, sinon bouton + code promo -->
-      <ButtonSwave v-if="ctaHref" :href="ctaHref" :external="ctaExternal">
+      <!-- CTA optionnel : lien si ctaHref, bouton + code promo si promoText,
+           aucun bouton sinon (evenement sans billetterie en ligne) -->
+      <ButtonSwave
+        v-if="ctaText && ctaHref"
+        :href="ctaHref"
+        :external="ctaExternal"
+      >
         {{ ctaText }}
       </ButtonSwave>
-      <ButtonPromoSwave v-else :promo="promoText">{{ ctaText }}</ButtonPromoSwave>
+      <ButtonPromoSwave v-else-if="ctaText && promoText" :promo="promoText">
+        {{ ctaText }}
+      </ButtonPromoSwave>
     </div>
 
     <!-- Image (droite) -->
     <div class="event-info__image">
       <NuxtImg
         :src="image"
-        :alt="imageAlt"
+        :alt="computedImageAlt"
         sizes="100vw md:600px"
         format="webp"
         loading="lazy"
@@ -71,13 +87,15 @@
   │    • location: string - Lieu de l'événement (ex: "BARCELONE")                │
   │    • day: string - Jour (ex: "17")                                           │
   │    • month: string - Mois abrégé (ex: "NOV")                                 │
+  │    • endDay / endMonth / dateSeparator : date sur plusieurs jours,           │
+  │      transmis à DateEvent (voir ce composant)                                │
   │    • title: string - Titre de l'événement                                    │
   │    • description: string - Description de l'événement                        │
-  │    • ctaText: string - Texte du bouton CTA (default: "ACHETER LE PASS")      │
-  │    • ctaHref: string - Si fourni, le CTA devient un lien sans code promo     │
+  │    • ctaText: string - Texte du bouton (vide par defaut = aucun bouton)      │
+  │    • ctaHref: string - Avec ctaText : bouton-lien, sans code promo           │
   │    • ctaExternal: boolean - Ouvre le lien dans un nouvel onglet              │
-  │    • promoText: string - Texte du code promo (default: "CODE"), ignoré       │
-  │      quand ctaHref est fourni                                                │
+  │    • promoText: string - Avec ctaText et sans ctaHref : bouton + pastille    │
+  │      promo. Vide par defaut.                                                 │
   │    • image: string - URL/chemin de l'image                                   │
   │    • imageAlt: string - Alt text de l'image (default: title)                 │
   │                                                                              │
@@ -103,6 +121,10 @@ interface Props {
   location: string;
   day: string;
   month: string;
+  /* Événement sur plusieurs jours : transmis tels quels à DateEvent */
+  endDay?: string;
+  endMonth?: string;
+  dateSeparator?: 'range' | 'and';
   title: string;
   description: string;
   ctaText?: string;
@@ -115,16 +137,23 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  ctaText: 'ACHETER LE PASS',
+  endDay: '',
+  endMonth: '',
+  dateSeparator: 'range',
+  /* Vides par defaut : sans ctaText, aucun bouton n'est affiche */
+  ctaText: '',
   ctaHref: undefined,
   ctaExternal: false,
-  promoText: 'CODE',
+  promoText: '',
   imageAlt: '',
   imagePosition: 'right',
 });
 
 /* Computed pour alt text par défaut */
 const computedImageAlt = computed(() => props.imageAlt || props.title);
+
+/* Date sur plusieurs jours : deux blocs côte à côte, donc plus large */
+const hasWideDate = computed(() => Boolean(props.endDay));
 </script>
 
 <style scoped>
@@ -147,7 +176,10 @@ const computedImageAlt = computed(() => props.imageAlt || props.title);
 @media (min-width: 768px) {
   .event-info {
     flex-direction: row;
-    align-items: stretch;
+    /* flex-start et non stretch : une colonne de texte plus haute que
+       l'image l'etirait, et le recadrage rognait les bords de l'affiche,
+       la ou figurent justement ses dates et son titre. */
+    align-items: flex-start;
   }
 }
 
@@ -161,10 +193,28 @@ const computedImageAlt = computed(() => props.imageAlt || props.title);
 }
 
 /* Element : .event-info__header - Date + Titre */
+/* Le gap porte seul l'espace entre la date et le titre : la date n'a plus de
+   padding, ses chiffres s'alignent sur l'etiquette et le titre. 24px, comme
+   le gap vertical de la colonne. */
 .event-info__header {
   display: flex;
   align-items: center;
+  gap: 24px;
+}
 
+/*
+  Date sur plusieurs jours, affichée en largeur : sous 1024px elle passe
+  au-dessus du titre. Côte à côte, elle laisserait moins de 200px à un
+  titre en majuscules, qui partirait sur quatre ou cinq lignes.
+*/
+.event-info__header--wide-date {
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 /* Element : .event-info__image */
@@ -186,10 +236,10 @@ const computedImageAlt = computed(() => props.imageAlt || props.title);
   }
 }
 
+/* Proportions d'origine : une affiche d'evenement ne se recadre pas */
 .event-info__image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 </style>
