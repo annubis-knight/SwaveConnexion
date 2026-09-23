@@ -215,12 +215,16 @@
   4. Immersive - Cinématique full-width (fond noir)
 */
 
-const heroImage = '/images/cours-debutant.jpeg';
-const ambianceSwave = '/images/ambianceSwave.jpg';
 /* Visuels des bénéfices en attente : placeholder gris affiché en attendant */
 // const progression1 = '/images/progression1.jpg';
 // const professeurDenise = '/images/professeur_denise.jpg';
 import type { Benefit } from '~/components/sections/PageBenefitsAlternate.vue';
+const heroImage = '/images/cours-debutant.jpeg';
+const ambianceSwave = '/images/ambianceSwave.jpg';
+/* Visuels des bénéfices : soirée, cours collectif, profs */
+const benefitAmbiance = '/images/benefit-ambiance-social.jpg';
+const benefitMethode = '/images/benefit-methode-cours.jpg';
+const benefitProfs = '/images/benefit-profs-denise-jordan.jpg';
 
 definePageMeta({
   layout: 'default'
@@ -249,6 +253,7 @@ useSeo({
    ═══════════════════════════════════════════════════════════════════════════ */
 const benefitsData: Benefit[] = [
   {
+    image: benefitAmbiance,
     tag: 'Ambiance',
     title: 'Une atmosphère où tu te sens chez toi',
     description: 'Dès que tu franchis la porte, tu ressens l\'énergie positive. Pas de regard de travers, pas de compétition. Juste des gens comme toi qui veulent passer un bon moment et apprendre quelque chose de nouveau.',
@@ -256,11 +261,13 @@ const benefitsData: Benefit[] = [
     statLabel: 'de nos élèves reviennent après le 1er cours',
   },
   {
+    image: benefitMethode,
     tag: 'Méthode',
     title: 'Progresser sans même t\'en rendre compte',
     description: 'Notre approche unique décompose chaque mouvement en étapes simples et ludiques. Tu intègres les bases naturellement, sans frustration. Au bout de quelques semaines, tu seras surpris de ce que tu sais faire.',
   },
   {
+    image: benefitProfs,
     tag: 'Excellence',
     title: 'Apprendre avec des passionnés',
     description: 'Nos instructeurs ne sont pas que des danseurs, ce sont avant tout des passionnés, formés pour t\'apprendre de la meilleure des façons. Ils ont l\'œil pour repérer ce qui bloque et les mots pour t\'aider à avancer.',

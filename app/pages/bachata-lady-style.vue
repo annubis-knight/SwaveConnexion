@@ -77,12 +77,16 @@
   - Les mêmes sections: Hero, Benefits Alternate, Agenda, Video Dynamic, Ambiance Poetic
 */
 
-const heroImage = '/images/cours-lady-style.png';
-const ambianceSwave = '/images/ambianceSwave.jpg';
 /* Visuels des bénéfices en attente : placeholder gris affiché en attendant */
 // const progression1 = '/images/progression1.jpg';
 // const professeurDenise = '/images/professeur_denise.jpg';
 import type { Benefit } from '~/components/sections/PageBenefitsAlternate.vue';
+const heroImage = '/images/cours-lady-style.png';
+const ambianceSwave = '/images/ambianceSwave.jpg';
+/* Visuels des bénéfices : Denise, en présence, en ligne et en portrait */
+const benefitExpression = '/images/benefit-expression-denise.jpg';
+const benefitTechnique = '/images/benefit-technique-posture.jpg';
+const benefitMentorat = '/images/benefit-mentorat-denise.jpg';
 
 definePageMeta({
   layout: 'default'
@@ -104,6 +108,7 @@ useSeo({
    ═══════════════════════════════════════════════════════════════════════════ */
 const benefitsData: Benefit[] = [
   {
+    image: benefitExpression,
     tag:'Expression',
     title: 'Libère ta personnalité sur la piste',
     description: 'Le lady styling, c\'est bien plus que des mouvements de bras. C\'est l\'art d\'exprimer qui tu es à travers chaque geste. Ici, tu apprends à danser avec ton âme, pas juste avec ton corps.',
@@ -111,6 +116,7 @@ const benefitsData: Benefit[] = [
     statLabel: 'de nos élèves gagnent en confiance',
   },
   {
+    image: benefitTechnique,
     tag:'Technique',
     title: 'Des fondations solides pour briller',
     description: 'Body waves, isolations, tours, jeux de bras... Notre méthode progressive te permet de maîtriser chaque technique étape par étape. Tu développes ta grâce naturellement, sans précipitation.',
@@ -118,6 +124,7 @@ const benefitsData: Benefit[] = [
     statLabel: 'pour maîtriser les bases du styling',
   },
   {
+    image: benefitMentorat,
     tag:'Mentorat',
     title: 'Guidée par des danseuses inspirantes',
     description: 'Nos instructrices sont des passionnées qui comprennent le parcours de chaque femme. Elles créent un espace bienveillant où tu peux explorer, te tromper et grandir. Leur énergie est contagieuse.',

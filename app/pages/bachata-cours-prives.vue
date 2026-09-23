@@ -83,12 +83,16 @@
   - Reste dans la famille du bleu Swave
 */
 
-const heroImage = '/images/cours-prive.jpeg';
-const ambianceSwave = '/images/ambianceSwave.jpg';
 /* Visuels des bénéfices en attente : placeholder gris affiché en attendant */
 // const progression1 = '/images/progression1.jpg';
 // const professeurDenise = '/images/professeur_denise.jpg';
 import type { Benefit } from '~/components/sections/PageBenefitsAlternate.vue';
+const heroImage = '/images/cours-prive.jpeg';
+const ambianceSwave = '/images/ambianceSwave.jpg';
+/* Visuels des bénéfices : correction individuelle, studio, piste libre */
+const benefitCorrection = '/images/benefit-prive-correction.jpg';
+const benefitStudio = '/images/benefit-prive-studio.jpg';
+const benefitEspace = '/images/benefit-prive-espace.jpg';
 
 definePageMeta({
   layout: 'default'
@@ -123,6 +127,7 @@ const privateLessonTopics = [
    ═══════════════════════════════════════════════════════════════════════════ */
 const benefitsData: Benefit[] = [
   {
+    image: benefitCorrection,
     tag: 'Personnalisation',
     title: 'Un programme taillé pour toi',
     description: 'Oublie les programmes génériques. Ton instructeur analyse ton niveau, tes forces, tes axes d\'amélioration et construit un parcours unique. Chaque minute de cours est optimisée pour ta progression.',
@@ -130,6 +135,7 @@ const benefitsData: Benefit[] = [
     statLabel: 'adapté à tes objectifs',
   },
   {
+    image: benefitStudio,
     tag: 'Efficacité',
     title: 'Progresse deux fois plus vite',
     description: 'Sans attendre ton tour, sans suivre le rythme du groupe, tu maximises chaque seconde. Les corrections sont immédiates, les répétitions ciblées. Résultat : une progression significative.',
@@ -137,6 +143,7 @@ const benefitsData: Benefit[] = [
     statLabel: 'plus rapide qu\'en groupe',
   },
   {
+    image: benefitEspace,
     tag: 'Flexibilité',
     title: 'Ton planning, tes règles',
     description: 'Cours tôt le matin, pause déjeuner, soirée tardive ou week-end, tu choisis. Besoin de reporter ? Pas de stress. Le cours privé s\'adapte à ta vie, pas l\'inverse.',

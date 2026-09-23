@@ -120,6 +120,9 @@ import type { SeasonPoster } from '~/components/sections/PageSeasonsPoster.vue';
 
 const heroImage = '/images/cours-team.jpeg';
 const ambianceSwave = '/images/ambianceSwave.jpg';
+/* Visuels des bénéfices : le groupe au complet, la piste devant public */
+const benefitGroupe = '/images/benefit-team-groupe.jpg';
+const benefitScene = '/images/benefit-team-scene.jpg';
 /* Servait au bénéfice « Des créations originales », retiré en relecture */
 // const progression1 = '/images/progression1.jpg';
 /* Visuels des bénéfices en attente : placeholder gris affiché en attendant */
@@ -184,6 +187,7 @@ const pastSeasons: SeasonPoster[] = [
    ═══════════════════════════════════════════════════════════════════════════ */
 const benefitsData: Benefit[] = [
   {
+    image: benefitGroupe,
     tag: 'Synchronisation',
     title: 'Danser en équipe',
     description: 'Tu apprendras à te synchroniser avec les autres danseurs, à anticiper les mouvements collectifs et à créer cette unité visuelle qui fait frissonner le public.',
@@ -191,6 +195,7 @@ const benefitsData: Benefit[] = [
     statLabel: 'danseurs par team',
   },
   {
+    image: benefitScene,
     tag: 'Performance',
     title: 'Monte sur scène',
     description: 'L\'objectif final : performer devant un vrai public. Soirées, événements, festivals, tu vivras l\'adrénaline de la scène et la fierté de présenter le fruit de mois de travail collectif.',
