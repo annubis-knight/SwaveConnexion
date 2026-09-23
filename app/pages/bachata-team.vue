@@ -48,6 +48,19 @@
     />
 
     <!-- ═══════════════════════════════════════════════════════════════════════
+         SAISONS PASSÉES - Les chorégraphies déjà présentées sur scène
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <SectionsPageSeasonsPoster
+      title-line1="DEUX SAISONS"
+      title-line2="À L'AFFICHE"
+      rule-start-left="Swave Sensual Team"
+      rule-start-right="Montréal · QC"
+      rule-end-left="Répétées avec Denise et Jordan"
+      rule-end-right="Chaque semaine à Montréal"
+      :seasons="pastSeasons"
+    />
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
                               SECTION AGENDA
     ═══════════════════════════════════════════════════════════════════════ -->
     <!-- <SectionsLandingAgenda /> -->
@@ -101,13 +114,16 @@
   - primary-light: bleu vif mais pas trop clair
 */
 
+import type { Benefit } from '~/components/sections/PageBenefitsAlternate.vue';
+import type { AuditionSession } from '~/components/sections/PageAuditions.vue';
+import type { SeasonPoster } from '~/components/sections/PageSeasonsPoster.vue';
+
 const heroImage = '/images/cours-team.jpeg';
 const ambianceSwave = '/images/ambianceSwave.jpg';
 /* Servait au bénéfice « Des créations originales », retiré en relecture */
 // const progression1 = '/images/progression1.jpg';
 /* Visuels des bénéfices en attente : placeholder gris affiché en attendant */
 // const professeurDenise = '/images/professeur_denise.jpg';
-import type { Benefit } from '~/components/sections/PageBenefitsAlternate.vue';
 
 definePageMeta({
   layout: 'default'
@@ -127,8 +143,6 @@ useSeo({
 /* ═══════════════════════════════════════════════════════════════════════════
    DATES D'AUDITION - À retirer ou mettre à jour une fois passées
    ═══════════════════════════════════════════════════════════════════════════ */
-import type { AuditionSession } from '~/components/sections/PageAuditions.vue';
-
 const auditionSessions: AuditionSession[] = [
   { day: '01', month: 'Sept', title: 'Audition', subtitle: '19 h – 21 h' },
   { day: '08', month: 'Sept', title: 'Audition', subtitle: '19 h – 21 h' },
@@ -139,6 +153,30 @@ const auditionNotes = [
   'Les entraînements de la team ont lieu tous les mardis de 19 h à 21 h, au Studio Uffizi.',
   'Musiques de la saison : Delito, par Montelier & Nicko Play.',
   'Pour toute question ou pour t\'inscrire, écris-nous sur Instagram : @swaveconnection, @jordan.gln ou @denise_rdrgz.',
+];
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SAISONS PASSÉES - Chorégraphies déjà présentées sur scène
+
+   Les chorégraphies ne sont pas créées par la team : elles sont signées du
+   Gero&Migle Project et travaillées chaque semaine avec Denise et Jordan.
+   Le crédit doit rester explicite dans les textes.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const pastSeasons: SeasonPoster[] = [
+  {
+    year: '2024',
+    number: '01',
+    videoId: 'gb-6zdJkbJc',
+    title: 'Sus Huellas - Gero&Migle Project',
+    text: 'Chorégraphie signée Gero&Migle Project, travaillée toute la saison puis présentée sur scène.',
+  },
+  {
+    year: '2025',
+    number: '02',
+    videoId: 'M9AuoacjGds',
+    title: 'A los pies - Gero&Migle Project',
+    text: 'Chorégraphie signée Gero&Migle Project, filmée le jour de la performance.',
+  },
 ];
 
 /* ═══════════════════════════════════════════════════════════════════════════

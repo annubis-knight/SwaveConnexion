@@ -25,8 +25,9 @@ export default defineNuxtConfig({
    * Les routes sont auto-decouvertes depuis les pages prerendered.
    */
   sitemap: {
-    /* Pages techniques Nuxt exclues du sitemap */
-    exclude: ['/200.html', '/404.html'],
+    /* Pages techniques Nuxt exclues du sitemap.
+       /team-test : page de comparaison de maquettes, hors production. */
+    exclude: ['/200.html', '/404.html', '/team-test'],
   },
 
   /*
@@ -56,6 +57,13 @@ export default defineNuxtConfig({
     prerender: {
       /* Ignore les 404 des pages pas encore creees (contact, cgu, etc.) */
       failOnError: false,
+      /*
+        Pages non generees, donc absentes de la production (404 en ligne).
+        Nuxt prerend par defaut toutes les routes statiques du dossier pages,
+        meme sans lien entrant : il faut les exclure explicitement.
+        /team-test : comparaison de maquettes, usage interne.
+      */
+      ignore: ['/team-test'],
     },
   },
 
