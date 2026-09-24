@@ -78,11 +78,12 @@ const PNG_PALETTE = process.argv.includes('--png-palette');
 const IMAGE_RE = /\.(png|jpe?g|webp)$/i;
 
 /*
-  Dossiers analyses. app/assets/images/old/ est un vivier de photos non
-  referencees : rien n'en part en production, inutile de le traiter.
+  Dossiers analyses : uniquement ceux dont le contenu part en production.
+  Le vivier de photos non publiees vit dans _images-source/ (gitignore), hors
+  de ces dossiers — inutile de traiter des images que personne ne telecharge.
 */
 const SCAN_DIRS = [join(ROOT, 'public', 'images'), join(ROOT, 'app', 'assets', 'images')];
-const SKIP_DIRS = new Set(['old']);
+const SKIP_DIRS = new Set();
 
 const c = {
   red: (s) => `\x1B[31m${s}\x1B[0m`,

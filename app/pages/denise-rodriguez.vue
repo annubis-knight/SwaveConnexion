@@ -36,10 +36,15 @@
 import HeroSwitcher from '~/components/HeroSwitcher.vue';
 const heroPhoto = '/images/professeur_denise.jpg';
 const bentoPhoto = '/images/denise_profile_zoom.jpg';
+/* Photos de Denise plutot que des vues de salle : les legendes « Sur scene »
+   et « Backstage » montraient deux fois le meme studio vide */
+const socialPhoto = '/images/denise-social.jpg';
+const stylingPhoto = '/images/denise-styling.jpg';
+const coursPhoto = '/images/denise-jordan-cours.jpg';
+const eventPhoto = '/images/denise-jordan-event.jpg';
+const sourirePhoto = '/images/denise-sourire.jpg';
+/* Vue du studio montrealais, conservee pour le seul repere de lieu */
 const ambianceImage = '/images/ambianceSwave.jpg';
-const ambianceImage2 = '/images/ambianceSwave2.jpg';
-const progressionImage = '/images/progression1.jpg';
-const simpliciteImage = '/images/simplicite3.jpg';
 
 definePageMeta({
   layout: 'default'
@@ -129,10 +134,10 @@ const bentoContent = {
   skills,
   images: [
     { src: bentoPhoto, alt: 'Denise Rodriguez, portrait' },
-    { src: progressionImage, alt: 'Denise en cours' },
-    { src: simpliciteImage, alt: 'Ambiance Swave' },
-    { src: ambianceImage, alt: 'Sur scène' },
-    { src: ambianceImage2, alt: 'Backstage' },
+    { src: coursPhoto, alt: 'Denise et Jordan en cours' },
+    { src: socialPhoto, alt: 'Denise en soirée bachata' },
+    { src: stylingPhoto, alt: 'Denise, séance photo' },
+    { src: eventPhoto, alt: 'Denise et Jordan en événement' },
   ],
 };
 
@@ -143,12 +148,12 @@ interface Story {
 }
 
 const stories: Story[] = [
-  { label: 'Cours', image: heroPhoto },
-  { label: 'Lady Style', image: bentoPhoto },
-  { label: 'Backstage', image: ambianceImage },
-  { label: 'Shows', image: ambianceImage2 },
-  { label: 'Montréal', image: progressionImage },
-  { label: 'Vibes', image: simpliciteImage },
+  { label: 'Cours', image: coursPhoto },
+  { label: 'Lady Style', image: stylingPhoto },
+  { label: 'Backstage', image: eventPhoto },
+  { label: 'Shows', image: socialPhoto },
+  { label: 'Montréal', image: ambianceImage },
+  { label: 'Vibes', image: sourirePhoto },
 ];
 
 /* Reels Instagram */
@@ -160,12 +165,9 @@ interface Reel {
 }
 
 const reels: Reel[] = [
-  { title: 'Lady Style combo', image: heroPhoto, views: '12.4K', url: '#' },
-  { title: 'Cours débutant', image: ambianceImage, views: '8.7K', url: '#' },
-  { title: 'Chorégraphie show', image: progressionImage, views: '23.1K', url: '#' },
-  // { title: 'Connexion partenaire', image: ambianceImage2, views: '15.6K', url: '#' },
-  // { title: 'Backstage répétition', image: simpliciteImage, views: '6.2K', url: '#' },
-  // { title: 'Sensual flow', image: bentoPhoto, views: '19.8K', url: '#' },
+  { title: 'Lady Style combo', image: stylingPhoto, views: '12.4K', url: '#' },
+  { title: 'Cours débutant', image: coursPhoto, views: '8.7K', url: '#' },
+  { title: 'Chorégraphie show', image: socialPhoto, views: '23.1K', url: '#' },
 ];
 
 /* Props de la section Instagram (structure identique à la page Jordan) */

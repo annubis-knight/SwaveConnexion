@@ -123,10 +123,6 @@ const ambianceSwave = '/images/ambianceSwave.jpg';
 /* Visuels des bénéfices : le groupe au complet, la piste devant public */
 const benefitGroupe = '/images/benefit-team-groupe.jpg';
 const benefitScene = '/images/benefit-team-scene.jpg';
-/* Servait au bénéfice « Des créations originales », retiré en relecture */
-// const progression1 = '/images/progression1.jpg';
-/* Visuels des bénéfices en attente : placeholder gris affiché en attendant */
-// const professeurDenise = '/images/professeur_denise.jpg';
 
 definePageMeta({
   layout: 'default'

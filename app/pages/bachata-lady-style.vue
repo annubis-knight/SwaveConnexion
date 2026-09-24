@@ -77,9 +77,6 @@
   - Les mêmes sections: Hero, Benefits Alternate, Agenda, Video Dynamic, Ambiance Poetic
 */
 
-/* Visuels des bénéfices en attente : placeholder gris affiché en attendant */
-// const progression1 = '/images/progression1.jpg';
-// const professeurDenise = '/images/professeur_denise.jpg';
 import type { Benefit } from '~/components/sections/PageBenefitsAlternate.vue';
 const heroImage = '/images/cours-lady-style.png';
 const ambianceSwave = '/images/ambianceSwave.jpg';

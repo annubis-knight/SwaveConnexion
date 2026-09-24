@@ -50,14 +50,10 @@
     ═══════════════════════════════════════════════════════════════════════ -->
     <!-- <SectionsPageBenefitsImmersive /> -->
 
-
     <!-- ═══════════════════════════════════════════════════════════════════════
                               SECTION AGENGA
     -->
     <!-- <SectionsLandingAgenda /> -->
-
-
-
 
     <!-- ═══════════════════════════════════════════════════════════════════════
                               SECTIONS VIDEO PREVIEW
@@ -143,7 +139,6 @@
       @cta-click="handleReservation"
     /> -->
 
-
         <!-- ═══════════════════════════════════════════════════════════════════════
                               SECTIONS AMBIANCE
          3 variations pour mettre en valeur l'ambiance via une image immersive
@@ -189,8 +184,6 @@
       caption="Swave Connection, là où la danse devient une seconde nature"
     /> -->
 
-
-
   </div>
 </template>
 
@@ -215,9 +208,6 @@
   4. Immersive - Cinématique full-width (fond noir)
 */
 
-/* Visuels des bénéfices en attente : placeholder gris affiché en attendant */
-// const progression1 = '/images/progression1.jpg';
-// const professeurDenise = '/images/professeur_denise.jpg';
 import type { Benefit } from '~/components/sections/PageBenefitsAlternate.vue';
 const heroImage = '/images/cours-debutant.jpeg';
 const ambianceSwave = '/images/ambianceSwave.jpg';
